@@ -34,26 +34,40 @@
         </div>
 
         <div class="w-full sm:w-1/2">
-            <div class="bg-white p-6 h-48 block justify-end">
-                <div class="w-1/3">
-                    <select wire:model="podcastQuery" class="py-1 text-xs text-right">
-                        <option value="">{{ __('Select an option') }}</option>
-                        @forelse ($userPodcasts as $option)
-                            <option value="{{ $option->id }}">{{ $option->name }}</option>
-                        @empty
-                            <option disabled>Please create at least one podcast to view statistics.</option>
-                        @endforelse
-                    </select>
+            <div class="bg-white p-6 h-48 shadow sm:rounded-lg border-t-4 border-indigo-700">
+                <div class="flex justify-end">
+                    <div>
+                        <select wire:model="podcastQuery" class="py-1 text-xs">
+                            <option value="">{{ __('Select an option') }}</option>
+                            @forelse ($userPodcasts as $option)
+                                <option value="{{ $option->id }}">{{ $option->name }}</option>
+                            @empty
+                                <option disabled>Please create at least one podcast to view statistics.</option>
+                            @endforelse
+                        </select>
+                    </div>
                 </div>
                 @if ($podcastInfo)
                     <div>
                         <h3 class="text-4xl md:text-2xl font-bold text-indigo-700">{{ $podcastInfo->name }}</h3>
-                        <p>
-                            {{ $podcastInfo->episodes->count() . __(' episodes') }}
-                        </p>
-                        <p>
-                            {{ __('Most active region: ') . $countPerCountry }}
-                        </p>
+                        <div class="flex items-center justify-between py-2 border-t border-gray-200">
+                            <div>
+                                {{ __('Number of episodes') }}
+                            </div>
+                            <div>
+                                {{ $podcastInfo->episodes->count() }}
+                            </div>
+                        </div>
+                        @if ($countPerCountry->count() > 0)
+                            <div class="flex items-center justify-between py-2 border-t border-gray-200">
+                                <div>
+                                    {{ __('Most active region') }}
+                                </div>
+                                <div>
+                                    {{ $countPerCountry[0]->country }}
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 @endif
             </div>

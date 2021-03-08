@@ -67,9 +67,6 @@ class Graphs extends Component
         $this->userPodcasts = auth()->user()->podcasts;
         $this->mtdCounter = $this->countMonthToDateDownloads();
         $this->countPerCountry = $this->countPerCountry();
-        // dd(
-        //     $this->countPerCountry
-        // );
         return view('livewire.statistics.graphs');
     }
 }
