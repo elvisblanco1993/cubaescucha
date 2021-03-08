@@ -1,0 +1,102 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+* {
+    outline: none !important;
+}
+
+/* Custom App Stylesheet */
+[type="text"],
+[type="email"],
+[type="url"],
+[type="password"],
+[type="number"],
+[type="date"],
+[type="datetime-local"],
+[type="month"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="week"],
+[multiple],
+textarea,
+select {
+    @apply rounded-md;
+    @apply border-gray-300;
+    @apply shadow-sm;
+    @apply mt-0;
+    @apply block;
+    @apply w-full;
+}
+
+
+[type="text"]:focus,
+[type="email"]:focus,
+[type="url"]:focus,
+[type="password"]:focus,
+[type="number"]:focus,
+[type="date"]:focus,
+[type="datetime-local"]:focus,
+[type="month"]:focus,
+[type="search"]:focus,
+[type="tel"]:focus,
+[type="time"]:focus,
+[type="week"]:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+    @apply rounded-md;
+    @apply border-indigo-300;
+    @apply ring;
+    @apply ring-opacity-50;
+    @apply ring-indigo-200;
+}
+
+@media (prefers-color-scheme: dark) {
+    [type="text"],
+    [type="email"],
+    [type="url"],
+    [type="password"],
+    [type="number"],
+    [type="date"],
+    [type="datetime-local"],
+    [type="month"],
+    [type="search"],
+    [type="tel"],
+    [type="time"],
+    [type="week"],
+    [multiple],
+    textarea,
+    select {
+        @apply rounded-md;
+        @apply shadow-sm;
+        @apply mt-0;
+        @apply block;
+        @apply w-full;
+        @apply bg-gray-800;
+        @apply border-gray-700;
+        @apply text-gray-200;
+    }
+
+    [type="text"]:focus,
+    [type="email"]:focus,
+    [type="url"]:focus,
+    [type="password"]:focus,
+    [type="number"]:focus,
+    [type="date"]:focus,
+    [type="datetime-local"]:focus,
+    [type="month"]:focus,
+    [type="search"]:focus,
+    [type="tel"]:focus,
+    [type="time"]:focus,
+    [type="week"]:focus,
+    [multiple]:focus,
+    textarea:focus,
+    select:focus {
+        @apply border-indigo-800;
+        @apply ring;
+        @apply ring-opacity-50;
+        @apply ring-indigo-700;
+    }
+}
