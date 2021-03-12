@@ -4,7 +4,7 @@
         class="w-full rounded-lg border-gray-100 shadow-sm focus:border-indigo-300 py-1"
         type="search"
         wire:model="query"
-        placeholder="Search"
+        placeholder="{{ __('Search') }}"
         accesskey="k"
         wire:keydown.escape="resetForm"
     />
@@ -25,7 +25,7 @@
             </div>
         @else
             <div class="absolute z-10 list-group bg-white w-full rounded-t-none shadow-lg">
-                No result
+                {{ __('No result') }}
             </div>
         @endif
     @endif

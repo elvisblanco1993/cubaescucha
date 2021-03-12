@@ -64,7 +64,7 @@ class Graphs extends Component
     public function render()
     {
         $this->podcastInfo = $this->podcastInfo();
-        $this->userPodcasts = auth()->user()->podcasts;
+        $this->userPodcasts = auth()->user()->podcasts()->orderBy('created_at', 'DESC')->get();
         $this->mtdCounter = $this->countMonthToDateDownloads();
         $this->countPerCountry = $this->countPerCountry();
         return view('livewire.statistics.graphs');

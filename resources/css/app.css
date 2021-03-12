@@ -1,9 +1,18 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
 
 * {
     outline: none !important;
+}
+
+#logotype {
+    font-family: 'Play', sans-serif;
+    @apply text-gray-800;
+    @apply font-normal;
+    @apply antialiased;
+    @apply text-xl;
 }
 
 /* Custom App Stylesheet */
@@ -47,13 +56,33 @@ select {
 textarea:focus,
 select:focus {
     @apply rounded-md;
-    @apply border-indigo-300;
-    @apply ring;
-    @apply ring-opacity-50;
-    @apply ring-indigo-200;
+    @apply border-indigo-600;
+}
+
+.headerbar {
+    @apply bg-white;
 }
 
 @media (prefers-color-scheme: dark) {
+    body {
+        @apply bg-gray-800;
+        @apply text-gray-100;
+    }
+
+    .headerbar {
+        @apply bg-gray-900;
+        @apply text-white;
+    }
+
+    #logotype {
+        font-family: 'Play', sans-serif;
+        @apply text-white;
+        @apply font-normal;
+        @apply antialiased;
+        @apply text-xl;
+    }
+
+
     [type="text"],
     [type="email"],
     [type="url"],
@@ -94,9 +123,6 @@ select:focus {
     [multiple]:focus,
     textarea:focus,
     select:focus {
-        @apply border-indigo-800;
-        @apply ring;
-        @apply ring-opacity-50;
-        @apply ring-indigo-700;
+        @apply border-indigo-600;
     }
 }

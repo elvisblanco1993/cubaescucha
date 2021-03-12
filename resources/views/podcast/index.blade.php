@@ -23,11 +23,11 @@
 
             <div class="">
 
-                <div class="grid grid-cols-2 gap-8">
+                <div class="grid grid-cols-4 gap-8">
 
                     @forelse ($podcasts as $podcast)
 
-                        <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="@if($loop->first && $loop->last) col-span-2 @else col-span-2 sm:col-span-1 @endif bg-white shadow sm:rounded-lg hover:shadow-xl hover:text-indigo-600">
+                        <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="col-span-4 sm:col-span-1 bg-white shadow sm:rounded-lg hover:shadow-xl hover:text-indigo-600">
                             <div>
                                 <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="{{ $podcast->name }}" class="object-cover w-full h-64 rounded-t-lg">
                             </div>
