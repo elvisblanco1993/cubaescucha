@@ -59,11 +59,26 @@ select:focus {
     @apply border-indigo-600;
 }
 
-.headerbar {
-    @apply bg-white;
+
+.nav-btn {
+    @apply px-3;
+    @apply py-2;
+    @apply rounded-lg;
+    @apply bg-gray-100;
+    @apply text-gray-900;
 }
 
-@media (prefers-color-scheme: dark) {
+.register-btn {
+    @apply bg-gray-900;
+    @apply text-white;
+}
+
+
+
+
+
+
+/* @media (prefers-color-scheme: dark) {
     body {
         @apply bg-gray-800;
         @apply text-gray-100;
@@ -125,4 +140,4 @@ select:focus {
     select:focus {
         @apply border-indigo-600;
     }
-}
+} */

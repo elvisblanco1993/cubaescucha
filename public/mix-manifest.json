@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/player.js": "/js/player.js",
-    "/js/Chart.min.js": "/js/Chart.min.js"
+    "/js/app.js": "/js/app.js?id=7ac9f62496f2fe477173",
+    "/css/app.css": "/css/app.css?id=db891560783557b6f05c",
+    "/js/player.js": "/js/player.js?id=30fdd6cf14c33da6e01c",
+    "/js/Chart.min.js": "/js/Chart.min.js?id=9b1ae20c4c7048d6e4a1"
 }

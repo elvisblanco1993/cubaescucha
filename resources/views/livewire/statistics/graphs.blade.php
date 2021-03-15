@@ -5,6 +5,8 @@
                 <a class="text-indigo-500" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                 <span class="mx-1">/</span>
                 <select wire:model="podcastQuery" class="py-0 border-0">
+                    <option value=""></option>
+
                     @forelse ($userPodcasts as $option)
                         <option class="px-1" value="{{ $option->id }}">{{ $option->name }}</option>
                     @empty
@@ -17,7 +19,7 @@
 
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
-        <div class="flex items-center justify-between gap-12">
+        <div class="sm:flex items-center justify-between gap-12">
 
             <div class="w-full sm:w-1/2">
                 <div class="flex items-center justify-between bg-white p-6 h-48 shadow sm:rounded-lg border-t-4 border-indigo-400">
@@ -50,6 +52,7 @@
                 </div>
             </div>
 
+            <div class="my-12 sm:my-0"></div>
 
             <div class="w-full sm:w-1/2">
                 <div class="bg-white p-6 h-48 shadow sm:rounded-lg border-t-4 border-indigo-400">
@@ -111,6 +114,9 @@
                 </div>
             </div>
         </div>
+
+        <div class="my-12"></div>
+
     </div>
 
 

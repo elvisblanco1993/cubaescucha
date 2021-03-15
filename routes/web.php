@@ -27,7 +27,7 @@ Route::get('/', [WebController::class, 'home'])->name('home');
 Route::get('/podcast/{podcast}', [PodcastController::class, 'display'])->name('podcast.display');
 
 
-Route::get('rss/{podcast}', [PodcastController::class, 'setRss'] )->name('set-rss');
+Route::get('rss/{podcast}/update', [PodcastController::class, 'updateRssFeed'] )->name('set-rss');
 
 /**
  * --------------------------------------------------------------

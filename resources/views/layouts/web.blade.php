@@ -20,43 +20,7 @@
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen">
-
-            {{-- Header bar --}}
-            <div class="headerbar shadow-sm mb-12">
-                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div class="flex items-center justify-between h-16">
-                        <!-- Logo -->
-                        <div class="flex-shrink-0 flex items-center w-full sm:w-2/6 md:w-1/6">
-                            <a href="{{ route('home') }}">
-                                <x-jet-application-mark class="block h-9 w-full" />
-                            </a>
-                        </div>
-
-                        <div class="hidden sm:block sm:w-3/6">
-                            @livewire('podcast-search')
-                        </div>
-
-                        {{-- Navigation Links --}}
-                        <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex uppercase text-sm">
-                            @guest
-                                <a href="{{ route('login') }}" :active="request()->routeIs('login')">
-                                    {{ __('Login') }}
-                                </a>
-
-                                <a href="{{ route('register') }}" :active="request()->routeIs('register')">
-                                    {{ __('Get Started') }}
-                                </a>
-                            @else
-                                <a href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                                    {{ __('Dashboard') }}
-                                </a>
-                            @endguest
-                        </div>
-                        {{-- End of Navigation --}}
-                    </div>
-                </div>
-            </div>
-            {{-- End header bar --}}
+            @livewire('navigation-menu')
 
             <!-- Page Content -->
             <main>

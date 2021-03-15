@@ -4,7 +4,7 @@
             <div class="flex items-center text-gray-500">
                 <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
                 <span class="mx-1">/</span>
-                <span>{{ __('New podcast') }}</span>
+                <span>{{ __('New Podcast') }}</span>
             </div>
         </div>
     </div>
@@ -16,9 +16,9 @@
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                     <div class="md:col-span-1">
                         <div class="px-4 sm:px-0">
-                        <h3 class="text-lg font-medium leading-6 text-gray-900">Podcast Details</h3>
+                        <h3 class="text-lg font-medium leading-6 text-gray-900">{{ __('Podcast Details') }}</h3>
                         <p class="mt-1 text-sm text-gray-600">
-                            This information will be displayed to your audience through the public page that will automatically be generated upon saving.
+                            {{ __('This information will be displayed to your audience through the public page that will automatically be generated upon saving.') }}
                         </p>
                         </div>
                     </div>

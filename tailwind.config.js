@@ -2,7 +2,6 @@ const colors = require('tailwindcss/colors')
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-    // darkMode: 'media',
     purge: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
@@ -26,7 +25,9 @@ module.exports = {
             red: colors.rose,
             yellow: colors.amber,
             emerald: colors.emerald,
-            blue: colors.lightBlue,
+            lightBlue: colors.lightBlue,
+            blue: colors.blue,
+            green: colors.green,
         },
     },
 

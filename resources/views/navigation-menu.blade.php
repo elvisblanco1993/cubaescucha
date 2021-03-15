@@ -1,7 +1,8 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
+        <div class="flex justify-between @guest items-center @endguest h-16">
+            @auth
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
@@ -22,6 +23,29 @@
                 </div>
             </div>
 
+            @else
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="{{ route('home') }}">
+                        <x-jet-application-mark class="block h-9 w-auto" />
+                    </a>
+                </div>
+
+                <div class="hidden sm:block sm:w-3/6">
+                    @livewire('podcast-search')
+                </div>
+
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex uppercase text-sm">
+                    <a href="{{ route('login') }}" class="nav-btn">
+                        {{ __('Login') }}
+                    </a>
+
+                    <a href="{{ route('register') }}" class="nav-btn register-btn">
+                        {{ __('Get Started') }}
+                    </a>
+                </div>
+            @endauth
+
+            @auth
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
@@ -126,6 +150,7 @@
                     </x-jet-dropdown>
                 </div>
             </div>
+            @endauth
 
             <!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
@@ -142,6 +167,19 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
+            @guest
+                @livewire('podcast-search')
+
+                <x-jet-responsive-nav-link href="{{ route('login') }}">
+                    {{ __('Login') }}
+                </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('register') }}">
+                    {{ __('Get Started') }}
+                </x-jet-responsive-nav-link>
+            @endguest
+
+            @auth
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
@@ -149,9 +187,11 @@
             <x-jet-responsive-nav-link href="{{ route('podcasts') }}" :active="request()->routeIs('podcasts')">
                 {{ __('Podcasts') }}
             </x-jet-responsive-nav-link>
+            @endauth
         </div>
 
         <!-- Responsive Settings Options -->
+        @auth
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="flex items-center px-4">
                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
@@ -221,5 +261,6 @@
                 @endif
             </div>
         </div>
+        @endauth
     </div>
 </nav>

@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.5",
         "league/flysystem-aws-s3-v3": "~1.0",
         "livewire/livewire": "^2.0",
+        "maatwebsite/excel": "^3.1",
         "parsedown/laravel": "^1.2",
         "stevebauman/location": "^6.1"
     },
