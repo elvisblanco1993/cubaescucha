@@ -65,6 +65,31 @@
                 </div>
             </div>
 
+            {{-- Tabs --}}
+            <div x-data="{ active: 'stats' }">
+
+                <div class="inline-flex bg-white rounded-lg">
+                    <button @click=" active = 'stats' " class="px-3 py-2 rounded-lg" :class="{ 'bg-indigo-600 text-gray-100': active === 'stats' }">
+                        {{ __('Statistics') }}
+                    </button>
+
+                    <button @click=" active = 'episodes' " class="px-3 py-2 rounded-lg" :class="{ 'bg-indigo-600 text-gray-100': active === 'episodes' }">
+                        {{ __('Episodes') }}
+                    </button>
+                </div>
+
+                <div>
+                    <div x-show="active === 'stats'">
+                        Stats
+                    </div>
+
+                    <div x-show="active === 'episodes'">
+                        episodes
+                    </div>
+
+                </div>
+            </div>
+
             {{-- Episodes --}}
             <div class="mt-12">
 
