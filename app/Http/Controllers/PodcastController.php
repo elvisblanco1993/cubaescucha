@@ -9,6 +9,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PodcastStatsExport;
 
 class PodcastController extends Controller
 {
@@ -67,6 +69,12 @@ class PodcastController extends Controller
     public function edit(Podcast $podcast)
     {
         return view('podcast.edit', ['podcast' => $podcast]);
+    }
+
+
+    public function fileExport(Podcast $podcast)
+    {
+        return Excel::download(new PodcastStatsExport($podcast->id), 'podcast-statistics.xlsx');
     }
 
     /**

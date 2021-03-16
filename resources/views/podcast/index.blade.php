@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="py-12">
+    <div class="py-6">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 
             @if (session('success'))
@@ -19,86 +19,30 @@
                 </div>
             @endif
 
-            <div class="">
+            <div class="w-full px-4 sm:px-0">
 
-                <div class="grid grid-cols-4 gap-8">
+                @forelse ($podcasts as $podcast)
 
-                    @forelse ($podcasts as $podcast)
-
-                        <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="col-span-4 sm:col-span-1 bg-white shadow sm:rounded-lg hover:shadow-xl hover:text-indigo-600">
-                            <div>
-                                <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="{{ $podcast->name }}" class="object-cover w-full h-64 rounded-t-lg">
-                            </div>
-                            <div class="p-6 bg-white rounded-b-lg">
-                               <div class="text-lg font-bold">
+                    <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}">
+                        <div class="md:flex items-center bg-white rounded-2xl shadow-md hover:shadow-lg mb-12">
+                            <div class="w-full md:w-1/4 h-64 rounded-t-2xl md:rounded-2xl bg-cover" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
+                            <div class="w-full py-8 md:w-3/4 md:py-0 px-12">
+                                <h1 class="text-3xl font-bold">
                                     {{ $podcast->name }}
-                               </div>
+                                </h1>
+                                <p class="text-gray-700 text-justify mt-4">
+                                    {{ $podcast->description }}
+                                </p>
                             </div>
-                        </a>
+                        </div>
+                    </a>
 
-                    @empty
+                @empty
 
-                    @endforelse
+                @endforelse
 
-                </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                {{-- Display list of podcasts --}}
-                {{-- <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                      <tr>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          {{ __('Podcast Name') }}
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          {{ __('Public URL') }}
-                        </th>
-                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                          {{ __('RSS Feed') }}
-                        </th>
-                        <th scope="col" class="relative px-6 py-3">
-                          <span class="sr-only">{{ __('Details') }}</span>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                        @forelse ($podcasts as $podcast)
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ $podcast->name }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    <a href="{{ config('app.url') . '/podcast/' . $podcast->slug }}" target="_blank" class="text-indigo-600 hover:text-indigo-400">
-                                        {{ config('app.url') . '/podcast/' . $podcast->slug }}
-                                    </a>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                    {{ asset('rss/'.$podcast->rss) }}
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="text-indigo-600 hover:text-indigo-900">View details</a>
-                                </td>
-                            </tr>
-                        @empty
-
-                        @endforelse
-                    </tbody>
-                </table> --}}
             </div>
+
             <div class="mt-6">
                 {{ $podcasts->links() }}
             </div>

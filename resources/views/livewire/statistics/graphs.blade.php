@@ -117,6 +117,8 @@
 
         <div class="my-12"></div>
 
+        <a class="btn btn-success" href="{{ route('podcast-stats-export', ['podcast' => 1]) }}">Export data</a>
+
     </div>
 
 
