@@ -18,9 +18,9 @@
                 </div>
             @endif
 
-            <div class="md:flex bg-white rounded-2xl shadow-md mb-12">
+            <div class="md:flex bg-white rounded-2xl shadow-sm mb-12">
                 <div class="w-full md:w-1/4 rounded-t-2xl md:rounded-2xl bg-cover bg-center" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
-                <div class="w-full py-8 md:w-3/4 px-12">
+                <div class="w-full py-8 md:w-3/4 px-4 sm:px-12">
                     <div class="flex items-center justify-between">
                         <h1 class="text-2xl font-extrabold">
                             {{ $podcast->name }}
@@ -39,17 +39,44 @@
                     <p class="my-1 text-sm text-gray-600">By {{ $publisher->name }}</p>
                     <p>@parsedown($podcast->description)</p>
 
-                    <div class="flex justify-between items-center mt-4">
-                        <div class="flex items-center">
-                            <div class="text-sm pr-2 py-1 pl-2 bg-gray-100 border border-r-0 rounded-l border-gray-300 font-semibold text-gray-500 shadow-inner">
-                                {{ __('RSS URL:') }}
-                            </div>
-                            <div class="text-sm border border-l-0 rounded rounded-l-none border-gray-300 bg-gray-50 text-gray-800 py-1 pl-2 pr-4 shadow-inner">
-                                {{ asset('rss/'.$podcast->rss) }}
-                            </div>
+                    <div class="w-full flex items-center mt-4">
+                        <div class="text-sm pr-2 py-1 pl-2 bg-gray-100 border border-r-0 rounded-l border-gray-300 font-semibold text-gray-500 shadow-inner">
+                            {{ __('RSS URL:') }}
+                        </div>
+                        <div class="text-sm border border-l-0 rounded rounded-l-none border-gray-300 bg-gray-50 text-gray-800 py-1 pl-2 pr-4 shadow-inner">
+                            {{ asset('rss/'.$podcast->rss) }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            {{-- Tabs --}}
+            <div>
+                <div x-data="{ active: 'stats' }">
+
+                    <div class="flex items-center justify-end">
+                        <div class="inline-flex bg-white rounded-lg shadow-sm">
+                            <button @click=" active = 'stats' " class="px-3 py-2 rounded-lg" :class="{ 'bg-indigo-600 text-gray-100': active === 'stats' }">
+                                {{ __('Statistics') }}
+                            </button>
+
+                            <button @click=" active = 'episodes' " class="px-3 py-2 rounded-lg" :class="{ 'bg-indigo-600 text-gray-100': active === 'episodes' }">
+                                {{ __('Episodes') }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl p-4 sm:p-12 mt-6 shadow-sm">
+
+                        <div x-show="active === 'stats'">
+                            Stats
                         </div>
 
-                        <div class="mt-2 sm:my-0">
+                        <div x-show="active === 'episodes'">
+                            episodes
+
                             <a href="{{ route('episode.create', ['podcast' => $podcast->id]) }}"
                                 class="w-full inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
                                 <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
@@ -61,34 +88,9 @@
                         </div>
 
                     </div>
-
                 </div>
             </div>
 
-            {{-- Tabs --}}
-            <div x-data="{ active: 'stats' }">
-
-                <div class="inline-flex bg-white rounded-lg">
-                    <button @click=" active = 'stats' " class="px-3 py-2 rounded-lg" :class="{ 'bg-indigo-600 text-gray-100': active === 'stats' }">
-                        {{ __('Statistics') }}
-                    </button>
-
-                    <button @click=" active = 'episodes' " class="px-3 py-2 rounded-lg" :class="{ 'bg-indigo-600 text-gray-100': active === 'episodes' }">
-                        {{ __('Episodes') }}
-                    </button>
-                </div>
-
-                <div>
-                    <div x-show="active === 'stats'">
-                        Stats
-                    </div>
-
-                    <div x-show="active === 'episodes'">
-                        episodes
-                    </div>
-
-                </div>
-            </div>
 
             {{-- Episodes --}}
             <div class="mt-12">

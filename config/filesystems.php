@@ -75,6 +75,7 @@ return [
         public_path('covers') => storage_path('app/podcasts/covers'),
         public_path('rss') => storage_path('app/podcasts/rss'),
         public_path('episodes') => storage_path('app/podcasts/episodes'),
+        public_path('storage') => storage_path('app/public'),
     ],
 
 ];
