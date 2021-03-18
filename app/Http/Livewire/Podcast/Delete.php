@@ -14,7 +14,7 @@ class Delete extends Component
     {
         foreach ($this->podcast->episodes as $episode) {
             // Delete episode files
-            Storage::disk('s3')->delete($this->episode->file_name);
+            Storage::disk('s3')->delete($episode->file_name);
 
             // Delete episodes from DB
             $episode->delete();
