@@ -17,8 +17,8 @@ class Podcast extends Model
         'description',
         'tags',
         'thumbnail',
-        'url',
-        'rss'
+        'lang',
+        'style'
     ];
 
     public function episodes()

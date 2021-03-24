@@ -20,10 +20,10 @@ class CreatePodcastsTable extends Migration
             $table->string('slug');
             $table->longText('description');
             $table->string('tags');
+            $table->string('lang');
+            $table->string('style')->nullable();
             $table->boolean('explicit')->default(FALSE);
             $table->string('thumbnail');
-            $table->string('url');
-            $table->string('rss')->nullable();
             $table->timestamps();
         });
     }

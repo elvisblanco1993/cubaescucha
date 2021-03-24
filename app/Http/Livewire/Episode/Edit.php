@@ -47,7 +47,6 @@ class Edit extends Component
             $this->episode->update(['file_name' => $path]);
         }
 
-        $this->updateFeed();
         session()->flash('success', ' The episode details were successfully updated. If a new audio file was uploaded, it may take a few seconds before it shows in the preview.');
         return redirect(route('episode.show', ['podcast'=>$this->podcast->id, 'episode'=>$this->episode->id]));
     }
@@ -64,9 +63,6 @@ class Edit extends Component
     {
         Storage::disk('s3')->delete($this->episode->file_name);
         $this->episode->delete();
-
-        // Regenerate podcast rss feed file.
-        \App\Http\Controllers\PodcastController::updateRssFeed($this->podcast);
 
         session()->flash('success', ' The episode '.$this->episode->title.' was successfully deleted.');
         return redirect(route('podcasts.show', ['podcast'=>$this->podcast->id]));

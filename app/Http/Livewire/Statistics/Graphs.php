@@ -10,21 +10,12 @@ use Carbon\Carbon;
 class Graphs extends Component
 {
     public $userPodcasts;
-    public $podcastQuery;
+    public $podcast;
     public $mtdCounter;
     public $regions;
     public $reproductions = [];
     public $countPerCountry;
-    public $podcastInfo;
-
-    public function mount()
-    {
-        if ( empty($this->podcastQuery)) {
-            $this->podcastQuery = auth()->user()->podcasts->first()->id ?? '';
-        }
-
-        $this->podcastQuery = 3;
-    }
+    public $mostPopularEpisode;
 
     /**
      * Returns the amount of downloads in the current month.
@@ -33,7 +24,7 @@ class Graphs extends Component
     public function countMonthToDateDownloads()
     {
         return DB::table('downloads_counter')
-                    ->where('podcast_id', $this->podcastQuery)
+                    ->where('podcast_id', $this->podcast)
                     ->whereYear('created_at', Carbon::now()->year)
                     ->whereMonth('created_at', Carbon::now()->month)
                     ->count();
@@ -45,7 +36,7 @@ class Graphs extends Component
     public function countPerCountry ()
     {
         return DB::table('downloads_counter')
-                    ->where('podcast_id', $this->podcastQuery)
+                    ->where('podcast_id', $this->podcast)
                     ->whereYear('created_at', Carbon::now()->year)
                     ->whereMonth('created_at', Carbon::now()->month)
                     ->whereNotNull('country')
@@ -56,17 +47,25 @@ class Graphs extends Component
                     ->get();
     }
 
-    public function podcastInfo () {
-        $podcast = Podcast::where('id', $this->podcastQuery)->first();
-        return $podcast;
+    // Get the most popular episode of always
+    public function getMostPopularEpisode()
+    {
+        return DB::table('downloads_counter')
+                    ->join('episodes', 'downloads_counter.episode_id', '=', 'episodes.id')
+                    ->where('downloads_counter.podcast_id', $this->podcast)
+                    ->select('episodes.title as title', DB::raw('COUNT(*) as total'))
+                    ->groupBy('downloads_counter.episode_id')
+                    ->orderBy('total', 'DESC')
+                    ->get() ?? 0;
     }
 
     public function render()
     {
-        $this->podcastInfo = $this->podcastInfo();
         $this->userPodcasts = auth()->user()->podcasts()->orderBy('created_at', 'DESC')->get();
         $this->mtdCounter = $this->countMonthToDateDownloads();
+        $this->mostPopularEpisode = $this->getMostPopularEpisode();
         $this->countPerCountry = $this->countPerCountry();
+
         return view('livewire.statistics.graphs');
     }
 }

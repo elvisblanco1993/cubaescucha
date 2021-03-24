@@ -15,7 +15,9 @@ class Create extends Component
     public $name;
     public $description;
     public $tags;
+    public $lang;
     public $explicit;
+    public $style;
     public $thumbnail;
     public $url;
     public $rss;
@@ -46,10 +48,10 @@ class Create extends Component
             'slug' => $slug,
             'description' => $this->description,
             'tags' => $this->tags,
+            'lang' => $this->lang,
+            'style' => $this->style,
             'explicit' => $is_explicit,
             'thumbnail' => $path,
-            'url' => $this->url,
-            'rss' => $this->url.'.xml',
         ]);
 
         session()->flash('success', 'Your new podcast, ' . $this->name . ', was successfully created!');

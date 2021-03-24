@@ -53,8 +53,6 @@ class Create extends Component
         ]);
         $episode->save();
 
-        // Regenerate podcast rss feed file.
-        $this->updateFeed();
         session()->flash('success', 'Your new episode, '.$this->title.', was successfully uploaded and published.');
         return redirect(route('podcasts.show', ['podcast' => $this->podcast->id]));
     }

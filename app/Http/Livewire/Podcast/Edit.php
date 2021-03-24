@@ -15,6 +15,8 @@ class Edit extends Component
     public $name;
     public $description;
     public $tags;
+    public $lang;
+    public $style;
     public $explicit;
     public $thumbnail;
 
@@ -35,6 +37,8 @@ class Edit extends Component
             'slug' => Str::slug($this->name),
             'description' => $this->description,
             'tags' => $this->tags,
+            'lang' => $this->lang,
+            'style' => $this->style,
             'explicit' => $is_explicit,
         ]);
 
@@ -64,6 +68,8 @@ class Edit extends Component
         $this->description = $this->podcast->description;
         $this->tags = $this->podcast->tags;
         $this->explicit = $this->podcast->explicit;
+        $this->lang = $this->podcast->lang;
+        $this->style = $this->podcast->style;
         return view('livewire.podcast.edit');
     }
 }

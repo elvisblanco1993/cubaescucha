@@ -1,6 +1,5 @@
 <?php
 
-use App\Exports\PodcastStatsExport;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\WebController;
@@ -16,6 +15,10 @@ Route::get('/', [WebController::class, 'home'])->name('home');
  */
 Route::get('/podcast/{podcast}', [PodcastController::class, 'display'])->name('podcast.display');
 
+/**
+ * Podcast RSS Feed
+ */
+Route::get('/podcast/{podcast}/rss', [PodcastController::class, 'generateRss'])->name('genRss');
 
 
 /**
@@ -48,9 +51,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
 
     // Export Podast Views
     Route::get('podcast-stats-export/{podcast}', [PodcastController::class, 'fileExport'])->name('podcast-stats-export');
-
-    // Update RSS Feed
-    Route::get('rss/{podcast}/update', [PodcastController::class, 'updateRssFeed'] )->name('set-rss');
 });
 
 

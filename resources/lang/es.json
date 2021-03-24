@@ -204,7 +204,7 @@
     "Log Out": "Cerrar Sesión",
     "MTD Total Reproductions": "Reproducciones este mes",
     "Number of episodes": "Número de episodios",
-    "Most active region": "Region mas activa",
+    "Most active region": "Región mas activa",
     "Reproductions per region": "Reproducciones por region",
     "No enough data has been collected.": "No hay informacion suficiente para mostrar.",
     "New Podcast": "Crear Podcast",
@@ -219,5 +219,9 @@
     "The cover photo must be squared, with a minimum size must be at least 500x500px, up to 1000x1000px.": "La foto de portada debe ser cuadrada, con un tamaño mínimo de al menos 500x500px, hasta 1000x1000px.",
     "Create Podcast": "Crear Podcast",
     "Upload a file": "Subir una foto",
-    "or drag and drop": "o arrastrar y soltar aqui"
+    "or drag and drop": "o arrastrar y soltar aquí",
+    "Most popular episode": "Episodio mas escuchado",
+    "You did it!": "Bienvenido(a)!",
+    "You have successfully created your cubaescucha account.": "Ha creado correctamente su cuenta.",
+    "What to do next:": "Próximos pasos:"
 }
