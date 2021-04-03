@@ -7,10 +7,11 @@ Due on Sunday, February 22, 2021
 [*] Validate podcast thumbnail dimensions (w & h)
 [*] Configure podcast public links (lp)
 [*] Design public podcast landing pages
-[*] Create RSS feeds for podcasts (RSS Should be generated when the first episode is uploaded)
+[*] Create RSS feeds for podcasts
 [*] Work on User Registration Experience
 [*] Enable Email Verification step on new user registration
-[] Work on csv downloads feature
-[WIP] Add Episodic, Episodic w/ seasons, and Serial options to podcast config.
+[*] Add Episodic, Episodic w/ seasons, and Serial options to podcast config.
 [WIP] Work on Privacy Policy and Terms of Use
 [WIP] Work on translations
+[] Work on Reports / Statistics
+[] Insert a description of the podacst Types on Create and Edit Podcasts.

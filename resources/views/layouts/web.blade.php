@@ -31,8 +31,5 @@
             @include('layouts.footer')
         </footer>
         @livewireScripts
-        @if ( Route::currentRouteName() == 'podcast.display' )
-            <script src="{{ asset('/js/player.js') }}"></script>
-        @endif
     </body>
 </html>

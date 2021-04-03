@@ -18,8 +18,8 @@
                 </div>
             @endif
 
-            <div class="md:flex bg-white rounded-2xl shadow-sm mb-12 min-h-64">
-                <div class="w-full md:w-1/4 rounded-t-2xl md:rounded-2xl bg-cover bg-center" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
+            <div class="md:flex bg-white rounded-2xl shadow-sm mb-12">
+                <div class="w-full md:w-1/3 rounded-t-2xl md:rounded-2xl bg-cover bg-center h-64" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
                 <div class="w-full py-8 md:w-3/4 px-4 sm:px-12">
                     <div class="flex items-center justify-between">
                         <h1 class="text-2xl font-extrabold">
@@ -27,114 +27,93 @@
                         </h1>
 
                         <div class="flex align-baseline text-sm">
-                            <a href="{{ route('podcasts.edit', ['podcast' => $podcast->id]) }}" class="mx-2 text-indigo-600 hover:text-indigo-800">
-                                <svg class="w-4" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                            <a href="{{ route('genRss', ['podcast' => $podcast->slug]) }}" target="_blank" title="{{ __('Get RSS Feed url') }}" class="mx-2 text-amber-500 hover:text-amber-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-amber-50">
+                                <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                </svg>
+                            </a>
+
+                            <a href="{{ route('podcast.reports', ['podcast' => $podcast->id]) }}" title="{{ __('Reports') }}" class="mx-2 text-emerald-500 hover:text-emerald-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-emerald-50">
+                                <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </a>
+
+                            <a href="{{ route('podcasts.edit', ['podcast' => $podcast->id]) }}" title="{{ __('Edit podcast details') }}" class="mx-2 text-emerald-500 hover:text-emerald-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-emerald-50">
+                                <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                 </svg>
                             </a>
                             @livewire('podcast.delete', ['podcast' => $podcast])
                         </div>
                     </div>
-                    <p class="my-1 text-sm text-gray-600">By {{ $publisher->name }}</p>
-                    <p>@parsedown($podcast->description)</p>
-
-                    <div class="sm:flex items-center mt-4">
-                        <div class="mr-6">
-                            <a href="{{ route('genRss', ['podcast' => $podcast->slug]) }}" target="_blank" class="w-full inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
-                                <svg class="w-4 mr-2 text-yellow-600" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                                    <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path>
-                                    <path d="M5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-3-8.5a1 1 0 0 1 1-1c5.523 0 10 4.477 10 10a1 1 0 1 1-2 0 8 8 0 0 0-8-8 1 1 0 0 1-1-1zm0 4a1 1 0 0 1 1-1 6 6 0 0 1 6 6 1 1 0 1 1-2 0 4 4 0 0 0-4-4 1 1 0 0 1-1-1z"></path>
-                                </svg>
-                                {{__('RSS Feed')}}
-                            </a>
-                        </div>
+                    <p class="my-1 text-sm text-gray-600">{{ __('By ') . $publisher->name }}</p>
+                    <div class="">
+                        @parsedown($podcast->description)
                     </div>
-
                 </div>
             </div>
 
+            <div class="my-6">
 
-            {{-- Tabs --}}
-            <div>
-                <div x-data="{ active: 'stats' }">
+                {{-- Show the statistics tab only after there are episodes on the podcast --}}
+                {{-- @livewire('statistics.graphs', ['podcast' => $podcast->id]) --}}
 
-                    <div class="flex items-center justify-end">
-                        <div class="inline-flex bg-white text-gray-500 rounded-full shadow-sm">
-                            <button @click=" active = 'stats' " class="px-3 p1-2 rounded-xl m-1 border border-white" :class="{ 'bg-gray-100 text-indigo-600 border-indigo-200': active === 'stats' }">
-                                {{ __('Statistics') }}
-                            </button>
+                <div class="flex items-center justify-end mt-6">
+                    <a href="{{ route('episode.create', ['podcast' => $podcast->id]) }}"
+                        class=" inline-flex justify-center items-center px-3 py-2 mb-4 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+                        <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        {{ __('New episode') }}
+                    </a>
+                </div>
 
-                            <button @click=" active = 'episodes' " class="px-3 p1-2 rounded-xl m-1 border border-white" :class="{ 'bg-gray-100 text-indigo-600 border-indigo-200': active === 'episodes' }">
-                                {{ __('Episodes') }}
-                            </button>
+                <div class="flex flex-col">
+                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                {{ __('Episode' )}}
+                                            </th>
+                                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                                {{ __('Preview') }}
+                                            </th>
+                                            <th scope="col" class="relative px-6 py-3">
+                                                <span class="sr-only">Edit</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+
+                                    {{-- Episodes --}}
+                                    @forelse ($episodes as $episode)
+
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <div class="text-sm text-gray-900">{{ $episode->title }}</div>
+                                                <div class="text-sm text-gray-500 uppercase hidden sm:block">
+                                                    {{ $episode->type . ' episode / ' . date('M d, Y', strtotime($episode->created_at)) . " | S" .  $episode->season . ':E' . $episode->episode_no}}
+                                                </div>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                <audio controls controlsList="nodownload" class="rounded-lg w-full">
+                                                    <source src="{{ Storage::disk('s3')->url($episode->file_name) }}" type="audio/mpeg">
+                                                </audio>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                <a href="{{ route('episode.show', ['podcast' => $podcast->id, 'episode' => $episode->id]) }}" class="text-indigo-600 hover:text-indigo-900">{{__('Edit')}}</a>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                    @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="bg-white rounded-xl p-4 sm:p-12 mt-6 shadow-sm">
-
-                        <div x-show="active === 'stats'">
-
-                            {{-- Statistics Tab --}}
-                            {{-- Show the statistics tab only after there are episodes on the podcast --}}
-                            @if ($podcast->episodes->count() > 0)
-                                @livewire('statistics.graphs', ['podcast' => $podcast->id])
-                            @else
-                                <div class="text-center">
-                                    <a href="{{ route('episode.create', ['podcast' => $podcast->id]) }}"
-                                        class="w-1/3 inline-flex justify-center items-center px-4 py-4 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
-                                        <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                        </svg>
-                                        {{ __('New episode') }}
-                                    </a>
-                                </div>
-                            @endif
-
-                        </div>
-
-                        <div x-show="active === 'episodes'">
-
-                            {{-- Episodes Tab --}}
-                            @forelse ($episodes as $episode)
-
-                                <div class="flex items-center justify-between py-4 border-t border-gray-300">
-                                    <div class="w-1/3">
-                                        {{ $episode->title }}
-                                        <small class="block uppercase text-gray-600">
-                                            {{ $episode->type . ' episode / ' . date('M d, Y', strtotime($episode->created_at)) . " | S" .  $episode->season . ':E' . $episode->episode_no}}
-                                        </small>
-                                    </div>
-
-                                    <div class="w-1/3">
-                                        <audio controls controlsList="nodownload" class="rounded-lg w-full">
-                                            <source src="{{ Storage::disk('s3')->url($episode->file_name) }}" type="audio/mpeg">
-                                        </audio>
-                                    </div>
-
-                                    <div class="text-gray-400 text-sm">
-                                        <a href="{{ route('episode.show', ['podcast' => $podcast->id, 'episode' => $episode->id]) }}" class="text-indigo-600 hover:text-indigo-900">View details</a>
-                                    </div>
-                                </div>
-
-                            @empty
-
-                                <div class="text-center">
-                                    <a href="{{ route('episode.create', ['podcast' => $podcast->id]) }}"
-                                        class="w-1/3 inline-flex justify-center items-center px-4 py-4 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
-                                        <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-                                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                        </svg>
-                                        {{ __('New episode') }}
-                                    </a>
-                                </div>
-
-                            @endforelse
-
-                        </div>
-
                     </div>
                 </div>
             </div>

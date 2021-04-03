@@ -7,7 +7,7 @@
                 <div class="grid grid-cols-3 gap-6">
                     <div class="col-span-3">
                         <label for="name" class="block text-sm font-medium text-gray-700">
-                            Name
+                            {{__('Name')}}
                         </label>
                         <div class="mt-1 flex rounded-md shadow-sm">
                             <input type="text" wire:model.defer="name" id="name" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300">

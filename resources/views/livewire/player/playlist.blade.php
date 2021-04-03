@@ -35,7 +35,7 @@
     @endforelse
 
     <script>
-        const player = document.getElementById('player');
+        var player = document.getElementById('player');
         var tmp = localStorage.getItem('tmp');
 
         // Clears

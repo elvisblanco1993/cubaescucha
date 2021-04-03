@@ -3,6 +3,7 @@
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\WebController;
+use App\Http\Livewire\Podcast\Reports;
 use Illuminate\Support\Facades\Route;
 
 /**
@@ -49,8 +50,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     // View episode details
     Route::get('/podcasts/{podcast}/episode/{episode}/details', [EpisodeController::class, 'show'])->name('episode.show');
 
-    // Export Podast Views
-    Route::get('podcast-stats-export/{podcast}', [PodcastController::class, 'fileExport'])->name('podcast-stats-export');
+    // Podcast Reports
+    Route::get('/podcasts/{podcast}/reports', Reports::class)->name('podcast.reports');
 });
 
 

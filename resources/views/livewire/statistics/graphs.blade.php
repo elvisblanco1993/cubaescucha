@@ -3,7 +3,7 @@
     <div class="sm:flex items-center gap-6" wire:poll>
 
         {{-- MTD Card --}}
-        <div class="bg-gray-100 p-4 rounded-xl text-center w-full sm:w-1/2 md:w-1/3 h-48 flex items-center justify-center my-6 sm:my-0">
+        <div class="bg-white shadow-sm rounded-xl text-center w-full sm:w-1/2 md:w-1/3 flex items-center justify-center my-6 sm:my-0 py-6">
 
             <div>
                 <p class="text-sm mb-2 text-gray-600 uppercase">
@@ -19,7 +19,7 @@
 
         {{-- Most active region --}}
         @if ( $countPerCountry->count() > 0 )
-            <div class="bg-gray-100 p-4 rounded-xl text-center w-full sm:w-1/2 md:w-1/3 h-48 flex items-center justify-center my-6 sm:my-0">
+            <div class="bg-white shadow-sm rounded-xl text-center w-full sm:w-1/2 md:w-1/3 flex items-center justify-center my-6 sm:my-0 py-6">
 
                 <div>
                     <p class="text-sm mt-1 text-gray-600 uppercase">
@@ -40,7 +40,7 @@
 
         {{-- Most Popular Episode --}}
         @if ($mostPopularEpisode->count() > 0)
-            <div class="bg-gray-100 p-4 rounded-xl text-center w-full sm:w-1/2 md:w-1/3 h-48 flex items-center justify-center my-6 sm:my-0">
+            <div class="bg-white shadow-sm rounded-xl text-center w-full sm:w-1/2 md:w-1/3 flex items-center justify-center my-6 sm:my-0 py-6">
 
                 <div>
                     <p class="text-sm mt-1 text-gray-600 uppercase">

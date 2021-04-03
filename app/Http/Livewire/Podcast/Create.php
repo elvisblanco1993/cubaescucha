@@ -20,14 +20,12 @@ class Create extends Component
     public $style;
     public $thumbnail;
     public $url;
-    public $rss;
 
     protected $rules = [
         'name' => ['required', 'max:100', 'unique:podcasts,name'],
         'description' => ['required', 'max:1000'],
         'tags' => ['required'],
         'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:4096'],
-        'url' => ['required', 'unique:podcasts,url']
     ];
 
     public function storePodcast()
