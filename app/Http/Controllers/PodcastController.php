@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\PodcastStatsExport;
+use App\Exports\TotalEpisodeReproductions;
 
 class PodcastController extends Controller
 {
@@ -75,7 +75,7 @@ class PodcastController extends Controller
 
     public function fileExport(Podcast $podcast)
     {
-        return Excel::download(new PodcastStatsExport($podcast->id), 'podcast-statistics.xlsx');
+        return Excel::download(new TotalEpisodeReproductions($podcast->id), 'podcast-statistics.xlsx');
     }
 
     public function generateRss ($podcast)

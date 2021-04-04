@@ -13,5 +13,7 @@ Due on Sunday, February 22, 2021
 [*] Add Episodic, Episodic w/ seasons, and Serial options to podcast config.
 [WIP] Work on Privacy Policy and Terms of Use
 [WIP] Work on translations
-[] Work on Reports / Statistics
-[] Insert a description of the podacst Types on Create and Edit Podcasts.
+[WIP] Work on Reports / Statistics
+[] Add Publish Later option
+[] Add option to display Apple Podcasts & Spotify Podcasts buttons (podcast owner puts link in podcast settings).
+[*] Insert a description of the podacst Types on Create and Edit Podcasts.

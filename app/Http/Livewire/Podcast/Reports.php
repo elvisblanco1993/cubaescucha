@@ -6,18 +6,22 @@ use App\Models\Podcast;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Carbon\Carbon;
+use Livewire\WithPagination;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\PodcastStatsExport;
 
 use function PHPUnit\Framework\isEmpty;
 
 class Reports extends Component
 {
+    use WithPagination;
+
     public $podcast;
     public $dateRangeFilter;
     public $dateFrom = null;
     public $dateTo = null;
 
     public $getMtdDailyReproductions;
-    public $reproductionsByEpisode;
     public $totalPlaySevenDaysAfter;
     public $totalPlayThirtyDaysAfter;
     public $totalPlaySixtyDaysAfter;
@@ -43,17 +47,6 @@ class Reports extends Component
                 ->groupBy('country')
                 ->get();
 
-    }
-
-    // Get Reproductions by Episode
-    public function reproductionsByEpisode()
-    {
-        return DB::table('downloads_counter')
-                    ->join('episodes', 'downloads_counter.episode_id', '=', 'episodes.id')
-                    ->select('episodes.title as title', 'episodes.created_at as published', DB::raw('COUNT(*) as total'))
-                    ->groupBy('downloads_counter.episode_id')
-                    ->orderBy('total', 'DESC')
-                    ->get();
     }
 
     // Get total reproductions 7 days after episode is published
@@ -116,19 +109,21 @@ class Reports extends Component
         return $total;
     }
 
-
-
     public function render()
     {
         $this->getMtdDailyReproductions = $this->getMtdDailyReproductions();
-        $this->reproductionsByEpisode = $this->reproductionsByEpisode();
         $this->totalPlaySevenDaysAfter = $this->totalPlaySevenDaysAfter();
         $this->totalPlayThirtyDaysAfter = $this->totalPlayThirtyDaysAfter();
         $this->totalPlaySixtyDaysAfter = $this->totalPlaySixtyDaysAfter();
         $this->totalPlayNinetyDaysAfter = $this->totalPlayNinetyDaysAfter();
-        // dd(
-        //     $this->totalReproductionsSevenDaysAfterPublished()
-        // );
-        return view('livewire.podcast.reports');
+        return view('livewire.podcast.reports', [
+            'reproductionsByEpisode' => DB::table('downloads_counter')
+                                            ->join('episodes', 'downloads_counter.episode_id', '=', 'episodes.id')
+                                            ->select('episodes.title as title', 'episodes.created_at as published', DB::raw('COUNT(*) as total'))
+                                            ->where('downloads_counter.podcast_id', $this->podcast->id)
+                                            ->groupBy('downloads_counter.episode_id')
+                                            ->orderBy('total', 'DESC')
+                                            ->paginate(10)
+        ]);
     }
 }

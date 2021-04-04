@@ -14,69 +14,23 @@
     <div class="py-6">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {{-- Filter Forms --}}
-            {{-- <div class="flex items-center justify-end">
-                <label
-                    for="date_filter"
-                    class="font-bold text-gray-600 mr-2 text-sm"
-                >
-                    {{ __('Filter by') }}
-                </label>
-                <div class="sm:w-1/4 ml-2">
-                    <select wire:model="dateRangeFilter" class="text-sm">
-                        <option value="">
-                            {{ __('Recent Reproductions') }}
-                        </option>
-                        <option value="range">
-                            {{ __('Reproductions In A Range') }}
-                        </option>
-                    </select>
-                </div> --}}
-
-                {{-- Date Range Chooser --}}
-                {{-- @if ($dateRangeFilter == 'range')
-
-                    <form action="">
-                        <div class="flex items-center">
-                            <input type="date" wire:model="dateFrom" class="text-sm mx-2">
-                            {{ __('to') }}
-                            <input type="date" wire:model="dateTo" class="text-sm ml-2">
+            <div class="md:flex">
+                <div class="bg-white inline-block p-6 shadow rounded-xl w-full md:w-1/3">
+                    <div>
+                        <div class="text-left">
+                            <div class="font-semibold text-base capitalize">
+                                {{__('Total reproductions per episode')}}
+                            </div>
+                            <div class="text-xs text-gray-600">
+                                {{ __('7, 30, 60, and 90 days after publishing date.') }}
+                            </div>
                         </div>
-                    </form>
 
-                @endif
-            </div>
+                        <div class="border-t mt-4 mb-6"></div>
 
-            <div>
-                {{ $getMtdDailyReproductions }}
-            </div> --}}
+                        <div class="grid grid-cols-2 gap-12 text-center">
 
-            <div class="bg-white inline-block p-6 shadow rounded-xl">
-
-                <div class="">
-                    {{-- Average total reproductions per episode --}}
-                    {{--
-                        IN QUERY:
-                        1. Find total views of episodes 7, 30, 60, and 90 days after the episodes are published
-                        2. Calculate average for each query
-
-                        RENDER RESULT AS JSON
-                    --}}
-                    <div class="text-left">
-                        <div class="font-semibold text-base">
-                            {{__('Average Reproductions per episode')}}
-                        </div>
-                        <div class="text-xs text-gray-600">
-                            {{ __('7, 30, 60, and 90 days after publishing date.') }}
-                        </div>
-                    </div>
-
-                    <div class="border-t my-4"></div>
-
-                    <div class="flex space-x-8">
-                        <div class="flex-row space-y-6">
-
-                            <div class="text-center">
+                            <div class="col-span-1">
                                 <div class="text-indigo-600 font-semibold">
                                     {{ $totalPlaySevenDaysAfter }}
                                 </div>
@@ -84,9 +38,7 @@
                                     {{ __('First 7 days') }}
                                 </div>
                             </div>
-                            <div class="border-t"></div>
-
-                            <div class="text-center">
+                            <div class="col-span-1">
                                 <div class="text-indigo-600 font-semibold">
                                     {{ $totalPlayThirtyDaysAfter }}
                                 </div>
@@ -94,13 +46,7 @@
                                     {{ __('First 30 days') }}
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="border-l"></div>
-
-                        <div class="flex-row space-y-6">
-
-                            <div class="text-center">
+                            <div class="col-span-1">
                                 <div class="text-indigo-600 font-semibold">
                                     {{ $totalPlaySixtyDaysAfter }}
                                 </div>
@@ -108,9 +54,7 @@
                                     {{ __('First 60 days') }}
                                 </div>
                             </div>
-                            <div class="border-t"></div>
-
-                            <div class="text-center">
+                            <div class="col-span-1">
                                 <div class="text-indigo-600 font-semibold">
                                     {{ $totalPlayNinetyDaysAfter }}
                                 </div>
@@ -121,7 +65,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
 
@@ -129,13 +72,25 @@
             <div class="flex flex-col my-6">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                        <div class="my-2">
-                            <h3 class="font-bold text-gray-700 mb-0">
-                                {{ __('Episode breakdown') }}
-                            </h3>
-                            <small class="mt-1">
-                                {{ __('Downloads per episode since being published.') }}
-                            </small>
+                        <div class="sm:flex my-2">
+                            <div class="w-full sm:w-1/2">
+                                <h3 class="font-bold text-gray-700 mb-0">
+                                    {{ __('Episode breakdown') }}
+                                </h3>
+                                <small class="mt-1">
+                                    {{ __('Downloads per episode since being published.') }}
+                                </small>
+                            </div>
+                            <div class="w-full sm:w-1/2">
+                                <a
+                                    href="{{ route('export', ['podcast' => $podcast->id]) }}"
+                                    class="sm:float-right inline-flex justify-center items-center px-3 py-2 mb-4 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
+                                    <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                    {{ __('Download') }}
+                                </a>
+                            </div>
                         </div>
                         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                             <table class="min-w-full divide-y divide-gray-200">
@@ -166,10 +121,12 @@
                                             </td>
                                         </tr>
                                     @empty
-
                                     @endforelse
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="my-6">
+                            {{ $reproductionsByEpisode->links() }}
                         </div>
                     </div>
                 </div>
@@ -181,4 +138,5 @@
 
         </div>
     </div>
+
 </div>
