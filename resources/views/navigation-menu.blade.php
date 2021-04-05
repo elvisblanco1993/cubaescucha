@@ -31,13 +31,12 @@
                 </div>
 
                 <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex uppercase text-sm">
-                    <a href="{{ route('login') }}" class="nav-btn">
+                    <x-jet-secondary-button onclick="window.location.href='{{ route('login') }}'">
                         {{ __('Login') }}
-                    </a>
-
-                    <a href="{{ route('register') }}" class="nav-btn register-btn">
+                    </x-jet-secondary-button>
+                    <x-jet-button onclick="window.location.href='{{ route('register') }}'">
                         {{ __('Get Started') }}
-                    </a>
+                    </x-jet-secondary-button>
                 </div>
             @endauth
 
@@ -166,7 +165,7 @@
             @guest
                 @livewire('podcast-search')
 
-                <x-jet-responsive-nav-link href="{{ route('login') }}">
+                <x-jet-responsive-nav-link href="{{ route('login') }}" class="mt-2">
                     {{ __('Login') }}
                 </x-jet-responsive-nav-link>
 

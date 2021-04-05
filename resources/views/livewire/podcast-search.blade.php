@@ -1,12 +1,16 @@
 <div class="relative">
     {{-- Be like water. --}}
-    <input
+    <div class="mx-4">
+        <input
         type="search"
         wire:model="query"
         placeholder="{{ __('Search') }}"
         accesskey="k"
         wire:keydown.escape="resetForm"
+        class="sm:py-1"
     />
+    </div>
+    <div class="border-t border-gray-100 mt-6 sm:hidden"></div>
 
     @if (!empty($query))
         @if (!empty($podcasts))
