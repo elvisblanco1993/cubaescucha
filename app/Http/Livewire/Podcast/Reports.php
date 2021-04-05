@@ -26,6 +26,7 @@ class Reports extends Component
     public $totalPlayThirtyDaysAfter;
     public $totalPlaySixtyDaysAfter;
     public $totalPlayNinetyDaysAfter;
+    public $countPerCountry;
 
     public function mount($podcast)
     {
@@ -109,6 +110,21 @@ class Reports extends Component
         return $total;
     }
 
+    // Count total reproductions per country
+    public function countPerCountry()
+    {
+        return DB::table('downloads_counter')
+                    ->where('podcast_id', $this->podcast->id)
+                    ->whereYear('created_at', Carbon::now()->year)
+                    ->whereMonth('created_at', Carbon::now()->month)
+                    ->whereNotNull('country')
+                    ->select('country', DB::raw('COUNT(*) as total'))
+                    ->groupBy('country')
+                    ->orderBy('total', 'DESC')
+                    ->limit(5)
+                    ->get();
+    }
+
     public function render()
     {
         $this->getMtdDailyReproductions = $this->getMtdDailyReproductions();
@@ -116,6 +132,8 @@ class Reports extends Component
         $this->totalPlayThirtyDaysAfter = $this->totalPlayThirtyDaysAfter();
         $this->totalPlaySixtyDaysAfter = $this->totalPlaySixtyDaysAfter();
         $this->totalPlayNinetyDaysAfter = $this->totalPlayNinetyDaysAfter();
+        $this->countPerCountry = $this->countPerCountry();
+
         return view('livewire.podcast.reports', [
             'reproductionsByEpisode' => DB::table('downloads_counter')
                                             ->join('episodes', 'downloads_counter.episode_id', '=', 'episodes.id')

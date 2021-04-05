@@ -54,7 +54,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     Route::get('/podcasts/{podcast}/reports', Reports::class)->name('podcast.reports');
 
     // Export Total Episodes Reproductions
-    Route::get('/podcasts/{podcast}/export_episodes_count_to_csv', [PodcastController::class, 'fileExport'])->name('export');
+    Route::get('/podcasts/{podcast}/export_episodes_count_to_csv', [PodcastController::class, 'exportByEpisode'])->name('export-by-episode');
+    Route::get('/podcasts/{podcast}/export_countries_count_to_csv', [PodcastController::class, 'exportByCountry'])->name('export-by-country');
 });
 
 
