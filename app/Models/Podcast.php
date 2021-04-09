@@ -18,7 +18,10 @@ class Podcast extends Model
         'tags',
         'thumbnail',
         'lang',
-        'style'
+        'style',
+        'spotifypodcasts_url',
+        'googlepodcasts_url',
+        'applepodcasts_url'
     ];
 
     public function episodes()

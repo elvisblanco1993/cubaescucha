@@ -20,6 +20,7 @@ class Create extends Component
     public $explicit;
     public $season;
     public $episode_no;
+    public $published_at;
 
     protected $rules = [
         'title' => 'required|max:100',
@@ -50,16 +51,12 @@ class Create extends Component
             'explicit' => $is_explicit,
             'season' => $this->season,
             'episode_no' => $this->episode_no,
+            'published_at' => $this->published_at,
         ]);
         $episode->save();
 
         session()->flash('success', 'Your new episode, '.$this->title.', was successfully uploaded and published.');
         return redirect(route('podcasts.show', ['podcast' => $this->podcast->id]));
-    }
-
-    private function updateFeed()
-    {
-        return \App\Http\Controllers\PodcastController::updateRssFeed($this->podcast);
     }
 
     public function getCurrentSeasonNumber()
@@ -85,6 +82,7 @@ class Create extends Component
 
         $this->season = $this->getCurrentSeasonNumber();
         $this->episode_no = $this->getCurrentEpisodeNumber();
+        $this->published_at ??= Carbon::now();
 
         return view('livewire.episode.create');
     }

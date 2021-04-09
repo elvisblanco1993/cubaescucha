@@ -61,7 +61,9 @@ class PodcastController extends Controller
             'author' => User::findOrFail($podcast->user_id)->first()->name,
             'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
             'episodes' => $podcast->episodes()->orderBy('created_at', 'ASC')->get(),
-            'rss' => $podcast->rss,
+            'spotifypodcasts_url' => $podcast->spotifypodcasts_url,
+            'googlepodcasts_url' => $podcast->googlepodcasts_url,
+            'applepodcasts_url' => $podcast->applepodcasts_url,
         ]);
     }
 

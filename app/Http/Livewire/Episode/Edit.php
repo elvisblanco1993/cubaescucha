@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Episode;
 use Livewire\Component;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
+use Carbon\Carbon;
 
 class Edit extends Component
 {
@@ -17,6 +18,7 @@ class Edit extends Component
     public $show_notes;
     public $type;
     public $audio_file;
+    public $published_at;
 
     protected $rules = [
         'title' => 'required|max:100',
@@ -31,6 +33,7 @@ class Edit extends Component
             'title' => $this->title,
             'show_notes' => $this->show_notes,
             'type' => $this->type,
+            'published_at' => $this->published_at,
         ]);
         // Validates audio file if is going to be updated
         if ($this->audio_file) {
@@ -73,6 +76,8 @@ class Edit extends Component
         $this->title = $this->episode->title;
         $this->show_notes = $this->episode->show_notes;
         $this->type = $this->episode->type;
+        $this->published_at = $this->episode->published_at ?? Carbon::now();
+
         return view('livewire.episode.edit');
     }
 }

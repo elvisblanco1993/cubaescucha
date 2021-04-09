@@ -20,6 +20,7 @@ class Episode extends Model
         'explicit',
         'season',
         'episode_no',
+        'published_at',
     ];
 
 }

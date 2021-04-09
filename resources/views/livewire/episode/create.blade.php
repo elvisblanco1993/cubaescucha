@@ -31,12 +31,7 @@
                     <p class="mt-2 text-xs text-gray-500">
                         {{ __('Markdown is supported.') }}
                     </p>
-                    {{-- Markdown Text Editor --}}
-                    <script src="{{ asset('js/simplemde.min.js') }}"></script>
-                    <script>
-                        var simplemde = new SimpleMDE({ element: document.getElementById('show_notes') });
-                    </script>
-                    {{-- End of Markdown Text Editor --}}
+
                 </div>
 
                 <div>
@@ -66,7 +61,7 @@
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">
-                    Episode audio file
+                    {{__('Episode audio file')}}
                     </label>
                     <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                         <div class="space-y-1 text-center">
@@ -76,13 +71,13 @@
                             </svg>
                             <div class="flex text-sm text-gray-600">
                                 <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                    <span>Upload a file</span>
+                                    <span>{{__('Upload an audio file')}}</span>
                                     <input id="file-upload" wire:model.defer="audio_file" type="file" accept="audio/mpeg" class="sr-only">
                                 </label>
-                                <p class="pl-1">or drag and drop</p>
+                                <p class="pl-1">{{__('or drag and drop')}}</p>
                             </div>
                             <p class="text-xs text-gray-500">
-                                MP3 up to 240MB
+                                {{__('MP3 up to 240MB')}}
                             </p>
                         </div>
                     </div>
@@ -104,6 +99,16 @@
                         </label>
                         <input type="number" wire:model.defer="episode_no">
                     </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">
+                        {{ __('Publishing date') }}
+                    </label>
+                    <input type="date" wire:model.defer="published_at" value="{{ $published_at }}">
+                    <small class="text-gray-500">
+                        {{ __('If no date is selected, set to ') . date('m/d/Y', strtotime($published_at)) }}
+                    </small>
                 </div>
 
             </div>

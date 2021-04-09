@@ -19,6 +19,9 @@ class Edit extends Component
     public $style;
     public $explicit;
     public $thumbnail;
+    public $spotifypodcasts_url;
+    public $googlepodcasts_url;
+    public $applepodcasts_url;
 
     protected $rules = [
         'name' => 'required',
@@ -40,6 +43,9 @@ class Edit extends Component
             'lang' => $this->lang,
             'style' => $this->style,
             'explicit' => $is_explicit,
+            'spotifypodcasts_url' => $this->spotifypodcasts_url,
+            'googlepodcasts_url' => $this->googlepodcasts_url,
+            'applepodcasts_url' => $this->applepodcasts_url,
         ]);
 
         if ($this->thumbnail) {
@@ -70,6 +76,9 @@ class Edit extends Component
         $this->explicit = $this->podcast->explicit;
         $this->lang = $this->podcast->lang;
         $this->style = $this->podcast->style;
+        $this->spotifypodcasts_url = $this->podcast->spotifypodcasts_url;
+        $this->googlepodcasts_url = $this->podcast->googlepodcasts_url;
+        $this->applepodcasts_url = $this->podcast->applepodcasts_url;
         return view('livewire.podcast.edit');
     }
 }

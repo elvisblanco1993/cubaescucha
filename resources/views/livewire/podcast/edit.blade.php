@@ -141,13 +141,13 @@
                             <option value="VI">Vietnamese</option>
                             <option value="CY">Welsh</option>
                             <option value="XH">Xhosa</option>
-                          </select>
+                        </select>
                     </div>
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">
-                    Cover photo
+                    {{__('Cover photo')}}
                     </label>
                     <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                         <div class="space-y-1 text-center">
@@ -172,6 +172,42 @@
                     @error('thumbnail')
                         <small class="text-red-600">{{ $message }}</small>
                     @enderror
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">
+                        {{ __('Spotify Podcasts URI') }}
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                        <input type="text" wire:model.defer="spotifypodcasts_url" id="spotifypodcasts_url" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300">
+                    </div>
+                    <small class="block text-gray-600">
+                        {{ __('If you published your show on Spotify Podcasts, then use this field to let your listeners know.') }}
+                    </small>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">
+                        {{ __('Google Podcasts URI') }}
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                        <input type="text" wire:model.defer="googlepodcasts_url" id="googlepodcasts_url" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300">
+                    </div>
+                    <small class="block text-gray-600">
+                        {{ __('If you published your show on Google Podcasts, then use this field to let your listeners know.') }}
+                    </small>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">
+                        {{ __('Apple Podcasts URI') }}
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                        <input type="text" wire:model.defer="applepodcasts_url" id="applepodcasts_url" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300">
+                    </div>
+                    <small class="block text-gray-600">
+                        {{ __('If you published your show on Apple Podcasts, then use this field to let your listeners know.') }}
+                    </small>
                 </div>
             </div>
             <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">

@@ -78,6 +78,16 @@
                     @enderror
                 </div>
 
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">
+                        {{ __('Publishing date') }}
+                    </label>
+                    <input type="date" wire:model.defer="published_at" value="{{ $published_at }}">
+                    <small class="text-gray-500">
+                        {{ __('If no date is selected, set to ') . date('m/d/Y', strtotime($published_at)) }}
+                    </small>
+                </div>
+
             </div>
             <div class="px-4 py-3 bg-gray-50 flex justify-between sm:px-6">
                 <x-jet-danger-button wire:click="$toggle('confirmDeleteEpisode')">
