@@ -219,7 +219,7 @@
     "Cover photo": "Foto de portada",
     "The cover photo must be squared, with a minimum size must be at least 500x500px, up to 1000x1000px.": "La foto de portada debe ser cuadrada, con un tamaño mínimo de al menos 500x500px, hasta 1000x1000px.",
     "Create Podcast": "Crear Podcast",
-    "Upload a file": "Subir una foto",
+    "Upload a thumbnail": "Subir una imagen",
     "or drag and drop": "o arrastrar y soltar aquí",
     "Most popular episode": "Episodio mas escuchado",
     "You did it!": "Lo has hecho!",
@@ -251,5 +251,23 @@
     "Serial": "Serie",
     "Download": "Descargar",
     "Published": "Publicado",
-    "Total reproductions per episode": "Reproducciones por episodio"
+    "Total reproductions per episode": "Reproducciones por episodio",
+    "Reports": "Reportes",
+    "7, 30, 60, and 90 days after publishing date.": "7, 30, 60 y 90 días después de la fecha de publicación.",
+    "First 7 days": "Primeros 7 dias",
+    "First 30 days": "Primeros 30 dias",
+    "First 60 days": "Primeros 60 dias",
+    "First 90 days": "Primeros 90 dias",
+    "Reproductions ranking by country": "Reproducciones por region",
+    "Overall podcast reproductions since the podcast was first launched.": "Total de reproducciones desde el lanzamiento del podcast.",
+    "Episodes breakdown": "Desglose por episodios",
+    "Downloads per episode since being published.": "Descargas por episodio desde su publicación.",
+    "Edit podcast details": "Editar detalles del podcast",
+    "If you published your show on Spotify Podcasts, then use this field to share with your listeners.": "Si publicó su programa en Spotify Podcasts, utilice este campo para compartirlo con sus oyentes.",
+    "If you published your show on Google Podcasts, then use this field to share with your listeners.": "Si publicó su programa en Google Podcasts, utilice este campo para compartirlo con sus oyentes.",
+    "If you published your show on Apple Podcasts, then use this field to share with your listeners.": "Si publicó su programa en Apple Podcasts, utilice este campo para compartirlo con sus oyentes.",
+    "Save changes": "Guardar cambios"
+
+
+
 }
