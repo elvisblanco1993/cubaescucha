@@ -20,7 +20,7 @@
 
                 <div>
                     <label for="description" class="block text-sm font-medium text-gray-700">
-                        Description
+                        {{ __('Description') }}
                     </label>
                     <div class="mt-1">
                         <textarea id="description" wire:model.defer="description" rows="10"></textarea>
@@ -29,7 +29,7 @@
                         <small class="text-red-600">{{ $message }}</small>
                     @enderror
                     <p class="mt-2 text-sm text-gray-500">
-                        Brief description for your podcast. Markdown is supported.
+                        {{ __('Markdown is supported.') }}
                     </p>
                 </div>
 
@@ -156,13 +156,13 @@
                             </svg>
                             <div class="flex text-sm text-gray-600">
                                 <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
-                                    <span>Upload a file</span>
+                                    <span>{{ __('Upload a thumbnail') }}</span>
                                     <input id="file-upload" wire:model.defer="thumbnail" type="file" accept="image/x-png,image/webp,image/jpeg" class="sr-only">
                                 </label>
-                                <p class="pl-1">or drag and drop</p>
+                                <p class="pl-1">{{ __('or drag and drop') }}</p>
                             </div>
                             <p class="text-xs text-gray-500">
-                                PNG, JPG, WEBP up to 4MB.
+                                {{ __('PNG, JPG, WEBP up to 4MB.') }}
                             </p>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
                         <input type="text" wire:model.defer="spotifypodcasts_url" id="spotifypodcasts_url" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300">
                     </div>
                     <small class="block text-gray-600">
-                        {{ __('If you published your show on Spotify Podcasts, then use this field to let your listeners know.') }}
+                        {{ __('If you published your show on Spotify Podcasts, then use this field to share with your listeners.') }}
                     </small>
                 </div>
 
@@ -194,7 +194,7 @@
                         <input type="text" wire:model.defer="googlepodcasts_url" id="googlepodcasts_url" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300">
                     </div>
                     <small class="block text-gray-600">
-                        {{ __('If you published your show on Google Podcasts, then use this field to let your listeners know.') }}
+                        {{ __('If you published your show on Google Podcasts, then use this field to share with your listeners.') }}
                     </small>
                 </div>
 
@@ -206,7 +206,7 @@
                         <input type="text" wire:model.defer="applepodcasts_url" id="applepodcasts_url" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300">
                     </div>
                     <small class="block text-gray-600">
-                        {{ __('If you published your show on Apple Podcasts, then use this field to let your listeners know.') }}
+                        {{ __('If you published your show on Apple Podcasts, then use this field to share with your listeners.') }}
                     </small>
                 </div>
             </div>
