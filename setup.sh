@@ -34,7 +34,7 @@ sudo mysql -u root -p;
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'bahia9397';
 GRANT ALL PRIVILEGES ON *.* to 'root'@'localhost' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
-CREATE DATABASE nboard;
+CREATE DATABASE cubaescucha;
 sudo service mysql restart;
 
 # Add database connection settings on .env
