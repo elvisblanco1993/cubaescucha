@@ -112,7 +112,7 @@
                         <div class="sm:flex my-2">
                             <div class="w-full sm:w-1/2">
                                 <h3 class="font-bold text-gray-700 mb-0">
-                                    {{ __('Episode breakdown') }}
+                                    {{ __('Episodes breakdown') }}
                                 </h3>
                                 <small class="mt-1">
                                     {{ __('Downloads per episode since being published.') }}
