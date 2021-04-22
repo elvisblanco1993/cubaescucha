@@ -33,11 +33,13 @@
                                 </svg>
                             </a>
 
-                            <a href="{{ route('podcast.reports', ['podcast' => $podcast->id]) }}" title="{{ __('Reports') }}" class="mx-2 text-emerald-500 hover:text-emerald-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-emerald-50">
-                                <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                                </svg>
-                            </a>
+                            @if ($podcast->episodes->count() > 0)
+                                <a href="{{ route('podcast.reports', ['podcast' => $podcast->id]) }}" title="{{ __('Reports') }}" class="mx-2 text-emerald-500 hover:text-emerald-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-emerald-50">
+                                    <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                    </svg>
+                                </a>
+                            @endif
 
                             <a href="{{ route('podcasts.edit', ['podcast' => $podcast->id]) }}" title="{{ __('Edit podcast details') }}" class="mx-2 text-emerald-500 hover:text-emerald-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-emerald-50">
                                 <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -96,7 +98,7 @@
                                             <td class="px-6 py-4 whitespace-nowrap">
                                                 <div class="text-sm text-gray-900">{{ $episode->title }}</div>
                                                 <div class="text-sm text-gray-500 uppercase hidden sm:block">
-                                                    {{ $episode->type . ' episode / ' . date('M d, Y', strtotime($episode->created_at)) . " | S" .  $episode->season . ':E' . $episode->episode_no}}
+                                                    {{ $episode->type . ' episode / ' . date('M d, Y', strtotime($episode->published_at)) . " | S" .  $episode->season . ':E' . $episode->episode_no}}
                                                 </div>
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

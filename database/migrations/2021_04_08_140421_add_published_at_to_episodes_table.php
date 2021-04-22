@@ -14,7 +14,7 @@ class AddPublishedAtToEpisodesTable extends Migration
     public function up()
     {
         Schema::table('episodes', function (Blueprint $table) {
-            $table->timestamp('published_at');
+            $table->timestamp('published_at')->nullable();
         });
     }
 

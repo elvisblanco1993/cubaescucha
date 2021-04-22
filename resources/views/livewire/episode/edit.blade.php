@@ -84,7 +84,7 @@
                     </label>
                     <input type="date" wire:model.defer="published_at" value="{{ $published_at }}">
                     <small class="text-gray-500">
-                        {{ __('If no date is selected, set to ') . date('m/d/Y', strtotime($published_at)) }}
+                        {{ __('Currently set to ') . date('m/d/Y', strtotime($published_at)) }}
                     </small>
                 </div>
 

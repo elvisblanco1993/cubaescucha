@@ -17,7 +17,7 @@
                         {{ $episode->title }}
                     </p>
                     <small class="block text-gray-600 uppercase">
-                        {{ date('M d, Y', strtotime($episode->created_at)) . " | S" .  $episode->season . ':E' . $episode->episode_no}}
+                        {{ date('M d, Y', strtotime($episode->published_at)) . " | S" .  $episode->season . ':E' . $episode->episode_no}}
                     </small>
                 </div>
             </div>

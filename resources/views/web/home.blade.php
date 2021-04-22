@@ -22,7 +22,7 @@
                             {{ __('By: ') . \App\Models\User::where('id', $podcast->user_id)->first()->name }}
                         </div>
                         <div class="text-gray-600">
-                            {{ $podcast->episodes->count() . __(' episodes') }}
+                            {{ $podcast->episodes()->where('published_at', '<=', Carbon\Carbon::now())->count() . __(' episodes') }}
                         </div>
                     </div>
                 </div>

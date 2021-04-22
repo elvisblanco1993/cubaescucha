@@ -1,6 +1,6 @@
 <div class="relative">
     {{-- Be like water. --}}
-    <div class="mx-4">
+    <div class="mx-4 sm:mx-0">
         <input
         type="search"
         wire:model="query"
@@ -28,7 +28,7 @@
             </div>
         @else
             <div class="absolute z-10 list-group bg-white w-full rounded-t-none shadow-lg">
-                {{ __('No result') }}
+                {{ __('We could not find what you are looking for.') }}
             </div>
         @endif
     @endif

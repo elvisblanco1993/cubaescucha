@@ -9,7 +9,7 @@
                         {{ __('Name') }}
                     </label>
                     <div class="mt-1 flex rounded-md shadow-sm">
-                        <input type="text" wire:model="name" id="name" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-md sm:text-sm border-gray-300">
+                        <input type="text" wire:model="name" id="name">
                     </div>
                     @error('name')
                         <small class="text-red-600">{{ $message }}</small>
@@ -136,7 +136,7 @@
                             <option value="VI">Vietnamese</option>
                             <option value="CY">Welsh</option>
                             <option value="XH">Xhosa</option>
-                          </select>
+                        </select>
                     </div>
                 </div>
 
@@ -187,7 +187,7 @@
                                 <p class="pl-1">{{ __('or drag and drop') }}</p>
                             </div>
                             <p class="text-xs text-gray-500">
-                                PNG, JPG, WEBP up to 4MB.
+                                PNG, JPG, WEBP {{__('up to')}} 4MB.
                             </p>
                         </div>
                     </div>

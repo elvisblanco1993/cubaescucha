@@ -60,7 +60,7 @@ class PodcastController extends Controller
             'description' => $podcast->description,
             'author' => User::findOrFail($podcast->user_id)->first()->name,
             'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
-            'episodes' => $podcast->episodes()->orderBy('created_at', 'ASC')->get(),
+            'episodes' => $podcast->episodes()->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'ASC')->get(),
             'spotifypodcasts_url' => $podcast->spotifypodcasts_url,
             'googlepodcasts_url' => $podcast->googlepodcasts_url,
             'applepodcasts_url' => $podcast->applepodcasts_url,
