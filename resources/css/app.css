@@ -9,7 +9,6 @@
 
 #logotype {
     font-family: 'Play', sans-serif;
-    @apply text-gray-800;
     @apply font-normal;
     @apply antialiased;
     @apply text-xl;

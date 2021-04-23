@@ -1,14 +1,14 @@
 @extends('layouts.web')
 @section('content')
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 mt-8">
 
         {{-- Podcasts --}}
-        <div class="grid grid-cols-3 gap-8">
+        <div class="grid grid-cols-4 gap-8">
 
             @forelse ($podcastsList as $podcast)
 
-            <a href="{{ route('podcast.display', ['podcast' => $podcast->slug]) }}" class="col-span-3 md:col-span-1 bg-gray-50 rounded-lg shadow hover:shadow-lg hover:text-blue-600">
+            <a href="{{ route('podcast.display', ['podcast' => $podcast->slug]) }}" class="col-span-4 sm:col-span-2 xl:col-span-1 bg-gray-50 rounded-lg shadow hover:shadow-lg hover:text-blue-600">
 
                 <div>
                     <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" class="object-cover w-full h-48 rounded-t-lg">
