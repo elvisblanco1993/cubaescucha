@@ -1,39 +1,39 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-blueGray-800 border-b border-blueGray-900">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between @guest items-center @endguest h-16">
             @auth
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('podcasts') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        <x-jet-application-mark class="block h-9 w-auto text-white" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('podcasts') }}" :active="request()->routeIs('podcasts')">
+                    <x-jet-nav-link href="{{ route('podcasts') }}" :active="request()->routeIs('podcasts')" class="text-white">
                         {{ __('Podcasts') }}
                     </x-jet-nav-link>
                 </div>
             </div>
 
             @else
-                <div class="flex-shrink-0 flex items-center">
+                <div class="flex-shrink-0 flex items-center sm:w-2/3 lg:w-2/3">
                     <a href="{{ route('home') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
+                    <div class="hidden sm:block mx-4 w-full">
+                        @livewire('podcast-search')
+                    </div>
                 </div>
 
-                <div class="hidden sm:block sm:w-3/6">
-                    @livewire('podcast-search')
-                </div>
 
-                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex uppercase text-sm">
-                    <x-jet-secondary-button onclick="window.location.href='{{ route('login') }}'">
+                <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex items-center uppercase text-sm">
+                    <a href="{{ route('login') }}" class="text-blueGray-100">
                         {{ __('Login') }}
-                    </x-jet-secondary-button>
+                    </a>
                     <x-jet-button onclick="window.location.href='{{ route('register') }}'">
                         {{ __('Get Started') }}
                     </x-jet-secondary-button>

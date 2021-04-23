@@ -7,7 +7,6 @@
         placeholder="{{ __('Search') }}"
         accesskey="k"
         wire:keydown.escape="resetForm"
-        class="sm:py-1"
     />
     </div>
     <div class="border-t border-gray-100 mt-6 sm:hidden"></div>
