@@ -24,7 +24,7 @@
                     <a href="{{ route('home') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
-                    <div class="hidden sm:block mx-4 w-full">
+                    <div class="hidden sm:block mx-4  w-1/3">
                         @livewire('podcast-search')
                     </div>
                 </div>

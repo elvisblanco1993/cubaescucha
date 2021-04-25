@@ -4,11 +4,13 @@
         <input
         type="search"
         wire:model="query"
-        placeholder="{{ __('Search') }}"
+        placeholder="{{ __('Search podcasts') }}"
         accesskey="k"
         wire:keydown.escape="resetForm"
+        class="bg-blueGray-700 placeholder-blueGray-200 text-blueGray-100 opacity-75 border-none focus:ring-0"
     />
     </div>
+
     <div class="border-t border-gray-100 mt-6 sm:hidden"></div>
 
     @if (!empty($query))

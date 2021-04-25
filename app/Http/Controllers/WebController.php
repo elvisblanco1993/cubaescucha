@@ -3,14 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Podcast;
-use Illuminate\Http\Request;
 
 class WebController extends Controller
 {
     // Home page
     public function home()
     {
-        $podcastsList = Podcast::all();
+        $podcastsList = Podcast::orderBy('created_at', 'DESC')->paginate(16);
 
         return view('web.home', [
             'podcastsList' => $podcastsList,
