@@ -197,7 +197,7 @@
     "You may not delete your personal team.": "No se puede borrar su equipo personal.",
     "You may not leave a team that you created.": "No se puede abandonar un equipo que usted creó.",
     "Your email address is not verified.": "Su dirección de correo electrónico no está verificada.",
-    "Search": "Buscar",
+    "Search podcasts": "Buscar podcasts",
     "By: ": "Por: ",
     "By ": "Por ",
     " episodes": " episodios",
@@ -267,8 +267,6 @@
     "If you published your show on Google Podcasts, then use this field to share with your listeners.": "Si publicó su programa en Google Podcasts, utilice este campo para compartirlo con sus oyentes.",
     "If you published your show on Apple Podcasts, then use this field to share with your listeners.": "Si publicó su programa en Apple Podcasts, utilice este campo para compartirlo con sus oyentes.",
     "Save changes": "Guardar cambios",
-    "up to": "hasta"
-
-
-
+    "up to": "hasta",
+    "Inform. Inspire. Change.": "Informa. Inspira. Cambia."
 }

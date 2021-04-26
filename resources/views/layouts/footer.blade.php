@@ -1,7 +1,7 @@
-<div class="mt-12 mb-6 sm:flex items-center justify-between mx-4 md:mx-8 text-blueGray-800">
+<div class="mt-12 sm:flex items-center justify-between mx-4 md:mx-8 text-blueGray-800">
 
     {{-- Left side --}}
-    <div class="w-full sm:w-1/2 text-sm font-light">
+    <div class="w-full sm:w-1/2 text-sm font-light py-3">
         <span class="mr-4">
             {{ 'Copyright © ' . Carbon\Carbon::now()->year . " cubaescucha.com" }}
         </span>
@@ -12,10 +12,11 @@
         </div>
     </div>
 
-    <div class="w-full sm:w-1/2 text-sm font-light text-left sm:text-right">
-        <a href="" class="mr-2">{{ __('About') }}</a>
+    <div class="w-full sm:w-1/2 text-sm font-light text-left sm:text-right py-3">
         <a href="" class="mx-2">{{ __('Help') }}</a>
+        <a href="" class="mx-2">{{ __('Privacy') }}</a>
         <a href="" class="mx-2">{{ __('Terms') }}</a>
         <a href="https://www.paypal.com/donate?business=XV9WBWPSYN7WG&item_name=Your+donation+will+be+purposed+to+develop+and+maintain+cubaescucha.com.&currency_code=USD" target="__blank" class="ml-2 px-2 bg-amber-400 rounded">{{ __('Donate') }}</a>
     </div>
+
 </div>

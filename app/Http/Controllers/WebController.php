@@ -9,7 +9,7 @@ class WebController extends Controller
     // Home page
     public function home()
     {
-        $podcastsList = Podcast::orderBy('created_at', 'DESC')->paginate(16);
+        $podcastsList = Podcast::orderBy('created_at', 'DESC')->paginate(12);
 
         return view('web.home', [
             'podcastsList' => $podcastsList,

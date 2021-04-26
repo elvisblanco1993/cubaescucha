@@ -23,7 +23,7 @@ class PodcastSearch extends Component
 
     public function updatedQuery()
     {
-        $this->podcasts = Podcast::search($this->query)->take(10)->get();
+        $this->podcasts = Podcast::search($this->query)->take(5)->get();
     }
 
     public function render()
