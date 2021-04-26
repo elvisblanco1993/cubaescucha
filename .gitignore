@@ -15,3 +15,5 @@ setup.sh
 /storage/app/*
 setup_apache.sh
 setup_nginx.sh
+/data.ms/*
+/data.ms
