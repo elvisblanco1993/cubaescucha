@@ -21,7 +21,6 @@ Route::get('/podcast/{podcast}', [PodcastController::class, 'display'])->name('p
  */
 Route::get('/podcast/{podcast}/rss', [PodcastController::class, 'generateRss'])->name('genRss');
 
-
 /**
  * --------------------------------------------------------------
  * Protected routes

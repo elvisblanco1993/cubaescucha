@@ -268,5 +268,7 @@
     "If you published your show on Apple Podcasts, then use this field to share with your listeners.": "Si publicó su programa en Apple Podcasts, utilice este campo para compartirlo con sus oyentes.",
     "Save changes": "Guardar cambios",
     "up to": "hasta",
-    "Inform. Inspire. Change.": "Informa. Inspira. Cambia."
+    "Inform. Inspire. Change.": "Informa. Inspira. Cambia.",
+    "The :attribute must contain at least one uppercase and one lowercase letter.": "La contraseña debe contener al menos una letra mayúscula y una minúscula.",
+    "The :attribute must contain at least one symbol.": "La contraseña debe contener al menos un símbolo."
 }

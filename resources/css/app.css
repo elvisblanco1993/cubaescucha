@@ -56,26 +56,3 @@ select:focus {
     @apply rounded-md border-indigo-300 ring ring-indigo-200 ring-opacity-50;
 }
 
-
-.nav-btn {
-    @apply px-3;
-    @apply py-2;
-    @apply rounded-lg;
-    @apply bg-gray-100;
-    @apply text-gray-900;
-}
-
-.register-btn {
-    @apply bg-indigo-600;
-    @apply text-white;
-}
-
-.nav-btn:hover {
-    @apply shadow;
-}
-
-.register-btn:hover {
-    @apply bg-indigo-500;
-    @apply shadow;
-}
-
