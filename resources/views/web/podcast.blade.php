@@ -7,6 +7,7 @@
 
             <div class="w-full sm:w-1/3">
                 <img src="{{ $thumbnail }}" class="block rounded-lg object-cover object-center">
+
                 <audio
                     controls
                     class="w-full my-6 rounded-lg"
@@ -17,11 +18,14 @@
             </div>
 
             <div class="w-full sm:w-2/3">
-                <h1 class="text-4xl font-extrabold font-serif">
+                <h1 class="text-4xl font-extrabold">
                     {{ $name }}
                 </h1>
-                <small>
-                    {{ __('By: ') . $author }}
+                <p class="font-bold text-base text-blueGray-700">
+                    {{ $author }}
+                </p>
+                <small class="block text-blueGray-800 my-4 capitalize">
+                    {{ $tags }}
                 </small>
                 <div class="prose">
                     @parsedown($description)
