@@ -21,7 +21,7 @@
 
             @else
                 <div class="flex-shrink-0 flex items-center sm:w-2/3 lg:w-2/3">
-                    <a href="{{ route('home') }}">
+                    <a href="{{ config('app.url') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                     <div class="hidden sm:block mx-4  w-1/3">

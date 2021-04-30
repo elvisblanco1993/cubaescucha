@@ -21,6 +21,7 @@ class Create extends Component
     public $season;
     public $episode_no;
     public $published_at;
+    public $audio_duration;
 
     protected $rules = [
         'title' => 'required|max:100',
@@ -29,8 +30,25 @@ class Create extends Component
         'audio_file' => 'required|file|mimes:mp3',
         'season' => 'required|integer',
         'episode_no' => 'required|integer',
+        'audio_duration' => 'required',
     ];
 
+    /**
+     * Listens for Javascript events
+     */
+    protected $listeners = ['getAudioDuration'];
+
+    /**
+     * Grab the audio duration upon temporarily uploading the file.
+     */
+    public function getAudioDuration($duration)
+    {
+        $this->audio_duration = $duration;
+    }
+
+    /**
+     * Create new episode
+     */
     public function storeEpisode()
     {
         $this->validate();

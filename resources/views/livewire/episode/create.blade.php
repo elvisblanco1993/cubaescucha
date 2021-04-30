@@ -81,6 +81,17 @@
                             </p>
                         </div>
                     </div>
+
+                    @if ($audio_file)
+                        <audio id="audio_temp" src="{{ $audio_file->temporaryUrl() }}" preload="metadata"></audio>
+                        <script>
+                            var audioFile = document.getElementById("audio_temp");
+                            audioFile.onloadedmetadata = function() {
+                                window.livewire.emit('getAudioDuration', audioFile.duration);
+                            }
+                        </script>
+                    @endif
+
                     @error('audio_file')
                         <small class="text-red-600">{{ $message }}</small>
                     @enderror

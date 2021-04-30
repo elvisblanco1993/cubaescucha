@@ -21,6 +21,7 @@ class Episode extends Model
         'season',
         'episode_no',
         'published_at',
+        'audio_duration',
     ];
 
 }

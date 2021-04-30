@@ -49,15 +49,15 @@
                     <label class="block text-sm font-medium text-gray-700 mb-1">
                         {{ __('Podcast style') }}
                     </label>
-                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded">
+                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded text-sm">
                         <input type="radio" wire:model.defer="style" name="style" value="e" class="mr-2 rounded-full">
                         {{ __('Episodic') }}
                     </label>
-                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded">
+                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded text-sm">
                         <input type="radio" wire:model.defer="style" name="style" value="ews" class="mr-2 rounded-full">
                         {{ __('Episodic with Seasons') }}
                     </label>
-                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded">
+                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded text-sm">
                         <input type="radio" wire:model.defer="style" name="style" value="s" class="mr-2 rounded-full">
                         {{ __('Serial') }}
                     </label>

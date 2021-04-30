@@ -56,6 +56,8 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'short_url' => preg_replace('#^https?://#', '', rtrim(env('APP_URL', 'http://localhost'),'/')),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
