@@ -66,6 +66,7 @@ class Create extends Component
             'type' => $this->type,
             'downloadable' => true,
             'file_name' => $path,
+            'audio_duration' => ceil($this->audio_duration),
             'explicit' => $is_explicit,
             'season' => $this->season,
             'episode_no' => $this->episode_no,

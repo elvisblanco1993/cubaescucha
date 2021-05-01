@@ -49,7 +49,9 @@
                             @livewire('podcast.delete', ['podcast' => $podcast])
                         </div>
                     </div>
+
                     <p class="my-1 text-sm text-gray-600">{{ __('By ') . $publisher->name }}</p>
+
                     <div class="">
                         @parsedown($podcast->description)
                     </div>

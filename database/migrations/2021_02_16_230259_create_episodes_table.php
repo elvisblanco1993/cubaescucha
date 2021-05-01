@@ -19,6 +19,7 @@ class CreateEpisodesTable extends Migration
             $table->foreignId('podcast_id')->constrained();
             $table->string('title');
             $table->string('file_name');
+            $table->string('audio_duration');
             $table->boolean('downloadable')->default(FALSE);
             $table->longText('show_notes');
             $table->string('type');

@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Episode;
 use App\Models\Podcast;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TotalEpisodeReproductions;
 use App\Exports\TotalReproductionsByCountry;
@@ -41,7 +38,7 @@ class PodcastController extends Controller
     {
         return view('podcast.show', [
             'podcast' => $podcast,
-            'publisher' => User::findOrFail($podcast->user_id)->first(),
+            'publisher' => User::where('id', $podcast->user_id)->first(),
             'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
             'episodes' => $podcast->episodes()->orderBy('created_at', 'DESC')->get(),
         ]);

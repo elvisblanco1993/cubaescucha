@@ -28,7 +28,7 @@
             <itunes:season>{{ $episode->season }}</itunes:season>
             @endif
             <itunes:order>{{ $episode->episode_no }}</itunes:order>
-            <itunes:duration>Calculate Duration at Upload Time</itunes:duration>
+            <itunes:duration>{{ $episode->audio_duration }}</itunes:duration>
             <enclosure length="{{ Storage::disk('s3')->size($episode->file_name) }}" type="audio/mpeg" url="{{ Storage::disk('s3')->url($episode->file_name) }}"/>
 
         </item>
