@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\Player;
+namespace App\Http\Livewire\Player\Episode;
 
 use Livewire\Component;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
-use App\Models\Episode;
 use Stevebauman\Location\Facades\Location;
+use App\Models\Episode;
+use Illuminate\Support\Facades\DB;
 
-class Playlist extends Component
+class Play extends Component
 {
-    public $podcast;
     public $episodes;
     public $episode;
 
@@ -27,11 +26,10 @@ class Playlist extends Component
             'updated_at' => Carbon::now(),
             'country' => ($position = Location::get()) ? $position->countryName : 'not determined',
         ]);
-        $this->emit('continue');
     }
 
     public function render()
     {
-        return view('livewire.player.playlist');
+        return view('livewire.player.episode.play');
     }
 }

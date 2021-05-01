@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="my-6">
-                    @livewire('player.playlist', ['episodes' => $episodes])
+                    @livewire('player.playlist', ['podcast' => $slug, 'episodes' => $episodes])
                 </div>
 
             </div>

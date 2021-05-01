@@ -7,6 +7,11 @@ use App\Http\Livewire\Podcast\Reports;
 use Illuminate\Support\Facades\Route;
 
 /**
+ * Homepage
+ */
+Route::get('/', [WebController::class, 'home'])->name('home');
+
+/**
  * Podcast webpage
  */
 Route::get('/podcast/{podcast}', [PodcastController::class, 'display'])->name('podcast.display');
@@ -17,9 +22,9 @@ Route::get('/podcast/{podcast}', [PodcastController::class, 'display'])->name('p
 Route::get('/podcast/{podcast}/rss', [PodcastController::class, 'generateRss'])->name('genRss');
 
 /**
- * Homepage
+ * Podcast episode page
  */
-Route::get('/', [WebController::class, 'home'])->name('home');
+Route::get('/podcast/{podcast}/{episode}', [EpisodeController::class, 'display'])->name('episode.display');
 
 /**
  * --------------------------------------------------------------
