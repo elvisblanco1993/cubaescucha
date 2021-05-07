@@ -1,3 +1,3 @@
 <div id="logotype">
-    {{ __('cubaescucha') }}
+    {{ __('cubaescucha') }} <sup><small>BETA</small></sup>
 </div>
