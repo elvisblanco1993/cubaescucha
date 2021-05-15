@@ -41,6 +41,7 @@ class PodcastController extends Controller
             'publisher' => User::where('id', $podcast->user_id)->first(),
             'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
             'episodes' => $podcast->episodes()->orderBy('created_at', 'DESC')->get(),
+            'size' => $this->getPodcastSize($podcast),
         ]);
     }
 
@@ -88,5 +89,22 @@ class PodcastController extends Controller
     {
         $podcast = Podcast::where('slug', $podcast)->first();
         return response()->view('podcast.rss', ['podcast' => $podcast])->header('Content-Type', 'application/xml');
+    }
+
+    /**
+     * Get the podcast size;
+     */
+    public function getPodcastSize(Podcast $podcast) {
+        $size = array('B','kB','MB','GB','TB','PB','EB','ZB','YB');
+        $decimals = 2;
+        $bytes = 0;
+
+        foreach ($podcast->episodes as $episode) {
+            $bytes += Storage::disk('s3')->size($episode->file_name);
+        }
+
+        $factor = floor((strlen($bytes) - 1) / 3);
+
+        return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . ' ' . $size[$factor];
     }
 }

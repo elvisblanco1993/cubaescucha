@@ -19,12 +19,17 @@
             @endif
 
             <div class="md:flex bg-white rounded-2xl shadow-sm mb-12">
-                <div class="w-full md:w-1/3 rounded-t-2xl md:rounded-2xl bg-cover bg-center h-64" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
+                <div class="w-full md:w-1/4 rounded-t-2xl md:rounded-2xl bg-cover bg-center h-48" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
                 <div class="w-full py-8 md:w-3/4 px-4 sm:px-12">
                     <div class="flex items-center justify-between">
-                        <h1 class="text-2xl font-extrabold">
-                            {{ $podcast->name }}
-                        </h1>
+                        <div>
+                            <h1 class="text-2xl font-extrabold">
+                                {{ $podcast->name }}
+                            </h1>
+                            <div class="text-sm text-blueGray-600">
+                                <span class="font-bold">Podcast size:</span> {{ $size }}
+                            </div>
+                        </div>
 
                         <div class="flex align-baseline text-sm">
                             <a href="{{ route('genRss', ['podcast' => $podcast->slug]) }}" target="_blank" title="{{ __('Get RSS Feed url') }}" class="mx-2 text-amber-500 hover:text-amber-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-amber-50">
@@ -49,19 +54,11 @@
                             @livewire('podcast.delete', ['podcast' => $podcast])
                         </div>
                     </div>
-
-                    <p class="my-1 text-sm text-gray-600">{{ __('By ') . $publisher->name }}</p>
-
-                    <div class="">
-                        @parsedown($podcast->description)
-                    </div>
                 </div>
             </div>
 
             <div class="my-6">
 
-                {{-- Show the statistics tab only after there are episodes on the podcast --}}
-                {{-- @livewire('statistics.graphs', ['podcast' => $podcast->id]) --}}
 
                 <div class="flex items-center justify-end mt-6">
                     <a href="{{ route('episode.create', ['podcast' => $podcast->id]) }}"
