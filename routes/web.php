@@ -6,6 +6,11 @@ use App\Http\Controllers\WebController;
 use App\Http\Livewire\Podcast\Reports;
 use Illuminate\Support\Facades\Route;
 
+// PHPINFO
+Route::get('/info', function () {
+    return phpinfo();
+});
+
 /**
  * Homepage
  */

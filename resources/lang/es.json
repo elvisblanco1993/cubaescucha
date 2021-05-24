@@ -267,12 +267,15 @@
     "Episodes breakdown": "Desglose por episodios",
     "Downloads per episode since being published.": "Descargas por episodio desde su publicación.",
     "Edit podcast details": "Editar detalles del podcast",
-    "If you published your show on Spotify Podcasts, then use this field to share with your listeners.": "Si publicó su programa en Spotify Podcasts, utilice este campo para compartirlo con sus oyentes.",
-    "If you published your show on Google Podcasts, then use this field to share with your listeners.": "Si publicó su programa en Google Podcasts, utilice este campo para compartirlo con sus oyentes.",
-    "If you published your show on Apple Podcasts, then use this field to share with your listeners.": "Si publicó su programa en Apple Podcasts, utilice este campo para compartirlo con sus oyentes.",
+    "Paste here the Spotify direct url for this podcast.": "Pegue la url de su podcast en Spotify.",
+    "Paste here the Google Podcasts direct url for this podcast.": "Pegue la url de su podcast en Google Podcasts.",
+    "Paste here the Apple Podcasts direct url for this podcast.": "Pegue la url de su podcast en Apple Podcasts.",
     "Save changes": "Guardar cambios",
     "up to": "hasta",
     "Inform. Inspire. Change.": "Informa. Inspira. Cambia.",
     "The :attribute must contain at least one uppercase and one lowercase letter.": "La contraseña debe contener al menos una letra mayúscula y una minúscula.",
-    "The :attribute must contain at least one symbol.": "La contraseña debe contener al menos un símbolo."
+    "The :attribute must contain at least one symbol.": "La contraseña debe contener al menos un símbolo.",
+    "Podcast size:": "Tamaño:",
+    "Host your show with Cubaescucha.com": "Aloja tu podcast en Cubaescucha.com",
+    "With our simple to use platform you can launch and distribute your podcasts with ease. Get published on Google Podcasts, Apple Podcasts, and Spotify with a few clicks. Cubaescucha.com makes launching your podcast easy, allowing you to focus on making good content. Create an account and get podcasting today!": "Con nuestra plataforma fácil de usar, puede lanzar y distribuir sus podcasts con facilidad. Distribuya sus podcasts en Google Podcasts, Apple Podcasts y Spotify con unos pocos clics. Cubaescucha.com facilita el lanzamiento de su podcast, lo que le permite concentrarse en crear un buen contenido. ¡Cree una cuenta y comience su podcast hoy mismo!"
 }

@@ -27,7 +27,7 @@
                                 {{ $podcast->name }}
                             </h1>
                             <div class="text-sm text-blueGray-600">
-                                <span class="font-bold">Podcast size:</span> {{ $size }}
+                                <span class="font-bold">{{__("Podcast size:")}}</span> {{ $size }}
                             </div>
                         </div>
 

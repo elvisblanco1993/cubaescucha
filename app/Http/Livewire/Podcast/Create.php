@@ -25,7 +25,7 @@ class Create extends Component
         'name' => ['required', 'max:100', 'unique:podcasts,name'],
         'description' => ['required', 'max:1000'],
         'tags' => ['required'],
-        'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:4096'],
+        'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:1024'],
     ];
 
     public function storePodcast()
