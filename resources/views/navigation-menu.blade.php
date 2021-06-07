@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-blueGray-800 border-b border-blueGray-900">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between @guest items-center @endguest h-16">
             @auth
             <div class="flex">
@@ -31,7 +31,7 @@
 
 
                 <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex items-center uppercase text-sm">
-                    <a href="{{ route('login') }}" class="text-blueGray-100 text-xs">
+                    <a href="{{ route('login') }}" class="text-blueGray-100 font-semibold text-xs">
                         {{ __('Login') }}
                     </a>
                     <button onclick="window.location.href='{{ route('register') }}'" class="inline-flex items-center px-4 py-2 bg-yellow-400 border border-transparent rounded-md font-semibold text-xs text-blueGray-900 uppercase tracking-widest hover:bg-yellow-500 active:bg-yellow-600 focus:outline-none focus:border-yellow-500 focus:shadow-outline-yellow disabled:opacity-25 transition ease-in-out duration-150">
@@ -193,8 +193,8 @@
                 @endif
 
                 <div>
-                    <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                    <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="font-medium text-base text-gray-100">{{ Auth::user()->name }}</div>
+                    <div class="font-medium text-sm text-gray-400">{{ Auth::user()->email }}</div>
                 </div>
             </div>
 

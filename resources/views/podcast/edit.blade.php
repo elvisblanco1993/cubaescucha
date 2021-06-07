@@ -28,6 +28,11 @@
                 </div>
             </div>
 
+            <div class="py-8">
+                <div class="border-t border-gray-200"></div>
+            </div>
+
+            @livewire('podcast.delete', ['podcast' => $podcast])
         </div>
     </div>
 </x-app-layout>

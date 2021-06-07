@@ -6,7 +6,11 @@ use App\Models\Podcast;
 
 class WebController extends Controller
 {
-    // Home page
+    /**
+     * Homepage
+     * @returns View
+     * @params Podcast
+     */
     public function home()
     {
         $podcastsList = Podcast::orderBy('created_at', 'DESC')->simplePaginate(8);
@@ -14,5 +18,23 @@ class WebController extends Controller
         return view('web.home', [
             'podcastsList' => $podcastsList,
         ]);
+    }
+
+    /**
+     * Help and Support
+     * @returns View
+     */
+    public function help()
+    {
+        return view('web.help');
+    }
+
+    /**
+     * Donation Page
+     * @returns View
+     */
+    public function donate()
+    {
+        return view('web.donate');
     }
 }

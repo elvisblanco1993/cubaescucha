@@ -32,6 +32,16 @@ Route::get('/podcast/{podcast}/rss', [PodcastController::class, 'generateRss'])-
 Route::get('/podcast/{podcast}/{episode}', [EpisodeController::class, 'display'])->name('episode.display');
 
 /**
+ * Q&A and Support
+ */
+Route::get('/help', [WebController::class, 'help'])->name('help');
+
+/**
+ * Donations page
+ */
+Route::get('/donate', [WebController::class, 'donate'])->name('donate');
+
+/**
  * --------------------------------------------------------------
  * Protected routes
  * --------------------------------------------------------------
