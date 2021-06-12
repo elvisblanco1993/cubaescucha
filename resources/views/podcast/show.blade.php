@@ -18,42 +18,43 @@
                 </div>
             @endif
 
-            <div class="md:flex bg-white rounded-2xl shadow-sm mb-12">
+            <div class="md:flex mb-12">
                 <div class="w-full md:w-1/4 rounded-t-2xl md:rounded-2xl bg-cover bg-center h-48" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
                 <div class="w-full py-8 md:w-3/4 px-4 sm:px-12">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <h1 class="text-2xl font-extrabold">
-                                {{ $podcast->name }}
-                            </h1>
-                            <div class="text-sm text-blueGray-600">
-                                <span class="font-bold">{{__("Podcast size:")}}</span> {{ $size }}
-                            </div>
+                    <div>
+                        <h1 class="text-2xl font-extrabold">
+                            {{ $podcast->name }}
+                        </h1>
+                        <div class="text-sm text-blueGray-600">
+                            <span class="font-bold">{{__("Podcast size:")}}</span> {{ $size }}
                         </div>
-
-                        <div class="flex align-baseline text-sm">
-                            <a href="{{ route('genRss', ['podcast' => $podcast->slug]) }}" target="_blank" title="{{ __('Get RSS Feed url') }}" class="mx-2 text-amber-500 hover:text-amber-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-amber-50">
+                        <div class="mt-6 flex">
+                            <a href="{{ route('genRss', ['podcast' => $podcast->slug]) }}" target="_blank" title="{{ __('RSS Feed') }}" class="mr-2 text-amber-500 hover:text-amber-600 p-2 bg-white rounded-lg shadow-sm hover:bg-amber-50">
                                 <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                 </svg>
                             </a>
 
                             @if ($podcast->episodes->count() > 0)
-                                <a href="{{ route('podcast.reports', ['podcast' => $podcast->id]) }}" title="{{ __('Reports') }}" class="mx-2 text-emerald-500 hover:text-emerald-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-emerald-50">
+                                <a href="{{ route('podcast.reports', ['podcast' => $podcast->id]) }}" title="{{ __('Reports') }}" class="mx-2 text-emerald-500 hover:text-emerald-600 p-2 bg-white rounded-lg shadow-sm hover:bg-emerald-50">
                                     <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                     </svg>
                                 </a>
                             @endif
 
-                            <a href="{{ route('podcasts.edit', ['podcast' => $podcast->id]) }}" title="{{ __('Edit podcast details') }}" class="mx-2 text-emerald-500 hover:text-emerald-600 p-2 bg-gray-100 rounded-lg shadow-sm hover:bg-emerald-50">
+                            <a href="{{ route('podcasts.edit', ['podcast' => $podcast->id]) }}" title="{{ __('Edit podcast details') }}" class="mx-2 text-emerald-500 hover:text-emerald-600 p-2 bg-white rounded-lg shadow-sm hover:bg-emerald-50">
                                 <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                 </svg>
                             </a>
-                            {{-- @livewire('podcast.delete', ['podcast' => $podcast]) --}}
                         </div>
                     </div>
+
+
+                        {{-- <div class="">
+
+                        </div> --}}
                 </div>
             </div>
 
@@ -63,8 +64,8 @@
                 <div class="flex items-center justify-end mt-6">
                     <a href="{{ route('episode.create', ['podcast' => $podcast->id]) }}"
                         class=" inline-flex justify-center items-center px-3 py-2 mb-4 bg-white border border-gray-300 rounded-md font-semibold text-xs text-gray-700 uppercase tracking-widest shadow-sm hover:text-gray-500 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50 transition ease-in-out duration-150">
-                        <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <svg class="w-4 mr-2" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                         </svg>
                         {{ __('New episode') }}
                     </a>

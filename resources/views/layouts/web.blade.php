@@ -18,7 +18,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-gray-100">
         <div class="min-h-screen">
             @livewire('navigation-menu')
 
@@ -27,7 +27,7 @@
                 @yield('content')
             </main>
         </div>
-        <footer class="-mt-6">
+        <footer>
             @include('layouts.footer')
         </footer>
         @livewireScripts
