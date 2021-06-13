@@ -35,6 +35,7 @@ class DeleteUser implements DeletesUsers
     public function delete($user)
     {
         DB::transaction(function () use ($user) {
+            $this->deletePodcasts( $user );
             $this->deleteTeams($user);
             $user->deleteProfilePhoto();
             $user->tokens->each->delete();
@@ -55,5 +56,27 @@ class DeleteUser implements DeletesUsers
         $user->ownedTeams->each(function ($team) {
             $this->deletesTeams->delete($team);
         });
+    }
+
+    /**
+     * Delete the podcasts and episodes associated to the user.
+     *
+     * @param mixed $user
+     * @return void
+     */
+    protected function deletePodcasts($user)
+    {
+        foreach ($user->podcasts as $podcast) {
+
+            foreach ($podcast->episodes as $episode) {
+                // Delete episode
+                \Illuminate\Support\Facades\Storage::disk('s3')->delete($episode->file_name);
+                $episode->delete();
+            }
+
+            // Delete podcast
+            \Illuminate\Support\Facades\Storage::disk('s3')->delete($podcast->thumbnail);
+            $podcast->delete();
+        }
     }
 }
