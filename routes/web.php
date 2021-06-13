@@ -5,6 +5,7 @@ use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\WebController;
 use App\Http\Livewire\Podcast\Reports;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 // PHPINFO
 Route::get('/info', function () {
@@ -75,4 +76,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     // Export Total Episodes Reproductions
     Route::get('/podcasts/{podcast}/export_episodes_count_to_csv', [PodcastController::class, 'exportByEpisode'])->name('export-by-episode');
     Route::get('/podcasts/{podcast}/export_countries_count_to_csv', [PodcastController::class, 'exportByCountry'])->name('export-by-country');
+
+    // Go to customer billing portal
+    Route::get('/billing-portal', function (Request $request) {
+        return $request->user()->redirectToBillingPortal();
+    })->name('billing-portal');
+
+    // New patrons subscription page
+    // Route::get('/donate/become-a-patron', [WebController::class, 'patronPlans'])->name('patron.plans');
+    Route::get('/donate/become-a-patron', function () {
+        return redirect(route('donate'));
+    })->name('patron.plans');
 });

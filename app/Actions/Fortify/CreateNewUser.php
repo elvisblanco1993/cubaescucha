@@ -35,6 +35,15 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
+
+                /**
+                 * Create Stripe customer
+                 */
+                $user->createAsStripeCustomer([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                ]);
+
                 $this->createTeam($user);
             });
         });

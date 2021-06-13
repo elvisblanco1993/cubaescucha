@@ -26,7 +26,7 @@ class Delete extends Component
         // Delete podcast
         $this->podcast->delete();
 
-        session()->flash('success', 'The podcast ' . $this->podcast->name . ', and all its content was successfully deleted from our platform.');
+        session()->flash('success', 'The podcast ' . $this->podcast->name . ', and all its content has been successfully deleted from our platform.');
 
         return redirect(route('podcasts'));
     }

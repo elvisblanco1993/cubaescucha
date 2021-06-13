@@ -37,4 +37,12 @@ class WebController extends Controller
     {
         return view('web.donate');
     }
+
+    /**
+     * Display the available patron plans
+     */
+    public function patronPlans()
+    {
+        return view('web.patron-plans');
+    }
 }
