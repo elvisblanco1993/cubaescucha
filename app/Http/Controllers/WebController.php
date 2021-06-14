@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Podcast;
 
 class WebController extends Controller
@@ -15,9 +16,13 @@ class WebController extends Controller
     {
         $podcastsList = Podcast::orderBy('created_at', 'DESC')->simplePaginate(8);
 
-        return view('web.home', [
-            'podcastsList' => $podcastsList,
-        ]);
+        if (!Auth::check()) {
+            return view('web.home', [
+                'podcastsList' => $podcastsList,
+            ]);
+        } else {
+            return redirect(route('podcasts'));
+        }
     }
 
     /**
