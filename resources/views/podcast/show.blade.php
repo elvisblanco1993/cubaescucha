@@ -18,8 +18,8 @@
                 </div>
             @endif
 
-            <div class="md:flex mb-12">
-                <div class="w-full md:w-1/4 rounded-t-2xl md:rounded-2xl bg-cover bg-center h-48" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
+            <div class="md:flex mb-12 items-center">
+                <div class="w-full md:w-1/4 rounded-t-2xl md:rounded-2xl bg-cover bg-center h-64" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
                 <div class="w-full py-8 md:w-3/4 px-4 sm:px-12">
                     <div>
                         <h1 class="text-2xl font-extrabold">
@@ -29,7 +29,7 @@
                             <span class="font-bold">{{__("Podcast size:")}}</span> {{ $size }}
                         </div>
                         <div class="mt-6 flex">
-                            <a href="{{ route('genRss', ['podcast' => $podcast->slug]) }}" target="_blank" title="{{ __('RSS Feed') }}" class="mr-2 text-amber-500 hover:text-amber-600 p-2 bg-white rounded-lg shadow-sm hover:bg-amber-50">
+                            <a href="{{ route('genRss', ['podcast' => $podcast->url]) }}" target="_blank" title="{{ __('RSS Feed') }}" class="mr-2 text-amber-500 hover:text-amber-600 p-2 bg-white rounded-lg shadow-sm hover:bg-amber-50">
                                 <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 5c7.18 0 13 5.82 13 13M6 11a7 7 0 017 7m-6 0a1 1 0 11-2 0 1 1 0 012 0z" />
                                 </svg>

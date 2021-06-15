@@ -50,10 +50,11 @@ class PodcastController extends Controller
      */
     public function display($podcast)
     {
-        $podcast = Podcast::where('slug', $podcast)->first();
+        $podcast = Podcast::where('url', $podcast)->first();
 
         return view('web.podcast', [
             'slug' => $podcast->slug,
+            'url' => $podcast->url,
             'name' => $podcast->name,
             'description' => $podcast->description,
             'tags' => $podcast->tags,
@@ -87,7 +88,7 @@ class PodcastController extends Controller
 
     public function generateRss ($podcast)
     {
-        $podcast = Podcast::where('slug', $podcast)->first();
+        $podcast = Podcast::where('url', $podcast)->first();
         return response()->view('podcast.rss', ['podcast' => $podcast])->header('Content-Type', 'application/xml');
     }
 

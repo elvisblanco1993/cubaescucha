@@ -44,6 +44,7 @@ class Create extends Component
             'user_id' => auth()->user()->id,
             'name' => $this->name,
             'slug' => $slug,
+            'url' => $this->generatePodcastUrl(),
             'description' => $this->description,
             'tags' => $this->tags,
             'lang' => $this->lang,
@@ -55,6 +56,20 @@ class Create extends Component
         session()->flash('success', 'Your new podcast, ' . $this->name . ', was successfully created!');
 
         return redirect(route('podcasts.show', ['podcast' => $podcast->id]));
+    }
+
+    /**
+     * Generates an unique url identified for the podcast
+     * @param null
+     * @return $uniqueId
+     */
+    protected function generatePodcastUrl()
+    {
+        $uniqueId = Str::random(8);
+        while (Podcast::where('url', $uniqueId)->exists()) {
+            $uniqueId = Str::random(8);
+        }
+        return $uniqueId;
     }
 
     public function render()

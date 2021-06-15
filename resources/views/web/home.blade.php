@@ -11,7 +11,7 @@
 
                 @forelse ($podcastsList as $podcast)
 
-                <a href="{{ route('podcast.display', ['podcast' => $podcast->slug]) }}" class="col-span-1 bg-gray-50 rounded-lg shadow hover:shadow-lg hover:text-blue-600">
+                <a href="{{ route('podcast.display', ['podcast' => $podcast->url]) }}" class="col-span-1 bg-gray-50 rounded-lg shadow hover:shadow-lg hover:text-blue-600">
 
                     <div>
                         <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" class="object-cover w-full h-48 rounded-t-lg">

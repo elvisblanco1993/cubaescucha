@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="my-4 flex gap-2">
-                    <a  href="{{ route('genRss', ['podcast' => $slug]) }}"
+                    <a  href="{{ route('genRss', ['podcast' => $url]) }}"
                         target="_blank"
                         class="border p-1 rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

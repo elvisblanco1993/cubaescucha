@@ -26,6 +26,7 @@ class PodcastFactory extends Factory
             'user_id' => 1,
             'name' => $this->faker->name,
             'slug' => Str::slug($this->faker->name),
+            'url' => Str::random(8),
             'description' => $this->faker->text(150),
             'tags' => $this->faker->text(20),
             'lang' => 'es',

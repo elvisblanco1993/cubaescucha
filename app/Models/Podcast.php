@@ -14,6 +14,7 @@ class Podcast extends Model
         'user_id',
         'name',
         'slug',
+        'url',
         'description',
         'tags',
         'thumbnail',
