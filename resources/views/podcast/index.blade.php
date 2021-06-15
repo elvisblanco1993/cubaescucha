@@ -42,7 +42,7 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    {{__("We offer email-based support to all creators on the platform, or wanting to migrate to cubaescucha with a 12-hour maximum response time. We also offer live chat support for all our contributors.")}}
+                                    {{__("We offer email-based support to all the creators on the platform, with a 12-hour maximum response time. We also offer live chat support for all our sponsors.")}}
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@
 
                             <div class="ml-12">
                                 <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    {{__("If you enjoy using cubaescucha, then consider becoming a patron of the platform and automatically gain access to our live chat support channels. Your donation will help keep the lights up and will allow for the continued improvement of cubaescucha.")}}
+                                    {{__("If you are enjoying cubaescucha, then please consider becoming a sponsor of the platform and automatically gain access to our live chat support channels. Your donation will help keep the lights up and will allow for the continued improvement of cubaescucha.")}}
                                 </div>
                             </div>
                         </div>

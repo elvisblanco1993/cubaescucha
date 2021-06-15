@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\WebController;
@@ -87,4 +88,10 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     Route::get('/donate/become-a-patron', function () {
         return redirect(route('donate'));
     })->name('patron.plans');
+
+    /**
+     * Generate URL and Redirect to Stripe Checkout
+     */
+    Route::get('/donate/sponsorship/{tier}', [DonationController::class, 'redirectToCheckout'])->name('checkout');
+    Route::get('/donate/success', [DonationController::class, 'confirmDonation'])->name('donate.success');
 });

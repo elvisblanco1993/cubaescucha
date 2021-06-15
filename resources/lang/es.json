@@ -3,6 +3,8 @@
     "Privacy": "Privacidad",
     "Terms": "Términos del servicio",
     "Donate": "Donar",
+    "Hello, ": "Hola, ",
+    "Billing Portal": "Portal de facturación",
     "A fresh verification link has been sent to your email address.": "Se ha enviado un nuevo enlace de verificación a su correo electrónico.",
     "A new verification link has been sent to the email address you provided during registration.": "Se ha enviado un nuevo enlace de verificación a la dirección de correo electrónico que proporcionó durante el registro.",
     "Accept Invitation": "Aceptar invitación",
@@ -280,5 +282,12 @@
     "The :attribute must contain at least one symbol.": "La contraseña debe contener al menos un símbolo.",
     "Podcast size:": "Tamaño:",
     "Host your show with Cubaescucha.com": "Aloja tu podcast en Cubaescucha.com",
-    "With our simple to use platform you can launch and distribute your podcasts with ease. Get published on Google Podcasts, Apple Podcasts, and Spotify with a few clicks. Cubaescucha.com makes launching your podcast easy, allowing you to focus on making good content. Create an account and get podcasting today!": "Con nuestra plataforma fácil de usar, puede lanzar y distribuir sus podcasts con facilidad. Distribuya sus podcasts en Google Podcasts, Apple Podcasts y Spotify con unos pocos clics. Cubaescucha.com facilita el lanzamiento de su podcast, lo que le permite concentrarse en crear un buen contenido. ¡Cree una cuenta y comience su podcast hoy mismo!"
+    "With our simple to use platform you can launch and distribute your podcasts with ease. Get published on Google Podcasts, Apple Podcasts, and Spotify with a few clicks. Cubaescucha.com makes launching your podcast easy, allowing you to focus on making good content. Create an account and get podcasting today!": "Con nuestra plataforma fácil de usar, puede lanzar y distribuir sus podcasts con facilidad. Distribuya sus podcasts en Google Podcasts, Apple Podcasts y Spotify con unos pocos clics. Cubaescucha.com facilita el lanzamiento de su podcast, lo que le permite concentrarse en crear un buen contenido. ¡Cree una cuenta y comience su podcast hoy mismo!",
+    "Getting Started": "Primeros Pasos",
+    "Cubaescucha has wonderful documentation and guides to help you get started. Whether you are a beginner or have experience with podcasting, cubaescucha helps you get the job done with ease.": "Cubaescucha tiene documentación y guías maravillosas para ayudarle a comenzar. Ya sea que sea un principiante o tenga experiencia con el podcasting, cubaescucha le ayuda a hacer el trabajo con facilidad.",
+    "Support": "Soporte",
+    "We offer email-based support to all the creators on the platform, with a 12-hour maximum response time. We also offer live chat support for all our sponsors.": "Ofrecemos soporte por correo electrónico a todos los creadores de la plataforma, con un tiempo de respuesta máximo de 12 horas. También ofrecemos soporte de chat en vivo para todos nuestros patrocinadores.",
+    "Newsletter": "Boletin",
+    "Keep up with the latest updates from cubaescucha. We constantly add new features, and apply fixes that help improve the overall platform experience for both you and your listeners.": "Manténgase al día con las últimas actualizaciones de cubaescucha. Constantemente agregamos nuevas funciones y aplicamos correcciones que ayudan a mejorar la experiencia general de la plataforma tanto para usted como para sus oyentes.",
+    "If you are enjoying cubaescucha, then please consider becoming a sponsor of the platform and automatically gain access to our live chat support channels. Your donation will help keep the lights up and will allow for the continued improvement of cubaescucha.": "Si está disfrutando de cubaescucha, considere convertirse en patrocinador de la plataforma y obtenga acceso automáticamente a nuestros canales de soporte de chat en vivo. Su donación ayudará a mantener las luces encendidas y permitirá la mejora continua de cubaescucha."
 }

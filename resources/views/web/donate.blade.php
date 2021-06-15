@@ -22,10 +22,20 @@
             {{__("Cubaescucha is a podcasting platform that allows creators share their content in audio format, and distribute it throughout the biggest podcast players, such as Spotify, Apple Podcasts, and Google Podcasts. While the platform is 100% FREE for both creators and listeners, servers maintenance and development comes at a cost. If you would like to help keep the lights up (and feed our cats), please consider becoming a sponsor with your monthly contribution, or make a on-time donation using the options below.")}}
         </p>
 
+        @if (isset($success))
+        <div class="px-4 sm:px-6 lg:px-8 py-4 bg-emerald-200 rounded-lg shadow-sm border-emerald-300 text-emerald-800">
+            {{ $success }}
+        </div>
+        @endif
+
+        @if (auth()->user()->subscribedToProduct('prod_Jf3zzKP5MQeY1I', 'default'))
+            You are already subscribed!
+        @endif
+
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div class="">
                 <h3>
-                    {{ __("Montly") }}
+                    {{ __("Monthly") }}
                 </h3>
 
                 <div class="rounded border">
@@ -42,16 +52,7 @@
                         <div class="px-3 py-2 my-2">
                             <div class="flex items-center justify-between">
                                 <strong>{{__("$5 a month")}}</strong>
-                                <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
-                            </div>
-                        </div>
-
-                        <div class="border-b"></div>
-
-                        <div class="px-3 py-2 my-2">
-                            <div class="flex items-center justify-between">
-                                <strong>{{__("$8 a month")}}</strong>
-                                <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                                <a href="{{ route('checkout', ['tier' => '1']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                             </div>
                         </div>
 
@@ -60,7 +61,7 @@
                         <div class="px-3 py-2 my-2">
                             <div class="flex items-center justify-between">
                                 <strong>{{__("$15 a month")}}</strong>
-                                <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                                <a href="{{ route('checkout', ['tier' => '2']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                             </div>
                         </div>
 
@@ -69,7 +70,7 @@
                         <div class="px-3 py-2 my-2">
                             <div class="flex items-center justify-between">
                                 <strong>{{__("$25 a month")}}</strong>
-                                <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                                <a href="{{ route('checkout', ['tier' => '3']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                             </div>
                         </div>
 
@@ -78,23 +79,11 @@
                         <div class="px-3 py-2 my-2">
                             <div class="flex items-center justify-between">
                                 <strong>{{__("$50 a month")}}</strong>
-                                <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                                <a href="{{ route('checkout', ['tier' => '4']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                             </div>
                         </div>
 
                         <div class="border-b"></div>
-
-                        <div class="px-3 py-2 my-2">
-                            <div class="flex items-center justify-between">
-                                <div class="">
-                                    <label class="text-sm">{{__("Custom amount")}}</label>
-                                    <input type="number" class="text-sm" placeholder="$0.00">
-                                </div>
-                                <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
-                            </div>
-                        </div>
-
-                        @livewire('new-donation-subscription')
                     @endauth
                 </div>
             </div>
@@ -108,7 +97,7 @@
                     <div class="px-3 py-2 my-2">
                         <div class="flex items-center justify-between">
                             <strong>{{__("$5 one time")}}</strong>
-                            <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                            <a href="{{config('donations.onetimedonation_5')}}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                         </div>
                     </div>
 
@@ -150,11 +139,7 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
 
     {{-- Sponsors --}}
 
