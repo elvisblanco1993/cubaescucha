@@ -11,7 +11,7 @@
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
-                    {{ __("Go Back") }}
+                    {{ __("Go back") }}
                 </a>
             </div>
         </div>
@@ -26,10 +26,6 @@
         <div class="px-4 sm:px-6 lg:px-8 py-4 bg-emerald-200 rounded-lg shadow-sm border-emerald-300 text-emerald-800">
             {{ $success }}
         </div>
-        @endif
-
-        @if (auth()->user()->subscribedToProduct('prod_Jf3zzKP5MQeY1I', 'default'))
-            You are already subscribed!
         @endif
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
@@ -49,41 +45,45 @@
                     @endguest
 
                     @auth
-                        <div class="px-3 py-2 my-2">
-                            <div class="flex items-center justify-between">
-                                <strong>{{__("$5 a month")}}</strong>
-                                <a href="{{ route('checkout', ['tier' => '1']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                        @if (!Auth::user()->subscribed())
+                            <div class="px-3 py-2 my-2">
+                                <div class="flex items-center justify-between">
+                                    <strong>{{__("$5 a month")}}</strong>
+                                    <a href="{{ route('checkout', ['tier' => '1']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="border-b"></div>
+                            <div class="border-b"></div>
 
-                        <div class="px-3 py-2 my-2">
-                            <div class="flex items-center justify-between">
-                                <strong>{{__("$15 a month")}}</strong>
-                                <a href="{{ route('checkout', ['tier' => '2']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                            <div class="px-3 py-2 my-2">
+                                <div class="flex items-center justify-between">
+                                    <strong>{{__("$15 a month")}}</strong>
+                                    <a href="{{ route('checkout', ['tier' => '2']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="border-b"></div>
+                            <div class="border-b"></div>
 
-                        <div class="px-3 py-2 my-2">
-                            <div class="flex items-center justify-between">
-                                <strong>{{__("$25 a month")}}</strong>
-                                <a href="{{ route('checkout', ['tier' => '3']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                            <div class="px-3 py-2 my-2">
+                                <div class="flex items-center justify-between">
+                                    <strong>{{__("$25 a month")}}</strong>
+                                    <a href="{{ route('checkout', ['tier' => '3']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="border-b"></div>
+                            <div class="border-b"></div>
 
-                        <div class="px-3 py-2 my-2">
-                            <div class="flex items-center justify-between">
-                                <strong>{{__("$50 a month")}}</strong>
-                                <a href="{{ route('checkout', ['tier' => '4']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                            <div class="px-3 py-2 my-2">
+                                <div class="flex items-center justify-between">
+                                    <strong>{{__("$50 a month")}}</strong>
+                                    <a href="{{ route('checkout', ['tier' => '4']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="border-b"></div>
+                        @else
+                            <div class="px-3 py-2">
+                                {{ __("You are already supporting us with your donation. To cancel your donation, or change it, please go to your") }} <a href="{{route('billing-portal')}}">{{__("Billing Portal")}}</a>
+                            </div>
+                        @endif
                     @endauth
                 </div>
             </div>

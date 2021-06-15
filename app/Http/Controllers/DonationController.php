@@ -9,6 +9,8 @@ class DonationController extends Controller
 {
     /**
      * Redirect to Stripe Checkout
+     *
+     * Here sponsors will be redirected to the correct donation page.
      */
     public function redirectToCheckout($tier)
     {
@@ -56,8 +58,7 @@ class DonationController extends Controller
      */
     public function confirmDonation()
     {
-        return view('web.donate', [
-            'success' => 'Thank you for sponsoring cubaescucha.com! Your name will be highlighted in our sponsors list.'
-        ]);
+        // Verify that the payment was fullfilled. Then redirect to donation/success
+        return view('web.donate.completed');
     }
 }
