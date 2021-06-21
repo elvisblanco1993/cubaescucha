@@ -36,7 +36,7 @@
                 </a>
 
                 @isset($podcast->spotifypodcasts_url)
-                    <a href="{{ $spodcast->potifypodcasts_url }}"
+                    <a href="{{ $podcast->potifypodcasts_url }}"
                         target="_blank"
                         class="border p-1 rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" version="1.1" viewBox="0 0 168 168">

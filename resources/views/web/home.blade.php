@@ -17,8 +17,7 @@
             <div class="col-span-2 sm:col-span-1 prose">
                 <h1 class="text-blueGray-800">{{ __("Want to create a podcast but don't know where to start?") }}</h1>
                 <p class="text-blueGray-600">{{ __("We have written some useful guides to help you get started. If you still have any questions, let us know. We will be more than happy to assist.") }}</p>
-                <a  href="{{ route('help') }}"
-                    class="inline-flex items-center no-underline px-4 py-2 bg-yellow-400 border border-transparent rounded-md font-semibold text-xs text-blueGray-900 uppercase tracking-widest hover:bg-yellow-500 active:bg-yellow-600 focus:outline-none focus:border-yellow-500 focus:shadow-outline-yellow disabled:opacity-25 transition ease-in-out duration-150">
+                <a  href="{{ route('help') }}">
                     {{ __("Learn more") }}
                 </a>
             </div>
