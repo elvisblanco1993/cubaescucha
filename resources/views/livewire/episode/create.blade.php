@@ -6,8 +6,8 @@
             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                 <div class="grid grid-cols-3 gap-6">
                     <div class="col-span-3">
-                        <label for="title" class="block text-sm font-medium text-gray-700">
-                            {{ __('Title') }}
+                        <label for="title" class="block text-xs font-medium text-blueGray-500">
+                            {{ __('Title') }} <span class="text-red-600">*</span>
                         </label>
                         <div class="mt-1 flex rounded-md shadow-sm">
                             <input type="text" wire:model.defer="title" id="title">
@@ -19,8 +19,8 @@
                 </div>
 
                 <div>
-                    <label for="show_notes" class="block text-sm font-medium text-gray-700">
-                        {{ __('Episode notes') }}
+                    <label for="show_notes" class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Episode notes') }} <span class="text-red-600">*</span>
                     </label>
                     <div class="mt-1">
                         <textarea id="show_notes" wire:model.defer="show_notes" rows="8" ></textarea>
@@ -35,33 +35,33 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">
-                        {{ __('Episode type') }}
+                    <label class="block text-xs font-medium text-blueGray-500 mb-1">
+                        {{ __('Episode type') }} <span class="text-red-600">*</span>
                     </label>
-                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded">
+                    <label class="inline-flex items-center text-sm mr-2 border border-gray-300 text-blueGray-600 shadow-sm p-2 rounded">
                         <input type="radio" wire:model.defer="type" name="type" value="full" class="mr-2 rounded-full">
                         {{ __('Full episode') }}
                     </label>
-                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded">
+                    <label class="inline-flex items-center text-sm mr-2 border border-gray-300 text-blueGray-600 shadow-sm p-2 rounded">
                         <input type="radio" wire:model.defer="type" name="type" value="trailer" class="mr-2 rounded-full">
                         {{ __('Trailer') }}
                     </label>
-                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded">
+                    <label class="inline-flex items-center text-sm mr-2 border border-gray-300 text-blueGray-600 shadow-sm p-2 rounded">
                         <input type="radio" wire:model.defer="type" name="type" value="bonus" class="mr-2 rounded-full">
                         {{ __('Bonus') }}
                     </label>
                 </div>
 
                 <div>
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center text-sm font-medium text-blueGray-500">
                         <input type="checkbox" wire:model.defer="explicit" class="mr-2 rounded">
                         {{ __('This episode includes explicit content.') }}
                     </label>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">
-                    {{__('Episode audio file')}}
+                    <label class="block text-xs font-medium text-blueGray-500">
+                    {{__('Episode audio file')}} <span class="text-red-600">*</span>
                     </label>
                     <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                         <div class="space-y-1 text-center">
@@ -99,21 +99,21 @@
 
                 <div class="flex">
                     <div class="w-1/2 pr-4">
-                        <label class="block text-sm font-medium text-gray-700" for="season">
-                            {{ __('Season number') }}
+                        <label class="block text-xs font-medium text-blueGray-500" for="season">
+                            {{ __('Season number') }} <span class="text-red-600">*</span>
                         </label>
                         <input type="number" wire:model.defer="season">
                     </div>
                     <div class="w-1/2 pl-4">
-                        <label class="block text-sm font-medium text-gray-700" for="episode_no">
-                            {{ __('Episode number') }}
+                        <label class="block text-xs font-medium text-blueGray-500" for="episode_no">
+                            {{ __('Episode number') }} <span class="text-red-600">*</span>
                         </label>
                         <input type="number" wire:model.defer="episode_no">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">
+                    <label class="block text-xs font-medium text-blueGray-500">
                         {{ __('Publishing date') }}
                     </label>
                     <input type="date" wire:model.defer="published_at" value="{{ $published_at }}">

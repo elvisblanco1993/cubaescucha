@@ -61,23 +61,4 @@
         @endif
 
     </div>
-
-    {{-- <ul>
-        @forelse ($countPerCountry as $counter)
-            <li class="flex items-center justify-between bg-white py-2 @if(!$loop->first) border-t @endif border-indigo-200 @if($loop->last) rounded-b-lg @endif @if($loop->first) rounded-t-lg @endif">
-                <div>
-                    {{ $counter->country }}
-                </div>
-                <div>
-                    {{ $counter->total }}
-                </div>
-            </li>
-        @empty
-
-            <li class="bg-white py-2 list-none text-center">
-                {{ __('No enough data has been collected.') }}
-            </li>
-        @endforelse
-    </ul> --}}
-
 </div>

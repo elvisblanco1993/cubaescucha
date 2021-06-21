@@ -5,8 +5,8 @@
         <div class="shadow sm:rounded-md sm:overflow-hidden">
             <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                 <div>
-                    <label for="name" class="block text-sm font-medium text-gray-700">
-                        {{ __('Name') }}
+                    <label for="name" class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Name') }} <span class="text-red-600">*</span>
                     </label>
                     <div class="mt-1 flex rounded-md shadow-sm">
                         <input type="text" wire:model="name" id="name">
@@ -17,8 +17,8 @@
                 </div>
 
                 <div>
-                    <label for="description" class="block text-sm font-medium text-gray-700">
-                        {{ __('Description') }}
+                    <label for="description" class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Description') }} <span class="text-red-600">*</span>
                     </label>
                     <div class="mt-1">
                         <textarea id="description" wire:model.defer="description" rows="10"></textarea>
@@ -29,8 +29,8 @@
                 </div>
 
                 <div>
-                    <label for="tags" class="block text-sm font-medium text-gray-700">
-                        {{ __('Tags') }}
+                    <label for="tags" class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Tags') }} <span class="text-red-600">*</span>
                     </label>
                     <div class="mt-1 flex rounded-md shadow-sm">
                         <input type="text" wire:model="tags" id="tags" placeholder="entertainment, sports, music...">
@@ -40,46 +40,39 @@
                     @enderror
                 </div>
 
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">
-                        {{ __('Podcast style') }}
-                    </label>
-                    <select wire:model.defer="style">
-                        <option></option>
-                        <option value="e">{{__("Episodic")}}</option>
-                        <option value="ews">{{__("Episodic with Seasons")}}</option>
-                        <option value="s">{{__("Serial")}}</option>
-                    </select>
-                    {{-- <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded text-sm">
-                        <input type="radio" wire:model.defer="style" name="style" value="e" class="mr-2 rounded-full">
-                        {{ __('Episodic') }}
-                    </label>
-                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded text-sm">
-                        <input type="radio" wire:model.defer="style" name="style" value="ews" class="mr-2 rounded-full">
-                        {{ __('Episodic with Seasons') }}
-                    </label>
-                    <label class="inline-flex items-center mr-2 border border-gray-300 shadow-sm p-2 rounded text-sm">
-                        <input type="radio" wire:model.defer="style" name="style" value="s" class="mr-2 rounded-full">
-                        {{ __('Serial') }}
-                    </label> --}}
-                </div>
+                <div class="grid grid-cols-2 gap-8">
 
-                <div>
-                    <label for="lang" class="block text-sm font-medium text-gray-700">
-                        {{ __('Language') }}
-                    </label>
-                    <div class="mt-1 flex rounded-md shadow-sm">
-                        <select wire:model="lang" data-placeholder="Choose a Language...">
-                            <option value="EN">{{ __("English") }}</option>
-                            <option value="FR">{{ __("French") }}</option>
-                            <option value="PT">{{ __("Portuguese") }}</option>
-                            <option value="ES">{{ __("Spanish") }}</option>
+                    <div class="col-span-1">
+                        <label class="block text-xs font-medium text-blueGray-500 mb-1">
+                            {{ __('Podcast style') }} <span class="text-red-600">*</span>
+                        </label>
+                        <select wire:model.defer="style">
+                            <option></option>
+                            <option value="e" title="{{__("For news and current affairs types of shows.")}}">{{__("Episodic")}}</option>
+                            <option value="ews" title="{{__("For news and current affairs types of shows, but with multiple seasons.")}}">{{__("Episodic with Seasons")}}</option>
+                            <option value="s" title="{{__("Your listeners are best to consume your podcast in a specific order of episodes, where you may have one or more series and each series has a specific order for the episodes.")}}">{{__("Serial")}}</option>
                         </select>
                     </div>
+
+                    <div class="col-span-1">
+                        <label for="lang" class="block text-xs font-medium text-blueGray-500">
+                            {{ __('Language') }} <span class="text-red-600">*</span>
+                        </label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                            <select wire:model="lang" data-placeholder="Choose a Language...">
+                                <option></option>
+                                <option value="EN">{{ __("English") }}</option>
+                                <option value="FR">{{ __("French") }}</option>
+                                <option value="PT">{{ __("Portuguese") }}</option>
+                                <option value="ES">{{ __("Spanish") }}</option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div>
-                    <label class="inline-flex items-center">
+                    <label class="inline-flex items-center text-sm font-medium text-blueGray-500">
                         <input type="checkbox" wire:model="explicit" class="mr-2 rounded">
                         {{ __('This podcast includes explicit content.') }}
                     </label>
@@ -88,29 +81,9 @@
                     @enderror
                 </div>
 
-                <div class="grid grid-cols-3 gap-6">
-                    <div class="col-span-3">
-                        <label for="url" class="block text-sm font-medium text-gray-700">
-                            {{ __('Public website address') }}
-                        </label>
-                        <div class="mt-1 flex items-center rounded-md shadow-sm">
-                            <span class="pr-2 text-sm bg-gray-200 py-2 pl-2 rounded-l-md border border-gray-300">
-                                {{ config('app.url') . '/podcasts/' }}
-                            </span>
-                            <input wire:model="url" id="url" class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-r-md sm:text-sm border-gray-300" type="text" style="border-top-left-radius: 0 !important; border-bottom-left-radius: 0 !important; border-left: none;">
-                        </div>
-                        <small>
-                            {{ __('Once you save changes you will not be able to update your url.') }}
-                        </small>
-                        @error('url')
-                            <small class="text-red-600">{{ $message }}</small>
-                        @enderror
-                    </div>
-                </div>
-
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">
-                        {{ __('Cover photo') }}
+                    <label class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Cover photo') }} <span class="text-red-600">*</span>
                     </label>
                     <div class="mt-2 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                         <div class="space-y-1 text-center">
