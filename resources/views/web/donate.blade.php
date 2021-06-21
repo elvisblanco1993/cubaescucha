@@ -96,8 +96,8 @@
                 <div class="rounded border">
                     <div class="px-3 py-2 my-2">
                         <div class="flex items-center justify-between">
-                            <strong>{{__("$5 one time")}}</strong>
-                            <a href="{{config('donations.onetimedonation_5')}}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                            <strong>$5.00 {{__("one time")}}</strong>
+                            <a href="{{ config('donations.onetimedonation_5') }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                         </div>
                     </div>
 
@@ -105,8 +105,8 @@
 
                     <div class="px-3 py-2 my-2">
                         <div class="flex items-center justify-between">
-                            <strong>{{__("$10 one time")}}</strong>
-                            <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                            <strong>$15.00 {{__("one time")}}</strong>
+                            <a href="{{ config('donations.onetimedonation_15') }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                         </div>
                     </div>
 
@@ -114,8 +114,8 @@
 
                     <div class="px-3 py-2 my-2">
                         <div class="flex items-center justify-between">
-                            <strong>{{__("$20 one time")}}</strong>
-                            <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                            <strong>$30.00 {{__("one time")}}</strong>
+                            <a href="{{ config('donations.onetimedonation_30') }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                         </div>
                     </div>
 
@@ -123,17 +123,8 @@
 
                     <div class="px-3 py-2 my-2">
                         <div class="flex items-center justify-between">
-                            <strong>{{__("$50 one time")}}</strong>
-                            <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
-                        </div>
-                    </div>
-
-                    <div class="border-b"></div>
-
-                    <div class="px-3 py-2 my-2">
-                        <div class="flex items-center justify-between">
-                            <strong>{{__("$100 one time")}}</strong>
-                            <a href="" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
+                            <strong>$90.00 {{__("one time")}}</strong>
+                            <a href="{{ config('donations.onetimedonation_90') }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                         </div>
                     </div>
                 </div>

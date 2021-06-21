@@ -5,7 +5,7 @@
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
     <channel>
         <title>{{ $podcast->name }}</title>
-        <link>{{ config('app.url') . "/podcast/" . $podcast->url . '/rss' }}</link>
+        <link>{{ config('app.url') . "/podcast/" . $podcast->url }}</link>
         <description>{{ $podcast->description }}</description>
         <language>{{ $podcast->lang }}</language>
         <itunes:author>{{ $podcast->user->name }}</itunes:author>

@@ -19,7 +19,7 @@
             <h1 class="text-4xl font-extrabold">
                 {{ $episode->title }}
             </h1>
-            <a href="{{ route('podcast.display', ['podcast' => $podcast->slug]) }}" class="font-bold text-base text-indigo-500">
+            <a href="{{ route('podcast.display', ['podcast' => $podcast->url]) }}" class="font-bold text-base text-indigo-500">
                 {{ $podcast->name }}
             </a>
             <small class="block text-blueGray-800 my-4 capitalize">
@@ -27,7 +27,7 @@
             </small>
 
             <div class="my-4 flex gap-2">
-                <a  href="{{ route('genRss', ['podcast' => $podcast->slug]) }}"
+                <a  href="{{ route('genRss', ['podcast' => $podcast->url]) }}"
                     target="_blank"
                     class="border p-1 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

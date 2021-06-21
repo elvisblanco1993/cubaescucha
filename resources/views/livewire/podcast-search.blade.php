@@ -18,11 +18,11 @@
             <div class="absolute z-10 list-group bg-white w-full rounded-t-none shadow-lg rounded-b-lg border border-gray-200">
 
                 @foreach ($podcasts as $podcast)
-                    <a  href="{{ route('podcast.display', ['podcast' => $podcast['slug']]) }}"
+                    <a  href="{{ route('podcast.display', ['podcast' => $podcast['url']]) }}"
                         class="block py-4 px-6 hover:bg-indigo-50 border-t border-gray-200 @if($loop->last) border-b-none rounded-b-lg @endif">
                             {{ $podcast['name'] }}
                             <small class="block font-semibold text-blueGray-600">
-                                {{ route('podcast.display', ['podcast' => $podcast['slug']]) }}
+                                {{ route('podcast.display', ['podcast' => $podcast['url']]) }}
                             </small>
                     </a>
                 @endforeach
