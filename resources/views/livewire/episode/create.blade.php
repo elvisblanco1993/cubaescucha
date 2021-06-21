@@ -97,14 +97,16 @@
                     @enderror
                 </div>
 
-                <div class="flex">
-                    <div class="w-1/2 pr-4">
+                <div class="flex gap-8">
+                    @if ($podcast->style == 'ews')
+                    <div class="w-full sm:w-1/2">
                         <label class="block text-xs font-medium text-blueGray-500" for="season">
                             {{ __('Season number') }} <span class="text-red-600">*</span>
                         </label>
                         <input type="number" wire:model.defer="season">
                     </div>
-                    <div class="w-1/2 pl-4">
+                    @endif
+                    <div class="w-full sm:w-1/2">
                         <label class="block text-xs font-medium text-blueGray-500" for="episode_no">
                             {{ __('Episode number') }} <span class="text-red-600">*</span>
                         </label>
@@ -112,7 +114,7 @@
                     </div>
                 </div>
 
-                <div>
+                <div class="w-full sm:w-1/2">
                     <label class="block text-xs font-medium text-blueGray-500">
                         {{ __('Publishing date') }}
                     </label>

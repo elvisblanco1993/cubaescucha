@@ -14,7 +14,15 @@
 
                 <div class="">
                     <small class="text-gray-600 text-xs uppercase">
-                        {{ date('M d, Y', strtotime($episode->published_at)) . " | S" .  $episode->season . ':E' . $episode->episode_no}} @if( $episode->explicit == 1 ) <span class="ml-2 bg-black px-1 text-yellow-400 font-bold">{{__("explicit")}}</span>@endif
+                        {{ date('M d, Y', strtotime($episode->published_at)) }}
+                        @if ($episode->season != null)
+                            {{ " | S" .  $episode->season }}
+                        @endif
+                        {{'E' . $episode->episode_no}}
+
+                        @if( $episode->explicit == 1 )
+                            <span class="ml-2 bg-black px-1 text-yellow-400 font-bold">{{__("explicit")}}</span>
+                        @endif
                     </small>
 
                     <p class="font-semibold leading-3">

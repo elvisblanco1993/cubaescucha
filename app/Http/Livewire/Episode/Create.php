@@ -68,7 +68,7 @@ class Create extends Component
             'file_name' => $path,
             'audio_duration' => ceil($this->audio_duration),
             'explicit' => $is_explicit,
-            'season' => $this->season,
+            'season' => ($this->podcast->style == 'ews') ? $this->season : null , // Only insert season number if the podcast has seasons
             'episode_no' => $this->episode_no,
             'published_at' => $this->published_at,
         ]);
