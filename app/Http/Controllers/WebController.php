@@ -21,7 +21,10 @@ class WebController extends Controller
                 'podcastsList' => $podcastsList,
             ]);
         } else {
-            return redirect(route('podcasts'));
+            if (! auth()->user()->isAdmin()) {
+                return redirect(route('podcasts'));
+            }
+            return redirect(route('users'));
         }
     }
 

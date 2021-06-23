@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;
@@ -8,11 +9,6 @@ use App\Http\Controllers\WebController;
 use App\Http\Livewire\Podcast\Reports;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
-
-// PHPINFO
-Route::get('/info', function () {
-    return phpinfo();
-});
 
 /**
  * Homepage
@@ -109,7 +105,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
  */
 
  Route::middleware(['auth:sanctum', 'verified', 'admin'])->group( function() {
-
     // Show Users
     Route::get('/users', [UserController::class, 'index'])->name('users');
+
+    // Show articles
+    Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+
+    // Create article
+    Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles-create');
+
+    Route::post('/articles/save', [ArticleController::class, 'store'])->name('article-store');
  });

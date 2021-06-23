@@ -11,6 +11,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -21,6 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
     use TwoFactorAuthenticatable;
     use Billable;
+    use Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -77,5 +79,27 @@ class User extends Authenticatable implements MustVerifyEmail
     public function podcasts ()
     {
         return $this->hasMany(Podcast::class);
+    }
+
+    /**
+     * Has many podcasts
+     */
+    public function articles ()
+    {
+        return $this->hasMany(Article::class);
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        unset($array['updated_at']);
+
+        return $array;
     }
 }

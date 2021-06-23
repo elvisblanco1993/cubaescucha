@@ -2,34 +2,31 @@
 
 namespace App\Http\Livewire\Admin\Users;
 
-use Livewire\Component;
 use \App\Models\User;
-use Illuminate\Support\Facades\Auth;
+use Livewire\Component;
 
 class Index extends Component
 {
     public $users;
+    public $query;
 
-    public function impersonate($userId)
+    public function mount()
     {
-        if(! auth()->user()->isAdmin()) {
-            return;
-        }
+        $this->users = User::get();
+    }
 
-        $user = User::findOrFail($userId);
+    public function cancel()
+    {
+        $this->query = '';
+    }
 
-        $originalId = auth()->user()->id;
-        session()->put('impersonate', $originalId);
-        Auth::onceUsingId($userId);
-        return redirect('/podcasts');
+    public function search()
+    {
+        $this->users = User::search($this->query)->take(10)->get();
     }
 
     public function render()
     {
-        $this->users = User::where('role', 'User')->get();
-
-        return view('livewire.admin.users.index', [
-            'users' => $this->users,
-        ]);
+        return view('livewire.admin.users.index');
     }
 }
