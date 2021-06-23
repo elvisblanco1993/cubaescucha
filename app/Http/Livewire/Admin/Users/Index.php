@@ -12,7 +12,7 @@ class Index extends Component
 
     public function mount()
     {
-        $this->users = User::get();
+        $this->users = User::with('podcasts')->latest()->get();
     }
 
     public function cancel()

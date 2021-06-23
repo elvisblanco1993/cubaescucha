@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ArticleController extends Controller
 {
@@ -27,6 +28,7 @@ class ArticleController extends Controller
 
         $store = Article::create([
                 'title' => $request->title,
+                'excerpt' => $request->excerpt,
                 'tags' => $request->tags,
                 'body' => $request->body,
                 'user_id' => auth()->user()->id,
@@ -36,6 +38,41 @@ class ArticleController extends Controller
         if ($store) {
             session()->flash('message', 'Article successfully created.');
             return redirect(route('articles'));
+        } else {
+            Log::error("Article not saved. There was an error while attempting to store an article.");
+            abort(403);
+        }
+    }
+
+    public function edit(Article $article)
+    {
+        return view('admin.articles.edit', [
+            'article' => $article,
+        ]);
+    }
+
+    public function update(Article $article, Request $request)
+    {
+        $request->validate([
+            'title' => ['required'],
+            'tags' => ['required'],
+            'body' => ['required'],
+        ]);
+
+        $update = $article->update([
+            'title' => $request->title,
+            'excerpt' => $request->excerpt,
+            'tags' => $request->tags,
+            'body' => $request->body,
+            'user_id' => auth()->user()->id,
+        ]);
+
+        if ($update) {
+            session()->flash('message', 'Article successfully created.');
+            return redirect(route('articles'));
+        } else {
+            Log::error("Article not saved. There was an error while attempting to update an article.");
+            abort(403);
         }
     }
 }

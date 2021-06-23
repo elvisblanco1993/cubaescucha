@@ -114,5 +114,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     // Create article
     Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles-create');
 
+    // Edit article
+    Route::get('/article/{article}/edit', [ArticleController::class, 'edit'])->name('article-edit');
+
+    // Save article
     Route::post('/articles/save', [ArticleController::class, 'store'])->name('article-store');
- });
+
+    // Update article
+    Route::post('/article/{article}/update', [ArticleController::class, 'update'])->name('article-update');
+
+    // Delete article
+});

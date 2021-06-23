@@ -106,11 +106,11 @@
 
             <x-jet-confirmation-modal wire:model="confirmDeleteEpisode">
                 <x-slot name="title">
-                    {{ __('Are you sure you dant to delete this episode?') }}
+                    {{ __('Are you sure you want to delete this episode?') }}
                 </x-slot>
 
                 <x-slot name="content">
-                    {{ __('Once you delete this episode, its content will be lost forever, inclusing any analytics-related data we may have collected in the past.') }}
+                    {{ __('Once you delete this episode, its content will be lost forever, including any analytics-related data we may have collected in the past.') }}
                 </x-slot>
 
                 <x-slot name="footer">
