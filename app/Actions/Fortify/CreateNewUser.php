@@ -35,10 +35,11 @@ class CreateNewUser implements CreatesNewUsers
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
             ]), function (User $user) {
+                // Assign role
+                $user->role = ($user->id == 1) ? 'Admin' : 'User';
+                $user->save();
 
-                /**
-                 * Create Stripe customer
-                 */
+                // Create stripe customer
                 $user->createAsStripeCustomer([
                     'name' => $user->name,
                     'email' => $user->email,

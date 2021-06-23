@@ -61,6 +61,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
     ];
 
+    public function isAdmin()
+    {
+        return $this->role == 'Admin';
+    }
+
+    public function isUser()
+    {
+        return $this->role == 'User';
+    }
+
     /**
      * Has many podcasts
      */

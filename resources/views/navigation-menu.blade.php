@@ -13,9 +13,17 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('podcasts') }}" :active="request()->routeIs('podcasts')" class="text-white">
-                        {{ __('Podcasts') }}
-                    </x-jet-nav-link>
+                    @if (auth()->user()->isUser())
+                        <x-jet-nav-link href="{{ route('podcasts') }}" :active="request()->routeIs('podcasts')" class="text-white">
+                            {{ __('Podcasts') }}
+                        </x-jet-nav-link>
+                    @endif
+
+                    @if (auth()->user()->isAdmin())
+                        <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')" class="text-white">
+                            {{ __('Users') }}
+                        </x-jet-nav-link>
+                    @endif
                 </div>
             </div>
 

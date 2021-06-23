@@ -3,6 +3,7 @@
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
 use App\Http\Livewire\Podcast\Reports;
 use Illuminate\Support\Facades\Route;
@@ -95,3 +96,20 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     Route::get('/donate/sponsorship/{tier}', [DonationController::class, 'redirectToCheckout'])->name('checkout');
     Route::get('/donate/success', [DonationController::class, 'confirmDonation'])->name('donate.success');
 });
+
+
+/**
+ * ---------------------------------------------------------------------
+ * Administrator-only routes
+ * ---------------------------------------------------------------------
+ *
+ * Here is where all the administration of the platform takes place.
+ * Administrators can view and impersonate all other users,
+ * work with articles, solve technical issues and more.
+ */
+
+ Route::middleware(['auth:sanctum', 'verified', 'admin'])->group( function() {
+
+    // Show Users
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+ });
