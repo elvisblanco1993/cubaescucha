@@ -36,6 +36,11 @@ Route::get('/podcast/{podcast}/{episode}', [EpisodeController::class, 'display']
 Route::get('/help', [WebController::class, 'help'])->name('help');
 
 /**
+ * View Article
+ */
+Route::get('/help/article/{article}', [WebController::class, 'viewArticle'])->name('article-view');
+
+/**
  * Donations page
  */
 Route::get('/donate', [WebController::class, 'donate'])->name('donate');

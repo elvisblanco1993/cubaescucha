@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -28,6 +29,7 @@ class ArticleController extends Controller
 
         $store = Article::create([
                 'title' => $request->title,
+                'slug' => Str::slug($request->title),
                 'excerpt' => $request->excerpt,
                 'tags' => $request->tags,
                 'body' => $request->body,
@@ -61,6 +63,7 @@ class ArticleController extends Controller
 
         $update = $article->update([
             'title' => $request->title,
+            'slug' => Str::slug($request->title),
             'excerpt' => $request->excerpt,
             'tags' => $request->tags,
             'body' => $request->body,

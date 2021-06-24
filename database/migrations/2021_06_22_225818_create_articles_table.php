@@ -17,6 +17,7 @@ class CreateArticlesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('title');
+            $table->string('slug');
             $table->string('excerpt')->nullable();
             $table->text('body');
             $table->string('tags');

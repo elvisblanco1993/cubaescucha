@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Podcast;
 
@@ -34,7 +35,19 @@ class WebController extends Controller
      */
     public function help()
     {
-        return view('web.help');
+        return view('web.help', [
+            'articles' => Article::with('user')->where('published', TRUE)->paginate(10)
+        ]);
+    }
+
+    /**
+     * Displays an article to the visitor
+     */
+    public function viewArticle($article)
+    {
+        return view('web.article', [
+            'article' => Article::where('slug', $article)->firstOrFail()
+        ]);
     }
 
     /**
