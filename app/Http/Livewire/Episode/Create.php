@@ -28,7 +28,6 @@ class Create extends Component
         'show_notes' => 'required|max:1000',
         'type' => 'required',
         'audio_file' => 'required|file|mimes:mp3',
-        'season' => 'required|integer',
         'episode_no' => 'required|integer',
         'audio_duration' => 'required',
     ];
@@ -51,6 +50,7 @@ class Create extends Component
      */
     public function storeEpisode()
     {
+
         $this->validate();
 
         $is_explicit = ($this->explicit == 'on') ? TRUE : FALSE ;
@@ -83,7 +83,7 @@ class Create extends Component
         if ($this->podcast->episodes->count() == 0) {
             return $this->podcast->episodes->count() + 1;
         } else {
-            return $this->podcast->episodes()->orderBy('created_at', 'DESC')->first()->season;
+            return $this->podcast->episodes()->orderBy('episode_no', 'DESC')->first()->season;
         }
     }
 
@@ -92,13 +92,12 @@ class Create extends Component
         if ($this->podcast->episodes->count() == 0) {
             return $this->podcast->episodes->count() + 1;
         } else {
-            return $this->podcast->episodes()->orderBy('created_at', 'DESC')->first()->episode_no + 1;
+            return $this->podcast->episodes()->orderBy('episode_no', 'DESC')->first()->episode_no + 1;
         }
     }
 
     public function render()
     {
-
         $this->season = $this->getCurrentSeasonNumber();
         $this->episode_no = $this->getCurrentEpisodeNumber();
         $this->published_at ??= Carbon::now();

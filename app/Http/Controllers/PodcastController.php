@@ -38,10 +38,8 @@ class PodcastController extends Controller
     {
         return view('podcast.show', [
             'podcast' => $podcast,
-            'publisher' => User::where('id', $podcast->user_id)->first(),
             'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
-            'episodes' => $podcast->episodes()->orderBy('created_at', 'DESC')->get(),
-            'size' => $this->getPodcastSize($podcast),
+            'episodes' => $podcast->episodes()->get(),
         ]);
     }
 

@@ -16,6 +16,7 @@
             <itunes:type>serial</itunes:type>
         @endif
         <itunes:image href="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" />
+        <itunes:explicit>{{ $podcast->explicit }}</itunes:explicit>
         @forelse ($podcast->episodes as $episode)
         <item>
             <guid>{{ $episode->uuid }}</guid>

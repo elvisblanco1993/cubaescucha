@@ -25,6 +25,14 @@ class Podcast extends Model
         'applepodcasts_url'
     ];
 
+    /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['episodes'];
+
+
     public function episodes()
     {
         return $this->hasMany(Episode::class);

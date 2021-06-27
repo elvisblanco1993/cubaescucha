@@ -24,4 +24,9 @@ class Episode extends Model
         'audio_duration',
     ];
 
+    public function podcast()
+    {
+        return $this->belongsTo(Podcast::class);
+    }
+
 }

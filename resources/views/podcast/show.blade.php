@@ -32,7 +32,7 @@
                             {{ $podcast->name }}
                         </h1>
                         <div class="text-sm text-blueGray-600">
-                            <span class="font-bold">{{__("Podcast size:")}}</span> {{ $size }}
+                            {{-- <span class="font-bold">{{__("Podcast size:")}}</span> {{ $size }} --}}
                         </div>
                         <div class="mt-6 flex">
                             <a href="{{ route('genRss', ['podcast' => $podcast->url]) }}" target="_blank" title="{{ __('RSS Feed') }}" class="mr-2 text-amber-500 hover:text-amber-600 p-2 bg-white rounded-lg shadow-sm hover:bg-amber-50">
@@ -56,11 +56,6 @@
                             </a>
                         </div>
                     </div>
-
-
-                        {{-- <div class="">
-
-                        </div> --}}
                 </div>
             </div>
 
@@ -88,7 +83,7 @@
                                                 {{ __('Episode' )}}
                                             </th>
                                             <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                {{ __('Preview') }}
+                                                {{ __('Published Date') }}
                                             </th>
                                             <th scope="col" class="relative px-6 py-3">
                                                 <span class="sr-only">Edit</span>
@@ -99,18 +94,24 @@
 
                                     {{-- Episodes --}}
                                     @forelse ($episodes as $episode)
-
                                         <tr>
-                                            <td class="px-6 py-4 whitespace-nowrap">
-                                                <div class="text-sm text-gray-900">{{ $episode->title }}</div>
-                                                <div class="text-sm text-gray-500 uppercase hidden sm:block">
-                                                    {{ $episode->type . ' episode / ' . date('M d, Y', strtotime($episode->published_at)) . " | S" .  $episode->season . ':E' . $episode->episode_no}}
+                                            <td class="px-6 py-4 whitespace-nowrap flex items-center">
+                                                <div class="mr-2 text-xs font-semibold flex items-center">
+                                                    @if ($podcast->type == 'ews')
+                                                    <div>
+                                                        {{ 'S'.$episode->season }}
+                                                    </div>
+                                                    @endif
+                                                    <div class="">
+                                                        {{ 'E' . $episode->episode_no }}
+                                                    </div>
+                                                </div>
+                                                <div class="text-blueGray-500 text-sm">
+                                                    {{ $episode->title }}
                                                 </div>
                                             </td>
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                <audio controls controlsList="nodownload" class="rounded-lg w-full">
-                                                    <source src="{{ Storage::disk('s3')->url($episode->file_name) }}" type="audio/mpeg">
-                                                </audio>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-blueGray-500">
+                                                {{ date('M d, Y', strtotime($episode->published_at)) }}
                                             </td>
                                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                                 <a href="{{ route('episode.show', ['podcast' => $podcast->id, 'episode' => $episode->id]) }}" class="text-indigo-600 hover:text-indigo-900">{{__('Edit')}}</a>
