@@ -25,7 +25,7 @@ class CreateEpisodesTable extends Migration
             $table->string('type');
             $table->boolean('explicit')->default(FALSE);
             $table->integer('season')->nullable();
-            $table->integer('episode_no');
+            $table->integer('episode_no')->nullable();
             $table->timestamps();
         });
     }

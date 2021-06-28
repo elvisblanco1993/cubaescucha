@@ -2,6 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Mail\NotifyFailedPodcastImport;
+use App\Mail\NotifyPodcastImported;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -14,6 +16,7 @@ use App\Models\Podcast;
 use App\Models\Episode;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class ImportPodcast implements ShouldQueue
 {
@@ -22,17 +25,19 @@ class ImportPodcast implements ShouldQueue
     public $feed;
     public $podcast_url;
     public $user_id;
+    public $user_email;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($rss_url, $podcast_url, $user_id)
+    public function __construct($rss_url, $podcast_url, $user_id, $user_email)
     {
         $this->feed = $rss_url;
         $this->podcast_url = $podcast_url;
         $this->user_id = $user_id;
+        $this->user_email = $user_email;
     }
 
     /**
@@ -42,9 +47,9 @@ class ImportPodcast implements ShouldQueue
      */
     public function handle()
     {
-        Log::notice("/---------------------------------------------");
+        Log::notice("/--------------------------------------------------------");
         Log::notice("/ NEW JOB: IMPORT PODCAST [" . $this->feed . "]");
-        Log::notice("/---------------------------------------------");
+        Log::notice("/--------------------------------------------------------");
 
         $feed = simplexml_load_file($this->feed);
 
@@ -86,26 +91,7 @@ class ImportPodcast implements ShouldQueue
 
                 // Order episodes with older first, newer last
                 if (empty($feed->channel->item->xpath("//itunes:episode")) == TRUE) {
-
-                    Log::notice("Episodes not enumerated. Determining auto generated episode numbers sorting.");
-
-                    // Get the first episode
-                    $first = $feed->channel->item[$feed->channel->item->count() -1]->pubDate;
-                    // Get the last episode
-                    $last = $feed->channel->item[$feed->channel->item->count() -1]->pubDate;
-
-                    $first_pubdate = Carbon::createFromTimestamp(strtotime($first));
-                    $last_pubdate = Carbon::createFromTimestamp(strtotime($last));
-
-                    $order_result = $first_pubdate->lt($last_pubdate);
-
-                    // If the first date is less than the second one, then episode counter should start as 1, 2, 3...
-                    // Otherwise, the episode counter starts backwards as 30, 29, 28...
-                    if ($order_result == TRUE) {
-                        $constructed_no = $feed->channel->item->count();
-                    } else {
-                        $constructed_no = 1;
-                    }
+                    Log::notice("Episodes not enumerated. The episodes will be created without a number and will be sorted by publishing date.");
                 }
 
                 Log::notice("Done checking if episodes are enumerated. Start creating episodes.");
@@ -117,21 +103,24 @@ class ImportPodcast implements ShouldQueue
                     $episode_description = $episode->xpath("./itunes:summary")[0];
                     $episode_pubDate = Carbon::createFromTimestamp(strtotime($episode->pubDate))->toDateTimeString();
                     $episode_type = $episode->episodeType;
-                    $episode_number = $episode->xpath("./itunes:episode")[0] ?? $constructed_no;
+                    $episode_number = ( !empty($feed->channel->item->xpath("//itunes:episode")) && !empty( $episode->xpath("./itunes:episode")[0] ) ) ? $episode->xpath("./itunes:episode")[0] : null;
                     $episode_duration = $episode->xpath("./itunes:duration")[0];
                     $episode_url = $episode->enclosure['url'];
-                    $episode_explicit = $episode->xpath("./itunes:explicit")[0];
-                    $episode_length = $episode->enclosure['length'];
-                    $episode_filetype = $episode->enclosure['type'];
+                    $episode_explicit = ( !empty($feed->channel->item->xpath("//itunes:explicit")) && !empty( $episode->xpath("./itunes:explicit")[0] ) ) ? $episode->xpath("./itunes:explicit")[0] : 0;
 
-                    Log::notice("Grabbed episode data");
+                    Log::notice("Episode metadata collected.");
 
                     // Import the episode media file to s3
                     $file_contents = file_get_contents($episode_url);
                     $file_name = 'podcasts/episodes/'. uniqid() . '.' . substr(pathinfo($episode_url, PATHINFO_EXTENSION), 0, strpos(pathinfo($episode_url, PATHINFO_EXTENSION), "?"));
 
-                    Storage::disk('s3')->put($file_name, $file_contents, 'public');
-                    Log::notice("Saved to s3");
+                    try {
+                        Storage::disk('s3')->put($file_name, $file_contents, 'public');
+                        Log::notice("Saved " . $file_name . " to s3");
+                    } catch (\Throwable $e) {
+                        Log::error("Failed to save " . $file_name . " to s3: " . $e);
+                        report($e);
+                    }
 
                     // Create episode
                     $new_episode = new Episode([
@@ -151,16 +140,26 @@ class ImportPodcast implements ShouldQueue
                     ]);
 
                     $new_episode->save();
-
-                    if (empty($episode->xpath("./itunes:episode") == TRUE)) {
-                        if ($order_result == TRUE) {
-                            $constructed_no--;
-                        } else {
-                            $constructed_no++;
-                        }
-                    }
                 }
+
+                Log::notice("Podcast " . $podcast_name . " was successfully imported.");
+                Log::notice("Closing job...");
+                // Send success email notification to user
+                Log::notice("Sending success email to podcast owner");
+                Mail::to($this->user_email)->send(new NotifyPodcastImported());
+                Log::notice("Email sent...");
+
+            } else {
+                $podcast->delete();
+                Log::error("Either the podcast was not created or the podcast does not have any episodes");
+                Log::notice("Sending failure email to owner and support");
+                Mail::to($this->user_email)->send(new NotifyFailedPodcastImport());
+                Log::notice("Email sent...");
             }
+        } else {
+            Log::error("The feed is empty. Sendind failure email to owner");
+            Mail::to($this->user_email)->send(new NotifyFailedPodcastImport());
+            Log::notice("Send failure email about empty feed to owner...");
         }
     }
 }
