@@ -44,6 +44,13 @@
                     @enderror
                 </div>
 
+                <div class="my-8">
+                    <textarea name="body_es" id="body_es" cols="30" rows="20"></textarea>
+                    @error('body_es')
+                        {{ $message }}
+                    @enderror
+                </div>
+
                 <x-jet-button type="submit">{{__("Save Article")}}</x-jet-button>
             </form>
 
@@ -51,6 +58,7 @@
             <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
             <script>
                 var easyMDE = new EasyMDE({element: document.getElementById('body')});
+                var easyMDESpanish = new EasyMDE({element: document.getElementById('body_es')});
             </script>
         </div>
     </div>

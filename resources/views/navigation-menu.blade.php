@@ -35,11 +35,10 @@
                     <a href="{{ config('app.url') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
-                    <div class="hidden sm:block mx-4  w-1/3">
-                        @livewire('podcast-search')
-                    </div>
+                    <a href="{{ route('shows') }}" class="text-blueGray-100 font-semibold text-xs hidden sm:block mx-8 uppercase">
+                        {{ __('Shows') }}
+                    </a>
                 </div>
-
 
                 <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex items-center uppercase text-sm">
                     <a href="{{ route('login') }}" class="text-blueGray-100 font-semibold text-xs">
@@ -178,8 +177,10 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @guest
-                @livewire('podcast-search')
-
+                <x-jet-responsive-nav-link href="{{ route('shows') }}" class="mt-2">
+                    {{ __('Shows') }}
+                </x-jet-responsive-nav-link>
+                <div class="my-2 border-b border-blueGray-600"></div>
                 <x-jet-responsive-nav-link href="{{ route('login') }}" class="mt-2">
                     {{ __('Login') }}
                 </x-jet-responsive-nav-link>

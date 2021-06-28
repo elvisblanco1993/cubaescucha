@@ -16,19 +16,24 @@ use Illuminate\Http\Request;
 Route::get('/', [WebController::class, 'home'])->name('home');
 
 /**
+ * List all the published podcasts
+ */
+Route::get('/shows', [WebController::class, 'listPublishedPodcasts'])->name('shows');
+
+/**
  * Podcast webpage
  */
-Route::get('/podcast/{podcast}', [PodcastController::class, 'display'])->name('podcast.display');
+Route::get('/shows/{podcast}', [PodcastController::class, 'display'])->name('podcast.display');
 
 /**
  * Podcast RSS Feed
  */
-Route::get('/podcast/{podcast}/rss', [PodcastController::class, 'generateRss'])->name('genRss');
+Route::get('/shows/{podcast}/rss', [PodcastController::class, 'generateRss'])->name('genRss');
 
 /**
  * Podcast episode page
  */
-Route::get('/podcast/{podcast}/{episode}', [EpisodeController::class, 'display'])->name('episode.display');
+Route::get('/shows/{podcast}/{episode}', [EpisodeController::class, 'display'])->name('episode.display');
 
 /**
  * Q&A and Support

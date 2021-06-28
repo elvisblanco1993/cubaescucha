@@ -15,42 +15,64 @@
         </div>
     </div>
     <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-        <div class="my-12">
+        <div class="my-12 bg-white p-4 sm:px-6 lg:px-8 rounded-lg shadow">
             <form action="{{ route('article-store') }}" method="post">
                 @csrf
 
                 <div class="my-8">
+                    <label class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Title') }} <span class="text-red-600">*</span>
+                    </label>
                     <input type="text" name="title" placeholder="Title">
                     @error('title')
-                        {{ $message }}
+                        <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="my-8">
+                    <label class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Excerpt') }}
+                    </label>
                     <textarea name="excerpt" cols="30" rows="2" placeholder="Excerpt"></textarea>
                 </div>
 
                 <div class="my-8">
+                    <label class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Tags') }} <span class="text-red-600">*</span>
+                    </label>
                     <input type="text" name="tags" placeholder="Tags (separate tags with a comma)">
                     @error('tags')
-                        {{ $message }}
+                        <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="my-8">
+                    <label class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Article') }} <span class="text-red-600">*</span>
+                    </label>
                     <textarea name="body" id="body" cols="30" rows="20"></textarea>
                     @error('body')
-                        {{ $message }}
+                        <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
-                <x-jet-button type="submit">{{__("Save Article")}}</x-jet-button>
+                <div class="my-8">
+                    <label class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Spanish Translation') }}
+                    </label>
+                    <textarea name="body_es" id="body_es" cols="30" rows="20"></textarea>
+                </div>
+
+                <div class="flex justify-end">
+                    <x-jet-button type="submit">{{__("Save Article")}}</x-jet-button>
+                </div>
             </form>
 
             <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
             <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
             <script>
                 var easyMDE = new EasyMDE({element: document.getElementById('body')});
+                var easyMDESpanish = new EasyMDE({element: document.getElementById('body_es')});
             </script>
         </div>
     </div>

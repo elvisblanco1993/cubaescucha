@@ -15,18 +15,22 @@ class WebController extends Controller
      */
     public function home()
     {
-        $podcastsList = Podcast::orderBy('created_at', 'DESC')->simplePaginate(8);
-
         if (!Auth::check()) {
-            return view('web.home', [
-                'podcastsList' => $podcastsList,
-            ]);
+            return view('web.home');
         } else {
             if (! auth()->user()->isAdmin()) {
                 return redirect(route('podcasts'));
             }
             return redirect(route('users'));
         }
+    }
+
+    /**
+     * Lists all available shows
+     */
+    public function listPublishedPodcasts()
+    {
+        return view('web.shows');
     }
 
     /**

@@ -33,6 +33,7 @@ class ArticleController extends Controller
                 'excerpt' => $request->excerpt,
                 'tags' => $request->tags,
                 'body' => $request->body,
+                'es_translation' => $request->body_es,
                 'user_id' => auth()->user()->id,
                 'published' => false,
             ]);
