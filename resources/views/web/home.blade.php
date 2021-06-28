@@ -1,17 +1,15 @@
 @extends('layouts.web')
 @section('content')
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
-        <div class="bg-no-repeat bg-bottom bg-fixed bg-cover w-full rounded-lg p-8 h-96 flex items-center" style="background-image: url('https://images.unsplash.com/photo-1507676385008-e7fb562d11f8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1649&q=80')">
-            <div>
+    <div class="w-full mx-auto px-0">
+        <div class="bg-no-repeat bg-bottom bg-fixed bg-cover px-8 py-48  flex items-center" style="background-image: url({{ asset('images/kareem-roberts-LuoGb_Lgfk8-unsplash.jpg') }})">
+            <div class="text-center mx-auto">
                 <div class="text-5xl font-black mx-auto text-yellow-400 rounded-lg">{{ __('Inform. Inspire. Change.') }}</div>
-                <div class="text-base font-semibold text-white py-4 rounded-lg">{{ __('Quickly publish your shows, and distribute them on big podcast players, such as Spotify, Apple Podcasts, and Google Podcasts.') }}</div>
-                <a  href="{{ route('register') }}"
-                    class="inline-flex items-center px-4 py-2 bg-yellow-400 border border-transparent rounded-md font-semibold text-xs text-blueGray-900 uppercase tracking-widest hover:bg-yellow-500 active:bg-yellow-600 focus:outline-none focus:border-yellow-500 focus:shadow-outline-yellow disabled:opacity-25 transition ease-in-out duration-150">
-                    {{ __("Get Started") }}
-                </a>
+                <div class="text-xl font-semibold text-white py-4 rounded-lg">{{ __('Quickly publish your shows, and distribute them on big podcast players, such as Spotify, Apple Podcasts, and Google Podcasts.') }}</div>
             </div>
         </div>
+    </div>
 
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
         {{-- Getting Started Articles --}}
         <div class="mt-24 grid grid-cols-2 gap-8 items-center">
             <div class="col-span-2 sm:col-span-1 prose">

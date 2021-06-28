@@ -4,7 +4,7 @@
         <input
             type="search"
             wire:model="query"
-            placeholder="{{ __('Search podcasts') }}"
+            placeholder="{{ __('Search') }}"
             accesskey="k"
             wire:keydown.escape="resetForm"
             class="bg-blueGray-700 placeholder-blueGray-200 text-blueGray-100 opacity-75 border-none focus:ring-0"

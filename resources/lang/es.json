@@ -203,7 +203,7 @@
     "You may not delete your personal team.": "No se puede borrar su equipo personal.",
     "You may not leave a team that you created.": "No se puede abandonar un equipo que usted creó.",
     "Your email address is not verified.": "Su dirección de correo electrónico no está verificada.",
-    "Search podcasts": "Buscar podcasts",
+    "Search": "Buscar",
     "By: ": "Por: ",
     "By ": "Por ",
     " episodes": " episodios",
@@ -305,5 +305,11 @@
     "Want to create a podcast but don't know where to start?": "¿Quiere crear un podcast pero no sabe por dónde empezar?",
     "We have written some useful guides to help you get started. If you still have any questions, let us know. We will be more than happy to assist.": "Hemos escrito algunas guías útiles para ayudarlo a comenzar. Si aún tiene alguna pregunta, háganoslo saber y le ayudaremos.",
     "Learn more": "Aprender más",
-    "Status": "Estado"
+    "Status": "Estado",
+    "Import Podcast": "Importar Podcast",
+    "Paste your old RSS feed url in the input field below, then click 'Import' to start importing your podcast.": "Pegue el RSS Feed URL actual de su podcast. Luego haga clic en 'Importar' para comenzar el proceso.",
+    "I certify that the content being imported is mine, or that I have been authorized to distribute it by its original owner and can provide proof of it if requested.": "Certifico que el contenido que se está importando es mío, o que su propietario original me ha autorizado a distribuirlo y puedo proporcionar una prueba de ello si me lo solicitan.",
+    "You must agree before continuing": "Debes estar de acuerdo antes de continuar",
+    "Import": "Importar",
+    "Help & Support": "Asistencia y Guías"
 }
