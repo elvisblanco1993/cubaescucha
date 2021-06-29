@@ -13,7 +13,7 @@
 
                 <div class="sm:flex items-center justify-between">
                     <p class="text-2xl font-bold uppercase">
-                        {{ __('Hello, ') . Str::substr(Auth::user()->name, 0, strpos(Auth::user()->name, " ")) . '!' }}
+                        {{ __('Hello, ') . Auth::user()->name . '!' }}
                     </p>
 
                     <div class="flex items-center gap-8">

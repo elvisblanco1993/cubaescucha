@@ -6,11 +6,11 @@ To login to your account, go to [https://cubaescucha.com/login](https://cubaescu
 ### Dashboard
 When you first login, you are received with the *Getting Started* screen as shown in the image below. There you will find some helpful information such as a link for requesting support, a direct access to the documentation, newsletter, and more...
 
-**IMAGE HERE**
+![/storage/articles/cubaescucha-dashboard.png](dashboard image)
 
 You can create your first podcast by clicking the *Create Podcast* button. Then in a matter of seconds, voila, your new podcast is created :D
 
-**ANIMATION ABOUT CREATING PODCAST HERE**
+![/storage/articles/cubaescucha-create-podcast-animation.gif](create podcast animation)
 
 Once you create your first podcast, the initial dashboard screen disappears, and instead, now you will be shown a list of podcasts you own. Don't worry, you can still access all the initially shown options, by using the links on your user menu.
 

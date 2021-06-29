@@ -26,10 +26,16 @@
                     </div>
                 </a>
             @empty
-                <div class="col-span-4 w-full mx-auto prose">
+                <div class="col-span-4 w-full mx-auto prose text-center">
+                    @if (empty($query))
+                    <h4>
+                        {{ __("Huh! such lonely.") }}
+                    </h4>
+                    @else
                     <h4>
                         {{ __("Sorry! we cannot find what you are looking for. Please check for typos and try again.") }}
                     </h4>
+                    @endif
                 </div>
             @endforelse
         </div>
