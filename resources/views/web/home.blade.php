@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         {{-- Getting Started Articles --}}
         <div class="mt-24 grid grid-cols-2 gap-8 items-center">
             <div class="col-span-2 sm:col-span-1 prose">

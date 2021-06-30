@@ -17,3 +17,4 @@ setup.sh
 setup_apache.sh
 setup_nginx.sh
 deploy.sh
+/storage/debugbar/*
