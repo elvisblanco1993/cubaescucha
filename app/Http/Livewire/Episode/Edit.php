@@ -54,11 +54,6 @@ class Edit extends Component
         return redirect(route('episode.show', ['podcast'=>$this->podcast->id, 'episode'=>$this->episode->id]));
     }
 
-    private function updateFeed()
-    {
-        return \App\Http\Controllers\PodcastController::updateRssFeed($this->podcast);
-    }
-
     /**
      * Delete episode
      */

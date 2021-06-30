@@ -22,6 +22,7 @@ class Edit extends Component
     public $spotifypodcasts_url;
     public $googlepodcasts_url;
     public $applepodcasts_url;
+    public $confirmDeleteDialog;
 
     protected $rules = [
         'name' => 'required',
@@ -29,11 +30,13 @@ class Edit extends Component
         'tags' => ['required'],
     ];
 
+
+    // Save Podcast
     public function save()
     {
         $this->validate();
 
-        $is_explicit = ($this->explicit = 'on') ? TRUE : FALSE ;
+        $is_explicit = ($this->explicit == 'on') ? 1 : 0;
 
         $this->podcast->update([
             'name' => $this->name,
@@ -66,6 +69,41 @@ class Edit extends Component
 
         session()->flash('success', 'All changes were successfully saved.');
         return redirect(route('podcasts.show', ['podcast' => $this->podcast->id]));
+    }
+
+    public function updateStatus()
+    {
+        $this->podcast->update([
+            'is_public' => ($this->podcast->is_public == 0) ? 1 : 0,
+        ]);
+
+        if ($this->podcast->is_public == 0) {
+            session()->flash('success', 'The podcast status has been changed to Draft.');
+        } else {
+            session()->flash('success', 'The podcast status has been changed to Published.');
+        }
+    }
+
+    // Delete Podcast
+    public function deletePodcast()
+    {
+        foreach ($this->podcast->episodes as $episode) {
+            // Delete episode files
+            Storage::disk('s3')->delete($episode->file_name);
+
+            // Delete episodes from DB
+            $episode->delete();
+        }
+
+        // Delete podcast thumbnail image
+        Storage::disk('s3')->delete($this->podcast->thumbnail);
+
+        // Delete podcast
+        $this->podcast->delete();
+
+        session()->flash('success', 'The podcast ' . $this->podcast->name . ', and all its content has been successfully deleted from our platform.');
+
+        return redirect(route('podcasts'));
     }
 
     public function render()

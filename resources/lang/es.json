@@ -311,5 +311,17 @@
     "I certify that the content being imported is mine, or that I have been authorized to distribute it by its original owner and can provide proof of it if requested.": "Certifico que el contenido que se está importando es mío, o que su propietario original me ha autorizado a distribuirlo y puedo proporcionar una prueba de ello si me lo solicitan.",
     "You must agree before continuing": "Debes estar de acuerdo antes de continuar",
     "Import": "Importar",
-    "Help & Support": "Asistencia y Guías"
+    "Help & Support": "Asistencia y Guías",
+    "Publish": "Publicar",
+    "Publish later": "Publicar mas tarde",
+    "Select thumbnail": "Seleccionar foto de portada",
+    "Image OK!": "Foto de portada subida!",
+    "Make public": "Hacer público",
+    "By checking this option you are making this podcast publicly visible.": "Al marcar esta opción estás haciendo que este podcast sea visible públicamente.",
+    "The podcast status has been changed to Draft.": "El estado del podcast ha sido cambiado a Borrador",
+    "The podcast status has been changed to Published.": "El estado del podcast ha sido cambiado a Público.",
+    "Draft": "Borrador",
+    "Schedule": "Programar",
+    "Huh! such lonely.": "Lo lamentamos. No hay shows que mostrar en este momento.",
+    "Sorry! we cannot find what you are looking for. Please check for typos and try again.": "¡Lo sentimos! no podemos encontrar lo que busca. Compruebe si hay errores ortográficos e inténtelo de nuevo."
 }

@@ -20,8 +20,12 @@ class Create extends Component
     public $explicit;
     public $season;
     public $episode_no;
-    public $published_at;
     public $audio_duration;
+    public $publish = false;
+    public $publish_date;
+    public $publish_hour;
+    public $publish_minute;
+
 
     protected $rules = [
         'title' => 'required|max:100',
@@ -45,15 +49,26 @@ class Create extends Component
         $this->audio_duration = $duration;
     }
 
+    public function makeFutureDate()
+    {
+        $year = date('Y', strtotime($this->publish_date));
+        $month = date('m', strtotime($this->publish_date));
+        $day = date('d', strtotime($this->publish_date));
+        $hour = $this->publish_hour;
+        $minute = $this->publish_minute;
+        $publish_on = Carbon::create($year, $month, $day, $hour, $minute, 0, null);
+
+        return ($this->publish == true) ? $publish_on : Carbon::now();
+    }
+
     /**
      * Create new episode
      */
     public function storeEpisode()
     {
-
         $this->validate();
 
-        $is_explicit = ($this->explicit == 'on') ? TRUE : FALSE ;
+        $is_explicit = ($this->explicit == 'on') ? TRUE : FALSE;
 
         $path = $this->audio_file->store('podcasts/episodes', 's3');
         Storage::disk('s3')->setVisibility($path, 'public');
@@ -70,7 +85,7 @@ class Create extends Component
             'explicit' => $is_explicit,
             'season' => ($this->podcast->style == 'ews') ? $this->season : null , // Only insert season number if the podcast has seasons
             'episode_no' => $this->episode_no,
-            'published_at' => $this->published_at,
+            'published_at' => ($this->publish == false) ? Carbon::now() : $this->makeFutureDate(),
         ]);
         $episode->save();
 
@@ -96,12 +111,15 @@ class Create extends Component
         }
     }
 
+    public function enablePublishOption()
+    {
+        $this->publish = ($this->publish == false) ? true : false;
+    }
+
     public function render()
     {
         $this->season = $this->getCurrentSeasonNumber();
         $this->episode_no = $this->getCurrentEpisodeNumber();
-        $this->published_at ??= Carbon::now();
-
         return view('livewire.episode.create');
     }
 }

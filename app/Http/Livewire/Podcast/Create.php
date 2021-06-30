@@ -20,6 +20,7 @@ class Create extends Component
     public $style;
     public $thumbnail;
     public $url;
+    public $public;
 
     protected $rules = [
         'name' => ['required', 'max:100', 'unique:podcasts,name'],
@@ -32,7 +33,9 @@ class Create extends Component
     {
         $this->validate();
 
-        $is_explicit = ($this->explicit = 'on') ? TRUE : FALSE ;
+        $is_explicit = ($this->explicit == 'on') ? TRUE : FALSE ;
+
+        $is_public = ($this->public == 'on') ? TRUE : FALSE ;
 
         $path = $this->thumbnail->store('podcasts/covers', 's3');
 
@@ -51,6 +54,7 @@ class Create extends Component
             'style' => $this->style,
             'explicit' => $is_explicit,
             'thumbnail' => $path,
+            'public' => $is_public,
         ]);
 
         session()->flash('success', 'Your new podcast, ' . $this->name . ', was successfully created!');
