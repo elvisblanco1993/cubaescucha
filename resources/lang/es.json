@@ -315,6 +315,7 @@
     "Publish": "Publicar",
     "Publish later": "Publicar mas tarde",
     "Select thumbnail": "Seleccionar foto de portada",
+    "Upload and audio file": "Seleccionar pista de sonido",
     "Image OK!": "Foto de portada subida!",
     "Make public": "Hacer público",
     "By checking this option you are making this podcast publicly visible.": "Al marcar esta opción estás haciendo que este podcast sea visible públicamente.",
@@ -322,6 +323,8 @@
     "The podcast status has been changed to Published.": "El estado del podcast ha sido cambiado a Público.",
     "Draft": "Borrador",
     "Schedule": "Programar",
+    "Published Date": "Fecha Publicado",
+    "Delete Episode": "Eliminar Episodio",
     "Huh! such lonely.": "Lo lamentamos. No hay shows que mostrar en este momento.",
     "Sorry! we cannot find what you are looking for. Please check for typos and try again.": "¡Lo sentimos! no podemos encontrar lo que busca. Compruebe si hay errores ortográficos e inténtelo de nuevo."
 }
