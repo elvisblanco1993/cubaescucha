@@ -5,26 +5,43 @@
             {{ __("Shows") }}
         </div>
 
+        <nav x-data="init()" @keydown.window.prevent.ctrl.k="search()">
+
         <div class="my-6">
             <input type="search"
-                placeholder="Search"
+                placeholder="Search ctrl+k"
                 wire:model="query"
                 accesskey="/"
                 class="w-full"
+                x-ref="k"
             >
         </div>
+
+        <script>
+            function init(){
+                return {
+                    search(){
+                        setTimeout(() => {
+                        this.$refs.k.focus()
+                        }, 100)
+                    }
+                }
+            }
+        </script>
 
         <div class="grid grid-cols-4 gap-10">
 
             @forelse ($shows as $show)
-                <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}" class="hover:text-yellow-500 col-span-4 sm:col-span-2 lg:col-span-1">
+
+                <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}" class="col-span-2 md:col-span-1">
                     <div class="">
-                        <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="">
-                        <div class="text-inherit text-base font-semibold px-3 py-2">
+                        <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg">
+                        <div class="text-inherit text-base font-medium text-blueGray-800 py-2">
                             {{ $show->name }}
                         </div>
                     </div>
                 </a>
+
             @empty
                 <div class="col-span-4 w-full mx-auto prose text-center">
                     @if (empty($query))
