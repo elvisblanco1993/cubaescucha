@@ -48,19 +48,23 @@
 
                 <div class="my-8">
                     <label class="block text-xs font-medium text-blueGray-500">
+                        {{ __('Language') }} <span class="text-red-600">*</span>
+                    </label>
+                    <select name="lang">
+                        <option></option>
+                        <option value="en">{{ __("English") }}</option>
+                        <option value="es">{{ __("Spanish") }}</option>
+                    </select>
+                </div>
+
+                <div class="my-8">
+                    <label class="block text-xs font-medium text-blueGray-500">
                         {{ __('Article') }} <span class="text-red-600">*</span>
                     </label>
                     <textarea name="body" id="body" cols="30" rows="20"></textarea>
                     @error('body')
                         <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
-                </div>
-
-                <div class="my-8">
-                    <label class="block text-xs font-medium text-blueGray-500">
-                        {{ __('Spanish Translation') }}
-                    </label>
-                    <textarea name="body_es" id="body_es" cols="30" rows="20"></textarea>
                 </div>
 
                 <div class="flex justify-end">

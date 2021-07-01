@@ -38,15 +38,16 @@
                 </div>
 
                 <div class="my-8">
-                    <textarea name="body" id="body" cols="30" rows="20">{{$article->body}}</textarea>
-                    @error('body')
-                        {{ $message }}
-                    @enderror
+                    <select name="lang">
+                        <option></option>
+                        <option value="en">{{ __("English") }}</option>
+                        <option value="es">{{ __("Spanish") }}</option>
+                    </select>
                 </div>
 
                 <div class="my-8">
-                    <textarea name="body_es" id="body_es" cols="30" rows="20"></textarea>
-                    @error('body_es')
+                    <textarea name="body" id="body" cols="30" rows="20">{{$article->body}}</textarea>
+                    @error('body')
                         {{ $message }}
                     @enderror
                 </div>

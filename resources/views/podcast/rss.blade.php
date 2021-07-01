@@ -1,7 +1,6 @@
 @php
-   echo "<?xml version='1.0' encoding='UTF-8'?>" . PHP_EOL
+   echo "<?xml version='1.0' encoding='UTF-8'?>" . PHP_EOL;
 @endphp
-
 <rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
     <channel>
         <title>{{ $podcast->name }}</title>
@@ -31,10 +30,8 @@
             <itunes:order>{{ $episode->episode_no }}</itunes:order>
             <itunes:duration>{{ $episode->audio_duration }}</itunes:duration>
             <enclosure length="{{ Storage::disk('s3')->size($episode->file_name) }}" type="audio/mpeg" url="{{ Storage::disk('s3')->url($episode->file_name) }}"/>
-
         </item>
         @empty
-
         @endforelse
     </channel>
 </rss>

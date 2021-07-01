@@ -40,7 +40,7 @@ class WebController extends Controller
     public function help()
     {
         return view('web.help', [
-            'articles' => Article::with('user')->where('published', TRUE)->paginate(10)
+            'articles' => Article::where('published', TRUE)->get(),
         ]);
     }
 

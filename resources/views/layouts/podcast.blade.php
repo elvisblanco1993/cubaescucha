@@ -16,7 +16,7 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen bg-white">
 
             {{-- Header bar --}}
             <div class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8">

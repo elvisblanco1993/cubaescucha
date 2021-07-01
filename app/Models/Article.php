@@ -18,7 +18,8 @@ class Article extends Model
         'body',
         'tags',
         'published',
-        'published_at'
+        'published_at',
+        'lang'
     ];
 
     public function user()

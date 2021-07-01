@@ -100,12 +100,19 @@ class ImportPodcast implements ShouldQueue
                 foreach ($feed->channel->item as $episode) {
 
                     $episode_title = $episode->title;
+
                     $episode_description = $episode->xpath("./itunes:summary")[0];
+
                     $episode_pubDate = Carbon::createFromTimestamp(strtotime($episode->pubDate))->toDateTimeString();
+
                     $episode_type = $episode->episodeType;
+
                     $episode_number = ( !empty($feed->channel->item->xpath("//itunes:episode")) && !empty( $episode->xpath("./itunes:episode")[0] ) ) ? $episode->xpath("./itunes:episode")[0] : null;
-                    $episode_duration = $episode->xpath("./itunes:duration")[0];
+
+                    $episode_duration = ( !empty($feed->channel->item->xpath("//itunes:duration")) && !empty( $episode->xpath("./itunes:duration")[0] ) ) ? $episode->xpath("./itunes:duration")[0] : 0;
+
                     $episode_url = $episode->enclosure['url'];
+
                     $episode_explicit = ( !empty($feed->channel->item->xpath("//itunes:explicit")) && !empty( $episode->xpath("./itunes:explicit")[0] ) ) ? $episode->xpath("./itunes:explicit")[0] : 0;
 
                     Log::notice("Episode metadata collected.");

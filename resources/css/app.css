@@ -58,3 +58,7 @@ select:focus {
     @apply rounded-md border-indigo-300 ring ring-indigo-200 ring-opacity-50;
 }
 
+.prose img {
+    @apply border shadow-lg !important;
+}
+

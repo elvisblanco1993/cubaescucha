@@ -25,6 +25,7 @@ class ArticleController extends Controller
             'title' => ['required', 'unique:articles,title'],
             'tags' => ['required'],
             'body' => ['required'],
+            'lang' => ['required']
         ]);
 
         $store = Article::create([
@@ -33,9 +34,9 @@ class ArticleController extends Controller
                 'excerpt' => $request->excerpt,
                 'tags' => $request->tags,
                 'body' => $request->body,
-                'es_translation' => $request->body_es,
                 'user_id' => auth()->user()->id,
                 'published' => false,
+                'lang' => $request->lang,
             ]);
 
         if ($store) {
@@ -60,6 +61,7 @@ class ArticleController extends Controller
             'title' => ['required'],
             'tags' => ['required'],
             'body' => ['required'],
+            'lang' => ['required']
         ]);
 
         $update = $article->update([
@@ -69,6 +71,7 @@ class ArticleController extends Controller
             'tags' => $request->tags,
             'body' => $request->body,
             'user_id' => auth()->user()->id,
+            'lang' => $request->lang,
         ]);
 
         if ($update) {
