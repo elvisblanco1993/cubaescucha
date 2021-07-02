@@ -50,19 +50,36 @@ class PodcastController extends Controller
     {
         $podcast = Podcast::where('url', $podcast)->first();
 
-        return view('web.podcast', [
-            'slug' => $podcast->slug,
-            'url' => $podcast->url,
-            'name' => $podcast->name,
-            'description' => $podcast->description,
-            'tags' => $podcast->tags,
-            'author' => User::where('id', $podcast->user_id)->first()->name,
-            'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
-            'episodes' => $podcast->episodes()->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'ASC')->get(),
-            'spotifypodcasts_url' => $podcast->spotifypodcasts_url,
-            'googlepodcasts_url' => $podcast->googlepodcasts_url,
-            'applepodcasts_url' => $podcast->applepodcasts_url,
-        ]);
+        if ($podcast->player == 'modern') {
+            return view('web.podcast-alt', [
+                'slug' => $podcast->slug,
+                'url' => $podcast->url,
+                'name' => $podcast->name,
+                'description' => $podcast->description,
+                'tags' => $podcast->tags,
+                'author' => User::where('id', $podcast->user_id)->first()->name,
+                'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
+                'episodes' => $podcast->episodes()->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'ASC')->get(),
+                'spotifypodcasts_url' => $podcast->spotifypodcasts_url,
+                'googlepodcasts_url' => $podcast->googlepodcasts_url,
+                'applepodcasts_url' => $podcast->applepodcasts_url,
+            ]);
+        } else {
+            return view('web.podcast', [
+                'slug' => $podcast->slug,
+                'url' => $podcast->url,
+                'name' => $podcast->name,
+                'description' => $podcast->description,
+                'tags' => $podcast->tags,
+                'author' => User::where('id', $podcast->user_id)->first()->name,
+                'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
+                'episodes' => $podcast->episodes()->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'ASC')->get(),
+                'spotifypodcasts_url' => $podcast->spotifypodcasts_url,
+                'googlepodcasts_url' => $podcast->googlepodcasts_url,
+                'applepodcasts_url' => $podcast->applepodcasts_url,
+            ]);
+        }
+
     }
 
     /**

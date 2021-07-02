@@ -1,4 +1,4 @@
-<div class="bg-blueGray-900 text-blueGray-200">
+<div class="bg-black text-blueGray-200">
     <div class="max-w-7xl mx-auto py-6 sm:flex items-center justify-between px-4 md:px-8 text-center">
         {{-- Left side --}}
         <div class="w-full sm:w-1/2 text-sm sm:text-left font-light py-3">

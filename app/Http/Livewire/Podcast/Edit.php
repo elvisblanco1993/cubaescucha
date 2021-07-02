@@ -54,7 +54,7 @@ class Edit extends Component
         if ($this->thumbnail) {
             // Validate audio file complies with requisites
             $this->validate([
-                'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:1024']
+                'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:10240']
             ]);
             // Delete old audio file
             Storage::disk('s3')->delete($this->podcast->thumbnail);

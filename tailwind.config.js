@@ -14,6 +14,18 @@ module.exports = {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            animation: {
+                'marquee-slower': 'marquee 30s linear infinite',
+                'marquee': 'marquee 27s linear infinite',
+                'marquee-faster': 'marquee 15s linear infinite',
+                'scroll-slower': 'scroll 15s linear infinite',
+            },
+            keyframes: {
+                marquee: {
+                  '0%': { transform: 'translateX(100%)' },
+                  '100%': { transform: 'translateX(0)' },
+                }
+            }
         },
         colors: {
             transparent: 'transparent',

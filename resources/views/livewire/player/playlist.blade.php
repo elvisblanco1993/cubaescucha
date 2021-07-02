@@ -5,7 +5,7 @@
                 <button
                     class="mr-4 player-btn"
                     id="playing{{$episode->id}}"
-                    onclick="play({{$episode->id}}, '{{Storage::disk("s3")->url($episode->file_name)}}')">
+                    onclick="play({{$episode->id}}, '{{Storage::disk("s3")->url($episode->file_name)}}', '{{$episode->title}}')">
                     <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -50,13 +50,21 @@
 
     <script>
         var player = document.getElementById('player');
+        var currentEpisodeTitle = document.getElementById('current-episode-name') ?? null;
         var tmp = localStorage.getItem('tmp');
+
+        var playIcon = '<svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+        var pauseIcon = '<svg class="w-8 h-8 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
 
         // Clears
         localStorage.clear();
 
-        function play(episodeId, url) {
+        function play(episodeId, url, title) {
             var episodeBtn = document.getElementById('playing' + episodeId);
+
+            if (currentEpisodeTitle !== null) {
+                currentEpisodeTitle.innerText = title;
+            }
 
             if (tmp == episodeId) {
                 if (player.currentTime == 0) {
@@ -65,17 +73,17 @@
                 // Check if player is currently playing
                 if (player.paused) {
                     player.play();
-                    episodeBtn.innerHTML = '<svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+                    episodeBtn.innerHTML = pauseIcon;
                 }
                 else if (player.ended)
                 {
                     player.src = url;
                     player.play();
-                    episodeBtn.innerHTML = '<svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+                    episodeBtn.innerHTML = pauseIcon;
                 }
                 else {
                     player.pause();
-                    episodeBtn.innerHTML = '<svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+                    episodeBtn.innerHTML = playIcon;
                 }
             } else {
 
@@ -94,9 +102,9 @@
                     player.play();
 
                     playerBtns.forEach(btn => {
-                        btn.innerHTML = '<svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+                        btn.innerHTML = playIcon;
                     });
-                    episodeBtn.innerHTML = '<svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+                    episodeBtn.innerHTML = pauseIcon;
                 });
 
                 localStorage.clear();
@@ -104,7 +112,7 @@
 
             // Reset play button after an episode is done playing.
             player.addEventListener('ended', ()=> {
-                episodeBtn.innerHTML = '<svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>';
+                episodeBtn.innerHTML = playIcon;
             });
         }
     </script>
