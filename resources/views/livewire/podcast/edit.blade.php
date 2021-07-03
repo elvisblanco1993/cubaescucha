@@ -110,6 +110,21 @@
                             @enderror
                         </div>
 
+                        <div>
+                            <label for="website_style" class="block text-xs font-medium text-blueGray-500">
+                                {{ __('Website style') }} <span class="text-red-600">*</span>
+                            </label>
+                            <div class="mt-1 flex rounded-md shadow-sm">
+                                <select wire:model.defer="website_style" data-placeholder="Choose a website style...">
+                                    <option></option>
+                                    <option value="modern">{{ __("Modern") }}</option>
+                                    <option value="classic">{{ __("Classic") }}</option>
+                                </select>
+                            </div>
+                            @error('website_style')
+                                <small class="text-red-600">{{ $message }}</small>
+                            @enderror
+                        </div>
 
                     </div>
                 </div>

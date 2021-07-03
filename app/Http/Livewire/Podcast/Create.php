@@ -21,12 +21,14 @@ class Create extends Component
     public $thumbnail;
     public $url;
     public $public;
+    public $website_style;
 
     protected $rules = [
         'name' => ['required', 'max:100', 'unique:podcasts,name'],
         'description' => ['required', 'max:1000'],
         'tags' => ['required'],
         'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:1024'],
+        'website_style' => ['required'],
     ];
 
     public function storePodcast()
@@ -55,6 +57,7 @@ class Create extends Component
             'explicit' => $is_explicit,
             'thumbnail' => $path,
             'public' => $is_public,
+            'website_style' => $this->website_style,
         ]);
 
         session()->flash('success', 'Your new podcast, ' . $this->name . ', was successfully created!');

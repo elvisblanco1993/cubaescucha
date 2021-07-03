@@ -50,7 +50,7 @@ class PodcastController extends Controller
     {
         $podcast = Podcast::where('url', $podcast)->first();
 
-        if ($podcast->player == 'modern') {
+        if ($podcast->website_style == 'modern') {
             return view('web.podcast-alt', [
                 'slug' => $podcast->slug,
                 'url' => $podcast->url,

@@ -24,7 +24,8 @@ class Podcast extends Model
         'googlepodcasts_url',
         'applepodcasts_url',
         'is_public',
-        'explicit'
+        'explicit',
+        'website_style'
     ];
 
     /**

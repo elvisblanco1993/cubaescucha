@@ -23,11 +23,13 @@ class Edit extends Component
     public $googlepodcasts_url;
     public $applepodcasts_url;
     public $confirmDeleteDialog;
+    public $website_style;
 
     protected $rules = [
         'name' => 'required',
         'description' => 'required',
         'tags' => ['required'],
+        'website_style' => ['required'],
     ];
 
 
@@ -49,6 +51,7 @@ class Edit extends Component
             'spotifypodcasts_url' => $this->spotifypodcasts_url,
             'googlepodcasts_url' => $this->googlepodcasts_url,
             'applepodcasts_url' => $this->applepodcasts_url,
+            'website_style' => $this->website_style,
         ]);
 
         if ($this->thumbnail) {
@@ -117,6 +120,7 @@ class Edit extends Component
         $this->spotifypodcasts_url = $this->podcast->spotifypodcasts_url;
         $this->googlepodcasts_url = $this->podcast->googlepodcasts_url;
         $this->applepodcasts_url = $this->podcast->applepodcasts_url;
+        $this->website_style = $this->podcast->website_style;
         return view('livewire.podcast.edit');
     }
 }
