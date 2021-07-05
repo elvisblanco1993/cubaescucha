@@ -111,6 +111,6 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function routeNotificationForSlack($notification)
     {
-        return 'https://hooks.slack.com/services/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';
+        return config('system.slack_webhook');
     }
 }
