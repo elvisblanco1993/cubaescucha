@@ -1,7 +1,7 @@
 <div>
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <div class="text-4xl font-bold text-center mt-12">
+        <div class="text-4xl font-bold text-center mt-12 uppercase">
             {{ __("Shows") }}
         </div>
 
@@ -9,10 +9,10 @@
 
         <div class="my-6">
             <input type="search"
-                placeholder="Search ctrl+k"
+                placeholder="{{__('Search')}} ctrl+k"
                 wire:model="query"
                 accesskey="/"
-                class="w-full"
+                class="max-w-lg mx-auto"
                 x-ref="k"
             >
         </div>

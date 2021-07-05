@@ -102,4 +102,15 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $array;
     }
+
+    /**
+     * Route notifications for the Slack channel.
+     *
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return string
+     */
+    public function routeNotificationForSlack($notification)
+    {
+        return 'https://hooks.slack.com/services/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';
+    }
 }

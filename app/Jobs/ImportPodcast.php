@@ -5,17 +5,17 @@ namespace App\Jobs;
 use App\Mail\NotifyFailedPodcastImport;
 use App\Mail\NotifyPodcastImported;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Podcast;
 use App\Models\Episode;
+use App\Notifications\SystemMessagesNotification;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Support\Facades\Mail;
 
 class ImportPodcast implements ShouldQueue
@@ -67,7 +67,13 @@ class ImportPodcast implements ShouldQueue
             // Store thumbnail on s3
             $thumbnail_contents = file_get_contents($podcast_thumbnail);
             $thumbnail_name = substr(substr($podcast_thumbnail, strrpos($podcast_thumbnail, '/') + 1), 0, strpos(substr($podcast_thumbnail, strrpos($podcast_thumbnail, '/') + 1), '?'));
-            Storage::disk('s3')->put('podcasts/covers/'.$thumbnail_name, $thumbnail_contents, 'public');
+
+            try {
+                Storage::disk('s3')->put('podcasts/covers/'.$thumbnail_name, $thumbnail_contents, 'public');
+            } catch (Exception $e) {
+                Log::error("Error importing podcast cover image: " . $e->getMessage());
+                \App\Models\User::findOrFail(1)->notify(new SystemMessagesNotification("Error importing podcast cover image: " . $e->getMessage()));
+            }
 
             // Create Podcast
             $podcast = Podcast::create([
@@ -81,6 +87,7 @@ class ImportPodcast implements ShouldQueue
                 'style' => $podcast_type,
                 'explicit' => $podcast_explicit,
                 'thumbnail' => 'podcasts/covers/'.$thumbnail_name,
+                'website_style' => 'modern',
             ]);
 
 
@@ -127,6 +134,7 @@ class ImportPodcast implements ShouldQueue
                     } catch (\Throwable $e) {
                         Log::error("Failed to save " . $file_name . " to s3: " . $e);
                         report($e);
+                        \App\Models\User::findOrFail(1)->notify(new SystemMessagesNotification("Failed to save " . $file_name . ": " . $e->getMessage()));
                     }
 
                     // Create episode
@@ -162,11 +170,13 @@ class ImportPodcast implements ShouldQueue
                 Log::notice("Sending failure email to owner and support");
                 Mail::to($this->user_email)->send(new NotifyFailedPodcastImport());
                 Log::notice("Email sent...");
+                \App\Models\User::findOrFail(1)->notify(new SystemMessagesNotification("Podcast Import Failed. Either the feed is empty, or its format is not currently supported. Notified podcast owner via email."));
             }
         } else {
             Log::error("The feed is empty. Sendind failure email to owner");
             Mail::to($this->user_email)->send(new NotifyFailedPodcastImport());
             Log::notice("Send failure email about empty feed to owner...");
+            \App\Models\User::findOrFail(1)->notify(new SystemMessagesNotification("Podcast Import Failed. Either the feed is empty, or its format is not currently supported. Notified podcast owner via email."));
         }
     }
 }

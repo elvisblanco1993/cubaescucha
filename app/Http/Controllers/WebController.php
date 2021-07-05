@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Podcast;
+use App\Notifications\SystemMessagesNotification;
 
 class WebController extends Controller
 {
