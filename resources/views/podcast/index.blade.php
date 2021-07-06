@@ -1,7 +1,7 @@
 <x-app-layout>
     {{-- Run the First Run walkthrough the first time the user enters the system, or when there are no podcasts created yet. --}}
     @if ($podcasts->count() == 0)
-        <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @if (session()->has('success'))
                 <div class="bg-green-100 text-green-800 px-6 py-4 mb-6 rounded-lg">
@@ -9,25 +9,27 @@
                 </div>
             @endif
 
-            <div class="my-12">
+            <div>
 
-                <div class="sm:flex items-center justify-between">
-                    <p class="text-2xl font-bold uppercase">
-                        {{ __('Hello, ') . Auth::user()->name . '!' }}
-                    </p>
+                <div>
+                    <div class="sm:flex items-center justify-between">
+                        <p class="text-2xl font-bold uppercase">
+                            {{ __('Hello, ') . Auth::user()->name . '!' }}
+                        </p>
 
-                    <div class="sm:flex items-center gap-8">
-                        @livewire('podcast.import')
-                        <a href="{{ route('podcasts.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 my-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                            </svg>
-                            {{ __('Create Podcast') }}
-                        </a>
+                        <div class="sm:flex items-center gap-8">
+                            @livewire('podcast.import')
+                            <a href="{{ route('podcasts.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 my-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                </svg>
+                                {{ __('Create Podcast') }}
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <div class="mt-12 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div class="my-6 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
                             <div class="flex items-center">
@@ -96,9 +98,9 @@
             </div>
         </div>
     @else
-        <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="sm:flex items-center justify-between">
-                <div class="flex items-center text-gray-500">
+                <div class="flex items-center text-gray-500 text-sm">
                     <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
                 </div>
 
@@ -123,20 +125,15 @@
                     </div>
                 @endif
 
-                <div class="w-full px-4 sm:px-0">
+                <div class="grid grid-cols-4 gap-8">
 
                     @forelse ($podcasts as $podcast)
 
-                        <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}">
-                            <div class="md:flex items-center bg-white rounded-2xl shadow-md hover:shadow-lg mb-12">
-                                <div class="w-full md:w-1/4 h-64 rounded-t-2xl md:rounded-2xl bg-cover" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
-                                <div class="w-full py-8 md:w-3/4 md:py-0 px-12">
-                                    <h1 class="text-3xl font-bold">
-                                        {{ $podcast->name }}
-                                    </h1>
-                                    <p class="text-blueGray-500 text-sm text-justify my-4">
-                                        {{ Str::limit($podcast->description, 500, '...') }}
-                                    </p>
+                        <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="col-span-2 md:col-span-1 border rounded-xl hover:shadow">
+                            <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="{{ $podcast->name }}" class="rounded-t-xl rounded-b-none object-cover">
+                            <div class="px-4 py-2">
+                                <div class="text-base font-bold">
+                                    {{ $podcast->name }}
                                 </div>
                             </div>
                         </a>

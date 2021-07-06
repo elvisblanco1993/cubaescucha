@@ -1,7 +1,7 @@
 <x-app-layout>
-    <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
-            <div class="flex items-center text-gray-500">
+            <div class="flex items-center text-gray-500 text-sm">
                 <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
                 <span class="mx-1">/</span>
                 <span>{{ $podcast->name }}</span>
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="py-6">
+    <div class="py-2">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @if (session('success'))
@@ -24,7 +24,7 @@
                 </div>
             @endif
 
-            <div class="md:flex mb-12 items-center">
+            <div class="md:flex mb-6 items-center">
                 <div class="w-full md:w-1/4 rounded-t-2xl md:rounded-2xl bg-cover bg-center h-64" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
                 <div class="w-full py-8 md:w-3/4 px-4 sm:px-12">
                     <div>
