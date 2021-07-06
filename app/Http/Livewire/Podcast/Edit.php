@@ -24,6 +24,7 @@ class Edit extends Component
     public $applepodcasts_url;
     public $confirmDeleteDialog;
     public $website_style;
+    public $public;
 
     protected $rules = [
         'name' => 'required',
@@ -38,8 +39,6 @@ class Edit extends Component
     {
         $this->validate();
 
-        $is_explicit = ($this->explicit == 'on') ? 1 : 0;
-
         $this->podcast->update([
             'name' => $this->name,
             'slug' => Str::slug($this->name),
@@ -47,10 +46,11 @@ class Edit extends Component
             'tags' => $this->tags,
             'lang' => $this->lang,
             'style' => $this->style,
-            'explicit' => $is_explicit,
+            'explicit' => $this->explicit,
             'spotifypodcasts_url' => $this->spotifypodcasts_url,
             'googlepodcasts_url' => $this->googlepodcasts_url,
             'applepodcasts_url' => $this->applepodcasts_url,
+            'is_public' => $this->public,
             'website_style' => $this->website_style,
         ]);
 
@@ -72,19 +72,6 @@ class Edit extends Component
 
         session()->flash('success', 'All changes were successfully saved.');
         return redirect(route('podcasts.show', ['podcast' => $this->podcast->id]));
-    }
-
-    public function updateStatus()
-    {
-        $this->podcast->update([
-            'is_public' => ($this->podcast->is_public == 0) ? 1 : 0,
-        ]);
-
-        if ($this->podcast->is_public == 0) {
-            session()->flash('success', 'The podcast status has been changed to Draft.');
-        } else {
-            session()->flash('success', 'The podcast status has been changed to Published.');
-        }
     }
 
     // Delete Podcast
@@ -115,6 +102,7 @@ class Edit extends Component
         $this->description = $this->podcast->description;
         $this->tags = $this->podcast->tags;
         $this->explicit = $this->podcast->explicit;
+        $this->public = $this->podcast->is_public;
         $this->lang = $this->podcast->lang;
         $this->style = $this->podcast->style;
         $this->spotifypodcasts_url = $this->podcast->spotifypodcasts_url;

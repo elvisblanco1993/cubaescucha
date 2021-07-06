@@ -1,6 +1,6 @@
 <div>
     {{-- In work, do what you enjoy. --}}
-    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
         <div class="flex items-center text-gray-500">
             <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
             <span class="mx-1">/</span>
@@ -12,7 +12,7 @@
 
     {{-- Content --}}
     <div class="py-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="md:flex gap-8">
                 <div class="bg-white inline-block p-6 shadow rounded-xl w-full md:w-1/3">

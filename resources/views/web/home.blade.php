@@ -3,7 +3,7 @@
     <div class="w-full mx-auto px-0">
         <div class="max-w-full mx-auto bg-center bg-no-repeat bg-cover" style="background-image: url({{ asset('images/jonathan-velasquez-c1ZN57GfDB0-unsplash.jpg') }})">
             <div class="h-full w-full bg-black bg-opacity-60 text-black backdrop-filter backdrop-blur-lg mx-auto flex items-center justify-center">
-                <div class="text-center mx-auto py-64 px-4 sm:px-6 lg:px-8 mt-8">
+                <div class="max-w-5xl mx-auto py-64 px-4 sm:px-6 lg:px-8 mt-8">
                     <div class="text-5xl font-black mx-auto text-yellow-400 rounded-lg">{{ __('Inform. Inspire. Change.') }}</div>
                     <div class="text-xl font-semibold text-white py-4 rounded-lg">{{ __('Quickly publish your shows, and distribute them on big podcast players, such as Spotify, Apple Podcasts, and Google Podcasts.') }}</div>
                 </div>
@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         {{-- Getting Started Articles --}}
         <div class="mt-24 grid grid-cols-2 gap-8 items-center">
             <div class="col-span-2 sm:col-span-1 prose">

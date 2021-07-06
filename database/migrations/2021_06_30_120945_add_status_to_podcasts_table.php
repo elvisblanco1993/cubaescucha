@@ -14,7 +14,7 @@ class AddStatusToPodcastsTable extends Migration
     public function up()
     {
         Schema::table('podcasts', function (Blueprint $table) {
-            $table->boolean('is_public')->default(false);
+            $table->string('is_public')->nullable();
         });
     }
 

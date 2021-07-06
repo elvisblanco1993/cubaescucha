@@ -1,5 +1,5 @@
 <div class="bg-black text-blueGray-200">
-    <div class="max-w-7xl mx-auto py-6 sm:flex items-center justify-between px-4 md:px-8 text-center">
+    <div class="max-w-5xl mx-auto py-6 sm:flex items-center justify-between px-4 md:px-8 text-center">
         {{-- Left side --}}
         <div class="w-full sm:w-1/2 text-sm sm:text-left font-light py-3">
             <span class="mr-4">

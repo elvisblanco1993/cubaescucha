@@ -1,7 +1,7 @@
 <x-app-layout>
     {{-- Run the First Run walkthrough the first time the user enters the system, or when there are no podcasts created yet. --}}
     @if ($podcasts->count() == 0)
-        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
 
             @if (session()->has('success'))
                 <div class="bg-green-100 text-green-800 px-6 py-4 mb-6 rounded-lg">
@@ -96,7 +96,7 @@
             </div>
         </div>
     @else
-        <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
             <div class="sm:flex items-center justify-between">
                 <div class="flex items-center text-gray-500">
                     <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
@@ -115,7 +115,7 @@
         </div>
 
         <div class="py-6">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
 
                 @if (session()->has('success'))
                     <div class="bg-green-100 text-green-800 px-6 py-4 mb-6 rounded-lg">

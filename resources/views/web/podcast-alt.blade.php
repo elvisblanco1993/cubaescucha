@@ -4,7 +4,7 @@
     <div class="max-w-full mx-auto bg-center bg-no-repeat bg-cover" style="background-image: url({{ $thumbnail }})">
 
         <div class="h-full w-full bg-white bg-opacity-80 text-black backdrop-filter backdrop-blur-lg mx-auto flex items-center justify-center">
-            <div class="py-16 sm:flex items-center gap-8 space-y-8 sm:space-y-0">
+            <div class="py-16 sm:flex items-center gap-8 space-y-8 sm:space-y-0 px-4 sm:px-6 lg:px-8">
                 <img src="{{ $thumbnail }}" alt="" class="w-64 h-64 object-cover rounded-lg mx-auto">
                 <div class="text-center sm:text-left">
                     <h1 class="text-4xl font-extrabold">
@@ -74,7 +74,7 @@
 
         <div class="w-full bg-black bg-opacity-80 text-white backdrop-filter backdrop-blur-lg">
 
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
                 <audio id="player" type="audio/mpeg"></audio>
                 <div class="">
 
@@ -217,7 +217,7 @@
     </script>
     {{-- End: Cubaescucha Media Player --}}
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <div class="my-6">
             @livewire('player.playlist', ['podcast' => $slug, 'episodes' => $episodes])
         </div>

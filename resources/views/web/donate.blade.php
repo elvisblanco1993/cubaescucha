@@ -1,7 +1,7 @@
 @extends('layouts.web')
 @section('content')
     <div class="bg-blueGray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {{-- Title Bar --}}
             <div class="w-full flex justify-between items-center">
                 <div class="text-2xl font-light text-white">
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto my-4 px-4 sm:px-6 lg:px-8 py-8 prose">
+    <div class="max-w-5xl mx-auto my-4 px-4 sm:px-6 lg:px-8 py-8 prose">
         <p>
             {{__("Cubaescucha is a podcasting platform that allows creators share their content in audio format, and distribute it throughout the biggest podcast players, such as Spotify, Apple Podcasts, and Google Podcasts. While the platform is 100% FREE for both creators and listeners, servers maintenance and development comes at a cost. If you would like to help keep the lights up (and feed our cats), please consider becoming a sponsor with your monthly contribution, or make a on-time donation using the options below.")}}
         </p>

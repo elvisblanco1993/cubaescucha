@@ -1,7 +1,7 @@
 <div>
     {{--  --}}
     <form method="POST" wire:submit.prevent="storeEpisode">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             <div>
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                     <div class="mt-5 md:mt-0 md:col-span-2">

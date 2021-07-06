@@ -1,7 +1,7 @@
 @extends('layouts.web')
 @section('content')
     <div class="bg-black">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {{-- Title Bar --}}
             <div class="w-full flex justify-between items-center">
                 <div class="text-2xl font-bold text-white">
@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {{-- Guides --}}
         <div class="w-full grid grid-cols-2 gap-8">
             @forelse ($articles as $article)

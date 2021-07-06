@@ -22,7 +22,7 @@ class CreatePodcastsTable extends Migration
             $table->string('tags');
             $table->string('lang');
             $table->string('style')->nullable();
-            $table->boolean('explicit')->default(FALSE);
+            $table->string('explicit')->nullable();
             $table->string('thumbnail');
             $table->timestamps();
         });

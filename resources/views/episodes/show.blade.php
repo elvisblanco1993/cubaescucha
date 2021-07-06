@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
         <div class="flex items--center justify-between">
             <div class="flex items-center text-gray-500">
                 <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
@@ -20,7 +20,7 @@
 
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
             @livewire('episode.edit', ['podcast' => $podcast, 'episode' => $episode])
         </div>
     </div>

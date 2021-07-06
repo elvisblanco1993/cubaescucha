@@ -1,6 +1,6 @@
 <div>
     {{-- Close your eyes. Count to one. That is how long forever feels. --}}
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <div class="text-4xl font-bold text-center mt-12 uppercase">
             {{ __("Shows") }}
         </div>

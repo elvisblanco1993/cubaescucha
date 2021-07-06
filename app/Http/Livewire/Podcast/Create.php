@@ -27,6 +27,8 @@ class Create extends Component
         'name' => ['required', 'max:100', 'unique:podcasts,name'],
         'description' => ['required', 'max:1000'],
         'tags' => ['required'],
+        'lang' => ['required'],
+        'style' => ['required'],
         'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:1024'],
         'website_style' => ['required'],
     ];
@@ -34,10 +36,6 @@ class Create extends Component
     public function storePodcast()
     {
         $this->validate();
-
-        $is_explicit = ($this->explicit == 'on') ? TRUE : FALSE ;
-
-        $is_public = ($this->public == 'on') ? TRUE : FALSE ;
 
         $path = $this->thumbnail->store('podcasts/covers', 's3');
 
@@ -54,9 +52,9 @@ class Create extends Component
             'tags' => $this->tags,
             'lang' => $this->lang,
             'style' => $this->style,
-            'explicit' => $is_explicit,
+            'explicit' => $this->explicit,
             'thumbnail' => $path,
-            'public' => $is_public,
+            'is_public' => $this->public,
             'website_style' => $this->website_style,
         ]);
 

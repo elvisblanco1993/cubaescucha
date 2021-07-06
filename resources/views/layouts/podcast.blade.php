@@ -19,7 +19,7 @@
         <div class="min-h-screen bg-white">
 
             {{-- Header bar --}}
-            <div class="max-w-7xl mx-auto p-4 sm:px-6 lg:px-8">
+            <div class="max-w-5xl mx-auto p-4 sm:px-6 lg:px-8">
                 <div class="text-right text-sm text-gray-400 hover:text-indigo-600">
                     <a href="{{ '' }}">
                         {{ __('Explore more podcasts') }}

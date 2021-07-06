@@ -113,4 +113,5 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return config('system.slack_webhook');
     }
+
 }
