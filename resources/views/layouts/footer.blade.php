@@ -7,7 +7,7 @@
             </span>
             <div class="uppercase bg-blueGray-700 inline-block rounded">
                 @foreach(config('app.languages') as $langLocale => $langName)
-                    <a href="{{ url()->current() }}?change_language={{ $langLocale }}" class="px-2 rounded-sm py-0.5 @if (app()->getLocale() == $langLocale) bg-emerald-400 text-blueGray-800 @endif">{{ $langLocale }}</a>
+                    <a href="{{ url()->current() }}?change_language={{ $langLocale }}" class="px-2 rounded-sm py-0.5 @if (app()->getLocale() == $langLocale) bg-green-400 text-blueGray-800 @endif">{{ $langLocale }}</a>
                 @endforeach
             </div>
         </div>

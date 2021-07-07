@@ -23,7 +23,7 @@
         </p>
 
         @if (isset($success))
-        <div class="px-4 sm:px-6 lg:px-8 py-4 bg-emerald-200 rounded-lg shadow-sm border-emerald-300 text-emerald-800">
+        <div class="px-4 sm:px-6 lg:px-8 py-4 bg-green-200 rounded-lg shadow-sm border-green-300 text-green-800">
             {{ $success }}
         </div>
         @endif

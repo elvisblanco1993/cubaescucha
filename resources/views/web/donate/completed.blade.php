@@ -24,8 +24,8 @@
         </p>
 
         <div class="bg-white rounded-lg shadow px-4 sm:px-6 lg:px-8 py-8 text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-6 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-            <h1 class="uppercase text-emerald-400">{{__("Thank you for your support!")}}</h1>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <h1 class="uppercase text-green-400">{{__("Thank you for your support!")}}</h1>
             <div class="">
                 <a href="/">{{ __("Go Home") }}</a>
             </div>
