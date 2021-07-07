@@ -36,8 +36,11 @@
                 <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}" class="col-span-2 md:col-span-1">
                     <div class="">
                         <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg">
-                        <div class="text-inherit text-base font-medium text-blueGray-800 py-2">
+                        <div class="text-xs text-blueGray-800 py-2">
                             {{ $show->name }}
+                        </div>
+                        <div class="text-xs text-blueGray-600">
+                            {{ $show->user->name }}
                         </div>
                     </div>
                 </a>
@@ -46,7 +49,7 @@
                 <div class="col-span-4 w-full mx-auto prose text-center">
                     @if (empty($query))
                     <h4>
-                        {{ __("Huh! such lonely.") }}
+                        {{ __("Huh! Such empty :(") }}
                     </h4>
                     @else
                     <h4>
