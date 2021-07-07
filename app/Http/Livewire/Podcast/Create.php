@@ -43,6 +43,9 @@ class Create extends Component
 
         $slug = Str::slug($this->name);
 
+        $isExplicit = ($this->explicit == true) ? 'on' : null ;
+        $isPublic = ($this->public == true) ? 'on' : null ;
+
         $podcast = Podcast::create([
             'user_id' => auth()->user()->id,
             'name' => $this->name,
@@ -52,9 +55,9 @@ class Create extends Component
             'tags' => $this->tags,
             'lang' => $this->lang,
             'style' => $this->style,
-            'explicit' => $this->explicit,
+            'explicit' => $isExplicit,
             'thumbnail' => $path,
-            'is_public' => $this->public,
+            'is_public' => $isPublic,
             'website_style' => $this->website_style,
         ]);
 

@@ -39,6 +39,9 @@ class Edit extends Component
     {
         $this->validate();
 
+        $isExplicit = ($this->explicit == true) ? 'on' : null ;
+        $isPublic = ($this->public == true) ? 'on' : null ;
+
         $this->podcast->update([
             'name' => $this->name,
             'slug' => Str::slug($this->name),
@@ -46,11 +49,11 @@ class Edit extends Component
             'tags' => $this->tags,
             'lang' => $this->lang,
             'style' => $this->style,
-            'explicit' => $this->explicit,
+            'explicit' => $isExplicit,
             'spotifypodcasts_url' => $this->spotifypodcasts_url,
             'googlepodcasts_url' => $this->googlepodcasts_url,
             'applepodcasts_url' => $this->applepodcasts_url,
-            'is_public' => $this->public,
+            'is_public' => $isPublic,
             'website_style' => $this->website_style,
         ]);
 

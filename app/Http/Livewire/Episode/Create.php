@@ -68,7 +68,7 @@ class Create extends Component
     {
         $this->validate();
 
-        $is_explicit = ($this->explicit == 'on') ? TRUE : FALSE;
+        $is_explicit = ($this->explicit == true) ? 'on' : null;
 
         $path = $this->audio_file->store('podcasts/episodes', 's3');
         Storage::disk('s3')->setVisibility($path, 'public');
