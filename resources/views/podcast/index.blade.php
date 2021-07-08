@@ -12,7 +12,7 @@
             <div>
 
                 <div>
-                    <div class="sm:flex items-center justify-between">
+                    <div class="sm:flex items-center justify-between py-2">
                         <p class="text-2xl font-bold uppercase">
                             {{ __('Hello, ') . Auth::user()->name . '!' }}
                         </p>
@@ -99,12 +99,12 @@
         </div>
     @else
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="sm:flex items-center justify-between">
+            <div class="sm:flex items-center justify-between py-2">
                 <div class="flex items-center text-gray-500 text-sm">
                     <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
                 </div>
 
-                <div class="sm:flex items-center gap-8">
+                <div class="flex items-center gap-6 justify-center sm:justify-end">
                     @livewire('podcast.import')
                     <a href="{{ route('podcasts.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 my-2">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -125,7 +125,7 @@
                     </div>
                 @endif
 
-                <div class="grid grid-cols-4 gap-8">
+                <div class="grid grid-cols-4 gap-8 px-4 sm:px-0">
 
                     @forelse ($podcasts as $podcast)
 

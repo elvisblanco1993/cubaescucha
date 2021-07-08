@@ -3,6 +3,7 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EpisodeController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;

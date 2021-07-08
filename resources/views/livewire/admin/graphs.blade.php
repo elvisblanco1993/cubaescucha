@@ -15,7 +15,7 @@
             <div class="flex items-center justify-between">
                 <p class="text-sm font-bold text-blueGray-500">{{__("New Users")}}</p>
 
-                <select wire:model="filterRange" wire:click="filterNewUsers" class="text-xs w-1/4 py-1 px-1">
+                <select wire:model="filterRange" wire:click="filterNewUsers" class="text-xs w-1/3 py-1 px-1">
                     <option value="30">30 Days</option>
                     <option value="60">60 Days</option>
                     <option value="90">90 Days</option>

@@ -52,6 +52,7 @@ class PodcastController extends Controller
 
         if ($podcast->website_style == 'modern') {
             return view('web.podcast-alt', [
+                'podcast_id' => $podcast->id,
                 'slug' => $podcast->slug,
                 'url' => $podcast->url,
                 'name' => $podcast->name,
@@ -66,6 +67,7 @@ class PodcastController extends Controller
             ]);
         } else {
             return view('web.podcast', [
+                'podcast_id' => $podcast->id,
                 'slug' => $podcast->slug,
                 'url' => $podcast->url,
                 'name' => $podcast->name,
