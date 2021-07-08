@@ -58,17 +58,6 @@
                     </div>
                     <div class="border-b"></div>
                     <div>
-                        @if ($audio_file)
-                        <audio controls class="w-full rounded-lg" controlsList="nodownload">
-                            <source src="{{ $audio_file->temporaryUrl() }}">
-                        </audio>
-                        @else
-                        <audio controls class="w-full rounded-lg" controlsList="nodownload">
-                            <source src="{{ Storage::disk('s3')->url($episode->file_name) }}" type="audio/mpeg">
-                        </audio>
-                        @endif
-                    </div>
-                    <div>
                         <label class="block text-xs font-medium text-blueGray-500 mb-1">
                         {{__('Episode audio file')}} <span class="text-red-600">*</span>
                         </label>
@@ -80,11 +69,15 @@
                                         <path fill-rule="evenodd" d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
                                         <path fill-rule="evenodd" d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
                                     </svg>
-                                    <span class="block font-normal text-sm">{{ __("Update audio file") }}<p class="text-xs text-gray-500">{{__('MP3 up to 240MB')}}</p></span>
+                                    <span class="block font-normal text-sm">{{ __("Update audio file") }}<p class="text-xs text-gray-500">{{__('MP3 up to 128MB')}}</p></span>
                                 </div>
                             </div>
                             <input id="file-upload" wire:model.defer="audio_file" type="file" accept="audio/mpeg" class="h-full w-full opacity-0 cursor-pointer">
                         </div>
+                        <div wire:loading wire:target="audio_file" class="text-sm">Uploading...</div>
+                        @if ($audio_file)
+                            <small class="text-green-600">Audio file ready.</small>
+                        @endif
                         @if ($audio_file)
                             <audio id="audio_temp" src="{{ $audio_file->temporaryUrl() }}" preload="metadata"></audio>
                             <script>

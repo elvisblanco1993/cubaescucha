@@ -3,7 +3,6 @@
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EpisodeController;
-use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
@@ -133,6 +132,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
 
     // Update article
     Route::post('/article/{article}/update', [ArticleController::class, 'update'])->name('article-update');
-
-    // Delete article
 });
