@@ -10,7 +10,7 @@
         <itunes:author>{{ $podcast->user->name }}</itunes:author>
         <itunes:owner>
             <itunes:name>{{ $podcast->user->name }}</itunes:name>
-            <itunes:email>j{{ $podcast->user->email }}</itunes:email>
+            <itunes:email>{{ $podcast->user->email }}</itunes:email>
         </itunes:owner>
         <itunes:category text="{{ $podcast->tags }}" />
         @if ($podcast->style == 'e' || $podcast->style == 'ews')
