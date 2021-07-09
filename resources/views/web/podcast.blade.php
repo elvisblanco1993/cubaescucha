@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.web', ['name' => $name, 'description' => $description, 'thumbnail' => $thumbnail])
 @section('content')
 
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
