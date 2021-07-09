@@ -33,7 +33,7 @@
 
                 <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}" class="col-span-2 md:col-span-1">
                     <div class="">
-                        <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg">
+                        <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg w-full h-48 object-cover">
                         <div class="text-xs text-blueGray-800 py-2">
                             {{ $show->name }}
                         </div>
