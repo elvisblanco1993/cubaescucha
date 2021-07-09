@@ -130,7 +130,7 @@
                     @forelse ($podcasts as $podcast)
 
                         <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="col-span-2 md:col-span-1 border rounded-xl hover:shadow">
-                            <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="{{ $podcast->name }}" class="rounded-t-xl rounded-b-none object-cover h-48">
+                            <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="{{ $podcast->name }}" class="rounded-t-xl rounded-b-none object-cover w-full h-48">
                             <div class="px-4 py-2">
                                 <div class="text-base font-bold">
                                     {{ $podcast->name }}
