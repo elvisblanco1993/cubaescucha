@@ -1,4 +1,4 @@
-@extends('layouts.web')
+@extends('layouts.web', ['name' => $name, 'description' => $description, 'thumbnail' => $thumbnail])
 @section('content')
 
     <div class="max-w-full mx-auto bg-center bg-no-repeat bg-cover" style="background-image: url({{ $thumbnail }})">
