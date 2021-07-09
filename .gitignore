@@ -18,6 +18,5 @@ setup_apache.sh
 setup_nginx.sh
 deploy.sh
 /storage/debugbar/*
-data.ms/main/data.mdb
-data.ms/VERSION
+data.ms
 meilisearch-service.sh
