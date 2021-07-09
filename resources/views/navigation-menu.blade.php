@@ -16,7 +16,7 @@
 
 
                     <x-jet-nav-link href="{{ route('shows') }}" :active="request()->routeIs('shows')" class="text-white">
-                        {{ __('Explore') }}
+                        {{ __('Directory') }}
                     </x-jet-nav-link>
 
                     <x-jet-nav-link href="{{ route('podcasts') }}" :active="request()->routeIs('podcasts')" class="text-white">
@@ -41,7 +41,7 @@
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                     <a href="{{ route('shows') }}" class="text-gray-100 font-semibold text-xs hidden sm:block mx-8 uppercase">
-                        {{ __('Explore') }}
+                        {{ __('Directory') }}
                     </a>
                 </div>
 
@@ -183,7 +183,7 @@
         <div class="pt-2 pb-3 space-y-1">
             @guest
                 <x-jet-responsive-nav-link href="{{ route('shows') }}" class="mt-2">
-                    {{ __('Explore') }}
+                    {{ __('Directory') }}
                 </x-jet-responsive-nav-link>
                 <div class="my-2 border-b border-blueGray-600"></div>
                 <x-jet-responsive-nav-link href="{{ route('login') }}" class="mt-2">
@@ -198,7 +198,7 @@
             @auth
 
             <x-jet-responsive-nav-link href="{{ route('shows') }}" :active="request()->routeIs('shows')">
-                {{ __('Explore') }}
+                {{ __('Directory') }}
             </x-jet-responsive-nav-link>
 
             <x-jet-responsive-nav-link href="{{ route('podcasts') }}" :active="request()->routeIs('podcasts')">

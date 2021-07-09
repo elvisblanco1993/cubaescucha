@@ -81,6 +81,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Podcast::class);
     }
 
+    public function favorites()
+    {
+        return $this->belongsToMany(Podcast::class, 'podcast_user', 'user_id', 'podcast_id');
+    }
+
     /**
      * Has many podcasts
      */

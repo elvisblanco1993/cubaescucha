@@ -46,6 +46,11 @@ class Podcast extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function favorited()
+    {
+        return $this->belongsToMany(User::class, 'podcast_user', 'podcast_id', 'user_id');
+    }
+
     /**
      * Get the indexable data array for the model.
      *

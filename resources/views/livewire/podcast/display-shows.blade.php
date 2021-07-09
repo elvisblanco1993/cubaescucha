@@ -27,35 +27,70 @@
             }
         </script>
 
-        <div class="grid grid-cols-4 gap-10">
-
-            @forelse ($shows as $show)
-
-                <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}" class="col-span-2 md:col-span-1">
-                    <div class="">
-                        <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg w-full h-48 object-cover">
-                        <div class="text-xs text-blueGray-800 py-2">
-                            {{ $show->name }}
-                        </div>
-                        <div class="text-xs text-blueGray-600">
-                            {{ $show->user->name }}
-                        </div>
-                    </div>
-                </a>
-
-            @empty
-                <div class="col-span-4 w-full mx-auto prose text-center">
-                    @if (empty($query))
-                    <h4>
-                        {{ __("Huh! Such empty :(") }}
-                    </h4>
-                    @else
-                    <h4>
-                        {{ __("Sorry! we cannot find what you are looking for. Please check for typos and try again.") }}
-                    </h4>
-                    @endif
+        @auth
+            @if ($has_favorites && !$query)
+            <div class="my-6">
+                <div class="text-xl font-medium mb-4">
+                    {{ __("Your subscriptions") }}
                 </div>
-            @endforelse
+
+                <div class="grid grid-cols-4 gap-10">
+                    @forelse ($favorites as $favorite)
+                        <a href="{{ route('podcast.display', ['podcast' => $favorite->url]) }}" class="col-span-2 md:col-span-1">
+                            <div class="">
+                                <img src="{{ Storage::disk('s3')->url($favorite->thumbnail) }}" alt="{{ $favorite->name }}" class="rounded-lg w-full h-48 object-cover">
+                                <div class="text-xs text-blueGray-800 py-2">
+                                    {{ $favorite->name }}
+                                </div>
+                                <div class="text-xs text-blueGray-600">
+                                    {{ $favorite->user->name }}
+                                </div>
+                            </div>
+                        </a>
+                    @empty
+                    @endforelse
+                </div>
+            </div>
+            @endif
+        @endauth
+
+
+        <div class="my-6">
+            <div class="text-xl font-medium mb-4">
+                {{ __("Library") }}
+            </div>
+
+            <div class="grid grid-cols-4 gap-10">
+
+
+                @forelse ($shows as $show)
+
+                    <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}" class="col-span-2 md:col-span-1">
+                        <div class="">
+                            <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg w-full h-48 object-cover">
+                            <div class="text-xs text-blueGray-800 py-2">
+                                {{ $show->name }}
+                            </div>
+                            <div class="text-xs text-blueGray-600">
+                                {{ $show->user->name }}
+                            </div>
+                        </div>
+                    </a>
+
+                @empty
+                    <div class="col-span-4 w-full mx-auto prose text-center">
+                        @if (empty($query))
+                        <h4>
+                            {{ __("Huh! Such empty :(") }}
+                        </h4>
+                        @else
+                        <h4>
+                            {{ __("Sorry! we cannot find what you are looking for. Please check for typos and try again.") }}
+                        </h4>
+                        @endif
+                    </div>
+                @endforelse
+            </div>
         </div>
     </div>
 </div>

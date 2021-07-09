@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\Podcast;
 
-use Illuminate\Support\Facades\DB;
+use App\Models\User;
 use Livewire\Component;
 
 class Follow extends Component
@@ -13,16 +13,16 @@ class Follow extends Component
 
     public function mount()
     {
-        $this->following = (DB::table('following')->where('user_id', $this->user_id)->where('podcast_id', $this->podcast_id)->count() == 1) ? true : false;
+        $this->following = User::findOrFail(auth()->user()->id)->favorites->contains($this->podcast_id); // returns boolean
     }
 
     public function follow()
     {
         if ($this->following == false) {
-            DB::table('following')->insert(['user_id' => $this->user_id, 'podcast_id' => $this->podcast_id]);
+            User::findOrFail(auth()->user()->id)->favorites()->attach($this->podcast_id);
             $this->following = true;
         } else {
-            DB::table('following')->where('user_id', $this->user_id)->where('podcast_id', $this->podcast_id)->delete();
+            User::findOrFail(auth()->user()->id)->favorites()->detach($this->podcast_id);
             $this->following = false;
         }
     }
