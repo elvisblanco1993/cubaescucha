@@ -7,16 +7,33 @@
 
     <form method="POST" wire:submit.prevent="save">
         @csrf
-        <div class="border sm:rounded-lg">
-            <div class="mt-8 px-4 sm:px-6 lg:px-8">
+        <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg">
+            <div class="mb-8">
                 <div class="text-lg font-semibold">
                     {{ __("Episode Details") }}
                 </div>
                 <p class="text-sm font-normal text-blueGray-600">{{__("Tell us a bit about This episode.")}}</p>
             </div>
 
-            <div class="grid grid-cols-4 gap-8 px-4 pt-8 sm:px-6 lg:px-8">
-                <div class="col-span-4 space-y-4">
+            <div class="grid grid-cols-4 gap-8">
+                <div class="col-span-4 md:col-span-1 mb-8">
+                    <button id="copy">Copy</button>
+                    <code id="code" class="bg-gray-200 border text-green-600 break-normal max-w-full overflow-auto block h-48 text-xs">
+                        {{ '<div id="cubaescucha-player-container" episode-title="'.$title.'" episode-owner="'.$podcast->user->name.'" podcast-url="'.route("podcast.display", ["podcast"=>$podcast->url]).'"> <audio id="cubaescucha-player" type="audio/mpeg" src="'.Storage::disk("s3")->url($episode->file_name).'"></audio> <img id="cubaescucha-player-img" src="'.Storage::disk('s3')->url($podcast->thumbnail).'" alt="'.$title.'"> </div> <script src="'.asset('js/embedded-player.js').'"></script>' }}
+                    </code>
+                </div>
+
+                <script>
+                    function copy()
+                    {
+                        var copyText = document.querySelector('#code');
+                        copyText.select();
+                        document.execCommand('copy');
+                    }
+                    document.querySelector("#copy").addEventListener("click", copy);
+                </script>
+
+                <div class="col-span-4 md:col-span-3 space-y-4">
                     <div>
                         <label for="title" class="block text-xs font-medium text-blueGray-500">
                             {{ __('Title') }} <span class="text-red-600">*</span>
@@ -94,17 +111,18 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6 shadow sm:rounded-bl-md sm:rounded-br-md mt-4">
-                <x-jet-button>
-                    <div wire:loading wire:target="save">
-                        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                    </div>
-                    {{ __('Save changes') }}
-                </x-jet-button>
-            </div>
+        </div>
+
+        <div class="px-4 sm:px-0 my-6 flex items-center justify-end gap-8">
+            <x-jet-button>
+                <div wire:loading wire:target="save">
+                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </div>
+                {{ __('Save changes') }}
+            </x-jet-button>
         </div>
     </form>
 
