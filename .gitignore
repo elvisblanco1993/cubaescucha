@@ -21,3 +21,4 @@ deploy.sh
 data.ms
 meilisearch-service.sh
 horizon.log
+public
