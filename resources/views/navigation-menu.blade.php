@@ -134,9 +134,9 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-jet-dropdown-link href="{{ route('billing-portal') }}">
+                            {{-- <x-jet-dropdown-link href="{{ route('billing-portal') }}">
                                 {{ __('Billing Portal') }}
-                            </x-jet-dropdown-link>
+                            </x-jet-dropdown-link> --}}
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}

@@ -16,7 +16,7 @@
             <a href="{{ config('app.url') . '/help' }}" class="mx-2">{{ __('Help') }}</a>
             <a href="{{ config('app.url') . '/privacy-policy' }}" class="mx-2">{{ __('Privacy') }}</a>
             <a href="{{ config('app.url') . '/terms-of-service' }}" class="mx-2">{{ __('Terms') }}</a>
-            <a href="{{ config('app.url') . '/donate' }}" target="__blank" class="ml-2 px-2 py-1 bg-yellow-400 rounded text-blueGray-900">{{ __('Donate') }}</a>
+            {{-- <a href="{{ config('app.url') . '/donate' }}" target="__blank" class="ml-2 px-2 py-1 bg-yellow-400 rounded text-blueGray-900">{{ __('Donate') }}</a> --}}
         </div>
     </div>
 </div>
