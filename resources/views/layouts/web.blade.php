@@ -16,7 +16,7 @@
 
 
 
-        <title>@if( request()->routeIs('podcast.display') ) {{ $name }} @endif - {{ config('app.name', 'Cubaescucha.com') }}</title>
+        <title>@if( request()->routeIs('podcast.display') ) {{ $name . ' - ' }}  @endif {{ config('app.name', 'Cubaescucha.com') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
