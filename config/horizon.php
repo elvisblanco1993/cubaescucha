@@ -186,9 +186,9 @@ return [
             'supervisor-long-running' => [
                 'connection' => 'redis-long-running',
                 'queue' => 'import_podcasts',
-                'balance' => 'simple',
-                'processes' => 2,
-                'tries' => 2,
+                'balance' => 'auto',
+                'processes' => 1,
+                'tries' => 1,
                 'timeout' => 3600 // Timeout after 60 minutes
             ]
         ],
@@ -200,9 +200,9 @@ return [
             'supervisor-long-running' => [
                 'connection' => 'redis-long-running',
                 'queue' => 'import_podcasts',
-                'balance' => 'simple',
-                'processes' => 2,
-                'tries' => 2,
+                'balance' => 'auto',
+                'processes' => 1,
+                'tries' => 1,
                 'timeout' => 3600 // Timeout after 60 minutes
             ]
         ],
