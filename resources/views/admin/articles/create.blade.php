@@ -20,34 +20,34 @@
                 @csrf
 
                 <div class="my-8">
-                    <label class="block text-xs font-medium text-blueGray-500">
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
                         {{ __('Title') }} <span class="text-red-600">*</span>
                     </label>
-                    <input type="text" name="title" placeholder="Title">
+                    <input type="text" name="title" placeholder="{{__("Title")}}">
                     @error('title')
                         <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="my-8">
-                    <label class="block text-xs font-medium text-blueGray-500">
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
                         {{ __('Excerpt') }}
                     </label>
-                    <textarea name="excerpt" cols="30" rows="2" placeholder="Excerpt"></textarea>
+                    <textarea name="excerpt" cols="30" rows="2" placeholder="{{__("Excerpt")}}"></textarea>
                 </div>
 
                 <div class="my-8">
-                    <label class="block text-xs font-medium text-blueGray-500">
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
                         {{ __('Tags') }} <span class="text-red-600">*</span>
                     </label>
-                    <input type="text" name="tags" placeholder="Tags (separate tags with a comma)">
+                    <input type="text" name="tags" placeholder="">
                     @error('tags')
                         <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="my-8">
-                    <label class="block text-xs font-medium text-blueGray-500">
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
                         {{ __('Language') }} <span class="text-red-600">*</span>
                     </label>
                     <select name="lang">
@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="my-8">
-                    <label class="block text-xs font-medium text-blueGray-500">
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
                         {{ __('Article') }} <span class="text-red-600">*</span>
                     </label>
                     <textarea name="body" id="body" cols="30" rows="20"></textarea>

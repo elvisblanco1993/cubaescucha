@@ -141,6 +141,24 @@
             @enderror
         </div>
 
+        <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6">
+            <div class="text-lg font-semibold mb-2">{{__("Directories")}}</div>
+            <p class="text-smtext-sm text-gray-600 mb-4">{{ __("Use this area to share the links of the directories to which you published your show to.") }}</p>
+
+            <div>
+                <label for="spotify" class="block text-xs font-medium text-blueGray-500 mb-1">Spotify</label>
+                <input id="spotify" type="text" wire:model.defer="spotifypodcasts_url">
+            </div>
+            <div class="my-4">
+                <label for="apodcasts" class="block text-xs font-medium text-blueGray-500 mb-1">Apple Podcasts</label>
+                <input id="apodcasts" type="text" wire:model.defer="applepodcasts_url">
+            </div>
+            <div class="my-4">
+                <label for="gpodcasts" class="block text-xs font-medium text-blueGray-500 mb-1">Google Podcasts</label>
+                <input id="gpodcasts" type="text" wire:model.defer="googlepodcasts_url">
+            </div>
+        </div>
+
         <div class="px-4 sm:px-0 my-6 flex items-center justify-end gap-8">
             <label class="inline-flex items-center text-sm font-medium text-blueGray-500" title="{{ __('By checking this option you are making this podcast publicly visible.') }}">
                 <input type="checkbox" wire:model.defer="public" class="mr-2 rounded">

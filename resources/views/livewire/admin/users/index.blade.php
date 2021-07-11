@@ -6,7 +6,7 @@
                 {{-- Search Users --}}
                 <div class="mb-6">
                     <input  type="search"
-                            placeholder="Search"
+                            placeholder="{{__("Search")}}"
                             wire:model="query"
                             accesskey="/"
                             wire:keydown.escape="cancel"
@@ -65,7 +65,7 @@
                                     {{ $user->role }}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
+                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">{{__("Edit")}}</a>
                                 </td>
                             </tr>
                         @empty

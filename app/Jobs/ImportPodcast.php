@@ -16,9 +16,11 @@ use App\Notifications\SystemMessagesNotification;
 use Illuminate\Support\Str;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 
-class ImportPodcast implements ShouldQueue
+class ImportPodcast implements ShouldQueue, ShouldBeUnique
 {
     use Dispatchable, InteractsWithQueue, Queueable;
 
@@ -26,6 +28,9 @@ class ImportPodcast implements ShouldQueue
     public $podcast_url;
     public $user_id;
     public $user_email;
+
+    public $timeout = 3600;
+    public $uniqueFor = 3600;
 
     /**
      * Create a new job instance.
@@ -38,6 +43,16 @@ class ImportPodcast implements ShouldQueue
         $this->podcast_url = $podcast_url;
         $this->user_id = $user_id;
         $this->user_email = $user_email;
+    }
+
+    /**
+     * Get the cache driver for the unique job lock.
+     *
+     * @return \Illuminate\Contracts\Cache\Repository
+     */
+    public function uniqueVia()
+    {
+        return Cache::driver('redis');
     }
 
     /**

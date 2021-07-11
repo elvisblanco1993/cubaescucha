@@ -67,6 +67,14 @@ return [
             'block_for' => null,
         ],
 
+        'redis-long-running' => [
+            'driver' => 'redis',
+            'connection' => 'default',
+            'queue' => 'import_podcasts',
+            'retry_after' => 120, // Run for max 20 minutes
+            'block_for' => null,
+        ],
+
     ],
 
     /*

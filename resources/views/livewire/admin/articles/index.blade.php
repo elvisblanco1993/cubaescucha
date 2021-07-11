@@ -6,7 +6,7 @@
                 {{-- Search Users --}}
                 <div class="mb-6 sm:flex items-center justify-between">
                     <input  type="search"
-                            placeholder="Search"
+                            placeholder="{{__("Search")}}"
                             wire:model="query"
                             accesskey="/"
                             wire:keydown.escape="cancel"

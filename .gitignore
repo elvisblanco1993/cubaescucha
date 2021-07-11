@@ -20,3 +20,4 @@ deploy.sh
 /storage/debugbar/*
 data.ms
 meilisearch-service.sh
+horizon.log

@@ -17,21 +17,8 @@
 
             <div class="grid grid-cols-4 gap-8">
                 <div class="col-span-4 md:col-span-1 mb-8">
-                    <button id="copy">Copy</button>
-                    <code id="code" class="bg-gray-200 border text-green-600 break-normal max-w-full overflow-auto block h-48 text-xs">
-                        {{ '<div id="cubaescucha-player-container" episode-title="'.$title.'" episode-owner="'.$podcast->user->name.'" podcast-url="'.route("podcast.display", ["podcast"=>$podcast->url]).'"> <audio id="cubaescucha-player" type="audio/mpeg" src="'.Storage::disk("s3")->url($episode->file_name).'"></audio> <img id="cubaescucha-player-img" src="'.Storage::disk('s3')->url($podcast->thumbnail).'" alt="'.$title.'"> </div> <script src="'.asset('js/embedded-player.js').'"></script>' }}
-                    </code>
+                    <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="" class="rounded-lg mb-2 md:h-48 md:w-48 object-cover">
                 </div>
-
-                <script>
-                    function copy()
-                    {
-                        var copyText = document.querySelector('#code');
-                        copyText.select();
-                        document.execCommand('copy');
-                    }
-                    document.querySelector("#copy").addEventListener("click", copy);
-                </script>
 
                 <div class="col-span-4 md:col-span-3 space-y-4">
                     <div>
@@ -63,7 +50,7 @@
                         <label class="block text-xs font-medium text-blueGray-500 mb-1">
                             {{ __('Episode type') }} <span class="text-red-600">*</span>
                         </label>
-                        <select wire:model="type" id="">
+                        <select wire:model.defer="type" id="">
                             <option></option>
                             <option value="full">{{ __('Full episode') }}</option>
                             <option value="trailer">{{ __('Trailer') }}</option>
@@ -86,7 +73,7 @@
                                         <path fill-rule="evenodd" d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z"/>
                                         <path fill-rule="evenodd" d="M10 8V3a2 2 0 1 0-4 0v5a2 2 0 1 0 4 0zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z"/>
                                     </svg>
-                                    <span class="block font-normal text-sm">{{ __("Update audio file") }}<p class="text-xs text-gray-500">{{__('MP3 up to 128MB')}}</p></span>
+                                    <span class="block font-normal text-sm">{{ __("Update audio file") }}<p class="text-xs text-gray-500">{{__('MP3 up to ') . ini_get('upload_max_filesize')}}</p></span>
                                 </div>
                             </div>
                             <input id="file-upload" wire:model.defer="audio_file" type="file" accept="audio/mpeg" class="h-full w-full opacity-0 cursor-pointer">
@@ -125,6 +112,38 @@
             </x-jet-button>
         </div>
     </form>
+
+    <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6">
+        <div class="flex items-center justify-between mb-2">
+            <div>
+                <div class="text-lg font-semibold">{{ __('Embedded player') }}</div>
+                <div class="text-sm font-normal text-blueGray-600">
+                    {{__("Copy this code snippet into your website so so that visitors can listen to this episode from your site.")}}
+                </div>
+            </div>
+            <div class="flex items-center">
+                <span id="copiedMessage" class="text-xs text-green-600 mr-2"></span>
+                <button id="btn" onclick="copyToClickBoard()" title="{{ __("Copy to clipboard") }}"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blueGray-500 hover:text-blueGray-700 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg></button>
+            </div>
+        </div>
+        <pre><code id="code" class="text-xs">{{ '<div id="cubaescucha-player-container" episode-title="'.$title.'" episode-owner="'.$podcast->user->name.'" podcast-url="'.route("podcast.display", ["podcast"=>$podcast->url]).'"><audio id="cubaescucha-player" type="audio/mpeg" src="'.Storage::disk("s3")->url($episode->file_name).'"></audio> <img id="cubaescucha-player-img" src="'.Storage::disk('s3')->url($podcast->thumbnail).'" alt="'.$title.'"> </div> <script src="'.asset('js/embedded-player.js').'"></script>' }}</code></pre>
+        <script>
+            if (!navigator.clipboard) {
+                // Clipboard API not available
+                console.log('No CLipboard API available');
+            }
+            function copyToClickBoard(){
+                var content = document.getElementById('code').textContent;
+                navigator.clipboard.writeText(content)
+                    .then(() => {
+                        document.getElementById('copiedMessage').innerText = "{{__('Code copied to clipboard.')}}";
+                    })
+                    .catch(err => {
+                    console.log('Something went wrong', err);
+                })
+            }
+        </script>
+    </div>
 
     <div class="px-4 py-8 sm:px-6 lg:px-8 border border-red-200 sm:rounded-lg my-6 bg-red-50">
         <div class="text-lg font-semibold mb-2 text-red-600">{{__("Danger Zone")}}</div>

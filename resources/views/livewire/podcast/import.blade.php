@@ -23,9 +23,13 @@
             @error('agree')
                 <small class="block text-red-600">{{__("You must agree before continuing")}}</small>
             @enderror
+
+            <div class="mt-4 py-2 px-3 border border-red-400 text-red-600 bg-red-50 rounded text-sm">
+                {{ __("NOTICE: This feature is currently unstable.") }}
+            </div>
         </x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('importDialog')">
+            <x-jet-secondary-button wire:click="$toggle('importDialog')" class="mr-4">
                 {{ __("Nevermind") }}
             </x-jet-secondary-button>
             <x-jet-button wire:click="import" wire:loading.attr="disabled" wire:ignore>
