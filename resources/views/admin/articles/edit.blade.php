@@ -22,7 +22,7 @@
                 <div class="my-8">
                     <input type="text" name="title" placeholder="Title" value="{{$article->title}}">
                     @error('title')
-                        {{ $message }}
+                        <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
@@ -33,22 +33,25 @@
                 <div class="my-8">
                     <input type="text" name="tags" placeholder="Tags (separate tags with a comma)" value="{{$article->tags}}">
                     @error('tags')
-                        {{ $message }}
+                        <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="my-8">
                     <select name="lang">
                         <option></option>
-                        <option value="en">{{ __("English") }}</option>
-                        <option value="es">{{ __("Spanish") }}</option>
+                        <option value="en" @if($article->lang == 'en') selected="selected" @endif>{{ __("English") }}</option>
+                        <option value="es" @if($article->lang == 'es') selected @endif>{{ __("Spanish") }}</option>
                     </select>
+                    @error('lang')
+                        <small class="text-red-600 text-sm">{{ $message }}</small>
+                    @enderror
                 </div>
 
                 <div class="my-8">
                     <textarea name="body" id="body" cols="30" rows="20">{{$article->body}}</textarea>
                     @error('body')
-                        {{ $message }}
+                        <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
