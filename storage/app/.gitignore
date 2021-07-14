@@ -1,4 +1,5 @@
 *
 !podcasts/
+!podcasts/*
 !public/
 !.gitignore
