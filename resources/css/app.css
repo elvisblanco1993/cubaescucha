@@ -1,0 +1,80 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+* {
+    outline: none !important;
+    font-family: 'Inter', sans-serif;
+}
+
+#logotype {
+    font-family: 'Play', sans-serif;
+    @apply font-normal;
+    @apply antialiased;
+    @apply text-xl;
+}
+
+/* Custom App Stylesheet */
+[type="text"],
+[type="email"],
+[type="url"],
+[type="password"],
+[type="number"],
+[type="date"],
+[type="datetime-local"],
+[type="month"],
+[type="search"],
+[type="tel"],
+[type="time"],
+[type="week"],
+[multiple],
+textarea,
+select {
+    @apply rounded-md;
+    @apply border-gray-300;
+    @apply shadow-sm;
+    @apply mt-0;
+    @apply block;
+    @apply w-full;
+}
+
+[type="text"]:focus,
+[type="email"]:focus,
+[type="url"]:focus,
+[type="password"]:focus,
+[type="number"]:focus,
+[type="date"]:focus,
+[type="datetime-local"]:focus,
+[type="month"]:focus,
+[type="search"]:focus,
+[type="tel"]:focus,
+[type="time"]:focus,
+[type="week"]:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+    @apply rounded-md border-indigo-300 ring ring-indigo-200 ring-opacity-50;
+}
+
+.prose img {
+    @apply border shadow-lg !important;
+}
+
+/* Range Styles */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+
+    input[type="range"]::-webkit-slider-thumb {
+        width: 15px;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 15px;
+        cursor: ew-resize;
+        background: #FFF;
+        /* box-shadow: -405px 0 0 400px #605E5C; */
+        border-radius: 50%;
+
+    }
+}
+
