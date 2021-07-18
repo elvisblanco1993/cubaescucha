@@ -113,7 +113,7 @@
         </div>
     </form>
 
-    <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6">
+    <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6 max-w-full">
         <div class="flex items-center justify-between mb-2">
             <div>
                 <div class="text-lg font-semibold">{{ __('Embedded player') }}</div>
@@ -126,7 +126,7 @@
                 <button id="btn" onclick="copyToClickBoard()" title="{{ __("Copy to clipboard") }}"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blueGray-500 hover:text-blueGray-700 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg></button>
             </div>
         </div>
-        <pre><code id="code" class="text-xs">{{ '<div id="cubaescucha-player-container" episode-title="'.$title.'" episode-owner="'.$podcast->user->name.'" podcast-url="'.route("podcast.display", ["podcast"=>$podcast->url]).'"><audio id="cubaescucha-player" type="audio/mpeg" src="'.Storage::disk("s3")->url($episode->file_name).'"></audio> <img id="cubaescucha-player-img" src="'.Storage::disk('s3')->url($podcast->thumbnail).'" alt="'.$title.'"> </div> <script src="'.asset('js/embedded-player.js').'"></script>' }}</code></pre>
+        <pre class="overflow-auto bg-gray-800"><code id="code" class="text-xs text-green-400 px-2">{{ '<div id="cubaescucha-player-container" episode-title="'.$title.'" episode-owner="'.$podcast->user->name.'" podcast-url="'.route("podcast.display", ["podcast"=>$podcast->url]).'"><audio id="cubaescucha-player" type="audio/mpeg" src="'.Storage::disk("s3")->url($episode->file_name).'"></audio> <img id="cubaescucha-player-img" src="'.Storage::disk('s3')->url($podcast->thumbnail).'" alt="'.$title.'"> </div> <script src="'.asset('js/embedded-player.js').'"></script>' }}</code></pre>
         <script>
             if (!navigator.clipboard) {
                 // Clipboard API not available
