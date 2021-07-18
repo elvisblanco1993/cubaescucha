@@ -25,7 +25,7 @@
                 <p class="font-bold text-base text-blueGray-700">
                     {{ $author }}
                 </p>
-                <small class="block text-blueGray-800 my-4 capitalize">
+                <small class="block text-blueGray-800 my-6 capitalize">
                     {{ $tags }}
                 </small>
                 <div class="prose">
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="flex items-center justify-between">
-                    <div class="my-4 flex gap-2">
+                    <div class="my-6 flex gap-2">
                         <a  href="{{ route('genRss', ['podcast' => $url]) }}"
                             target="_blank"
                             class="border p-1 rounded-lg">

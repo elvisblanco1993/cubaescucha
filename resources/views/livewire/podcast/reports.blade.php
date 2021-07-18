@@ -1,6 +1,6 @@
 <div>
     {{-- In work, do what you enjoy. --}}
-    <div class="max-w-5xl mx-auto py-2 px-4 sm:px-6 lg:px-8 text-sm">
+    <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8 text-sm">
         <div class="flex items-center text-gray-500">
             <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
             <span class="mx-1">/</span>
@@ -108,7 +108,7 @@
             {{-- Table --}}
             <div class="flex flex-col my-6">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="py-4 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="sm:flex my-2">
                             <div class="w-full sm:w-1/2">
                                 <h3 class="font-bold text-gray-700 mb-0">

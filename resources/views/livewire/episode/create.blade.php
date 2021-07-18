@@ -135,7 +135,7 @@
                 </div>
 
                 @if ($publish == true)
-                <div class="grid grid-cols-4 gap-4 text-xs text-center my-4">
+                <div class="grid grid-cols-4 gap-4 text-xs text-center my-6">
                     <div class="col-span-4 sm:col-span-1">
                         <input type="date" wire:model="publish_date">
                     </div>

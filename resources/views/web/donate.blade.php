@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="max-w-5xl mx-auto my-4 px-4 sm:px-6 lg:px-8 py-8 prose">
+    <div class="max-w-5xl mx-auto my-6 px-4 sm:px-6 lg:px-8 py-8 prose">
         <p>
             {{__("Cubaescucha is a podcasting platform that allows creators share their content in audio format, and distribute it throughout the biggest podcast players, such as Spotify, Apple Podcasts, and Google Podcasts. While the platform is 100% FREE for both creators and listeners, servers maintenance and development comes at a cost. If you would like to help keep the lights up (and feed our cats), please consider becoming a sponsor with your monthly contribution, or make a on-time donation using the options below.")}}
         </p>
@@ -36,7 +36,7 @@
 
                 <div class="rounded border">
                     @guest
-                        <div class="px-3 py-2 my-2">
+                        <div class="px-3 py-4 my-2">
                             <div class="flex items-center justify-between">
                                 <strong>{{__("Login to see options")}}</strong>
                                 <a href="{{ route("patron.plans") }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Login") }}</a>
@@ -46,7 +46,7 @@
 
                     @auth
                         @if (!Auth::user()->subscribed())
-                            <div class="px-3 py-2 my-2">
+                            <div class="px-3 py-4 my-2">
                                 <div class="flex items-center justify-between">
                                     <strong>{{__("$5 a month")}}</strong>
                                     <a href="{{ route('checkout', ['tier' => '1']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
@@ -55,7 +55,7 @@
 
                             <div class="border-b"></div>
 
-                            <div class="px-3 py-2 my-2">
+                            <div class="px-3 py-4 my-2">
                                 <div class="flex items-center justify-between">
                                     <strong>{{__("$15 a month")}}</strong>
                                     <a href="{{ route('checkout', ['tier' => '2']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
@@ -64,7 +64,7 @@
 
                             <div class="border-b"></div>
 
-                            <div class="px-3 py-2 my-2">
+                            <div class="px-3 py-4 my-2">
                                 <div class="flex items-center justify-between">
                                     <strong>{{__("$25 a month")}}</strong>
                                     <a href="{{ route('checkout', ['tier' => '3']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
@@ -73,14 +73,14 @@
 
                             <div class="border-b"></div>
 
-                            <div class="px-3 py-2 my-2">
+                            <div class="px-3 py-4 my-2">
                                 <div class="flex items-center justify-between">
                                     <strong>{{__("$50 a month")}}</strong>
                                     <a href="{{ route('checkout', ['tier' => '4']) }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
                                 </div>
                             </div>
                         @else
-                            <div class="px-3 py-2">
+                            <div class="px-3 py-4">
                                 {{ __("You are already supporting us with your donation. To cancel your donation, or change it, please go to your") }} <a href="{{route('billing-portal')}}">{{__("Billing Portal")}}</a>
                             </div>
                         @endif
@@ -94,7 +94,7 @@
                 </h3>
 
                 <div class="rounded border">
-                    <div class="px-3 py-2 my-2">
+                    <div class="px-3 py-4 my-2">
                         <div class="flex items-center justify-between">
                             <strong>$5.00 {{__("one time")}}</strong>
                             <a href="{{ config('donations.onetimedonation_5') }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
@@ -103,7 +103,7 @@
 
                     <div class="border-b"></div>
 
-                    <div class="px-3 py-2 my-2">
+                    <div class="px-3 py-4 my-2">
                         <div class="flex items-center justify-between">
                             <strong>$15.00 {{__("one time")}}</strong>
                             <a href="{{ config('donations.onetimedonation_15') }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
@@ -112,7 +112,7 @@
 
                     <div class="border-b"></div>
 
-                    <div class="px-3 py-2 my-2">
+                    <div class="px-3 py-4 my-2">
                         <div class="flex items-center justify-between">
                             <strong>$30.00 {{__("one time")}}</strong>
                             <a href="{{ config('donations.onetimedonation_30') }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>
@@ -121,7 +121,7 @@
 
                     <div class="border-b"></div>
 
-                    <div class="px-3 py-2 my-2">
+                    <div class="px-3 py-4 my-2">
                         <div class="flex items-center justify-between">
                             <strong>$90.00 {{__("one time")}}</strong>
                             <a href="{{ config('donations.onetimedonation_90') }}" class="no-underline text-blueGray-800 text-sm px-2 py-1 rounded border border-blueGray-300 shadow-sm">{{ __("Select") }}</a>

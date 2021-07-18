@@ -1,6 +1,6 @@
 @extends('layouts.web')
 @section('content')
-    <div class="bg-black">
+    <div class="bg-bluegray-900">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             {{-- Title Bar --}}
             <div class="w-full flex justify-between items-center">

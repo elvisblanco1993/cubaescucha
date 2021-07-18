@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="max-w-5xl mx-auto my-4 px-4 sm:px-6 lg:px-8 py-8 prose">
+    <div class="max-w-5xl mx-auto my-6 px-4 sm:px-6 lg:px-8 py-8 prose">
         <p>
             {{__("Cubaescucha is a podcasting platform that allows creators share their content in audio format, and distribute it throughout the biggest podcast players, such as Spotify, Apple Podcasts, and Google Podcasts. While the platform is 100% FREE for both creators and listeners, servers maintenance and development comes at a cost. If you would like to help keep the lights up (and feed our cats), please consider becoming a sponsor with your monthly contribution, or make a on-time donation using the options below. ")}}
         </p>
@@ -31,7 +31,7 @@
                 <span class="ml-8">${{ $total }}.00 {{__("monthly")}}</span>
             </div>
             <div>
-                {{ $checkout->button('Continue to Payment', ['class' => 'inline-flex items-center px-4 py-2 bg-yellow-400 border border-transparent rounded-md font-semibold text-xs text-blueGray-900 uppercase tracking-widest hover:bg-yellow-500 active:bg-yellow-600 focus:outline-none focus:border-yellow-500 focus:shadow-outline-yellow disabled:opacity-25 transition ease-in-out duration-150']) }}
+                {{ $checkout->button('Continue to Payment', ['class' => 'inline-flex items-center px-4 py-4 bg-yellow-400 border border-transparent rounded-md font-semibold text-xs text-blueGray-900 uppercase tracking-widest hover:bg-yellow-500 active:bg-yellow-600 focus:outline-none focus:border-yellow-500 focus:shadow-outline-yellow disabled:opacity-25 transition ease-in-out duration-150']) }}
             </div>
         </div>
         <small>{{ __("You can cancel your sponsorship at any given time from your Billing Portal.") }}</small>

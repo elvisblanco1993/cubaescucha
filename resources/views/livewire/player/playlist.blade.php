@@ -1,6 +1,6 @@
 <div>
     @forelse ($episodes as $episode)
-        <div class="py-2 border-t border-gray-300 flex justify-between items-center">
+        <div class="py-4 border-t border-gray-300 flex justify-between items-center">
             <div class="flex items-center">
                 <button
                     class="mr-4 player-btn"

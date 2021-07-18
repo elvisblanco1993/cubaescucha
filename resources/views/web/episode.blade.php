@@ -22,11 +22,11 @@
             <a href="{{ route('podcast.display', ['podcast' => $podcast->url]) }}" class="font-bold text-base text-indigo-500">
                 {{ $podcast->name }}
             </a>
-            <small class="block text-blueGray-800 my-4 capitalize">
+            <small class="block text-blueGray-800 my-6 capitalize">
                 {{ $podcast->tags }}
             </small>
 
-            <div class="my-4 flex gap-2">
+            <div class="my-6 flex gap-2">
                 <a  href="{{ route('genRss', ['podcast' => $podcast->url]) }}"
                     target="_blank"
                     class="border p-1 rounded-lg">

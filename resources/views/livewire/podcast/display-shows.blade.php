@@ -39,7 +39,7 @@
                         <a href="{{ route('podcast.display', ['podcast' => $favorite->url]) }}" class="col-span-2 md:col-span-1">
                             <div class="">
                                 <img src="{{ Storage::disk('s3')->url($favorite->thumbnail) }}" alt="{{ $favorite->name }}" class="rounded-lg w-full h-48 object-cover">
-                                <div class="text-xs text-blueGray-800 py-2">
+                                <div class="text-xs text-blueGray-800 py-4">
                                     {{ $favorite->name }}
                                 </div>
                                 <div class="text-xs text-blueGray-600">
@@ -68,7 +68,7 @@
                     <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}" class="col-span-2 md:col-span-1">
                         <div class="">
                             <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg w-full h-48 object-cover">
-                            <div class="text-xs text-blueGray-800 py-2">
+                            <div class="text-xs text-blueGray-800 py-4">
                                 {{ $show->name }}
                             </div>
                             <div class="text-xs text-blueGray-600">

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <div class="max-w-5xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between">
             <div class="flex items-center text-gray-500 text-sm">
                 <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <div class="py-2">
+    <div class="py-4">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @if (session('success'))
@@ -71,7 +71,7 @@
 
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                        <div class="py-4 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <table class="min-w-full divide-y divide-gray-200">
                                     <thead class="bg-gray-50">

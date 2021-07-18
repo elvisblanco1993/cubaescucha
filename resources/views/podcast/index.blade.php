@@ -12,7 +12,7 @@
             <div>
 
                 <div>
-                    <div class="sm:flex items-center justify-between py-2">
+                    <div class="sm:flex items-center justify-between py-4">
                         <p class="text-2xl font-bold uppercase">
                             {{ __('Hello, ') . Auth::user()->name . '!' }}
                         </p>
@@ -99,7 +99,7 @@
         </div>
     @else
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="sm:flex items-center justify-between py-2">
+            <div class="sm:flex items-center justify-between py-4">
                 <div class="flex items-center text-gray-500 text-sm">
                     <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
                 </div>
@@ -131,7 +131,7 @@
 
                         <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="col-span-2 md:col-span-1 border rounded-xl hover:shadow">
                             <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="{{ $podcast->name }}" class="rounded-t-xl rounded-b-none object-cover w-full h-48">
-                            <div class="px-4 py-2">
+                            <div class="px-4 py-4">
                                 <div class="text-base font-bold">
                                     {{ $podcast->name }}
                                 </div>

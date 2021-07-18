@@ -3,7 +3,7 @@
 
     <div class="max-w-full mx-auto bg-center bg-no-repeat bg-cover" style="background-image: url({{ $thumbnail }})">
 
-        <div class="h-full w-full bg-white bg-opacity-90 text-black backdrop-filter backdrop-blur-lg">
+        <div class="h-full w-full bg-white bg-opacity-60 backdrop-filter backdrop-blur-lg text-bluegray-900">
             <div class="max-w-5xl mx-auto">
                 <div class="py-16 sm:flex items-center gap-8 space-y-8 sm:space-y-0 px-4 sm:px-6 lg:px-8">
                     <img src="{{ $thumbnail }}" alt="" class="w-64 h-64 object-cover rounded-lg mx-auto">
@@ -14,15 +14,15 @@
                         <p class="font-bold text-base text-blueGray-700">
                             {{ $author }}
                         </p>
-                        <small class="block text-xs text-blueGray-800 my-4 capitalize">
+                        <small class="block text-xs text-blueGray-800 my-6 capitalize">
                             {{ $tags }}
                         </small>
-                        <div class="prose text-base">
+                        <div class="prose text-base text-bluegray-900">
                             @parsedown($description)
                         </div>
 
                         <div class="sm:flex items-center justify-between">
-                            <div class="my-4 flex gap-2 justify-center sm:justify-start">
+                            <div class="my-6 flex gap-2 justify-center sm:justify-start">
                                 <a  href="{{ route('genRss', ['podcast' => $url]) }}"
                                     target="_blank"
                                     class="bg-white p-1 rounded-lg shadow backdrop-filter backdrop-blur-lg hover:shadow-lg">
@@ -80,9 +80,9 @@
             </div>
         </div>
 
-        <div class="w-full bg-black bg-opacity-80 text-white backdrop-filter backdrop-blur-lg">
+        <div class="w-full bg-bluegray-900 bg-opacity-80 text-white backdrop-filter backdrop-blur-lg">
 
-            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
                 <audio id="player" type="audio/mpeg"></audio>
                 <div class="">
 

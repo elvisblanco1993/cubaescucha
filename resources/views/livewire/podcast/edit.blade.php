@@ -149,11 +149,11 @@
                 <label for="spotify" class="block text-xs font-medium text-blueGray-500 mb-1">Spotify</label>
                 <input id="spotify" type="text" wire:model.defer="spotifypodcasts_url">
             </div>
-            <div class="my-4">
+            <div class="my-6">
                 <label for="apodcasts" class="block text-xs font-medium text-blueGray-500 mb-1">Apple Podcasts</label>
                 <input id="apodcasts" type="text" wire:model.defer="applepodcasts_url">
             </div>
-            <div class="my-4">
+            <div class="my-6">
                 <label for="gpodcasts" class="block text-xs font-medium text-blueGray-500 mb-1">Google Podcasts</label>
                 <input id="gpodcasts" type="text" wire:model.defer="googlepodcasts_url">
             </div>
