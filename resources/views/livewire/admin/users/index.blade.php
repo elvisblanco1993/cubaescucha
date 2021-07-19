@@ -11,7 +11,7 @@
                             accesskey="/"
                             wire:keydown.escape="cancel"
                             wire:keyup="search"
-                            class="w-1/5">
+                            class="w-1/2 sm:w-1/4">
                 </div>
 
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">

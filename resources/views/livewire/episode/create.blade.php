@@ -116,6 +116,18 @@
             </label>
         </div>
 
+        <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6">
+            <div class="text-lg font-semibold mb-2">{{__("Notify Subscribers")}}</div>
+
+            <label class="inline-flex items-center text-sm font-medium text-blueGray-500">
+                <input type="checkbox" wire:model.defer="notify_subscribers" class="mr-2 rounded">
+                {{ __('I would like to notify my subscribers about this release.') }}
+            </label>
+            <small class="block mt-2 text-xs text-gray-500">
+                {{ __("This feature is commonly used for advertising new shows to your subscribers, ie: trailer episodes.") }}
+            </small>
+        </div>
+
         @if ($audio_file)
             <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6">
                 <div class="w-full flex items-center justify-between">

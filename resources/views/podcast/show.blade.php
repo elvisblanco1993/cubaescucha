@@ -31,6 +31,11 @@
                         <h1 class="text-2xl font-extrabold">
                             {{ $podcast->name }}
                         </h1>
+
+                        <div class="text-sm font-semibold text-bluegray-600">
+                            {{ __("Followers: ") . $podcast->followers->count() }}
+                        </div>
+
                         <div class="mt-6 flex">
                             <a href="{{ route('genRss', ['podcast' => $podcast->url]) }}" target="_blank" title="{{ __('RSS Feed') }}" class="mr-2 text-amber-500 hover:text-amber-600 p-2 bg-white rounded-lg shadow-sm hover:bg-amber-50">
                                 <svg height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

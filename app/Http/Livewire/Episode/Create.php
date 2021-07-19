@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Episode;
 
+use App\Jobs\NewEpisodeUploaded;
 use App\Models\Episode;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -25,6 +26,7 @@ class Create extends Component
     public $publish_date;
     public $publish_hour;
     public $publish_minute;
+    public $notify_subscribers;
 
 
     protected $rules = [
@@ -88,6 +90,14 @@ class Create extends Component
             'published_at' => ($this->publish == false) ? Carbon::now() : $this->makeFutureDate(),
         ]);
         $episode->save();
+
+        // Notify podcast followers about the new episode release.
+        if ($this->notify_subscribers == true) {
+            NewEpisodeUploaded::dispatch(
+                $this->podcast,
+                $this->title,
+            );
+        }
 
         session()->flash('success', 'Your new episode, '.$this->title.', was successfully uploaded and published.');
         return redirect(route('podcasts.show', ['podcast' => $this->podcast->id]));

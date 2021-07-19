@@ -46,7 +46,7 @@ class Podcast extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function favorited()
+    public function followers()
     {
         return $this->belongsToMany(User::class, 'podcast_user', 'podcast_id', 'user_id');
     }
