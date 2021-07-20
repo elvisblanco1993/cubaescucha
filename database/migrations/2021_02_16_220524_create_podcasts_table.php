@@ -15,7 +15,7 @@ class CreatePodcastsTable extends Migration
     {
         Schema::create('podcasts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('team_id')->constrained();
             $table->string('name');
             $table->string('slug');
             $table->longText('description');

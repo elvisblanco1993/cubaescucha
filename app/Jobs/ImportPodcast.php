@@ -26,7 +26,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
 
     public $feed;
     public $podcast_url;
-    public $user_id;
+    public $team_id;
     public $user_email;
 
     public $timeout = 3600;
@@ -37,11 +37,11 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
      *
      * @return void
      */
-    public function __construct($rss_url, $podcast_url, $user_id, $user_email)
+    public function __construct($rss_url, $podcast_url, $team_id, $user_email)
     {
         $this->feed = $rss_url;
         $this->podcast_url = $podcast_url;
-        $this->user_id = $user_id;
+        $this->team_id = $team_id;
         $this->user_email = $user_email;
     }
 
@@ -92,7 +92,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
 
             // Create Podcast
             $podcast = Podcast::create([
-                'user_id' => $this->user_id,
+                'team_id' => $this->team_id,
                 'name' => $podcast_name,
                 'slug' => Str::slug($podcast_name),
                 'url' => $this->podcast_url,

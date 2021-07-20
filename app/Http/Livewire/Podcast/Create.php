@@ -47,7 +47,7 @@ class Create extends Component
         $isPublic = ($this->public == true) ? 'on' : null ;
 
         $podcast = Podcast::create([
-            'user_id' => auth()->user()->id,
+            'team_id' => auth()->user()->currentTeam->id,
             'name' => $this->name,
             'slug' => $slug,
             'url' => $this->generatePodcastUrl(),

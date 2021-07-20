@@ -43,7 +43,7 @@
                                     {{ $favorite->name }}
                                 </div>
                                 <div class="text-xs text-blueGray-600">
-                                    {{ $favorite->user->name }}
+                                    {{ $favorite->team->name }}
                                 </div>
                             </div>
                         </a>
@@ -72,7 +72,7 @@
                                 {{ $show->name }}
                             </div>
                             <div class="text-xs text-blueGray-600">
-                                {{ $show->user->name }}
+                                {{ $show->team->name }}
                             </div>
                         </div>
                     </a>

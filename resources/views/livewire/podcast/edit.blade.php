@@ -177,6 +177,8 @@
         </div>
     </form>
 
+    @if (auth()->user()->hasTeamRole( auth()->user()->currentTeam, 'admin' ))
+
     <div class="px-4 py-8 sm:px-6 lg:px-8 border border-red-200 sm:rounded-lg my-6 bg-red-50">
         <div class="text-lg font-semibold mb-2 text-red-600">{{__("Danger Zone")}}</div>
 
@@ -219,4 +221,6 @@
             </x-slot>
         </x-jet-confirmation-modal>
     </div>
+
+    @endif
 </div>

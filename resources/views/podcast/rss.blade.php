@@ -7,10 +7,10 @@
         <link>{{ config('app.url') . "/podcast/" . $podcast->url }}</link>
         <description>{{ $podcast->description }}</description>
         <language>{{ $podcast->lang }}</language>
-        <itunes:author>{{ $podcast->user->name }}</itunes:author>
+        <itunes:author>{{ $podcast->team->name }}</itunes:author>
         <itunes:owner>
-            <itunes:name>{{ $podcast->user->name }}</itunes:name>
-            <itunes:email>{{ $podcast->user->email }}</itunes:email>
+            <itunes:name>{{ $podcast->team->name }}</itunes:name>
+            <itunes:email>{{ $podcast->team->owner->email }}</itunes:email>
         </itunes:owner>
         <itunes:category text="{{ $podcast->tags }}" />
         @if ($podcast->style == 'e' || $podcast->style == 'ews')

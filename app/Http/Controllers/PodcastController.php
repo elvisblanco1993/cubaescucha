@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TotalEpisodeReproductions;
 use App\Exports\TotalReproductionsByCountry;
+use App\Models\Team;
 
 class PodcastController extends Controller
 {
@@ -19,7 +20,7 @@ class PodcastController extends Controller
     public function index()
     {
         return view('podcast.index', [
-            'podcasts' => Podcast::where('user_id', auth()->user()->id)->orderBy('created_at', 'DESC')->paginate(8)
+            'podcasts' => Podcast::where('team_id', auth()->user()->currentTeam->id)->orderBy('created_at', 'DESC')->paginate(8)
         ]);
     }
 
@@ -58,7 +59,7 @@ class PodcastController extends Controller
                 'name' => $podcast->name,
                 'description' => $podcast->description,
                 'tags' => $podcast->tags,
-                'author' => User::where('id', $podcast->user_id)->first()->name,
+                'author' => $podcast->team->name,
                 'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
                 'episodes' => $podcast->episodes()->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'ASC')->get(),
                 'spotifypodcasts_url' => $podcast->spotifypodcasts_url,
@@ -73,7 +74,7 @@ class PodcastController extends Controller
                 'name' => $podcast->name,
                 'description' => $podcast->description,
                 'tags' => $podcast->tags,
-                'author' => User::where('id', $podcast->user_id)->first()->name,
+                'author' => $podcast->team->name,
                 'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
                 'episodes' => $podcast->episodes()->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'ASC')->get(),
                 'spotifypodcasts_url' => $podcast->spotifypodcasts_url,

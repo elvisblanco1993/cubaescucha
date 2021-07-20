@@ -3,27 +3,27 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
-use App\Models\User;
+use App\Models\Team;
 use App\Models\Podcast;
 use Carbon\Carbon;
 
 class Graphs extends Component
 {
-    public $users_total;
-    public $users_new;
+    public $teams_total;
+    public $teams_new;
     public $podcasts_total;
     public $filterRange;
 
     public function mount()
     {
-        $this->users_total = User::count();
-        $this->users_new = User::where('created_at', '>=', Carbon::today()->subDays(30))->count();
+        $this->teams_total = Team::count();
+        $this->teams_new = Team::where('created_at', '>=', Carbon::today()->subDays(30))->count();
         $this->podcasts_total = Podcast::count();
     }
 
-    public function filterNewUsers()
+    public function filterNewTeams()
     {
-        $this->users_new = User::where('created_at', '>=', Carbon::today()->subDays($this->filterRange))->count();
+        $this->teams_new = Team::where('created_at', '>=', Carbon::today()->subDays($this->filterRange))->count();
     }
 
     public function render()

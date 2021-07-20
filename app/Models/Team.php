@@ -7,10 +7,12 @@ use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use Laravel\Jetstream\Team as JetstreamTeam;
+use Laravel\Scout\Searchable;
 
 class Team extends JetstreamTeam
 {
     use HasFactory;
+    use Searchable;
 
     /**
      * The attributes that should be cast to native types.
@@ -41,4 +43,26 @@ class Team extends JetstreamTeam
         'updated' => TeamUpdated::class,
         'deleted' => TeamDeleted::class,
     ];
+
+    /**
+     * The relationship between a team and a podcast
+     */
+    public function podcasts()
+    {
+        return $this->hasMany(Podcast::class);
+    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        unset($array['updated_at']);
+
+        return $array;
+    }
 }

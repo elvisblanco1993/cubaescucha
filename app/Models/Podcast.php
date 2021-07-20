@@ -11,7 +11,7 @@ class Podcast extends Model
     use HasFactory, Searchable;
 
     protected $fillable = [
-        'user_id',
+        'team_id',
         'name',
         'slug',
         'url',
@@ -41,14 +41,17 @@ class Podcast extends Model
         return $this->hasMany(Episode::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-
     public function followers()
     {
         return $this->belongsToMany(User::class, 'podcast_user', 'podcast_id', 'user_id');
+    }
+
+    /**
+     * The relationship between a podcast and a team
+     */
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
     }
 
     /**

@@ -2,17 +2,18 @@
 
 namespace App\Http\Livewire\Admin\Users;
 
+use App\Models\Team;
 use \App\Models\User;
 use Livewire\Component;
 
 class Index extends Component
 {
-    public $users;
+    public $teams;
     public $query;
 
     public function mount()
     {
-        $this->users = User::with('podcasts')->latest()->get();
+        $this->teams = Team::with('podcasts')->latest()->get();
     }
 
     public function cancel()
@@ -22,7 +23,7 @@ class Index extends Component
 
     public function search()
     {
-        $this->users = User::search($this->query)->take(10)->get();
+        $this->teams = Team::search($this->query)->take(10)->get();
     }
 
     public function render()

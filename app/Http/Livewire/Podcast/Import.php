@@ -22,7 +22,7 @@ class Import extends Component
     {
         $this->validate();
 
-        ImportPodcast::dispatch($this->url, $this->generatePodcastUrl(), auth()->user()->id, auth()->user()->email)->onQueue('import_podcasts');
+        ImportPodcast::dispatch($this->url, $this->generatePodcastUrl(), auth()->user()->currentTeam->id, auth()->user()->email)->onQueue('import_podcasts');
 
         session()->flash('success', 'We are processing your podcast and will email you when is ready.');
         return redirect()->to('/podcasts');
