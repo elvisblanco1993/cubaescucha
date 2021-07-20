@@ -78,11 +78,13 @@
                     </a>
 
                 @empty
-                    <div class="col-span-4 w-full mx-auto prose text-center">
+                    <div class="col-span-4 w-full mx-auto text-center">
                         @if (empty($query))
-                        <h4>
-                            {{ __("Huh! Such empty :(") }}
-                        </h4>
+
+                            <div class="text-2xl">{{__("Be the first of many. Inspire a revolution.")}}</div>
+
+                            <img src="{{ asset('storage/undraw_podcast_q6p7.png') }}" alt="">
+
                         @else
                         <h4>
                             {{ __("Sorry! we cannot find what you are looking for. Please check for typos and try again.") }}
