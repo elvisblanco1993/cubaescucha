@@ -14,7 +14,6 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .copy('resources/js/player.js', 'public/js')
     .copy('resources/js/embedded-player.js', 'public/js')
-    .copy('node_modules/chart.js/dist/Chart.min.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('postcss-import'),
         require('tailwindcss'),
