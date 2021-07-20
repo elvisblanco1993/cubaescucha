@@ -134,9 +134,11 @@
                                 {{ __('Manage Account') }}
                             </div>
 
+                            @if (auth()->user()->id == auth()->user()->currentTeam->owner->id)
                             <x-jet-dropdown-link href="{{ route('billing-portal') }}">
                                 {{ __('Billing Portal') }}
                             </x-jet-dropdown-link>
+                            @endif
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                 {{ __('Profile') }}
