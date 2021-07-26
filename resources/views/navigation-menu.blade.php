@@ -14,7 +14,6 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
 
-
                     <x-jet-nav-link href="{{ route('shows') }}" :active="request()->routeIs('shows')">
                         {{ __('Discover') }}
                     </x-jet-nav-link>
@@ -40,12 +39,10 @@
                     <a href="{{ config('app.url') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
-                    <a href="{{ route('shows') }}" class="text-bluegray-9900 font-semibold text-xs hidden sm:block mx-8 uppercase">
-                        {{ __('Discover') }}
-                    </a>
                 </div>
 
                 <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex items-center uppercase text-sm">
+
                     <a href="{{ route('login') }}" class="text-bluegray-900 font-semibold text-xs">
                         {{ __('Login') }}
                     </a>
