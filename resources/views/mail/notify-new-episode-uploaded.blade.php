@@ -1,12 +1,11 @@
 @component('mail::message')
-# {{__("New episode available now!")}}!
 
-{{ __("Hi there. We have just released a new episode of your favorite podcast, ") . $podcast_name . __(" is out.") }}
+{{ __("A new episode from ") . $podcast_name . __(" is out now. Click on the button below to start listening.") }}
 
 @component('mail::button', ['url' => route('podcast.display', ['podcast' => $podcast_url])])
 {{ __("Go to ") . $podcast_name }}
 @endcomponent
 
-{{__("Thank you for being a loyal listener")}},<br>
+{{__("Best")}},<br>
 {{ $podcast_name . __(" team.") }}
 @endcomponent

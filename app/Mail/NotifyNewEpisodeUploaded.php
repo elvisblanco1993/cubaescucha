@@ -36,6 +36,6 @@ class NotifyNewEpisodeUploaded extends Mailable
     public function build()
     {
         Log::info("Message");
-        return $this->subject("New episode alert from " . $this->podcast_name)->markdown('mail.notify-new-episode-uploaded');
+        return $this->subject("🔔✨ New episode alert from " . $this->podcast_name . " ✨🔔")->markdown('mail.notify-new-episode-uploaded');
     }
 }

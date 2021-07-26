@@ -11,11 +11,6 @@ use Illuminate\Support\Str;
 
 class PodcastTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     public function test_user_can_create_a_podcast()
     {
         $podcast = new Podcast([

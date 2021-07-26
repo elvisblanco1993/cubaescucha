@@ -66,7 +66,13 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
         Log::notice("/ NEW JOB: IMPORT PODCAST [" . $this->feed . "]");
         Log::notice("/--------------------------------------------------------");
 
-        $feed = simplexml_load_file($this->feed);
+
+        try {
+            $feed = simplexml_load_file($this->feed);
+        } catch (\Throwable $e) {
+            Log::error("Failed to load remote feed: " . $e->getMessage());
+            Mail::to($this->user_email)->send(new NotifyFailedPodcastImport());
+        }
 
         if (!empty($feed)) {
 

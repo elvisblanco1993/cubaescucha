@@ -1,25 +1,24 @@
 <x-app-layout>
     {{-- Run the First Run walkthrough the first time the user enters the system, or when there are no podcasts created yet. --}}
-    @if ($podcasts->count() == 0)
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @if (session()->has('success'))
-                <div class="bg-green-100 text-green-800 px-6 py-4 mb-6 rounded-lg">
-                    {{ session('success') }}
-                </div>
+            <div class="bg-green-100 text-green-800 px-6 py-4 mb-6 rounded-lg">
+                {{ session('success') }}
+            </div>
             @endif
 
             <div>
 
-                <div>
-                    <div class="sm:flex items-center justify-between py-4">
-                        <p class="text-2xl font-bold uppercase">
+                <div class="border-b">
+                    <div class="sm:flex items-center justify-between py-6">
+                        <p class="text-xl font-semibold">
                             {{ __('Hello, ') . Auth::user()->name . '!' }}
                         </p>
 
                         <div class="sm:flex items-center gap-8">
                             @livewire('podcast.import')
-                            <a href="{{ route('podcasts.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 my-2">
+                            <a href="{{ route('podcasts.create') }}" class="inline-flex items-center px-4 py-2 -my-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 my-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
@@ -29,6 +28,7 @@
                     </div>
                 </div>
 
+                @if ($podcasts->count() == 0)
                 <div class="my-6 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         <div class="p-6">
@@ -94,38 +94,9 @@
                         </div>
                     </div>
                 </div>
+                @else
 
-            </div>
-        </div>
-    @else
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="sm:flex items-center justify-between py-4">
-                <div class="flex items-center text-gray-500 text-sm">
-                    <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
-                </div>
-
-                <div class="flex items-center gap-6 justify-center sm:justify-end">
-                    @livewire('podcast.import')
-                    <a href="{{ route('podcasts.create') }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150 my-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                        </svg>
-                        {{ __('Create Podcast') }}
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="py-6">
-            <div class="max-w-5xl mx-auto sm:px-6 lg:px-8">
-
-                @if (session()->has('success'))
-                    <div class="bg-green-100 text-green-800 px-6 py-4 mb-6 rounded-lg">
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-                <div class="grid grid-cols-4 gap-8 px-4 sm:px-0">
+                <div class="grid grid-cols-4 gap-8 px-4 sm:px-0 my-6">
 
                     @forelse ($podcasts as $podcast)
 
@@ -141,9 +112,7 @@
                     @empty
 
                     @endforelse
-
                 </div>
-
                 <div class="mt-6">
                     {{ $podcasts->links() }}
                 </div>
