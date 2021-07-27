@@ -43,7 +43,7 @@
 
                 <div class="hidden space-x-4 sm:-my-px sm:ml-10 sm:flex items-center uppercase text-sm">
 
-                    <a href="{{ route('login') }}" class="text-bluegray-900 font-semibold text-xs">
+                    <a href="{{ route('login') }}" class="text-bluegray-900 font-semibold text-xs mx-4">
                         {{ __('Login') }}
                     </a>
                     <button onclick="window.location.href='{{ route('register') }}'" class="inline-flex items-center px-4 py-2 bg-yellow-400 border border-transparent rounded-md font-semibold text-xs text-blueGray-900 uppercase tracking-widest hover:bg-yellow-500 active:bg-yellow-600 focus:outline-none focus:border-yellow-500 focus:shadow-outline-yellow disabled:opacity-25 transition ease-in-out duration-150">
