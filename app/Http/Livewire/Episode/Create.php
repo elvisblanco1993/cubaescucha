@@ -99,7 +99,9 @@ class Create extends Component
             );
         }
 
-        session()->flash('success', 'Your new episode, '.$this->title.', was successfully uploaded and published.');
+        session()->flash('flash.banner', 'Episode successfully created!');
+        session()->flash('flash.bannerStyle', 'success');
+
         return redirect(route('podcasts.show', ['podcast' => $this->podcast->id]));
     }
 

@@ -74,7 +74,9 @@ class Edit extends Component
             $this->podcast->update(['thumbnail' => $path]);
         }
 
-        session()->flash('success', 'All changes were successfully saved.');
+        session()->flash('flash.banner', 'All changes were successfully saved!');
+        session()->flash('flash.bannerStyle', 'success');
+
         return redirect(route('podcasts.show', ['podcast' => $this->podcast->id]));
     }
 
@@ -97,7 +99,8 @@ class Edit extends Component
             // Delete podcast
             $this->podcast->delete();
 
-            session()->flash('success', 'The podcast ' . $this->podcast->name . ', and all its content has been successfully deleted from our platform.');
+            session()->flash('flash.banner', 'The podcast ' . $this->podcast->name . ', and all its content has been successfully deleted from our platform!');
+            session()->flash('flash.bannerStyle', 'success');
 
             return redirect(route('podcasts'));
 

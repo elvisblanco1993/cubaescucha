@@ -50,7 +50,9 @@ class Edit extends Component
             $this->episode->update(['file_name' => $path]);
         }
 
-        session()->flash('success', ' The episode details were successfully updated. If a new audio file was uploaded, it may take a few seconds before it shows in the preview.');
+        session()->flash('flash.banner', 'Episode details successfully updated!');
+        session()->flash('flash.bannerStyle', 'success');
+
         return redirect(route('episode.show', ['podcast'=>$this->podcast->id, 'episode'=>$this->episode->id]));
     }
 
@@ -62,7 +64,9 @@ class Edit extends Component
         Storage::disk('s3')->delete($this->episode->file_name);
         $this->episode->delete();
 
-        session()->flash('success', ' The episode '.$this->episode->title.' was successfully deleted.');
+        session()->flash('flash.banner', 'Episode successfully deleted!');
+        session()->flash('flash.bannerStyle', 'success');
+
         return redirect(route('podcasts.show', ['podcast'=>$this->podcast->id]));
     }
 

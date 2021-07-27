@@ -61,7 +61,8 @@ class Create extends Component
             'website_style' => $this->website_style,
         ]);
 
-        session()->flash('success', 'Your new podcast, ' . $this->name . ', was successfully created!');
+        session()->flash('flash.banner', 'Podcast successfully created!');
+        session()->flash('flash.bannerStyle', 'success');
 
         return redirect(route('podcasts.show', ['podcast' => $podcast->id]));
     }
