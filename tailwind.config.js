@@ -13,6 +13,7 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
+                logo: ['Merriweather', 'sans-serif'],
             },
             animation: {
                 'marquee-slower': 'marquee 30s linear infinite',
