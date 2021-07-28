@@ -34,96 +34,31 @@
     </div>
 </div>
 
+@if (\App\Models\Podcast::whereNotNull('is_public')->count() > 0)
 <div class="w-full bg-white">
     <div class="max-w-5xl mx-auto grid grid-cols-3 items-center gap-12 px-4 sm:px-6 lg:px-8 py-24">
         <div class="col-span-3 mx-auto">
             <h1 class="text-bluegray-900 font-black text-4xl capitalize">{{ __("Latest shows") }}</h1>
         </div>
 
-        <div class="col-span-3 sm:col-span-1">
-            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
-                <a href="">
-                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
-                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
-                    {{ __("Podcast title") }}
-                    </div>
-                    <div class="mx-2 border-b"></div>
-                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
-                        {{ __("Podcast Author") }}
-                    </div>
-                </a>
+        @forelse (\App\Models\Podcast::whereNotNull('is_public')->get() as $show)
+            <div class="col-span-3 sm:col-span-1">
+                <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
+                    <a href="">
+                    <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-t-lg h-64 sm:h-48 w-full object-cover">
+                    <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
+                        {{ $show->name }}
+                        </div>
+                        <div class="mx-2 border-b"></div>
+                        <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
+                            {{ $show->team->name }}
+                        </div>
+                    </a>
+                </div>
             </div>
-        </div>
-        <div class="col-span-3 sm:col-span-1">
-            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
-                <a href="">
-                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
-                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
-                    {{ __("Podcast title") }}
-                    </div>
-                    <div class="mx-2 border-b"></div>
-                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
-                        {{ __("Podcast Author") }}
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-span-3 sm:col-span-1">
-            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
-                <a href="">
-                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
-                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
-                    {{ __("Podcast title") }}
-                    </div>
-                    <div class="mx-2 border-b"></div>
-                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
-                        {{ __("Podcast Author") }}
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-span-3 sm:col-span-1">
-            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
-                <a href="">
-                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
-                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
-                    {{ __("Podcast title") }}
-                    </div>
-                    <div class="mx-2 border-b"></div>
-                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
-                        {{ __("Podcast Author") }}
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-span-3 sm:col-span-1">
-            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
-                <a href="">
-                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
-                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
-                    {{ __("Podcast title") }}
-                    </div>
-                    <div class="mx-2 border-b"></div>
-                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
-                        {{ __("Podcast Author") }}
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-span-3 sm:col-span-1">
-            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
-                <a href="">
-                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
-                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
-                    {{ __("Podcast title") }}
-                    </div>
-                    <div class="mx-2 border-b"></div>
-                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
-                        {{ __("Podcast Author") }}
-                    </div>
-                </a>
-            </div>
-        </div>
+        @empty
+
+        @endforelse
 
         <div class="col-span-3 mx-auto prose">
             <a href="{{ route('shows') }}">
@@ -132,4 +67,5 @@
         </div>
     </div>
 </div>
+@endif
 @endsection

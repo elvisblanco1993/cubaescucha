@@ -1,13 +1,13 @@
-<div class="bg-bluegray-900 text-bluegray-200">
-    <div class="max-w-5xl mx-auto py-6 sm:flex items-center justify-between px-4 md:px-8 text-center">
+<div class="bg-white text-bluegray-900 border-t">
+    <div class="max-w-5xl mx-auto py-2 sm:flex items-center justify-between px-4 md:px-8 text-center">
         {{-- Left side --}}
         <div class="w-full sm:w-1/2 text-sm sm:text-left font-light py-3">
             <span class="mr-4">
                 {{ 'Copyright © ' . Carbon\Carbon::now()->year . " cubaescucha.com" }}
             </span>
-            <div class="uppercase bg-bluegray-700 inline-block rounded">
+            <div class="uppercase bg-bluegray-400 inline-block rounded">
                 @foreach(config('app.languages') as $langLocale => $langName)
-                    <a href="{{ url()->current() }}?change_language={{ $langLocale }}" class="px-2 rounded-sm py-0.5 @if (app()->getLocale() == $langLocale) bg-green-400 text-bluegray-800 @endif">{{ $langLocale }}</a>
+                    <a href="{{ url()->current() }}?change_language={{ $langLocale }}" class="px-2 rounded-sm py-0.5 @if (app()->getLocale() == $langLocale) bg-emerald-400 leading-tight text-bluegray-800 @endif">{{ $langLocale }}</a>
                 @endforeach
             </div>
         </div>
