@@ -35,7 +35,7 @@
             </div>
 
             @else
-                <div class="flex-shrink-0 flex items-center sm:w-2/3 lg:w-2/3">
+                <div class="flex-shrink-0 flex items-center">
                     <a href="{{ config('app.url') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
@@ -46,9 +46,9 @@
                     <a href="{{ route('login') }}" class="text-bluegray-900 font-semibold text-xs mx-4">
                         {{ __('Login') }}
                     </a>
-                    <button onclick="window.location.href='{{ route('register') }}'" class="inline-flex items-center px-4 py-2 bg-yellow-400 border border-transparent rounded-md font-semibold text-xs text-blueGray-900 uppercase tracking-widest hover:bg-yellow-500 active:bg-yellow-600 focus:outline-none focus:border-yellow-500 focus:shadow-outline-yellow disabled:opacity-25 transition ease-in-out duration-150">
-                        {{ __('Get Started') }}
-                    </button>
+                    <x-jet-button onclick="window.location.href='{{ route('register') }}'">
+                        {{ __("Get Started") }}
+                    </x-jet-button>
                 </div>
             @endauth
 
@@ -181,10 +181,6 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             @guest
-                <x-jet-responsive-nav-link href="{{ route('shows') }}" class="mt-2">
-                    {{ __('Discover') }}
-                </x-jet-responsive-nav-link>
-                <div class="my-2 border-b border-blueGray-600"></div>
                 <x-jet-responsive-nav-link href="{{ route('login') }}" class="mt-2">
                     {{ __('Login') }}
                 </x-jet-responsive-nav-link>

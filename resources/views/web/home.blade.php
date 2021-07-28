@@ -14,71 +14,122 @@
     </div>
 </div>
 
+<div class="w-full bg-bluegray-200">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 items-center gap-12 px-4 sm:px-6 lg:px-8 py-24 prose">
+        <div class="col-span-2 sm:col-span-1">
+            <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-xl">
+        </div>
+        <div class="col-span-2 sm:col-span-1">
+            <h1>
+                {{ __("Host your show with cubaescucha.com") }}
+            </h1>
+            <p class="font-semibold text-bluegray-800">
+                {{ __("Use our advance platform to create, distribute and grow your podcasts. Get published on Spotify, Apple Podcasts, Google Podcasts and more with ease. Cubaescucha makes launching your next show easy, so that you can focus on creating awesome content.") }}
+            </p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- <div class="w-full mx-auto px-0">
-        <div class="max-w-full mx-auto bg-center bg-no-repeat bg-cover" style="background-image: url({{ asset('storage/will-francis-ZDNyhmgkZlQ-unsplash.jpg') }})">
-            <div class="h-full w-full bg-bluegray-800 bg-opacity-60 text-black backdrop-filter backdrop-blur-lg mx-auto flex items-center justify-center">
-                <div class="max-w-5xl mx-auto py-64 px-4 sm:px-6 lg:px-8 mt-8">
-                    <div class="text-5xl font-black mx-auto text-yellow-400 rounded-lg">{{ __('Inform. Inspire. Change.') }}</div>
-                    <div class="text-xl font-semibold text-white py-4 rounded-lg">{{ __('Quickly publish your shows, and distribute them on big podcast players, such as Spotify, Apple Podcasts, and Google Podcasts.') }}</div>
-                </div>
-            </div>
+            <x-jet-button onclick="window.location.href='{{ route('register') }}'">
+                {{ __("Get Started") }}
+            </x-jet-button>
         </div>
     </div>
+</div>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <div class="mt-24 grid grid-cols-2 gap-8 items-center">
-            <div class="col-span-2 sm:col-span-1 prose">
-                <h1 class="text-blueGray-800">{{ __("Want to create a podcast but don't know where to start?") }}</h1>
-                <p class="text-blueGray-600">{{ __("We have written some useful guides to help you get started. If you still have any questions, let us know. We will be more than happy to assist.") }}</p>
-                <a  href="{{ route('help') }}">
-                    {{ __("Learn more") }}
+<div class="w-full bg-white">
+    <div class="max-w-5xl mx-auto grid grid-cols-3 items-center gap-12 px-4 sm:px-6 lg:px-8 py-24">
+        <div class="col-span-3 mx-auto">
+            <h1 class="text-bluegray-900 font-black text-4xl capitalize">{{ __("Latest shows") }}</h1>
+        </div>
+
+        <div class="col-span-3 sm:col-span-1">
+            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
+                <a href="">
+                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
+                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
+                    {{ __("Podcast title") }}
+                    </div>
+                    <div class="mx-2 border-b"></div>
+                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
+                        {{ __("Podcast Author") }}
+                    </div>
                 </a>
             </div>
-            <div class="col-span-2 sm:col-span-1">
-                <img src="{{ asset("images/undraw_To_the_stars_qhyy.svg") }}" alt="undraw To the stars qhyy" class="">
+        </div>
+        <div class="col-span-3 sm:col-span-1">
+            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
+                <a href="">
+                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
+                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
+                    {{ __("Podcast title") }}
+                    </div>
+                    <div class="mx-2 border-b"></div>
+                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
+                        {{ __("Podcast Author") }}
+                    </div>
+                </a>
             </div>
         </div>
-    </div> --}}
+        <div class="col-span-3 sm:col-span-1">
+            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
+                <a href="">
+                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
+                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
+                    {{ __("Podcast title") }}
+                    </div>
+                    <div class="mx-2 border-b"></div>
+                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
+                        {{ __("Podcast Author") }}
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-span-3 sm:col-span-1">
+            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
+                <a href="">
+                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
+                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
+                    {{ __("Podcast title") }}
+                    </div>
+                    <div class="mx-2 border-b"></div>
+                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
+                        {{ __("Podcast Author") }}
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-span-3 sm:col-span-1">
+            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
+                <a href="">
+                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
+                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
+                    {{ __("Podcast title") }}
+                    </div>
+                    <div class="mx-2 border-b"></div>
+                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
+                        {{ __("Podcast Author") }}
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-span-3 sm:col-span-1">
+            <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
+                <a href="">
+                <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-t-lg">
+                <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
+                    {{ __("Podcast title") }}
+                    </div>
+                    <div class="mx-2 border-b"></div>
+                    <div class="mx-2 my-2 text-xs font-medium text-bluegray-600">
+                        {{ __("Podcast Author") }}
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-span-3 mx-auto prose">
+            <a href="{{ route('shows') }}">
+                {{ __("Discover more") }}
+            </a>
+        </div>
+    </div>
+</div>
 @endsection

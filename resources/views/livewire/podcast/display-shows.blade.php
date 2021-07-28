@@ -10,7 +10,7 @@
                 placeholder="{{__('Search')}} ctrl+k"
                 wire:model="query"
                 accesskey="/"
-                class="max-w-full mx-auto"
+                class="max-w-full mx-auto rounded-xl"
                 x-ref="k"
             >
         </div>
