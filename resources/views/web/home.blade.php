@@ -15,7 +15,7 @@
 </div>
 
 <div class="w-full bg-bluegray-200">
-    <div class="max-w-5xl mx-auto grid grid-cols-2 items-center gap-12 px-4 sm:px-6 lg:px-8 py-24 prose">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 items-center gap-12 px-4 sm:px-6 lg:px-8 py-24 md:py-44 prose">
         <div class="col-span-2 sm:col-span-1">
             <img src="{{ asset('storage/soundtrap-n30_i7mx62o-unsplash.jpg') }}" alt="" class="rounded-xl">
         </div>
