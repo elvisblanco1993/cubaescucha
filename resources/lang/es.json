@@ -278,11 +278,12 @@
     "Save changes": "Guardar cambios",
     "up to": "hasta",
     "Inform. Inspire. Change.": "Informa. Inspira. Cambia.",
+    "Cubaescucha.com is the simplest professional podcasting platform.": "Cubaescucha.com es la plataforma de podcasting profesional más sencilla de usar.",
     "The :attribute must contain at least one uppercase and one lowercase letter.": "La contraseña debe contener al menos una letra mayúscula y una minúscula.",
     "The :attribute must contain at least one symbol.": "La contraseña debe contener al menos un símbolo.",
     "Podcast size:": "Tamaño:",
-    "Host your show with Cubaescucha.com": "Aloja tu podcast en Cubaescucha.com",
-    "With our simple to use platform you can launch and distribute your podcasts with ease. Get published on Google Podcasts, Apple Podcasts, and Spotify with a few clicks. Cubaescucha.com makes launching your podcast easy, allowing you to focus on making good content. Create an account and get podcasting today!": "Con nuestra plataforma fácil de usar, puede lanzar y distribuir sus podcasts con facilidad. Distribuya sus podcasts en Google Podcasts, Apple Podcasts y Spotify con unos pocos clics. Cubaescucha.com facilita el lanzamiento de su podcast, lo que le permite concentrarse en crear un buen contenido. ¡Cree una cuenta y comience su podcast hoy mismo!",
+    "Host your show with cubaescucha.com": "Aloja tu podcast en cubaescucha.com",
+    "Use our advanced platform to create, distribute and grow your podcasts. Get published on Spotify, Apple Podcasts, Google Podcasts and more with ease. Cubaescucha makes launching your next show easy, so that you can focus on creating awesome content.": "Utilice nuestra plataforma avanzada para crear, distribuir y hacer crecer sus podcasts. Publique sus programas en Spotify, Apple Podcasts, Google Podcasts (entre otros) con facilidad. Cubaescucha facilita el lanzamiento de sus programas, para que pueda concentrarse en crear contenido de calidad.",
     "Getting Started": "Primeros Pasos",
     "Cubaescucha has wonderful documentation and guides to help you get started. Whether you are a beginner or have experience with podcasting, cubaescucha helps you get the job done with ease.": "Cubaescucha tiene documentación y guías maravillosas para ayudarle a comenzar. Ya sea que sea un principiante o tenga experiencia con el podcasting, cubaescucha le ayuda a hacer el trabajo con facilidad.",
     "Support": "Soporte",
@@ -311,7 +312,7 @@
     "I certify that the content being imported is mine, or that I have been authorized to distribute it by its original owner and can provide proof of it if requested.": "Certifico que el contenido que se está importando es mío, o que su propietario original me ha autorizado a distribuirlo y puedo proporcionar una prueba de ello si me lo solicitan.",
     "You must agree before continuing": "Debes estar de acuerdo antes de continuar",
     "Import": "Importar",
-    "Help & Support": "Asistencia y Guías",
+    "Help & Support": "Asistencia y Guías de Uso",
     "Publish": "Publicar",
     "Publish later": "Publicar mas tarde",
     "Select thumbnail": "Seleccionar foto de portada",
@@ -359,5 +360,8 @@
     "Uploading...": "Subiendo...",
     "Code copied to clipboard.": "Código copiado al portapapeles.",
     "Embedded player": "Reproductor integrado",
-    "Copy this code snippet into your website so so that visitors can listen to this episode from your site.": "Copie este fragmento de código en su sitio web para que los visitantes puedan escuchar este episodio desde su sitio."
+    "Copy this code snippet into your website so so that visitors can listen to this episode from your site.": "Copie este fragmento de código en su sitio web para que los visitantes puedan escuchar este episodio desde su sitio.",
+    "There are no articles published at this time. Please come back later.": "No hay artículos publicados en este momento. Por favor regrese más tarde.",
+    "Discover more": "Descubre más",
+    "Latest shows": "Podcasts más recientes"
 }

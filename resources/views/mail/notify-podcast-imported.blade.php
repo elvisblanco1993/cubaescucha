@@ -8,5 +8,6 @@
 @endcomponent
 
 {{__("Thanks")}},<br>
-{{ config('app.name') }}
+{{ __("Elvis") }}<br>
+{{__("The creator of")}} [cubaescucha.com](https://cubaescucha.com)
 @endcomponent

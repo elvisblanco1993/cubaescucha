@@ -9,7 +9,7 @@
 
         <div class="max-w-5xl mx-auto py-48 px-4 sm:px-6 lg:px-8 mt-8 sm:text-center z-10">
             <div class="text-5xl font-black text-bluegray-800 rounded-lg">{{ __('Inform. Inspire. Change.') }}</div>
-            <div class="max-w-3xl text-xl font-semibold text-bluegray-800 py-4">{{ __('Get your podcast out to your listeners in no time with our easy to use publishing platform.') }}</div>
+            <div class="max-w-3xl text-xl font-semibold text-bluegray-800 py-4">{{ __('Cubaescucha.com is the simplest professional podcasting platform.') }}</div>
         </div>
     </div>
 </div>
@@ -24,7 +24,7 @@
                 {{ __("Host your show with cubaescucha.com") }}
             </h1>
             <p class="font-semibold text-bluegray-800">
-                {{ __("Use our advance platform to create, distribute and grow your podcasts. Get published on Spotify, Apple Podcasts, Google Podcasts and more with ease. Cubaescucha makes launching your next show easy, so that you can focus on creating awesome content.") }}
+                {{ __("Use our advanced platform to create, distribute and grow your podcasts. Get published on Spotify, Apple Podcasts, Google Podcasts and more with ease. Cubaescucha makes launching your next show easy, so that you can focus on creating awesome content.") }}
             </p>
 
             <x-jet-button onclick="window.location.href='{{ route('register') }}'">

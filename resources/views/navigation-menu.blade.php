@@ -23,8 +23,8 @@
                     </x-jet-nav-link>
 
                     @if (auth()->user()->isAdmin())
-                        <x-jet-nav-link href="{{ route('users') }}" :active="request()->routeIs('users')">
-                            {{ __('Users') }}
+                        <x-jet-nav-link href="{{ route('teams') }}" :active="request()->routeIs('users')">
+                            {{ __('Teams') }}
                         </x-jet-nav-link>
 
                         <x-jet-nav-link href="{{ route('articles') }}" :active="request()->routeIs('articles')">

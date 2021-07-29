@@ -116,7 +116,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
 
  Route::middleware(['auth:sanctum', 'verified', 'admin'])->group( function() {
     // Show Users
-    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/teams', [UserController::class, 'index'])->name('teams');
 
     // Show articles
     Route::get('/articles', [ArticleController::class, 'index'])->name('articles');

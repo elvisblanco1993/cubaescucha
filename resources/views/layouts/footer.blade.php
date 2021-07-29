@@ -5,9 +5,18 @@
             <span class="mr-4">
                 {{ 'Copyright © ' . Carbon\Carbon::now()->year . " cubaescucha.com" }}
             </span>
-            <div class="uppercase bg-bluegray-400 inline-block rounded">
+            <div class="uppercase bg-bluegray-400 rounded inline-flex items-center">
                 @foreach(config('app.languages') as $langLocale => $langName)
-                    <a href="{{ url()->current() }}?change_language={{ $langLocale }}" class="px-2 rounded-sm py-0.5 @if (app()->getLocale() == $langLocale) bg-emerald-400 leading-tight text-bluegray-800 @endif">{{ $langLocale }}</a>
+                    <a
+                        href="{{ url()->current() }}?change_language={{ $langLocale }}"
+                        @class([
+                            'text-xs',
+                            'line-height-full',
+                            'px-1',
+                            'rounded',
+                            'bg-emerald-400' => app()->getLocale() == $langLocale,
+                            'text-bluegray-800' => app()->getLocale() == $langLocale
+                        ])>{{ $langLocale }}</a>
                 @endforeach
             </div>
         </div>
