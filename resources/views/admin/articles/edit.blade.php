@@ -1,61 +1,79 @@
 <x-app-layout>
-    <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center text-gray-500">
-                <a class="text-indigo-500" href="{{ route('articles') }}">{{ __('Articles') }}</a>
+    <header class="bg-white shadow">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between py-6">
+                <div class="flex items-center font-semibold text-lg text-gray-600 leading-tight">
+                    <a class="text-indigo-500" href="{{ route('articles') }}">{{ __('Articles') }}</a>
                 <span class="mx-1">/</span>
                 <span>{{ __('Edit Article') }}</span>
+                </div>
+
+                <a href="{{ url()->previous() }}" class="flex text-sm items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                    </svg>
+                    {{__("Go back")}}
+                </a>
             </div>
-            <a href="{{ url()->previous() }}" class="flex text-sm items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-                </svg>
-                {{__("Go back")}}
-            </a>
         </div>
-    </div>
+    </header>
+
     <div class="max-w-5xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-        <div class="my-12">
+        <div class="my-12 bg-white p-4 sm:px-6 lg:px-8 rounded-lg shadow">
             <form action="{{ route('article-update', ['article' => $article->id]) }}" method="post">
                 @csrf
 
                 <div class="my-8">
-                    <input type="text" name="title" placeholder="Title" value="{{$article->title}}">
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
+                        {{ __('Title') }} <span class="text-red-600">*</span>
+                    </label>
+                    <input type="text" name="title" placeholder="{{__("Title")}}" value="{{$article->title}}">
                     @error('title')
                         <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="my-8">
-                    <textarea name="excerpt" cols="30" rows="2" placeholder="Excerpt">{{$article->excerpt ?? ''}}</textarea>
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
+                        {{ __('Excerpt') }}
+                    </label>
+                    <textarea name="excerpt" cols="30" rows="2" placeholder="{{__("Excerpt")}}">{{$article->excerpt ?? ''}}</textarea>
                 </div>
 
                 <div class="my-8">
-                    <input type="text" name="tags" placeholder="Tags (separate tags with a comma)" value="{{$article->tags}}">
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
+                        {{ __('Tags') }} <span class="text-red-600">*</span>
+                    </label>
+                    <input type="text" name="tags" placeholder="" value="{{$article->tags}}">
                     @error('tags')
                         <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
                 <div class="my-8">
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
+                        {{ __('Language') }} <span class="text-red-600">*</span>
+                    </label>
                     <select name="lang">
                         <option></option>
                         <option value="en" @if($article->lang == 'en') selected="selected" @endif>{{ __("English") }}</option>
                         <option value="es" @if($article->lang == 'es') selected @endif>{{ __("Spanish") }}</option>
                     </select>
-                    @error('lang')
-                        <small class="text-red-600 text-sm">{{ $message }}</small>
-                    @enderror
                 </div>
 
                 <div class="my-8">
+                    <label class="mb-1 block text-xs font-medium text-blueGray-500">
+                        {{ __('Article') }} <span class="text-red-600">*</span>
+                    </label>
                     <textarea name="body" id="body" cols="30" rows="20">{{$article->body}}</textarea>
                     @error('body')
                         <small class="text-red-600 text-sm">{{ $message }}</small>
                     @enderror
                 </div>
 
-                <x-jet-button type="submit">{{__("Save Article")}}</x-jet-button>
+                <div class="flex justify-end">
+                    <x-jet-button type="submit">{{__("Save Article")}}</x-jet-button>
+                </div>
             </form>
 
             <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
@@ -66,4 +84,5 @@
             </script>
         </div>
     </div>
+
 </x-app-layout>

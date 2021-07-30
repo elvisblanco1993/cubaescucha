@@ -11,9 +11,7 @@
                             accesskey="/"
                             wire:keydown.escape="cancel"
                             wire:keyup="search"
-                            class="w-full sm:w-1/5">
-
-                    <x-jet-button wire:click="create" class="">{{__("New Article")}}</x-jet-button>
+                            class="w-full sm:w-1/3">
                 </div>
 
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -52,7 +50,7 @@
                                         {{ __("Published") }}
                                     </span>
                                     @else
-                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blueGray-100 text-blurGray-800">
+                                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-bluegray-200 text-blurGray-800">
                                         {{ __("Draft") }}
                                     </span>
                                     @endif

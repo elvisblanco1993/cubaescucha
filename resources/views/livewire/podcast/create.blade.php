@@ -20,7 +20,7 @@
                         <img src="{{ asset('images/placeholder.png') }}" alt="" class="rounded-lg mb-2 md:h-48 md:w-full object-cover">
                     @endif
 
-                    <div class="relative py-1 w-36 rounded-lg border border-gray-200 flex justify-center items-center mx-auto">
+                    <div class="relative py-1 w-36 rounded-lg border bg-white border-gray-300 shadow-sm flex justify-center items-center mx-auto">
                         <div class="absolute">
                             <div class="flex items-center gap-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blueGray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">

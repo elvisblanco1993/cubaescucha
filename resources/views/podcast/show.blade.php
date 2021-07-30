@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <div class="my-6">
+    <div class="my-12">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             @if (session('success'))

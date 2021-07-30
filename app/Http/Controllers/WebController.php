@@ -22,7 +22,7 @@ class WebController extends Controller
             if (! auth()->user()->isAdmin()) {
                 return redirect(route('podcasts'));
             }
-            return redirect(route('users'));
+            return redirect(route('podcasts'));
         }
     }
 

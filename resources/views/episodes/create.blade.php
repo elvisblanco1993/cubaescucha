@@ -20,7 +20,7 @@
         </div>
     </header>
 
-    <div class="my-6 max-w-5xl mx-auto sm:px-6 lg:px-8">
+    <div class="my-12 max-w-5xl mx-auto sm:px-6 lg:px-8">
         @livewire('episode.create', ['podcast' => $podcast])
     </div>
 </x-app-layout>

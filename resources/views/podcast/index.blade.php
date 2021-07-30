@@ -6,29 +6,25 @@
                     {{__("Podcasts")}}
                 </div>
 
-                <div class="sm:flex items-center gap-8 -my-2">
+                <div class="flex items-center gap-8 -my-2">
                     @livewire('podcast.import')
-                    <a href="{{ route('podcasts.create') }}" class="inline-flex items-center px-4 py-2 -my-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                    <x-jet-button onclick="window.location.href='{{ route('podcasts.create') }}'">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                         </svg>
-                        {{ __('Create Podcast') }}
-                    </a>
+                        <span class="hidden sm:flex sm:ml-2">
+                            {{ __('Create Podcast') }}
+                        </span>
+                    </x-jet-button>
                 </div>
             </div>
         </div>
     </header>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        @if (session()->has('success'))
-        <div class="bg-green-100 text-green-800 px-6 py-4 mb-6 rounded-lg">
-            {{ session('success') }}
-        </div>
-        @endif
+    <div class="max-w-5xl mx-auto my-12 px-4 sm:px-6 lg:px-8">
 
         @if ($podcasts->count() == 0)
-            <div class="my-6 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                 <div class="grid grid-cols-1 md:grid-cols-2">
                     <div class="p-6">
                         <div class="flex items-center">

@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-bluegray-100 border-opacity-70">
+<nav x-data="{ open: false }" class="bg-white border-b border-bluegray-100 border-opacity-70 @guest shadow @endguest">
     <!-- Primary Navigation Menu -->
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between @guest items-center @endguest h-16">
@@ -23,7 +23,7 @@
                     </x-jet-nav-link>
 
                     @if (auth()->user()->isAdmin())
-                        <x-jet-nav-link href="{{ route('teams') }}" :active="request()->routeIs('users')">
+                        <x-jet-nav-link href="{{ route('teams') }}" :active="request()->routeIs('teams')">
                             {{ __('Teams') }}
                         </x-jet-nav-link>
 

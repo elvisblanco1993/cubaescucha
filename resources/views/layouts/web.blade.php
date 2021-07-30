@@ -29,11 +29,9 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased bg-white">
+    <body class="font-sans antialiased bg-bluegray-50">
         <div class="min-h-screen">
             @livewire('navigation-menu')
-
-            <!-- Page Content -->
             <main>
                 @yield('content')
             </main>

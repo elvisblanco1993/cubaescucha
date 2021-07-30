@@ -27,11 +27,6 @@ class Index extends Component
         $this->articles = Article::search($this->query)->take(10)->get();
     }
 
-    public function create()
-    {
-        return redirect(route('articles-create'));
-    }
-
     public function edit($article)
     {
         return redirect(route('article-edit', ['article'=> $article]));
