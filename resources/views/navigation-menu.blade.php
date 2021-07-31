@@ -126,6 +126,12 @@
                         </x-slot>
 
                         <x-slot name="content">
+
+                            <x-jet-dropdown-link href="{{ route('help') }}">
+                                {{ __('Help & Support') }}
+                            </x-jet-dropdown-link>
+
+                            <div class="border-t border-gray-100"></div>
                             <!-- Account Management -->
                             <div class="block px-4 py-2 text-xs text-bluegray-800">
                                 {{ __('Manage Account') }}
