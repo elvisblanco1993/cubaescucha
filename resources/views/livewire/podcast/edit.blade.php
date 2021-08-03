@@ -6,7 +6,7 @@
     @endif
     <form method="POST" wire:submit.prevent="save">
         @csrf
-        <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg">
+        <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg bg-white">
             <div class="mb-8">
                 <div class="text-lg font-semibold">
                     {{ __("Podcast Details") }}
@@ -14,24 +14,24 @@
                 <p class="text-sm font-normal text-blueGray-600">{{__("Tell us a bit about your podcast.")}}</p>
             </div>
 
-            <div class="grid grid-cols-4">
+            <div class="grid grid-cols-4 gap-8">
                 <div class="col-span-4 md:col-span-1 mb-8">
 
                     {{-- Podcast Thumbnail --}}
 
                     @if ($thumbnail)
-                        <img src="{{ $thumbnail->temporaryUrl() }}" alt="" class="rounded-lg mb-2 md:h-48 md:w-48 object-cover">
+                        <img src="{{ $thumbnail->temporaryUrl() }}" class="rounded-lg mb-4 md:h-48 md:w-full object-cover">
                     @else
-                        <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="" class="rounded-lg mb-2 md:h-48 md:w-48 object-cover">
+                        <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="" class="rounded-lg mb-4 md:h-48 md:w-full object-cover">
                     @endif
 
-                    <div class="relative py-1 md:w-48 rounded-lg border border-gray-200 flex justify-center items-center">
+                    <div class="relative py-1 w-full rounded-lg border bg-white border-gray-300 shadow-sm flex justify-center items-center mx-auto">
                         <div class="absolute">
-                            <div class="flex items-center gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <div class="flex items-center gap-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-blueGray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
-                                <span class="block font-normal text-sm">{{ __("Replace Image") }}</span>
+                                <span class="block font-semibold text-xs uppercase">{{ __("Upload Image") }}</span>
                             </div>
                         </div>
                         <input id="file-upload" wire:model.defer="thumbnail" type="file" accept="image/png,image/webp,image/jpeg" class="h-full w-full opacity-0 cursor-pointer" name="">
@@ -129,7 +129,7 @@
         </div>
 
         {{-- Content Rating --}}
-        <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6">
+        <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6 bg-white">
             <div class="text-lg font-semibold mb-2">{{__("Content Rating")}}</div>
 
             <label class="inline-flex items-center text-sm font-medium text-blueGray-800">
@@ -141,7 +141,7 @@
             @enderror
         </div>
 
-        <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6">
+        <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6 bg-white">
             <div class="text-lg font-semibold mb-2">{{__("Directories")}}</div>
             <p class="text-smtext-sm text-gray-600 mb-4">{{ __("Use this area to share the links of the directories to which you published your show to.") }}</p>
 
