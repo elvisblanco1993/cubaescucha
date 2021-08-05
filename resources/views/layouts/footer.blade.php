@@ -3,7 +3,7 @@
         {{-- Left side --}}
         <div class="w-full sm:w-1/2 text-sm sm:text-left font-light py-3">
             <span class="mr-4">
-                {{ 'Copyright © ' . Carbon\Carbon::now()->year . " cubaescucha.com" }}
+                {{ 'Copyright © ' . Carbon\Carbon::now()->year . " voicebits.co" }}
             </span>
             <div class="uppercase bg-bluegray-400 rounded inline-flex items-center">
                 @foreach(config('app.languages') as $langLocale => $langName)

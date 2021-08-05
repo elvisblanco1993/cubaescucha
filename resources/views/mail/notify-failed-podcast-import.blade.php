@@ -7,5 +7,5 @@
 
 {{__("Thanks")}},<br>
 {{ __("Elvis") }}<br>
-{{__("The creator of")}} [cubaescucha.com](https://cubaescucha.com)
+{{__("The creator of")}} [voicebits.co](https://voicebits.co)
 @endcomponent

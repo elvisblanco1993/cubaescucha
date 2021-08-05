@@ -14,7 +14,7 @@ class ImportPodcastTest extends TestCase
         $feed_url = 'https://google.com'; // https...
         $podcast_url = Str::random(8);
         $owner = 1;
-        $email = "test@cubaescucha.com"
+        $email = "test@voicebits.co"
         // Run Job Now (no wait)
     }
 }

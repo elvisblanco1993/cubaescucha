@@ -36,7 +36,7 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                {{__("Cubaescucha has wonderful documentation and guides to help you get started. Whether you are a beginner or have experience with podcasting, cubaescucha helps you get the job done with ease.")}}
+                                {{__("voicebits has wonderful documentation and guides to help you get started. Whether you are a beginner or have experience with podcasting, voicebits helps you get the job done with ease.")}}
                             </div>
                         </div>
                     </div>
@@ -68,7 +68,7 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                {{__("Keep up with the latest updates from cubaescucha. We constantly add new features, and apply fixes that help improve the overall platform experience for both you and your listeners.")}}
+                                {{__("Keep up with the latest updates from voicebits. We constantly add new features, and apply fixes that help improve the overall platform experience for both you and your listeners.")}}
                             </div>
                         </div>
                     </div>
@@ -83,7 +83,7 @@
 
                         <div class="ml-12">
                             <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                {{__("If you are enjoying cubaescucha, then please consider becoming a sponsor of the platform and automatically gain access to our live chat support channels. Your donation will help keep the lights up and will allow for the continued improvement of cubaescucha.")}}
+                                {{__("If you are enjoying voicebits, then please consider becoming a sponsor of the platform and automatically gain access to our live chat support channels. Your donation will help keep the lights up and will allow for the continued improvement of voicebits.")}}
                             </div>
                         </div>
                     </div>

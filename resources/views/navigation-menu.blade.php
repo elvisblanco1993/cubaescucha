@@ -73,7 +73,7 @@
                             <x-slot name="content">
                                 <div class="w-60">
                                     <!-- Team Management -->
-                                    <div class="block px-4 py-2 text-xs text-bluegray-800">
+                                    <div class="block px-4 py-2 text-xs text-bluegray-400">
                                         {{ __('Manage Team') }}
                                     </div>
 
@@ -91,7 +91,7 @@
                                     <div class="border-t border-gray-100"></div>
 
                                     <!-- Team Switcher -->
-                                    <div class="block px-4 py-2 text-xs text-bluegray-800">
+                                    <div class="block px-4 py-2 text-xs text-bluegray-400">
                                         {{ __('Switch Teams') }}
                                     </div>
 
@@ -133,14 +133,14 @@
 
                             <div class="border-t border-gray-100"></div>
                             <!-- Account Management -->
-                            <div class="block px-4 py-2 text-xs text-bluegray-800">
+                            <div class="block px-4 py-2 text-xs text-bluegray-400">
                                 {{ __('Manage Account') }}
                             </div>
 
                             @if (auth()->user()->id == auth()->user()->currentTeam->owner->id)
-                            <x-jet-dropdown-link href="{{ route('billing-portal') }}">
-                                {{ __('Billing Portal') }}
-                            </x-jet-dropdown-link>
+                                <x-jet-dropdown-link href="{{ route('billing-portal') }}">
+                                    {{ __('Billing Portal') }}
+                                </x-jet-dropdown-link>
                             @endif
 
                             <x-jet-dropdown-link href="{{ route('profile.show') }}">
@@ -255,7 +255,7 @@
                 @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
                     <div class="border-t border-gray-200"></div>
 
-                    <div class="block px-4 py-2 text-xs text-bluegray-800">
+                    <div class="block px-4 py-2 text-xs text-bluegray-400">
                         {{ __('Manage Team') }}
                     </div>
 
@@ -273,7 +273,7 @@
                     <div class="border-t border-gray-200"></div>
 
                     <!-- Team Switcher -->
-                    <div class="block px-4 py-2 text-xs text-bluegray-800">
+                    <div class="block px-4 py-2 text-xs text-bluegray-400">
                         {{ __('Switch Teams') }}
                     </div>
 
