@@ -8,9 +8,9 @@
             "server": "localhost",
             "port": 3306,
             "driver": "MySQL",
-            "name": "cubaescuchadb",
-            "database": "cubaescucha",
-            "username": "cubaescucha",
+            "name": "voicebitsdb",
+            "database": "voicebits",
+            "username": "voicebits",
             "password": "bahia9397"
         }
     ]

@@ -4,7 +4,7 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between py-6">
                 <div class="flex items-center font-semibold text-lg text-gray-800 leading-tight">
-                    {{ __("Become a sponsor to cubaescucha.com") }}
+                    {{ __("Become a sponsor to voicebits.co") }}
                 </div>
 
                 <a href="{{ config('app.url') }}" class="text-sm text-blueGray-400 flex items-center">
@@ -19,7 +19,7 @@
 
     <div class="max-w-5xl mx-auto my-6 px-4 sm:px-6 lg:px-8 py-8 prose">
         <p>
-            {{__("Cubaescucha is a podcasting platform that allows creators share their content in audio format, and distribute it throughout the biggest podcast players, such as Spotify, Apple Podcasts, and Google Podcasts. While the platform is 100% FREE for both creators and listeners, servers maintenance and development comes at a cost. If you would like to help keep the lights up (and feed our cats), please consider becoming a sponsor with your monthly contribution, or make a on-time donation using the options below.")}}
+            {{__("voicebits is a podcasting platform that allows creators share their content in audio format, and distribute it throughout the biggest podcast players, such as Spotify, Apple Podcasts, and Google Podcasts. While the platform is 100% FREE for both creators and listeners, servers maintenance and development comes at a cost. If you would like to help keep the lights up (and feed our cats), please consider becoming a sponsor with your monthly contribution, or make a on-time donation using the options below.")}}
         </p>
 
         @if (isset($success))

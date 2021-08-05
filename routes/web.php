@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\ConnectController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;

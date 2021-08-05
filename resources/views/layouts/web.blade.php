@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <link rel="shortcut icon" href="{{ asset('storage/cubaescucha.ico') }}" type="image/x-icon">
+        <link rel="shortcut icon" href="{{ asset('storage/voicebits.ico') }}" type="image/x-icon">
 
         {{-- Opengraph --}}
         @if (request()->routeIs('podcast.display'))
@@ -16,7 +16,7 @@
         <meta property="og:image"       content="{{ $thumbnail }}" />
         @endif
 
-        <title>@if( request()->routeIs('podcast.display') ) {{ $name . ' - ' }}  @endif {{ config('app.name', 'Cubaescucha.com') }}</title>
+        <title>@if( request()->routeIs('podcast.display') ) {{ $name . ' - ' }}  @endif {{ config('app.name', 'voicebits.co') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
