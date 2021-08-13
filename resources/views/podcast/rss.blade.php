@@ -18,12 +18,22 @@
         @else
             <itunes:type>serial</itunes:type>
         @endif
+        <image>
+            <link>{{$podcast->link}}</link>
+            <title>{{$podcast->name}}</title>
+            <url>
+                {{ Storage::disk('s3')->url($podcast->thumbnail) }}
+            </url>
+        </image>
         <itunes:image href="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" />
         <itunes:explicit>{{ $podcast->explicit }}</itunes:explicit>
         @forelse ($podcast->episodes as $episode)
         <item>
             <guid>{{ $episode->uuid }}</guid>
             <title>{{ $episode->title }}</title>
+            <itunes:summary>
+                {{ $episode->show_notes }}
+            </itunes:summary>
             <description>{{ $episode->show_notes }}</description>
             <pubDate>{{ date('r', strtotime($episode->created_at)) }}</pubDate>
             <itunes:episodeType>{{ $episode->type }}</itunes:episodeType>

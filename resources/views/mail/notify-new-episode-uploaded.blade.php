@@ -6,6 +6,9 @@
 {{ __("Go to ") . $podcast_name }}
 @endcomponent
 
-{{__("Best")}},<br>
-{{ $podcast_name . __(" team.") }}
+{{ __("Thanks") }},<br>
+
+--<br>
+Elvis Blanco<br>
+eblanco@voicebits.co
 @endcomponent

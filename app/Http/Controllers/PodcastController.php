@@ -126,4 +126,12 @@ class PodcastController extends Controller
 
         return sprintf("%.{$decimals}f", $bytes / pow(1024, $factor)) . ' ' . $size[$factor];
     }
+
+    /**
+     * Import podcast from rss url
+     */
+    public function import()
+    {
+        return view('podcast.import');
+    }
 }
