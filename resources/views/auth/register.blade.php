@@ -22,7 +22,7 @@
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
-                <small class="text-xs text-bluegray-600">{{__("Must be 8+ characters and contain at least 1 number and a special character.")}}</small>
+                <small class="text-xs text-bluegray-600">{{__("Must be 8+ characters and contain at least 1 number.")}}</small>
             </div>
 
             <div class="mt-4">

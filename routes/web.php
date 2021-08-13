@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
 use App\Http\Livewire\Podcast\Reports;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlanController;
 use Illuminate\Http\Request;
 
 /**
@@ -92,17 +93,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
         return $request->user()->redirectToBillingPortal();
     })->name('billing-portal');
 
-    // New patrons subscription page
-    // Route::get('/donate/become-a-patron', [WebController::class, 'patronPlans'])->name('patron.plans');
-    Route::get('/donate/become-a-patron', function () {
-        return redirect(route('donate'));
-    })->name('patron.plans');
-
-    /**
-     * Generate URL and Redirect to Stripe Checkout
-     */
-    Route::get('/donate/sponsorship/{tier}', [DonationController::class, 'redirectToCheckout'])->name('checkout');
-    Route::get('/donate/success', [DonationController::class, 'confirmDonation'])->name('donate.success');
+    // Upgrade To Plan
+    Route::get('/plans/upgrade', [PlanController::class, 'index'])->name('plans.upgrade');
 });
 
 

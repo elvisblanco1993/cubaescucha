@@ -29,6 +29,11 @@ class PodcastController extends Controller
      */
     public function create()
     {
+        // Check if
+        if ( Podcast::where('team_id', auth()->user()->currentTeam->id)->count() == 1 ) {
+            return redirect()->route('plans.upgrade');
+        }
+
         return view('podcast.create');
     }
 
