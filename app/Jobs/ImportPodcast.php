@@ -83,7 +83,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
             $podcast_tags = $feed->xpath("//itunes:category")[0]['text'];
             $podcast_type = $feed->xpath("//itunes:type")[0];
             $podcast_explicit = ($feed->xpath("//itunes:explicit")[0] == 'yes' || $feed->xpath("//itunes:explicit")[0] == TRUE) ? 1 : 0;
-            $podcast_thumbnail = $feed->channel->image->url;
+            $podcast_thumbnail = ( !empty($feed->channel->image->url) ) ? $feed->channel->image->url : $feed->xpath("//itunes:image")[0]['href']->__toString();
 
             // Store thumbnail on s3
             $thumbnail_contents = file_get_contents($podcast_thumbnail);

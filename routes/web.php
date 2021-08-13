@@ -65,6 +65,9 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     // Show list of podcasts (one team can have many podcasts)
     Route::get('/podcasts', [PodcastController::class, 'index'])->name('podcasts');
 
+    // Import Podcast from RSS URL
+    Route::get('/podcasts/import', [PodcastController::class, 'import'])->name('podcasts.import');
+
     // Show podcast details
     Route::get('/podcasts/{podcast}/details', [PodcastController::class, 'show'])->name('podcasts.show');
 

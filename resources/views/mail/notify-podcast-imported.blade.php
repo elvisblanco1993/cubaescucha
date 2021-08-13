@@ -7,7 +7,9 @@
 {{__("Go to podcast")}}
 @endcomponent
 
-{{__("Thanks")}},<br>
-{{ __("Elvis") }}<br>
-{{__("The creator of")}} [voicebits.co](https://voicebits.co)
+{{ __("Thanks") }},<br>
+
+--<br>
+Elvis Blanco<br>
+eblanco@voicebits.co
 @endcomponent
