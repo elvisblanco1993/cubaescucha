@@ -26,8 +26,15 @@
     <div class="my-6">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            <div class="md:flex gap-8">
-                <div class="bg-white inline-block p-6 shadow rounded-xl w-full md:w-1/3">
+            <div class="grid grid-cols-3 gap-8">
+
+                {{-- Show graph with monthly downloads information --}}
+                <div class="col-span-3">
+
+                </div>
+                {{-- End of charts --}}
+
+                <div class="bg-white inline-block p-6 shadow rounded-xl w-full col-span-3 md:col-span-1">
                     <div>
                         <div class="text-left">
                             <div class="font-semibold text-base capitalize">
@@ -78,7 +85,7 @@
                     </div>
                 </div>
 
-                <div class="bg-white inline-block p-6 shadow rounded-xl w-full md:w-2/3 mt-4 md:mt-0">
+                <div class="bg-white inline-block p-6 shadow rounded-xl w-full col-span-3 md:col-span-2 mt-4 md:mt-0">
                     <div>
                         <div class="flex items-center justify-between">
                             <div class="text-left">
@@ -118,7 +125,7 @@
 
 
             {{-- Table --}}
-            <div class="flex flex-col my-6">
+            <div class="grid my-6">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-4 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="sm:flex my-2">
@@ -143,7 +150,7 @@
                         </div>
                         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                             <table class="min-w-full divide-y divide-gray-200">
-                                <thead class="bg-gray-50">
+                                <thead class="bg-white">
                                     <tr>
                                         <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             {{ __('Title' )}}

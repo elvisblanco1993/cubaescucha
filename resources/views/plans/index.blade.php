@@ -4,10 +4,10 @@
 
         <div class="text-center">
             <div class="text-4xl font-black">
-                Upgrade to continue
+                {{ __("Upgrade to continue") }}
             </div>
             <div class="mt-4">
-                Pay monthly or get 2 months free when purchasing an annual plan.
+                {{ __("Pay monthly or get 2 months free when purchasing an annual plan.") }}
             </div>
         </div>
 
@@ -37,6 +37,13 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
                                 <p class="text-base text-gray-700">{{ __("Up to 5 shows") }}</p>
+                            </li>
+
+                            <li class="flex items-center gap-4 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <p class="text-base text-gray-700">{{ __("Multiple teams") }}</p>
                             </li>
 
                             <li class="flex items-center gap-4 mb-4">
@@ -89,6 +96,14 @@
                                 <p class="text-base text-gray-700">{{ __("Up to 5 shows") }}</p>
                             </li>
 
+                            <li class="flex items-center gap-4 mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                <p class="text-base text-gray-700">{{ __("Multiple teams") }}</p>
+                            </li>
+
+
                             <li class="flex items-center gap-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -111,6 +126,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-span-2 mx-auto text-bluegray-500">
+                {{ __("More plan options coming soon.") }}
             </div>
 
         </div>

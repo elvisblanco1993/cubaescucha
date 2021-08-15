@@ -36,14 +36,16 @@ class Reports extends Component
     // Get Month-To-Date Daily Reproductions
     public function getMtdDailyReproductions()
     {
-        $from = (isset($this->dateFrom)) ? date('Y-m-d' . ' 00:00:00', strtotime($this->dateFrom)) : Carbon::now();
-        $to = (isset($this->dateTo)) ? date('Y-m-d' . ' 23:59:00', strtotime($this->dateTo)) : Carbon::now();
+        // $from = (isset($this->dateFrom)) ? date('Y-m-d' . ' 00:00:00', strtotime($this->dateFrom)) : Carbon::now();
+        // $to = (isset($this->dateTo)) ? date('Y-m-d' . ' 23:59:00', strtotime($this->dateTo)) : Carbon::now();
 
         return DB::table('downloads_counter')
                 ->select(DB::raw('count(*) as total, created_at, country'))
                 ->where('podcast_id', $this->podcast->id)
-                ->where('created_at', '>=', $from)
-                ->where('created_at', '<=', $to)
+                // ->where('created_at', '>=', $from)
+                // ->where('created_at', '<=', $to)\
+                ->whereMonth('created_at', date('m'))
+                ->whereYear('created_at', date('Y'))
                 ->groupBy('created_at')
                 ->groupBy('country')
                 ->get();

@@ -22,9 +22,10 @@
         </div>
 
         <div class="w-full sm:w-1/2 text-sm font-light text-center sm:text-right py-3">
-            <a href="{{ config('app.url') . '/help' }}" class="mx-2">{{ __('Help') }}</a>
-            <a href="{{ config('app.url') . '/privacy-policy' }}" class="mx-2">{{ __('Privacy') }}</a>
-            <a href="{{ config('app.url') . '/terms-of-service' }}" class="mx-2">{{ __('Terms') }}</a>
+            <a href="{{ route('help') }}" class="mx-2">{{ __('Help') }}</a>
+            <a href="{{ route('pricing') }}" class="mx-2">{{ __('Pricing') }}</a>
+            <a href="{{ route('policy.show') }}" class="mx-2">{{ __('Privacy') }}</a>
+            <a href="{{ route('terms.show') }}" class="mx-2">{{ __('Terms') }}</a>
         </div>
     </div>
 </div>
