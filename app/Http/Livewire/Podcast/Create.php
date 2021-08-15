@@ -35,6 +35,7 @@ class Create extends Component
 
     public function storePodcast()
     {
+
         $this->validate();
 
         $path = $this->thumbnail->store('podcasts/covers', 's3');

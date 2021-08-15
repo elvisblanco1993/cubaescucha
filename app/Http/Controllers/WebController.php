@@ -71,4 +71,12 @@ class WebController extends Controller
     {
         return view('web.patron-plans');
     }
+
+    /**
+     * Display the pricing plans information
+     */
+    public function pricing()
+    {
+        return view('plans.pricing');
+    }
 }

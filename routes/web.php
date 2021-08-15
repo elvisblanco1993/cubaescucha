@@ -10,6 +10,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
 use App\Http\Livewire\Podcast\Reports;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlanController;
+use App\Http\Controllers\WebhookController;
 use Illuminate\Http\Request;
 
 /**
@@ -48,9 +50,9 @@ Route::get('/help', [WebController::class, 'help'])->name('help');
 Route::get('/help/article/{article}', [WebController::class, 'viewArticle'])->name('article-view');
 
 /**
- * Donations page
+ * Pricing options
  */
-Route::get('/donate', [WebController::class, 'donate'])->name('donate');
+Route::get('/pricing', [WebController::class, 'pricing'])->name('pricing');
 
 /**
  * --------------------------------------------------------------
@@ -75,7 +77,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     Route::get('/podcasts/{podcast}/edit', [PodcastController::class, 'edit'])->name('podcasts.edit');
 
     // Create new podcast
-    Route::get('/podcasts/create', [PodcastController::class, 'create'])->name('podcasts.create');
+    Route::middleware('checksubscription')->get('/podcasts/create', [PodcastController::class, 'create'])->name('podcasts.create');
 
     // Create new episode
     Route::get('/podcasts/{podcast}/episode/create', [EpisodeController::class, 'create'])->name('episode.create');
@@ -92,20 +94,14 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
 
     // Go to customer billing portal
     Route::get('/billing-portal', function (Request $request) {
-        return $request->user()->redirectToBillingPortal();
+        return $request->user()->redirectToBillingPortal(
+            route('podcasts')
+        );
     })->name('billing-portal');
 
-    // New patrons subscription page
-    // Route::get('/donate/become-a-patron', [WebController::class, 'patronPlans'])->name('patron.plans');
-    Route::get('/donate/become-a-patron', function () {
-        return redirect(route('donate'));
-    })->name('patron.plans');
-
-    /**
-     * Generate URL and Redirect to Stripe Checkout
-     */
-    Route::get('/donate/sponsorship/{tier}', [DonationController::class, 'redirectToCheckout'])->name('checkout');
-    Route::get('/donate/success', [DonationController::class, 'confirmDonation'])->name('donate.success');
+    // Upgrade To Plan
+    Route::get('/plans/upgrade', [PlanController::class, 'index'])->name('plans.upgrade');
+    Route::get('/plans/enroll', [PlanController::class, 'charge'])->name('plans.enroll');
 });
 
 
