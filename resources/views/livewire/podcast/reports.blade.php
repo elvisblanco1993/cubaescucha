@@ -1,38 +1,52 @@
 <div>
-
-    <header class="bg-white shadow">
-        <div class="max-w-5xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-sm">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center font-semibold text-lg text-gray-600 leading-tight">
-                    <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>
-                    <span class="mx-1">/</span>
-                    <a class="text-indigo-500" href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}">{{ $podcast->name }}</a>
-                    <span class="mx-1">/</span>
-                    <span>{{ __('Reports') }}</span>
-                </div>
-
-                <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="flex text-sm items-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-                    </svg>
-                    {{__("Go back")}}
-                </a>
-            </div>
-        </div>
-    </header>
-
-
     {{-- Content --}}
     <div class="my-6">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
             <div class="grid grid-cols-3 gap-8">
 
-                {{-- Show graph with monthly downloads information --}}
-                <div class="col-span-3">
+                <div class="col-span-3 bg-white inline-block p-6 shadow rounded-xl w-full">
+                    <div class="font-semibold text-base capitalize mb-4">
+                        {{__('MTD daily downloads')}}
+                    </div>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js" integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                    <canvas id="totalDownloads" width="400" height="200"></canvas>
+                    <script>
+                    var ctx = document.getElementById('totalDownloads');
+                    var myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: [@forelse ( $getMtdDailyReproductions as $item)'{{ date('M d', strtotime($item->Day)) }}', @empty @endforelse],
+
+                            datasets: [{
+                                label: 'MTD Downloads',
+                                data: [@forelse ( $getMtdDailyReproductions as $item){{ $item->total }}, @empty @endforelse],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.2)',
+
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: false
+                                }
+                            },
+                            plugins: {
+                                legend : {
+                                    display: false
+                                }
+                            }
+                        }
+                    });
+                    </script>
 
                 </div>
-                {{-- End of charts --}}
 
                 <div class="bg-white inline-block p-6 shadow rounded-xl w-full col-span-3 md:col-span-1">
                     <div>

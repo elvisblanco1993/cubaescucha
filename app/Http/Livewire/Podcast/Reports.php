@@ -8,7 +8,6 @@ use Livewire\Component;
 use Carbon\Carbon;
 use Livewire\WithPagination;
 use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\PodcastStatsExport;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -28,6 +27,8 @@ class Reports extends Component
     public $totalPlayNinetyDaysAfter;
     public $countPerCountry;
 
+    public $columnChartModel;
+
     public function mount($podcast)
     {
         $this->podcast = Podcast::find($podcast);
@@ -39,17 +40,18 @@ class Reports extends Component
         // $from = (isset($this->dateFrom)) ? date('Y-m-d' . ' 00:00:00', strtotime($this->dateFrom)) : Carbon::now();
         // $to = (isset($this->dateTo)) ? date('Y-m-d' . ' 23:59:00', strtotime($this->dateTo)) : Carbon::now();
 
-        return DB::table('downloads_counter')
-                ->select(DB::raw('count(*) as total, created_at, country'))
+        $data = DB::table('downloads_counter')
+                ->select(DB::raw('count(*) as total, date(created_at) Day'))
                 ->where('podcast_id', $this->podcast->id)
                 // ->where('created_at', '>=', $from)
                 // ->where('created_at', '<=', $to)\
-                ->whereMonth('created_at', date('m'))
-                ->whereYear('created_at', date('Y'))
-                ->groupBy('created_at')
-                ->groupBy('country')
+                ->whereYear('created_at', Carbon::now()->year)
+                ->whereMonth('created_at', Carbon::now()->month)
+                ->groupBy('Day')
+                // ->groupBy('country')
                 ->get();
 
+        return $data;
     }
 
     // Get total reproductions 7 days after episode is published

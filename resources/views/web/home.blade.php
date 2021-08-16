@@ -44,7 +44,7 @@
         @forelse (\App\Models\Podcast::whereNotNull('is_public')->get() as $show)
             <div class="col-span-3 sm:col-span-1">
                 <div class="pb-2 rounded-lg shadow hover:shadow-md hover:cursor-pointer">
-                    <a href="">
+                    <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}">
                     <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-t-lg h-64 sm:h-48 w-full object-cover">
                     <div class="mx-2 my-2 text-sm font-semibold text-bluegray-800">
                         {{ $show->name }}

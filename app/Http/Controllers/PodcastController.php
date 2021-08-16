@@ -10,6 +10,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\TotalEpisodeReproductions;
 use App\Exports\TotalReproductionsByCountry;
 use App\Models\Team;
+use Asantibanez\LivewireCharts\Models\LineChartModel;
 
 class PodcastController extends Controller
 {
@@ -133,5 +134,15 @@ class PodcastController extends Controller
     public function import()
     {
         return view('podcast.import');
+    }
+
+    /**
+     * Reports
+     */
+    public function reports(Podcast $podcast)
+    {
+        return view('podcast.reports', [
+            'podcast' => $podcast,
+        ]);
     }
 }
