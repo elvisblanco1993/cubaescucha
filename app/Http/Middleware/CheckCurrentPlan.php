@@ -17,10 +17,15 @@ class CheckCurrentPlan
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Podcast::where('team_id', auth()->user()->currentTeam->id)->count() >= 1) {
+        $user = $request->user();
 
+        if (Podcast::where('team_id', $user->currentTeam->id)->count() >= 1) {
 
-            if (auth()->user()->subscribed()) {
+            if ($user->subscribed()) {
+
+                if ($user->subscription()->hasIncompletePayment()) {
+                    return redirect()->route('cashier.payment', $user->subscription()->latestPayment()->id);
+                }
 
                 return $next($request);
 
@@ -32,6 +37,10 @@ class CheckCurrentPlan
             }
 
         } else {
+
+            if ($user->subscription()->hasIncompletePayment()) {
+                return redirect()->route('cashier.payment', $user->subscription()->latestPayment()->id);
+            }
 
             # Continue to publish first podcast
             return $next($request);

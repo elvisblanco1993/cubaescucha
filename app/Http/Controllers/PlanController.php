@@ -11,9 +11,23 @@ class PlanController extends Controller
         return view('plans.index');
     }
 
-    public function charge()
+    public function charge($plan)
     {
-        $checkout = auth()->user()->checkout('price_1JOCy5BDtpph984XpQ3tAhAd', [
+        switch ($plan) {
+            case 'monthly':
+                $price = config('plans.monthly');
+                break;
+
+            case 'annual':
+                $price = config('plans.annual');
+                break;
+
+            default:
+                return redirect()->route('plans.upgrade');
+                break;
+        }
+
+        $checkout = auth()->user()->checkout($price, [
             'success_url' => route('podcasts'),
             'cancel_url' => route('podcasts'),
             'mode' => 'subscription'

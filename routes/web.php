@@ -68,7 +68,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     Route::get('/podcasts', [PodcastController::class, 'index'])->name('podcasts');
 
     // Import Podcast from RSS URL
-    Route::get('/podcasts/import', [PodcastController::class, 'import'])->name('podcasts.import');
+    Route::middleware('checksubscription')->get('/podcasts/import', [PodcastController::class, 'import'])->name('podcasts.import');
 
     // Show podcast details
     Route::get('/podcasts/{podcast}/details', [PodcastController::class, 'show'])->name('podcasts.show');
@@ -101,7 +101,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
 
     // Upgrade To Plan
     Route::get('/plans/upgrade', [PlanController::class, 'index'])->name('plans.upgrade');
-    Route::get('/plans/enroll', [PlanController::class, 'charge'])->name('plans.enroll');
+    Route::post('/plans/upgrade/{plan}', [PlanController::class, 'charge'])->name('plans.enroll');
 });
 
 

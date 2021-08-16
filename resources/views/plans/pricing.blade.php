@@ -62,9 +62,12 @@
                     </ul>
 
                     <div class="mb-8">
-                        <a href="" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
-                            {{__("Buy professional")}}
-                        </a>
+                        <form action="{{ route('plans.enroll', ['plan' => 'monthly']) }}" method="post">
+                            @csrf
+                            <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
+                                {{ __("Buy professional") }}
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -120,9 +123,12 @@
                     </ul>
 
                     <div class="mb-8">
-                        <a href="" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
-                            {{__("Buy professional")}}
-                        </a>
+                        <form action="{{ route('plans.enroll', ['plan' => 'annual']) }}" method="post">
+                            @csrf
+                            <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
+                                {{ __("Buy professional") }}
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
