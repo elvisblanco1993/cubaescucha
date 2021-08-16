@@ -38,10 +38,6 @@ class CheckCurrentPlan
 
         } else {
 
-            if ($user->subscription()->hasIncompletePayment()) {
-                return redirect()->route('cashier.payment', $user->subscription()->latestPayment()->id);
-            }
-
             # Continue to publish first podcast
             return $next($request);
 
