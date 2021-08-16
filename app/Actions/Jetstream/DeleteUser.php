@@ -59,24 +59,28 @@ class DeleteUser implements DeletesUsers
     }
 
     /**
-     * Delete the podcasts and episodes associated to the user.
+     * Delete the podcasts and episodes associated to the user's owned Teams.
      *
      * @param mixed $user
      * @return void
      */
     protected function deletePodcasts($user)
     {
-        foreach ($user->podcasts as $podcast) {
 
-            foreach ($podcast->episodes as $episode) {
-                // Delete episode
-                \Illuminate\Support\Facades\Storage::disk('s3')->delete($episode->file_name);
-                $episode->delete();
+        foreach ($user->ownedTeams as $team) {
+            foreach ($team->podcasts as $podcast) {
+
+                foreach ($podcast->episodes as $episode) {
+                    // Delete episode
+                    \Illuminate\Support\Facades\Storage::disk('s3')->delete($episode->file_name);
+                    $episode->delete();
+                }
+
+                // Delete podcast
+                \Illuminate\Support\Facades\Storage::disk('s3')->delete($podcast->thumbnail);
+                $podcast->delete();
             }
-
-            // Delete podcast
-            \Illuminate\Support\Facades\Storage::disk('s3')->delete($podcast->thumbnail);
-            $podcast->delete();
         }
+
     }
 }
