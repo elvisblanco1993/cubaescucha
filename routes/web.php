@@ -95,8 +95,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
     // Go to customer billing portal
     Route::get('/billing-portal', function (Request $request) {
 
-        $request->user()->createOrGetStripeCustomer();
-
         return $request->user()->redirectToBillingPortal(
             route('podcasts')
         );
