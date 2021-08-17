@@ -87,3 +87,10 @@ select:focus {
 
     }
 }
+
+/*
+    Hides the first line of the documentation articles.
+*/
+#article-content > :first-child {
+    @apply sr-only;
+}

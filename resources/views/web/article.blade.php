@@ -17,12 +17,9 @@
         </div>
     </header>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="text-4xl text-center font-bold text-blueGray-800 mb-8">
-            {{ $article->title }}
-        </div>
-        <div class="prose mx-auto">
-            @parsedown($article->body)
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-24">
+        <div class="prose mx-auto" id="article-content">
+            {!! $article !!}
         </div>
     </div>
 @endsection

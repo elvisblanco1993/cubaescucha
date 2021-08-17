@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ConnectController;
+use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;
@@ -42,12 +43,12 @@ Route::get('/shows/{podcast}/{episode}', [EpisodeController::class, 'display'])-
 /**
  * Q&A and Support
  */
-Route::get('/help', [WebController::class, 'help'])->name('help');
+Route::get('/help', [DocumentationController::class, 'index'])->name('help');
 
 /**
  * View Article
  */
-Route::get('/help/article/{article}', [WebController::class, 'viewArticle'])->name('article-view');
+Route::get('/help/{article}', [DocumentationController::class, 'show'])->name('article.view');
 
 /**
  * Pricing options
