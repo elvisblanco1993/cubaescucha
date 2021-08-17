@@ -4,11 +4,13 @@ namespace App\Actions\Fortify;
 
 use App\Models\Team;
 use App\Models\User;
+use App\Notifications\NotifyAdminOfNewUsers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
+use Illuminate\Support\Facades\Log;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -46,6 +48,12 @@ class CreateNewUser implements CreatesNewUsers
                 ]);
 
                 $this->createTeam($user);
+
+                // Notify administrator about new user via Slack
+                if ($user->id > 1) {
+                    $admin = User::findOrFail(1);
+                    $admin->notify(new NotifyAdminOfNewUsers("New User Created!"));
+                }
             });
         });
     }
