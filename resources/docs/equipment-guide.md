@@ -2,6 +2,8 @@ Equipment Guide
 Elvis Blanco
 August 16, 2021
 
+# Equipment Guide
+
 ***What equipment do you need for your podcast?***
 
 In order to start a podcast, all you need is a microphone, headphones, and a computer. If you want to go a step further to get better quality sound, you may need some extra hardware. We listed a few of those below with a brief description of what they do, and made 3 lists with our recommendations, depending on your level of expertise, and budget.

@@ -3,6 +3,7 @@ Elvis Blanco
 August 16, 2021
 
 # Getting Started
+
 Welcome to voicebits.co! In this article, we will show you an overview of your Dashboard, and will give you a quick rundown on how to create your first podcast.
 
 To login to your account, go to [https://voicebits.co/login](https://voicebits.co/login).

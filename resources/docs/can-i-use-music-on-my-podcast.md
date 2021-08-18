@@ -2,6 +2,7 @@ Can I use music on my podcast?
 Elvis Blanco
 August 16, 2021
 
+# Can I use music on my podcast?
 > Currently there are no music licenses that cover podcasts, so what music can you use?
 
 Podcasts are an on-demand audio format and are downloadable by nature. Because of this, no licensing exists for podcasts. They also cannot be geographically restricted. This been said, we would recommend you to stay out of using copyrighted music and use one of the following options instead.
