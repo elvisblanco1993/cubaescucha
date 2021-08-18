@@ -36,9 +36,11 @@
                 @yield('content')
             </main>
         </div>
-        <footer>
-            @include('layouts.footer')
-        </footer>
+        @guest
+            <footer>
+                @include('layouts.footer')
+            </footer>
+        @endguest
         @livewireScripts
 
         <!--Start of Tawk.to Script-->

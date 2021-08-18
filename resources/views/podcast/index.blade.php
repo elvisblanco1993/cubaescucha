@@ -31,8 +31,21 @@
     <div class="max-w-5xl mx-auto my-12 px-4 sm:px-6 lg:px-8">
 
         @if ($podcasts->count() == 0)
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-
+            <div class="grid grid-cols-2 gap-10 items-center">
+                <div class="col-span-2 sm:col-span-1">
+                    <div class="text-md space-y-4">
+                        <p>{{ __("Hey there! Thanks a ton for signing up for Voicebits - We get really excited when someone new signs up!") }} 😊</p>
+                        <p>{{ __("If you need help getting started, you can check out our Help and Support section in the user menu, or simply hit the chat bubble on the bottom right and send us a message.") }}</p>
+                        <p>{{ __("Thank you!") }} 🙏</p>
+                        <div class="text-sm">
+                            <p>Elvis,</p>
+                            <p>{{ __("Founder of Voicebits") }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-span-2 sm:col-span-1 flex justify-end">
+                    <img src="{{ asset('storage/presenters.svg') }}" alt="">
+                </div>
             </div>
         @else
 
