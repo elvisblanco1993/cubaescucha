@@ -120,19 +120,4 @@ Route::middleware(['auth:sanctum', 'verified'])->group( function() {
  Route::middleware(['auth:sanctum', 'verified', 'admin'])->group( function() {
     // Show Users
     Route::get('/teams', [UserController::class, 'index'])->name('teams');
-
-    // Show articles
-    Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
-
-    // Create article
-    Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles-create');
-
-    // Edit article
-    Route::get('/article/{article}/edit', [ArticleController::class, 'edit'])->name('article-edit');
-
-    // Save article
-    Route::post('/articles/save', [ArticleController::class, 'store'])->name('article-store');
-
-    // Update article
-    Route::post('/article/{article}/update', [ArticleController::class, 'update'])->name('article-update');
 });
