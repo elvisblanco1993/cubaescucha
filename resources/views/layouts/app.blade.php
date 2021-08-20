@@ -21,20 +21,11 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased bg-bluegray-50">
-        <x-jet-banner />
-
-        <div class="min-h-screen">
-            @livewire('navigation-menu')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-5xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-            <main>
+        <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
+            @include('layouts.navigator')
+            {{-- App Content does Here --}}
+            <main class="w-full sm:overflow-y-auto sm:h-screen">
+                <x-jet-banner />
                 {{ $slot }}
             </main>
         </div>

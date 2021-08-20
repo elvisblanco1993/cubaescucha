@@ -26,6 +26,13 @@
     @apply text-xl;
 }
 
+.nav-link {
+    @apply px-4 py-2 mt-2 text-sm font-medium text-bluegray-400 bg-transparent rounded-lg flex;
+}
+.nav-link:hover {
+    @apply text-bluegray-200 bg-bluegray-600;
+}
+
 /* Custom App Stylesheet */
 [type="text"],
 [type="email"],

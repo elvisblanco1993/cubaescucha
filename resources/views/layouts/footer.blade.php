@@ -1,11 +1,11 @@
-<div class="bg-white text-bluegray-900 border-t">
+<div class="bg-bluegray-900 text-bluegray-50 border-t border-bluegray-800">
     <div class="max-w-5xl mx-auto py-2 sm:flex items-center justify-between px-4 md:px-8 text-center">
         {{-- Left side --}}
         <div class="w-full sm:w-1/2 text-sm sm:text-left font-light py-3">
             <span class="mr-4">
                 {{ 'Copyright © ' . Carbon\Carbon::now()->year . " voicebits.co" }}
             </span>
-            <div class="uppercase bg-bluegray-400 rounded inline-flex items-center">
+            <div class="uppercase bg-bluegray-700 rounded inline-flex items-center">
                 @foreach(config('app.languages') as $langLocale => $langName)
                     <a
                         href="{{ url()->current() }}?change_language={{ $langLocale }}"
@@ -14,7 +14,7 @@
                             'line-height-full',
                             'px-1',
                             'rounded',
-                            'bg-emerald-400' => app()->getLocale() == $langLocale,
+                            'bg-green-400' => app()->getLocale() == $langLocale,
                             'text-bluegray-800' => app()->getLocale() == $langLocale
                         ])>{{ $langLocale }}</a>
                 @endforeach

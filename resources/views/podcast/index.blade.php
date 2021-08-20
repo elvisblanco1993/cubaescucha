@@ -1,8 +1,8 @@
 <x-app-layout>
-    <header class="bg-white shadow">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <header class="border-b border-bluegray-100">
+        <div class=" px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex items-center justify-between">
-                <div class="flex items-center font-semibold text-lg text-gray-600 leading-tight">
+                <div class="flex items-center font-semibold text-lg text-bluegray-900 leading-tight">
                     {{__("Podcasts")}}
                 </div>
 
@@ -31,7 +31,7 @@
     <div class="max-w-5xl mx-auto my-12 px-4 sm:px-6 lg:px-8">
 
         @if ($podcasts->count() == 0)
-            <div class="grid grid-cols-2 gap-10 items-center">
+            <div class="grid grid-cols-2 gap-10 items-center sm:mt-48">
                 <div class="col-span-2 sm:col-span-1">
                     <div class="text-md space-y-4">
                         <p>{{ __("Hey there! Thanks a ton for signing up for Voicebits - We get really excited when someone new signs up!") }} 😊</p>
@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="col-span-2 sm:col-span-1 flex justify-end">
-                    <img src="{{ asset('storage/presenters.svg') }}" alt="">
+                    <img src="{{ asset('storage/presenters.svg') }}" alt="" class="w-full">
                 </div>
             </div>
         @else

@@ -1,6 +1,6 @@
 <x-app-layout>
-    <header class="bg-white shadow">
-        <div class="max-w-5xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-sm">
+    <header class="border-b border-bluegray-100">
+        <div class="py-6 px-4 sm:px-6 lg:px-8 text-sm">
             <div class="flex items-center justify-between">
                 <div class="flex items-center font-semibold text-lg text-gray-600 leading-tight">
                     <a class="text-indigo-500" href="{{ route('podcasts') }}">{{ __('Podcasts') }}</a>

@@ -29,7 +29,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased bg-bluegray-50">
+    <body class="font-sans antialiased">
         <div class="min-h-screen">
             @livewire('navigation-menu')
             <main>
