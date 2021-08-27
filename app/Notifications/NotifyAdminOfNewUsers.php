@@ -40,6 +40,4 @@ class NotifyAdminOfNewUsers extends Notification
             ->success()
             ->content($this->message);
     }
-
-
 }

@@ -1,5 +1,5 @@
 <x-app-layout>
-    <header class="border-b border-bluegray-100">
+    <header class="border-b border-bluegray-100 bg-white">
         <div class="py-6 px-4 sm:px-6 lg:px-8 text-sm">
             <div class="flex items-center justify-between">
                 <div class="flex items-center font-semibold text-lg text-gray-600 leading-tight">

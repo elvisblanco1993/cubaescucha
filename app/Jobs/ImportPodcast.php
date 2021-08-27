@@ -2,23 +2,24 @@
 
 namespace App\Jobs;
 
-use App\Mail\NotifyFailedPodcastImport;
-use App\Mail\NotifyPodcastImported;
+use Exception;
+use Carbon\Carbon;
+use App\Models\Episode;
+use App\Models\Podcast;
+use Illuminate\Support\Str;
 use Illuminate\Bus\Queueable;
+use App\Mail\NotifyPodcastImported;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Cache;
+use App\Mail\NotifyFailedPodcastImport;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
-use App\Models\Podcast;
-use App\Models\Episode;
-use App\Notifications\SystemMessagesNotification;
-use Illuminate\Support\Str;
-use Carbon\Carbon;
-use Exception;
+use App\Notifications\NotifyAdminAboutPodcastImport;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Mail;
+use App\Notifications\SystemMessagesNotification;
 
 class ImportPodcast implements ShouldQueue, ShouldBeUnique
 {
@@ -62,6 +63,8 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
      */
     public function handle()
     {
+        $admin = \App\Models\User::where('email', 'eblanco@voicebits.co');
+
         Log::notice("/--------------------------------------------------------");
         Log::notice("/ NEW JOB: IMPORT PODCAST [" . $this->feed . "]");
         Log::notice("/--------------------------------------------------------");
@@ -71,6 +74,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
             $feed = simplexml_load_file($this->feed);
         } catch (\Throwable $e) {
             Log::error("Failed to load remote feed: " . $e->getMessage());
+            $admin->notify(new NotifyAdminAboutPodcastImport( "Failed to load remote feed: " . $e->getMessage() . ". " . $this->feed ));
             Mail::to($this->user_email)->send(new NotifyFailedPodcastImport());
         }
 
@@ -93,6 +97,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 Storage::disk('s3')->put('podcasts/covers/'.$thumbnail_name, $thumbnail_contents, 'public');
             } catch (Exception $e) {
                 Log::error("Error importing podcast cover image: " . $e->getMessage());
+                $admin->notify(new NotifyAdminAboutPodcastImport( "Error importing podcast cover image: " . $e->getMessage() . ". " . $this->feed ));
                 \App\Models\User::findOrFail(1)->notify(new SystemMessagesNotification("Error importing podcast cover image: " . $e->getMessage()));
             }
 
@@ -154,6 +159,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                         Log::notice("Saved " . $file_name . " to s3");
                     } catch (\Throwable $e) {
                         Log::error("Failed to save " . $file_name . " to s3: " . $e);
+                        $admin->notify(new NotifyAdminAboutPodcastImport( "Failed to save " . $file_name . " to s3: " . $e . ". " . $this->feed ));
                         report($e);
                         \App\Models\User::findOrFail(1)->notify(new SystemMessagesNotification("Failed to save " . $file_name . ": " . $e->getMessage()));
                     }
@@ -182,6 +188,9 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 Log::notice("Closing job...");
                 // Send success email notification to user
                 Log::notice("Sending success email to podcast owner");
+
+                $admin->notify(new NotifyAdminAboutPodcastImport( "Podcast " . $podcast_name . " was successfully imported. " . $this->feed ));
+
                 Mail::to($this->user_email)->send(new NotifyPodcastImported());
                 Log::notice("Email sent...");
 
@@ -189,12 +198,18 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                 $podcast->delete();
                 Log::error("Either the podcast was not created or the podcast does not have any episodes");
                 Log::notice("Sending failure email to owner and support");
+
+                $admin->notify(new NotifyAdminAboutPodcastImport( "Either the podcast was not created or the podcast does not have any episodes: " . $this->feed ));
+
                 Mail::to($this->user_email)->send(new NotifyFailedPodcastImport());
                 Log::notice("Email sent...");
                 \App\Models\User::findOrFail(1)->notify(new SystemMessagesNotification("Podcast Import Failed. Either the feed is empty, or its format is not currently supported. Notified podcast owner via email."));
             }
         } else {
             Log::error("The feed is empty. Sendind failure email to owner");
+
+            $admin->notify(new NotifyAdminAboutPodcastImport( "The feed with the following url has no content or its content is not compatible: " . $this->feed ));
+
             Mail::to($this->user_email)->send(new NotifyFailedPodcastImport());
             Log::notice("Send failure email about empty feed to owner...");
             \App\Models\User::findOrFail(1)->notify(new SystemMessagesNotification("Podcast Import Failed. Either the feed is empty, or its format is not currently supported. Notified podcast owner via email."));

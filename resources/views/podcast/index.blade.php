@@ -1,5 +1,5 @@
 <x-app-layout>
-    <header class="border-b border-bluegray-100">
+    <header class="border-b border-bluegray-100 bg-white">
         <div class=" px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex items-center justify-between">
                 <div class="flex items-center font-semibold text-lg text-bluegray-900 leading-tight">
@@ -48,23 +48,71 @@
                 </div>
             </div>
         @else
+        <div class="flex flex-col">
+            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                    <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        {{__("Podcast")}}
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        {{__("Status")}}
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        {{__("Followers")}}
+                                    </th>
+                                    <th scope="col" class="relative px-6 py-3">
+                                        <span class="sr-only">{{__("Edit")}}</span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <!-- More people... -->
+                                @forelse ($podcasts as $podcast)
 
-        <div class="grid grid-cols-4 gap-8 px-4 sm:px-0 my-6">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">
+                                                    {{ $podcast->name }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        @if ($podcast->is_public == 'on')
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            {{__("Active")}}
+                                            </span>
+                                        @else
+                                            <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">
+                                            {{__("Inactive")}}
+                                            </span>
+                                        @endif
+                                      </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        {{ $podcast->followers->count() }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                        <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="text-indigo-600 hover:text-indigo-900">Details</a>
+                                    </td>
+                                </tr>
 
-            @forelse ($podcasts as $podcast)
+                                @empty
 
-                <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="col-span-2 md:col-span-1 border rounded-xl hover:shadow">
-                    <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="{{ $podcast->name }}" class="rounded-t-xl rounded-b-none object-cover w-full h-48">
-                    <div class="px-4 py-4">
-                        <div class="text-base font-bold">
-                            {{ $podcast->name }}
-                        </div>
+                                @endforelse
+                            </tbody>
+                        </table>
                     </div>
-                </a>
-
-            @empty
-
-            @endforelse
+                </div>
+            </div>
         </div>
         @endif
     </div>

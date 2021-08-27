@@ -10,7 +10,7 @@
                         {{__('MTD daily downloads')}}
                     </div>
                     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.0/chart.min.js" integrity="sha512-asxKqQghC1oBShyhiBwA+YgotaSYKxGP1rcSYTDrB0U6DxwlJjU59B67U8+5/++uFjcuVM8Hh5cokLjZlhm3Vg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                    <canvas id="totalDownloads" width="400" height="200"></canvas>
+                    <canvas id="totalDownloads" width="400" height="100"></canvas>
                     <script>
                     var ctx = document.getElementById('totalDownloads');
                     var myChart = new Chart(ctx, {

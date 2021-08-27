@@ -1,5 +1,5 @@
 <x-app-layout>
-    <header class="border-b border-bluegray-100">
+    <header class="border-b border-bluegray-100 bg-white">
         <div class="px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex items-center font-semibold text-lg text-gray-900 leading-tight">
                 {{__("Teams")}}

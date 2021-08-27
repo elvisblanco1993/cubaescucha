@@ -21,16 +21,16 @@
 </div>
 
 <div class="w-full mx-auto px-0">
-    <div class="h-full max-w-5xl text-bluegray-900 mx-auto py-24 px-4 sm:px-6 lg:px-8 text-center">
+    <div class="h-full max-w-5xl text-bluegray-900 mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
         <div class="text-4xl font-black text-bluegray-900 rounded-lg">{{ __('Import your show') }}</div>
-        <div class="text-xl font-semibold text-bluegray-900 mt-4">{{ __('You can import your existing shows with a few simple steps.') }}</div>
-        <img src="{{ asset('storage/distributors.svg') }}" alt="" class="mx-auto w-56 my-12 filter drop-shadow-lg">
+        <div class="text-xl font-semibold text-bluegray-900 mt-4">{{ __('Import your shows in a few simple steps.') }}</div>
+        <img src="{{ asset('storage/articles/import_step_1.gif') }}" alt="" class="mx-auto md:max-w-4xl my-12 filter rounded-xl drop-shadow-lg">
     </div>
 
-    <div class="h-full max-w-5xl text-bluegray-900 mx-auto py-24 px-4 sm:px-6 lg:px-8 text-center">
+    <div class="h-full max-w-5xl text-bluegray-900 mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
         <div class="text-4xl font-black text-bluegray-900 rounded-lg">{{ __('Publish your podcasts anywhere') }}</div>
         <div class="text-xl font-semibold text-bluegray-900 mt-4">{{ __('You can seamesly distribute your podcasts in platforms such as Spotify, Google Podcasts, Apple Podcasts, among others.') }}</div>
-        <img src="{{ asset('storage/distributors.svg') }}" alt="" class="mx-auto w-56 my-12 filter drop-shadow-lg">
+        <img src="{{ asset('storage/distributors.svg') }}" alt="" class="mx-auto md:max-w-lg my-12 filter drop-shadow-lg">
     </div>
 </div>
 @endsection

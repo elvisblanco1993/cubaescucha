@@ -20,7 +20,7 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased bg-bluegray-50">
+    <body class="font-sans antialiased bg-white">
         <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
             @include('layouts.navigator')
             {{-- App Content does Here --}}
