@@ -15,6 +15,7 @@
 
         <a href="{{ route('podcasts') }}" @class([
             'nav-link',
+            'mb-4',
             'text-indigo-600' => request()->routeIs('podcasts')
             ])>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-4" viewBox="0 0 20 20" fill="currentColor">
@@ -24,6 +25,7 @@
         </a>
         <a href="{{ route('teams') }}" @class([
             'nav-link',
+            'mb-4',
             'text-indigo-600' => request()->routeIs('teams')
             ])>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-4" viewBox="0 0 20 20" fill="currentColor">
@@ -40,6 +42,7 @@
 
         <a href="{{ route('help') }}" @class([
             'nav-link',
+            'mb-4',
             'text-indigo-600' => request()->routeIs('help')
             ])>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-4" viewBox="0 0 20 20" fill="currentColor">
@@ -50,6 +53,7 @@
 
         <a href="{{ route('billing-portal') }}" @class([
             'nav-link',
+            'mb-4',
             'text-indigo-600' => request()->routeIs('billing-portal')
             ])>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-4" viewBox="0 0 20 20" fill="currentColor">
@@ -60,6 +64,7 @@
         </a>
         <a href="{{ route('profile.show') }}" @class([
             'nav-link',
+            'mb-4',
             'text-indigo-600' => request()->routeIs('profile.show')
             ])>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-4" viewBox="0 0 20 20" fill="currentColor">
@@ -70,7 +75,7 @@
 
         @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
             <div x-data="{ open: false }">
-                <button x-on:click="open = ! open" class="nav-link w-full">
+                <button x-on:click="open = ! open" class="nav-link w-full mb-4">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-4" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
                     </svg>

@@ -30,7 +30,7 @@
     <div class="h-full max-w-5xl text-bluegray-900 mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
         <div class="text-4xl font-black text-bluegray-900 rounded-lg">{{ __('Publish your podcasts anywhere') }}</div>
         <div class="text-xl font-semibold text-bluegray-900 mt-4">{{ __('You can seamesly distribute your podcasts in platforms such as Spotify, Google Podcasts, Apple Podcasts, among others.') }}</div>
-        <img src="{{ asset('storage/distributors.svg') }}" alt="" class="mx-auto md:max-w-lg my-12 filter drop-shadow-lg">
+        <img src="{{ asset('storage/distributors.svg') }}" alt="" class="mx-auto max-w-sm my-12 filter drop-shadow-lg">
     </div>
 </div>
 @endsection
