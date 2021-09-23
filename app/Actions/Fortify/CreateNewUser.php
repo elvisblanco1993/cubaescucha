@@ -36,6 +36,7 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
+                'trial_ends_at' => now()->addDays(14)
             ]), function (User $user) {
                 // Assign role
                 $user->role = ($user->id == 1) ? 'Admin' : 'User';

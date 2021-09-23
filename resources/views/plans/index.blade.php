@@ -4,7 +4,7 @@
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between py-6">
                 <div class="flex items-center font-semibold text-lg text-gray-900 leading-tight">
-                    {{ __("Upgrade to Pro") }}
+                    {{ __("Your trial period is over") }}
                 </div>
 
                 <a href="{{ route('podcasts') }}" class="flex text-sm items-center bg-bluegray-200 p-2 -m-2 rounded-lg hover:bg-bluegray-300 transition">
@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="mt-6 flex items-baseline text-6xl font-extrabold">
-                            $29
+                            $16
                             <span class="ml-1 text-2xl font-medium text-gray-500">/mo</span>
                         </div>
 
@@ -66,7 +66,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                <p class="text-base text-gray-700">{{ __("50.000 monthly downloads") }}</p>
+                                <p class="text-base text-gray-700">{{ __("20.000 monthly downloads") }}</p>
                             </li>
 
                             <li class="flex items-center gap-4 line-through text-red-400">
@@ -81,7 +81,7 @@
                             <form action="{{ route('plans.enroll', ['plan' => 'monthly']) }}" method="post">
                                 @csrf
                                 <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
-                                    {{ __("Buy professional") }}
+                                    {{ __("Pay Monthly") }}
                                 </button>
                             </form>
                         </div>
@@ -93,11 +93,11 @@
                 <div class="rounded-xl shadow">
                     <div class="rounded-t-xl p-6 bg-white">
                         <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-bluegray-900">
-                            {{__("Annual")}}
+                            {{__("Yearly")}}
                         </div>
 
                         <div class="mt-6 flex items-baseline text-6xl font-extrabold">
-                            $290
+                            $160
                             <span class="ml-1 text-2xl font-medium text-gray-500">/year</span>
                         </div>
 
@@ -127,7 +127,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                                 </svg>
-                                <p class="text-base text-gray-700">{{ __("50.000 monthly downloads") }}</p>
+                                <p class="text-base text-gray-700">{{ __("20.000 monthly downloads") }}</p>
                             </li>
 
                             <li class="flex items-center gap-4">
@@ -142,7 +142,7 @@
                             <form action="{{ route('plans.enroll', ['plan' => 'annual']) }}" method="post">
                                 @csrf
                                 <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
-                                    {{ __("Buy professional") }}
+                                    {{ __("Pay Yearly") }}
                                 </button>
                             </form>
                         </div>
@@ -151,7 +151,7 @@
             </div>
 
             <div class="col-span-2 mx-auto text-bluegray-500">
-                {{ __("More plan options coming soon.") }}
+                {{ __("Need to publish more shows? Contact us to get started.") }}
             </div>
 
         </div>

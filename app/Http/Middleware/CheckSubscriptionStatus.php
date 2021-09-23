@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use App\Models\Podcast;
 
-class CheckCurrentPlan
+class CheckSubscriptionStatus
 {
     /**
      * Handle an incoming request.
@@ -19,28 +19,22 @@ class CheckCurrentPlan
     {
         $user = $request->user();
 
-        if (Podcast::where('team_id', $user->currentTeam->id)->count() >= 1) {
-
+        // User out of trial
+        if (!$user->onTrial()) {
+            // User is subscribed?
             if ($user->subscribed()) {
-
                 if ($user->subscription()->hasIncompletePayment()) {
                     return redirect()->route('cashier.payment', $user->subscription()->latestPayment()->id);
+                } else {
+                    return $next($request);
                 }
-
-                return $next($request);
-
-            } else {
-
-                # Redirect to plans
+            } else { // Not subscribed
+                // Redirect to plans
                 return redirect()->route('plans.upgrade');
-
             }
-
         } else {
-
-            # Continue to publish first podcast
+            // User on trial
             return $next($request);
-
         }
     }
 }

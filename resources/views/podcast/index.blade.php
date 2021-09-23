@@ -35,16 +35,21 @@
                 <div class="col-span-2 sm:col-span-1">
                     <div class="text-md space-y-4">
                         <p>{{ __("Hey there! Thanks a ton for signing up for Voicebits - We get really excited when someone new signs up!") }} 😊</p>
-                        <p>{{ __("If you need help getting started, you can check out our Help and Support section in the user menu, or simply hit the chat bubble on the bottom right and send us a message.") }}</p>
+                        <p>{{ __("If you need help getting started, you can check out our Help section in the user menu, or simply hit the chat bubble on the bottom right and send us a message.") }}</p>
                         <p>{{ __("Thank you!") }} 🙏</p>
                         <div class="text-sm">
                             <p>Elvis,</p>
                             <p>{{ __("Founder of Voicebits") }}</p>
                         </div>
+                        @if (auth()->user()->onTrial())
+                            <div class="inline-block text-xs mt-4 px-2 py-1 bg-indigo-50 rounded-lg text-indigo-800">
+                                {{ __("Trial ends: ") . date('M d, Y', strtotime(auth()->user()->trialEndsAt()))}}
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-span-2 sm:col-span-1 flex justify-end">
-                    <img src="{{ asset('storage/presenters.svg') }}" alt="" class="w-full">
+                    <img src="{{ asset('storage/presenters.svg') }}" alt="Presenters" class="w-full">
                 </div>
             </div>
         @else

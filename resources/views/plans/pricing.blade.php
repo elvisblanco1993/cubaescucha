@@ -7,7 +7,7 @@
             {{ __("Pricing options") }}
         </div>
         <div class="mt-4 text-xl max-w-xl mx-auto">
-            {{ __("Voicebits is FREE for the solo podcasters. If you own more than one show, check out our premium plan below.") }}
+            {{ __("Sign up today and try us free for 14 days. No card required.") }}
         </div>
     </div>
 
@@ -21,7 +21,7 @@
                     </div>
 
                     <div class="mt-6 flex items-baseline text-6xl font-extrabold">
-                        $29
+                        $16
                         <span class="ml-1 text-2xl font-medium text-gray-500">/mo</span>
                     </div>
 
@@ -50,7 +50,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            <p class="text-base text-gray-700">{{ __("50.000 monthly downloads") }}</p>
+                            <p class="text-base text-gray-700">{{ __("20.000 monthly downloads") }}</p>
                         </li>
 
                         <li class="flex items-center gap-4 line-through text-red-400">
@@ -65,7 +65,7 @@
                         <form action="{{ route('plans.enroll', ['plan' => 'monthly']) }}" method="post">
                             @csrf
                             <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
-                                {{ __("Buy professional") }}
+                                {{ __("Buy Voicebits") }}
                             </button>
                         </form>
                     </div>
@@ -77,11 +77,11 @@
             <div class="rounded-xl shadow">
                 <div class="rounded-t-xl p-6 bg-white">
                     <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-bluegray-900">
-                        {{__("Annual")}}
+                        {{__("Yearly")}}
                     </div>
 
                     <div class="mt-6 flex items-baseline text-6xl font-extrabold">
-                        $290
+                        $160
                         <span class="ml-1 text-2xl font-medium text-gray-500">/year</span>
                     </div>
 
@@ -106,12 +106,11 @@
                             <p class="text-base text-gray-700">{{ __("Multiple teams") }}</p>
                         </li>
 
-
                         <li class="flex items-center gap-4">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            <p class="text-base text-gray-700">{{ __("50.000 monthly downloads") }}</p>
+                            <p class="text-base text-gray-700">{{ __("20.000 monthly downloads") }}</p>
                         </li>
 
                         <li class="flex items-center gap-4">
@@ -126,7 +125,7 @@
                         <form action="{{ route('plans.enroll', ['plan' => 'annual']) }}" method="post">
                             @csrf
                             <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
-                                {{ __("Buy professional") }}
+                                {{ __("Buy Voicebits") }}
                             </button>
                         </form>
                     </div>

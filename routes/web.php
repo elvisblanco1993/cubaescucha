@@ -66,7 +66,7 @@ Route::get('/pricing', [WebController::class, 'pricing'])->name('pricing');
 Route::middleware(['auth:sanctum', 'verified'])->group( function() {
 
     // Show list of podcasts (one team can have many podcasts)
-    Route::get('/podcasts', [PodcastController::class, 'index'])->name('podcasts');
+    Route::middleware('checksubscription')->get('/podcasts', [PodcastController::class, 'index'])->name('podcasts');
 
     // Import Podcast from RSS URL
     Route::middleware('checksubscription')->get('/podcasts/import', [PodcastController::class, 'import'])->name('podcasts.import');

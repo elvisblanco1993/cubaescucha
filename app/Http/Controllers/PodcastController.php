@@ -20,7 +20,6 @@ class PodcastController extends Controller
     public function index()
     {
         return view('podcast.index', [
-            // 'podcasts' => Podcast::where('team_id', auth()->user()->currentTeam->id)->orderBy('created_at', 'DESC')->paginate(8)
             'podcasts' => auth()->user()->currentTeam->podcasts
         ]);
     }
