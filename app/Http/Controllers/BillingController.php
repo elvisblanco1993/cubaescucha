@@ -11,12 +11,14 @@ class BillingController extends Controller
         $checkoutPlan1 = Auth::user()->currentTeam->checkout('price_123', [
             'success_url' => route('dashboard'),
             'cancel_url' => route('dashboard'),
-            'mode' => 'subscription'
+            'mode' => 'subscription',
+            'allow_promotion_codes' => true
         ]);
         $checkoutPlan2 = Auth::user()->currentTeam->checkout('price_456', [
             'success_url' => route('dashboard'),
             'cancel_url' => route('dashboard'),
-            'mode' => 'subscription'
+            'mode' => 'subscription',
+            'allow_promotion_codes' => true
         ]);
 
         return view('billing', ['checkout1' => $checkoutPlan1, 'checkout2' => $checkoutPlan2]);
