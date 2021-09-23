@@ -30,7 +30,8 @@ class PlanController extends Controller
         $checkout = auth()->user()->checkout($price, [
             'success_url' => route('podcasts'),
             'cancel_url' => route('podcasts'),
-            'mode' => 'subscription'
+            'mode' => 'subscription',
+            'allow_promotion_codes' => true
         ]);
 
         return redirect()->to($checkout->url);
