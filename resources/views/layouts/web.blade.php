@@ -9,11 +9,11 @@
 
         {{-- Opengraph --}}
         @if (request()->routeIs('podcast.display'))
-        <meta property="og:url"         content="{{ Request::url() }}" />
-        <meta property="og:type"        content="podcast" />
-        <meta property="og:title"       content="{{ $name }}" />
-        <meta property="og:description" content="{{ $description }}" />
-        <meta property="og:image"       content="{{ $thumbnail }}" />
+            <meta property="og:url"         content="{{ Request::url() }}" />
+            <meta property="og:type"        content="podcast" />
+            <meta property="og:title"       content="{{ $name }}" />
+            <meta property="og:description" content="{{ $description }}" />
+            <meta property="og:image"       content="{{ $thumbnail }}" />
         @endif
 
         <title>@if( request()->routeIs('podcast.display') ) {{ $name . ' - ' }}  @endif {{ config('app.name', 'voicebits.co') }}</title>
@@ -30,6 +30,7 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
+        @include('layouts.promo')
         <div class="min-h-screen">
             @livewire('navigation-menu')
             <main>

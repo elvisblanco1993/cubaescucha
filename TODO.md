@@ -22,6 +22,6 @@ Due on Sunday, February 22, 2021
 
 <!-- NEW BILLING SYSTEM -->
 [*] Put user on (14 days) trial period upon account creation
-[] Create Middleware to check subscription status
-[] Create trial banner with subscribe button
-[] On trial end: Hide user's podcasts \ Give user option to pay to continue use.
+[*] Create Middleware to check subscription status
+[*] Create trial banner with subscribe button
+[*] On trial end: Hide user's podcasts \ Give user option to pay to continue use.

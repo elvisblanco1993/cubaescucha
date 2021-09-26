@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/js/player.js": "/js/player.js",
-    "/js/embedded-player.js": "/js/embedded-player.js"
+    "/js/app.js": "/js/app.js?id=4d349c0a2abf41ebf5f4",
+    "/css/app.css": "/css/app.css?id=c6166204e2060c57718d",
+    "/js/player.js": "/js/player.js?id=30fdd6cf14c33da6e01c",
+    "/js/embedded-player.js": "/js/embedded-player.js?id=78ec60a1913be72faad6"
 }
