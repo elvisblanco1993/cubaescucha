@@ -3,7 +3,7 @@
         {{-- Left side --}}
         <div class="w-full sm:w-1/2 text-sm sm:text-left font-light py-3">
             <span class="mr-4">
-                {{ 'Copyright © ' . Carbon\Carbon::now()->year . " voicebits.co" }}
+                <span class="font-bold">voicebits.co</span> - A project by <a href="https://twitter.com/_ebglez" target="_blank">Elvis Blanco</a>
             </span>
             <div class="uppercase bg-bluegray-700 rounded inline-flex items-center">
                 @foreach(config('app.languages') as $langLocale => $langName)
@@ -20,7 +20,7 @@
                 @endforeach
             </div>
         </div>
-
+        {{-- Right side --}}
         <div class="w-full sm:w-1/2 text-sm font-light text-center sm:text-right py-3">
             <a href="{{ route('help') }}" class="mx-2">{{ __('Help') }}</a>
             <a href="{{ route('pricing') }}" class="mx-2">{{ __('Pricing') }}</a>
