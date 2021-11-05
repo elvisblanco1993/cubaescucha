@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Admin\Users;
 
 use App\Models\Team;
-use \App\Models\User;
 use Livewire\Component;
 
 class Index extends Component

@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Statistics;
 
-use App\Models\Podcast;
 use Livewire\Component;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;

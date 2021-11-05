@@ -4,10 +4,8 @@ namespace App\Http\Livewire\Podcast;
 
 use Livewire\Component;
 use App\Models\Podcast;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 
 class DisplayShows extends Component
 {

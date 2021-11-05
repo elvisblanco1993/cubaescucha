@@ -7,9 +7,6 @@ use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 use Carbon\Carbon;
 use Livewire\WithPagination;
-use Maatwebsite\Excel\Facades\Excel;
-
-use function PHPUnit\Framework\isEmpty;
 
 class Reports extends Component
 {
