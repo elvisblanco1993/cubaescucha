@@ -32,11 +32,12 @@
     <body class="font-sans antialiased">
         <div class="min-h-screen">
             {{-- @livewire('navigation-menu') --}}
-            <main>
+            <main class="mb-20">
                 @yield('content')
             </main>
         </div>
 
         @livewireScripts
+        <script defer src="https://unpkg.com/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
     </body>
 </html>

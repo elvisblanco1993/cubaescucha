@@ -34,10 +34,10 @@
         </div>
         <div class="h-full w-full bg-black bg-opacity-80 backdrop-filter backdrop-blur-lg text-white">
             <div class="max-w-5xl mx-auto">
-                <div class="py-36 sm:flex sm:flex-col items-center gap-8 space-y-8 sm:space-y-0 px-4 sm:px-6 lg:px-8">
-                    <div class="sm:flex items-center text-center sm:text-left gap-8">
-                        <img src="{{ $thumbnail }}" alt="" class="w-64 h-64 object-cover rounded-lg mx-auto">
-                        <div class="mt-8 sm:mt-0">
+                <div class="px-4 sm:px-6 lg:px-8 py-20">
+                    <div class="grid grid-cols-3 items-center text-center sm:text-left">
+                        <img src="{{ $thumbnail }}" alt="{{$name}}" class="col-span-3 mx-auto sm:mx-0 sm:col-span-1 w-64 h-64 object-cover rounded-lg">
+                        <div class="col-span-3 sm:col-span-1 mt-8 sm:mt-0">
                             <h1 class="text-4xl font-extrabold">
                                 {{ $name }}
                             </h1>
@@ -83,7 +83,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="prose sm:prose-lg text-justify max-w-full text-white">
+                    <div class="mt-8 prose text-justify max-w-full text-white">
                         @parsedown($description)
                     </div>
                 </div>
@@ -189,9 +189,7 @@
     </script>
     {{-- End: voicebits Media Player --}}
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <div class="my-6">
-            @livewire('player.playlist', ['podcast' => $slug, 'episodes' => $episodes])
-        </div>
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        @livewire('player.playlist', ['podcast' => $slug, 'episodes' => $episodes])
     </div>
 @endsection
