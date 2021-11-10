@@ -15,9 +15,9 @@
                     </button>
 
                     {{-- Episode information --}}
-                    <div class="">
-                        <small class="text-gray-600 text-xs uppercase">
-                            {{ date('M d, Y', strtotime($episode->published_at)) }}
+                    <div class="flex flex-col justify-center">
+                        <small class="text-gray-600 text-xs">
+                            {{ date('M d, Y', strtotime($episode->published_at)) }} /
                             @if ($episode->season != null)
                                 {{ " | S" .  $episode->season }}
                             @endif
@@ -33,10 +33,6 @@
                         </p>
                     </div>
                 </div>
-
-                {{-- More details about the episode
-                    Opens a collapsible menu with more details about the episode.
-                --}}
 
                 <div>
                     <button class="text-gray-600 hover:text-yellow-500" @click="expanded = !expanded">
