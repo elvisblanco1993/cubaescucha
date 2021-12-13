@@ -13,7 +13,7 @@ If you can't pay for your podcast's music just yet, there is plenty of free musi
 
 - [Free Sound](https://freesound.org/)
 - [Free Music Archive](https://www.freemusicarchive.org/)
-- [Free Stock Music](https://www.freestockmusic.com/)
+- [Free Stock Music](https://www.free-stock-music.com/)
 
 #### Paid Music
 
