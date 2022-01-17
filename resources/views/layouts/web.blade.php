@@ -16,7 +16,12 @@
             <meta property="og:image"       content="{{ $thumbnail }}" />
         @endif
 
-        <title>@if( request()->routeIs('podcast.display') ) {{ $name . ' - ' }}  @endif {{ config('app.name', 'voicebits.co') }}</title>
+        <title>
+            @if( request()->routeIs('podcast.display') )
+                {{ $name . ' - ' }}
+            @endif
+            {{ config('app.name', 'voicebits.co') }}
+        </title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -30,7 +35,6 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        @include('layouts.promo')
         <div class="min-h-screen">
             @livewire('navigation-menu')
             <main>

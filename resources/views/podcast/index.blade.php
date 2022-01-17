@@ -42,8 +42,8 @@
                             <p>{{ __("Founder of Voicebits") }}</p>
                         </div>
                         @if (auth()->user()->onTrial())
-                            <div class="inline-block text-xs mt-4 px-2 py-1 bg-indigo-50 rounded-lg text-indigo-800">
-                                {{ __("Trial ends: ") . date('M d, Y', strtotime(auth()->user()->trialEndsAt()))}}
+                            <div class="inline-block text-sm mt-4 px-2 py-1 bg-red-50 rounded-lg text-red-600">
+                                {{ __("Trial ends: ") . date('F d, Y', strtotime(auth()->user()->trialEndsAt()))}}
                             </div>
                         @endif
                     </div>

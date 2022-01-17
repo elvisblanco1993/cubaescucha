@@ -72,7 +72,7 @@ select {
 [multiple]:focus,
 textarea:focus,
 select:focus {
-    @apply rounded-md border-emerald-300 ring ring-emerald-200 ring-opacity-50;
+    @apply rounded-md border-indigo-300 ring ring-indigo-200 ring-opacity-50;
 }
 
 .prose img {
