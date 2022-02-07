@@ -22,7 +22,7 @@
             <a href="{{ route('podcast.display', ['podcast' => $podcast->url]) }}" class="font-bold text-base text-indigo-500">
                 {{ $podcast->name }}
             </a>
-            <small class="block text-blueGray-800 my-6 capitalize">
+            <small class="block text-slate-800 my-6 capitalize">
                 {{ $podcast->tags }}
             </small>
 

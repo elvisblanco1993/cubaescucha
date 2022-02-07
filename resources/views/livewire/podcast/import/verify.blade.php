@@ -10,12 +10,12 @@
         <div class="col-span-1 rounded-lg shadow p-6 bg-white">
             <img src="{{ $podcast_thumbnail }}" class="rounded-lg border mx-auto">
 
-            <p class="text-sm text-bluegray-600 my-2">
+            <p class="text-sm text-slate-600 my-2">
                 <span class="block text-green-600 mb-1">{{ __("TITLE") }}</span>
                 {{ $podcast_name }}
             </p>
 
-            <p class="text-sm text-bluegray-600 mt-4">
+            <p class="text-sm text-slate-600 mt-4">
                 <span class="block text-green-600 mb-1">{{ __("DESCRIPTION") }}</span>
                 {{ Str::limit($podcast_description, 250, '...') }}
             </p>

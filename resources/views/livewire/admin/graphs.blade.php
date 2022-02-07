@@ -3,7 +3,7 @@
     <div class="grid grid-cols-3 gap-8 my-12">
         <div class="col-span-3 md:col-span-1 bg-white rounded-lg shadow px-4 py-3">
             {{-- Users counter --}}
-            <p class="text-sm font-bold text-blueGray-500">{{__("Total Teams")}}</p>
+            <p class="text-sm font-bold text-slate-500">{{__("Total Teams")}}</p>
 
             <div class="text-3xl font-semibold text-indigo-600 mt-2">
                 {{ $teams_total }}
@@ -13,7 +13,7 @@
         <div class="col-span-3 md:col-span-1 bg-white rounded-lg shadow px-4 py-3">
             {{-- New users counter --}}
             <div class="flex items-center justify-between">
-                <p class="text-sm font-bold text-blueGray-500">{{__("New Teams")}}</p>
+                <p class="text-sm font-bold text-slate-500">{{__("New Teams")}}</p>
 
                 <select wire:model="filterRange" wire:click="filterNewTeams" class="text-xs w-1/3 py-1 px-1">
                     <option value="30">30 Days</option>
@@ -30,7 +30,7 @@
 
         <div class="col-span-3 md:col-span-1 bg-white rounded-lg shadow px-4 py-3">
             {{-- Podcasts counter --}}
-            <p class="text-sm font-bold text-blueGray-500">{{__("Total Podcasts")}}</p>
+            <p class="text-sm font-bold text-slate-500">{{__("Total Podcasts")}}</p>
 
             <div class="text-3xl font-semibold text-indigo-600 mt-2">
                 {{ $podcasts_total }}

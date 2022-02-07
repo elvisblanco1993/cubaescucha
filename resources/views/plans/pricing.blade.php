@@ -2,7 +2,7 @@
 @section('content')
 <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
 
-    <div class="text-center text-bluegray-900">
+    <div class="text-center text-slate-900">
         <div class="text-4xl font-black">
             {{ __("Pricing options") }}
         </div>
@@ -16,7 +16,7 @@
         <div class="col-span-2 sm:col-span-1">
             <div class="rounded-xl shadow">
                 <div class="rounded-t-xl p-6 bg-white">
-                    <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-bluegray-900">
+                    <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-slate-900">
                         {{__("Monthly")}}
                     </div>
 
@@ -64,7 +64,7 @@
                     <div class="mb-8">
                         <form action="{{ route('plans.enroll', ['plan' => 'monthly']) }}" method="post">
                             @csrf
-                            <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
+                            <button type="submit" class="block w-full p-4 rounded-lg text-center bg-slate-700 text-white font-semibold hover:bg-slate-900 hover:shadow transition">
                                 {{ __("Buy Voicebits") }}
                             </button>
                         </form>
@@ -76,7 +76,7 @@
         <div class="col-span-2 sm:col-span-1">
             <div class="rounded-xl shadow">
                 <div class="rounded-t-xl p-6 bg-white">
-                    <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-bluegray-900">
+                    <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-slate-900">
                         {{__("Yearly")}}
                     </div>
 
@@ -124,7 +124,7 @@
                     <div class="mb-8">
                         <form action="{{ route('plans.enroll', ['plan' => 'annual']) }}" method="post">
                             @csrf
-                            <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
+                            <button type="submit" class="block w-full p-4 rounded-lg text-center bg-slate-700 text-white font-semibold hover:bg-slate-900 hover:shadow transition">
                                 {{ __("Buy Voicebits") }}
                             </button>
                         </form>
@@ -133,7 +133,7 @@
             </div>
         </div>
 
-        <div class="col-span-2 mx-auto text-bluegray-500 pb-16">
+        <div class="col-span-2 mx-auto text-slate-500 pb-16">
             {{ __("Own more than 5 shows? Contact us so we can help you get onboard.") }}
         </div>
 

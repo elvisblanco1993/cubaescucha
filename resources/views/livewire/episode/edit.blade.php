@@ -12,7 +12,7 @@
                 <div class="text-lg font-semibold">
                     {{ __("Episode Details") }}
                 </div>
-                <p class="text-sm font-normal text-blueGray-600">{{__("Tell us a bit about This episode.")}}</p>
+                <p class="text-sm font-normal text-slate-600">{{__("Tell us a bit about This episode.")}}</p>
             </div>
 
             <div class="grid grid-cols-4 gap-8">
@@ -22,7 +22,7 @@
 
                 <div class="col-span-4 md:col-span-3 space-y-4">
                     <div>
-                        <label for="title" class="block text-xs font-medium text-blueGray-500">
+                        <label for="title" class="block text-xs font-medium text-slate-500">
                             {{ __('Title') }} <span class="text-red-600">*</span>
                         </label>
                         <div class="mt-1 flex rounded-md shadow-sm">
@@ -33,7 +33,7 @@
                         @enderror
                     </div>
                     <div>
-                        <label for="show_notes" class="block text-xs font-medium text-blueGray-500">
+                        <label for="show_notes" class="block text-xs font-medium text-slate-500">
                             {{ __('Episode notes') }} <span class="text-red-600">*</span>
                         </label>
                         <div class="mt-1">
@@ -47,7 +47,7 @@
                         </p>
                     </div>
                     <div>
-                        <label class="block text-xs font-medium text-blueGray-500 mb-1">
+                        <label class="block text-xs font-medium text-slate-500 mb-1">
                             {{ __('Episode type') }} <span class="text-red-600">*</span>
                         </label>
                         <select wire:model.defer="type" id="">
@@ -62,7 +62,7 @@
                     </div>
                     <div class="border-b"></div>
                     <div>
-                        <label class="block text-xs font-medium text-blueGray-500 mb-1">
+                        <label class="block text-xs font-medium text-slate-500 mb-1">
                         {{__('Episode audio file')}} <span class="text-red-600">*</span>
                         </label>
 
@@ -117,13 +117,13 @@
         <div class="flex items-center justify-between mb-2">
             <div>
                 <div class="text-lg font-semibold">{{ __('Embedded player') }}</div>
-                <div class="text-sm font-normal text-blueGray-600">
+                <div class="text-sm font-normal text-slate-600">
                     {{__("Copy this code snippet into your website so so that visitors can listen to this episode from your site.")}}
                 </div>
             </div>
             <div class="flex items-center">
                 <span id="copiedMessage" class="text-xs text-green-600 mr-2"></span>
-                <button id="btn" onclick="copyToClickBoard()" title="{{ __("Copy to clipboard") }}"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blueGray-500 hover:text-blueGray-700 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg></button>
+                <button id="btn" onclick="copyToClickBoard()" title="{{ __("Copy to clipboard") }}"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500 hover:text-slate-700 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" /></svg></button>
             </div>
         </div>
         <pre class="overflow-auto bg-gray-800"><code id="code" class="text-xs text-green-400 px-2">{{ '<div id="voicebits-player-container" episode-title="'.$title.'" episode-owner="'.$podcast->team->name.'" podcast-url="'.route("podcast.display", ["podcast"=>$podcast->url]).'"><audio id="voicebits-player" type="audio/mpeg" src="'.Storage::disk("s3")->url($episode->file_name).'"></audio> <img id="voicebits-player-img" src="'.Storage::disk('s3')->url($podcast->thumbnail).'" alt="'.$title.'"> </div> <script src="'.asset('js/embedded-player.js').'"></script>' }}</code></pre>

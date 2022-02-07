@@ -41,10 +41,10 @@
                             <h1 class="text-4xl font-extrabold">
                                 {{ $name }}
                             </h1>
-                            <p class="text-base text-blueGray-700 mt-4">
+                            <p class="text-base text-slate-700 mt-4">
                                 <span>By: </span>{{ $author }}
                             </p>
-                            <small class="block text-xs text-blueGray-800 mt-4 capitalize">
+                            <small class="block text-xs text-slate-800 mt-4 capitalize">
                                 <span>Tags: </span>{{ $tags }}
                             </small>
 

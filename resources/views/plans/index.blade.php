@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <header class="border-b border-bluegray-100 bg-white">
+    <header class="border-b border-slate-100 bg-white">
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between py-6">
                 <div class="flex items-center gap-3 font-semibold text-lg text-gray-900 leading-tight">
@@ -38,7 +38,7 @@
             <div class="col-span-2 sm:col-span-1">
                 <div class="rounded-xl shadow">
                     <div class="rounded-t-xl p-6 bg-white">
-                        <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-bluegray-900">
+                        <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-slate-900">
                             {{__("Monthly")}}
                         </div>
 
@@ -86,7 +86,7 @@
                         <div class="mb-8">
                             <form action="{{ route('plans.enroll', ['plan' => 'monthly']) }}" method="post">
                                 @csrf
-                                <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
+                                <button type="submit" class="block w-full p-4 rounded-lg text-center bg-slate-700 text-white font-semibold hover:bg-slate-900 hover:shadow transition">
                                     {{ __("Pay Monthly") }}
                                 </button>
                             </form>
@@ -98,7 +98,7 @@
             <div class="col-span-2 sm:col-span-1">
                 <div class="rounded-xl shadow">
                     <div class="rounded-t-xl p-6 bg-white">
-                        <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-bluegray-900">
+                        <div class="inline-block px-4 py-1 bg-gray-100 rounded-full text-sm font-medium uppercase text-slate-900">
                             {{__("Yearly")}}
                         </div>
 
@@ -147,7 +147,7 @@
                         <div class="mb-8">
                             <form action="{{ route('plans.enroll', ['plan' => 'annual']) }}" method="post">
                                 @csrf
-                                <button type="submit" class="block w-full p-4 rounded-lg text-center bg-bluegray-700 text-white font-semibold hover:bg-bluegray-900 hover:shadow transition">
+                                <button type="submit" class="block w-full p-4 rounded-lg text-center bg-slate-700 text-white font-semibold hover:bg-slate-900 hover:shadow transition">
                                     {{ __("Pay Yearly") }}
                                 </button>
                             </form>
@@ -156,7 +156,7 @@
                 </div>
             </div>
 
-            <div class="col-span-2 mx-auto text-bluegray-500">
+            <div class="col-span-2 mx-auto text-slate-500">
                 {{ __("Need to publish more shows? Contact us to get started.") }}
             </div>
 

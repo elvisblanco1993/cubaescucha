@@ -1,8 +1,8 @@
 <x-app-layout>
-    <header class="border-b border-bluegray-100 bg-white">
+    <header class="border-b border-slate-100 bg-white">
         <div class=" px-4 sm:px-6 lg:px-8 py-6">
             <div class="flex items-center justify-between">
-                <div class="flex items-center font-semibold text-lg text-bluegray-900 leading-tight">
+                <div class="flex items-center font-semibold text-lg text-slate-900 leading-tight">
                     {{__("Podcasts")}}
                 </div>
 

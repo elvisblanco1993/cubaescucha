@@ -6,14 +6,14 @@
                 <div class="text-lg font-semibold">
                     {{ __("Episode Details") }}
                 </div>
-                <p class="text-sm font-normal text-blueGray-600">{{__("Tell us a bit about this episode.")}}</p>
+                <p class="text-sm font-normal text-slate-600">{{__("Tell us a bit about this episode.")}}</p>
             </div>
 
             <div class="grid grid-cols-4 gap-8">
 
                 <div class="col-span-4 space-y-4">
                     <div>
-                        <label for="title" class="block text-xs font-medium text-blueGray-500">
+                        <label for="title" class="block text-xs font-medium text-slate-500">
                             {{ __('Title') }} <span class="text-red-600">*</span>
                         </label>
                         <div class="mt-1 flex rounded-md shadow-sm">
@@ -25,7 +25,7 @@
                     </div>
 
                     <div>
-                        <label for="show_notes" class="block text-xs font-medium text-blueGray-500">
+                        <label for="show_notes" class="block text-xs font-medium text-slate-500">
                             {{ __('Episode notes') }} <span class="text-red-600">*</span>
                         </label>
                         <div class="mt-1">
@@ -40,7 +40,7 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-medium text-blueGray-500 mb-1">
+                        <label class="block text-xs font-medium text-slate-500 mb-1">
                             {{ __('Episode type') }} <span class="text-red-600">*</span>
                         </label>
                         <select wire:model="type" id="">
@@ -55,7 +55,7 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs font-medium text-blueGray-500 mb-1">
+                        <label class="block text-xs font-medium text-slate-500 mb-1">
                         {{__('Episode audio file')}} <span class="text-red-600">*</span>
                         </label>
 
@@ -91,14 +91,14 @@
                     </div>
 
                     <div>
-                        <label class="block text-xs mb-1 font-medium text-blueGray-500" for="season">
+                        <label class="block text-xs mb-1 font-medium text-slate-500" for="season">
                             {{ __('Season number') }} <span class="text-red-600">*</span>
                         </label>
                         <input type="number" wire:model.defer="season">
                     </div>
 
                     <div>
-                        <label class="block text-xs mb-1 font-medium text-blueGray-500" for="episode_no">
+                        <label class="block text-xs mb-1 font-medium text-slate-500" for="episode_no">
                             {{ __('Episode number') }} <span class="text-red-600">*</span>
                         </label>
                         <input type="number" wire:model.defer="episode_no">
@@ -110,7 +110,7 @@
         <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6">
             <div class="text-lg font-semibold mb-2">{{__("Content Rating")}}</div>
 
-            <label class="inline-flex items-center text-sm font-medium text-blueGray-500">
+            <label class="inline-flex items-center text-sm font-medium text-slate-500">
                 <input type="checkbox" wire:model.defer="explicit" class="mr-2 rounded">
                 {{ __('This episode includes explicit content.') }}
             </label>
@@ -119,7 +119,7 @@
         <div class="px-4 py-8 sm:px-6 lg:px-8 border sm:rounded-lg my-6">
             <div class="text-lg font-semibold mb-2">{{__("Notify Subscribers")}}</div>
 
-            <label class="inline-flex items-center text-sm font-medium text-blueGray-500">
+            <label class="inline-flex items-center text-sm font-medium text-slate-500">
                 <input type="checkbox" wire:model.defer="notify_subscribers" class="mr-2 rounded">
                 {{ __('I would like to notify my subscribers about this release.') }}
             </label>

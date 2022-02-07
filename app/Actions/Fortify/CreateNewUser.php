@@ -52,8 +52,14 @@ class CreateNewUser implements CreatesNewUsers
 
                 // Notify administrator about new user via Slack
                 if ($user->id > 1) {
-                    $admin = User::findOrFail(1);
-                    $admin->notify(new NotifyAdminOfNewUsers("New User Created!"));
+                    try {
+
+                        $admin = User::findOrFail(1);
+                        $admin->notify(new NotifyAdminOfNewUsers("New User Created!"));
+
+                    } catch (\Throwable $th) {
+                        Log::error($th);
+                    }
                 }
             });
         });

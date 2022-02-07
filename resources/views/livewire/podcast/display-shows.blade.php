@@ -39,10 +39,10 @@
                         <a href="{{ route('podcast.display', ['podcast' => $favorite->url]) }}" class="col-span-2 md:col-span-1">
                             <div class="">
                                 <img src="{{ Storage::disk('s3')->url($favorite->thumbnail) }}" alt="{{ $favorite->name }}" class="rounded-lg w-full h-48 object-cover">
-                                <div class="text-xs text-blueGray-800 font-medium py-4">
+                                <div class="text-xs text-slate-800 font-medium py-4">
                                     {{ $favorite->name }}
                                 </div>
-                                <div class="text-xs text-blueGray-500">
+                                <div class="text-xs text-slate-500">
                                     {{ $favorite->team->name }}
                                 </div>
                             </div>
@@ -52,7 +52,7 @@
                 </div>
             </div>
 
-            <div class="border-b border-bluegray-200"></div>
+            <div class="border-b border-slate-200"></div>
 
             @endif
         @endauth
@@ -71,10 +71,10 @@
                     <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}" class="col-span-2 md:col-span-1">
                         <div class="">
                             <img src="{{ Storage::disk('s3')->url($show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg w-full h-48 object-cover">
-                            <div class="text-xs text-blueGray-800 font-medium py-4">
+                            <div class="text-xs text-slate-800 font-medium py-4">
                                 {{ $show->name }}
                             </div>
-                            <div class="text-xs text-blueGray-500">
+                            <div class="text-xs text-slate-500">
                                 {{ $show->team->name }}
                             </div>
                         </div>

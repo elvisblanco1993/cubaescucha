@@ -42,8 +42,8 @@
                     </button>
                 </div>
             </div>
-            <div x-show="expanded" x-cloak x-collapse.duration.1000ms class="text-sm pt-4">
-                {{$episode->show_notes}}
+            <div x-show="expanded" x-cloak x-collapse.duration.1000ms class="text-sm w-full prose-2xl prose-indigo pt-4">
+                {!!$episode->show_notes!!}
             </div>
         </div>
     @empty
