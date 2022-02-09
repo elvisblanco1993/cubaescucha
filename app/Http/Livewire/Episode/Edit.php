@@ -42,12 +42,12 @@ class Edit extends Component
                 'audio_file' => 'required|file|mimes:mp3'
             ]);
             // Delete old audio file
-            Storage::disk('s3')->delete($this->episode->file_name);
+            Storage::disk('local')->delete('podcasts/episodes/'.$this->episode->file_name);
             // Upload new audio file
-            $path = $this->audio_file->store('podcasts/episodes', 's3');
-            Storage::disk('s3')->setVisibility($path, 'public');
+            $filename = $this->audio_file->getFileName();
+            $this->audio_file->storeAs('podcasts/episodes', $filename);
             // Update audio file on DB
-            $this->episode->update(['file_name' => $path]);
+            $this->episode->update(['file_name' => $filename]);
         }
 
         session()->flash('flash.banner', 'Episode details successfully updated!');
@@ -61,7 +61,7 @@ class Edit extends Component
      */
     public function delete()
     {
-        Storage::disk('s3')->delete($this->episode->file_name);
+        Storage::disk('local')->delete($this->episode->file_name);
         $this->episode->delete();
 
         session()->flash('flash.banner', 'Episode successfully deleted!');

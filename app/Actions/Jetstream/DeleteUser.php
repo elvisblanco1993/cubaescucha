@@ -72,12 +72,12 @@ class DeleteUser implements DeletesUsers
 
                 foreach ($podcast->episodes as $episode) {
                     // Delete episode
-                    \Illuminate\Support\Facades\Storage::disk('s3')->delete($episode->file_name);
+                    \Illuminate\Support\Facades\Storage::disk('local')->delete($episode->file_name);
                     $episode->delete();
                 }
 
                 // Delete podcast
-                \Illuminate\Support\Facades\Storage::disk('s3')->delete($podcast->thumbnail);
+                \Illuminate\Support\Facades\Storage::disk('local')->delete($podcast->thumbnail);
                 $podcast->delete();
             }
         }

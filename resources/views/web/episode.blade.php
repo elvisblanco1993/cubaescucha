@@ -7,7 +7,7 @@
 
         {{-- Left side --}}
         <div class="w-full sm:w-1/3">
-            <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" class="block rounded-lg object-cover object-center">
+            <img src="{{ Storage::disk('local')->url($podcast->thumbnail) }}" class="block rounded-lg object-cover object-center">
 
             @livewire('player.episode.play', ['episode' => $episode])
 

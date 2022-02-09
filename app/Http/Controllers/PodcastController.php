@@ -39,7 +39,7 @@ class PodcastController extends Controller
     {
         return view('podcast.show', [
             'podcast' => $podcast,
-            'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
+            'thumbnail' => Storage::disk('local')->url($podcast->thumbnail),
             'episodes' => $podcast->episodes()->get(),
         ]);
     }
@@ -53,33 +53,11 @@ class PodcastController extends Controller
 
         if ($podcast->website_style == 'modern') {
             return view('web.podcast-alt', [
-                'podcast_id' => $podcast->id,
-                'slug' => $podcast->slug,
-                'url' => $podcast->url,
-                'name' => $podcast->name,
-                'description' => $podcast->description,
-                'tags' => $podcast->tags,
-                'author' => $podcast->team->name,
-                'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
-                'episodes' => $podcast->episodes()->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'ASC')->get(),
-                'spotifypodcasts_url' => $podcast->spotifypodcasts_url,
-                'googlepodcasts_url' => $podcast->googlepodcasts_url,
-                'applepodcasts_url' => $podcast->applepodcasts_url,
+                'podcast' => $podcast
             ]);
         } else {
             return view('web.podcast', [
-                'podcast_id' => $podcast->id,
-                'slug' => $podcast->slug,
-                'url' => $podcast->url,
-                'name' => $podcast->name,
-                'description' => $podcast->description,
-                'tags' => $podcast->tags,
-                'author' => $podcast->team->name,
-                'thumbnail' => Storage::disk('s3')->url($podcast->thumbnail),
-                'episodes' => $podcast->episodes()->where('published_at', '<=', Carbon::now())->orderBy('created_at', 'ASC')->get(),
-                'spotifypodcasts_url' => $podcast->spotifypodcasts_url,
-                'googlepodcasts_url' => $podcast->googlepodcasts_url,
-                'applepodcasts_url' => $podcast->applepodcasts_url,
+                'podcast' => $podcast
             ]);
         }
 
@@ -119,7 +97,7 @@ class PodcastController extends Controller
         $bytes = 0;
 
         foreach ($podcast->episodes as $episode) {
-            $bytes += Storage::disk('s3')->size($episode->file_name);
+            $bytes += Storage::disk('local')->size($episode->file_name);
         }
 
         $factor = floor((strlen($bytes) - 1) / 3);

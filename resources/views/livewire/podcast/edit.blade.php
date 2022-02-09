@@ -22,7 +22,7 @@
                     @if ($thumbnail)
                         <img src="{{ $thumbnail->temporaryUrl() }}" class="rounded-lg mb-4 md:h-48 md:w-full object-cover">
                     @else
-                        <img src="{{ Storage::disk('s3')->url($podcast->thumbnail) }}" alt="" class="rounded-lg mb-4 md:h-48 md:w-full object-cover">
+                        <img src="{{ asset('covers/'.$podcast->thumbnail) }}" alt="" class="rounded-lg mb-4 md:h-48 md:w-full object-cover">
                     @endif
 
                     <div class="relative py-1 w-full rounded-lg border bg-white border-gray-300 shadow-sm flex justify-center items-center mx-auto">

@@ -64,11 +64,11 @@ class Edit extends Component
                 'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:10240']
             ]);
             // Delete old audio file
-            Storage::disk('s3')->delete($this->podcast->thumbnail);
+            Storage::disk('local')->delete($this->podcast->thumbnail);
             // Upload new audio file
             $path = $this->thumbnail->store('podcasts/covers', 's3');
             // Make file public
-            Storage::disk('s3')->setVisibility($path, 'public');
+            Storage::disk('local')->setVisibility($path, 'public');
 
             // Update audio file on DB
             $this->podcast->update(['thumbnail' => $path]);
@@ -87,14 +87,14 @@ class Edit extends Component
 
             foreach ($this->podcast->episodes as $episode) {
                 // Delete episode files
-                Storage::disk('s3')->delete($episode->file_name);
+                Storage::disk('local')->delete($episode->file_name);
 
                 // Delete episodes from DB
                 $episode->delete();
             }
 
             // Delete podcast thumbnail image
-            Storage::disk('s3')->delete($this->podcast->thumbnail);
+            Storage::disk('local')->delete($this->podcast->thumbnail);
 
             // Delete podcast
             $this->podcast->delete();

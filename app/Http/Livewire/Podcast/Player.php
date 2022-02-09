@@ -1,18 +1,23 @@
 <?php
 
-namespace App\Http\Livewire\Player;
+namespace App\Http\Livewire\Podcast;
 
-use Livewire\Component;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use App\Models\Episode;
+use App\Models\Podcast;
+use Livewire\Component;
+use Illuminate\Support\Facades\DB;
 use Stevebauman\Location\Facades\Location;
 
-class Playlist extends Component
+class Player extends Component
 {
-    public $podcast;
-    public $episodes;
-    public $episode;
+    public $podcast_id, $podcast, $episodes;
+
+    public function mount()
+    {
+        $this->podcast = Podcast::find($this->podcast_id)->first();
+        $this->episodes = $this->podcast->episodes()->orderBy('published_at', 'desc')->get();
+    }
 
     protected $listeners = [
         'playing' => 'countReproduction',
@@ -32,6 +37,6 @@ class Playlist extends Component
 
     public function render()
     {
-        return view('livewire.player.playlist');
+        return view('livewire.podcast.player');
     }
 }

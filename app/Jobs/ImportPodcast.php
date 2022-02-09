@@ -94,7 +94,7 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
             $thumbnail_name = substr(substr($podcast_thumbnail, strrpos($podcast_thumbnail, '/') + 1), 0, strpos(substr($podcast_thumbnail, strrpos($podcast_thumbnail, '/') + 1), '?'));
 
             try {
-                Storage::disk('s3')->put('podcasts/covers/'.$thumbnail_name, $thumbnail_contents, 'public');
+                Storage::disk('local')->put('podcasts/covers/'.$thumbnail_name, $thumbnail_contents, 'public');
             } catch (Exception $e) {
                 Log::error("Error importing podcast cover image: " . $e->getMessage());
                 $admin->notify(new NotifyAdminAboutPodcastImport( "Error importing podcast cover image: " . $e->getMessage() . ". " . $this->feed ));
@@ -155,11 +155,13 @@ class ImportPodcast implements ShouldQueue, ShouldBeUnique
                     $file_name = 'podcasts/episodes/'. uniqid() . '.' . substr(pathinfo($episode_url, PATHINFO_EXTENSION), 0, strpos(pathinfo($episode_url, PATHINFO_EXTENSION), "?"));
 
                     try {
-                        Storage::disk('s3')->put($file_name, $file_contents, 'public');
-                        Log::notice("Saved " . $file_name . " to s3");
+
+                        Storage::disk('episodes')->put($file_name, $file_contents);
+
+                        Log::notice("Saved " . $file_name . " to drive");
                     } catch (\Throwable $e) {
-                        Log::error("Failed to save " . $file_name . " to s3: " . $e);
-                        $admin->notify(new NotifyAdminAboutPodcastImport( "Failed to save " . $file_name . " to s3: " . $e . ". " . $this->feed ));
+                        Log::error("Failed to save " . $file_name . " to drive: " . $e);
+                        $admin->notify(new NotifyAdminAboutPodcastImport( "Failed to save " . $file_name . " to drive: " . $e . ". " . $this->feed ));
                         report($e);
                         \App\Models\User::findOrFail(1)->notify(new SystemMessagesNotification("Failed to save " . $file_name . ": " . $e->getMessage()));
                     }

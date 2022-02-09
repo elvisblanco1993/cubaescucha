@@ -73,6 +73,12 @@ return [
             'queue' => 'import_podcasts',
             'retry_after' => 120, // Run for max 20 minutes
             'block_for' => null,
+            'balance' => 'auto',
+            'minProcesses' => 1,
+            'maxProcesses' => 10,
+            'balanceMaxShift' => 1,
+            'balanceCooldown' => 3,
+            'tries' => 3,
         ],
 
     ],

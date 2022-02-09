@@ -38,9 +38,8 @@ class Create extends Component
 
         $this->validate();
 
-        $path = $this->thumbnail->store('podcasts/covers', 's3');
-
-        Storage::disk('s3')->setVisibility($path, 'public');
+        $filename = $this->thumbnail->getFileName();
+        $this->thumbnail->storeAs('podcasts/covers', $filename);
 
         $slug = Str::slug($this->name);
 
@@ -57,7 +56,7 @@ class Create extends Component
             'lang' => $this->lang,
             'style' => $this->style,
             'explicit' => $isExplicit,
-            'thumbnail' => $path,
+            'thumbnail' => $filename,
             'is_public' => $isPublic,
             'website_style' => $this->website_style,
         ]);

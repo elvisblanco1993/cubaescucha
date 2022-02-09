@@ -36,13 +36,6 @@
                     @endauth
                 </div>
             </div>
-            {{-- <audio
-                controls
-                class="w-full my-4 rounded-lg"
-                id="player"
-                type="audio/mpeg"
-                >
-            </audio> --}}
 
         </div>
         <div class="my-6 border-t"></div>

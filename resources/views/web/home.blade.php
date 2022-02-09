@@ -27,7 +27,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
             </div>
         </div>
         <div class="hidden sm:block col-span-2 sm:col-span-1 mt-8 sm:mt-0">
-            <img src="{{ asset('storage/mic.png') }}" alt="" class="object-cover object-top">
+            <img src="{{ asset('images/mic.png') }}" alt="" class="object-cover object-top">
         </div>
     </div>
 </div>
@@ -36,13 +36,13 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     <div class="h-full max-w-5xl text-slate-900 mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
         <div class="text-4xl font-black text-slate-900 rounded-lg">{{ __('Import your show') }}</div>
         <div class="text-xl font-semibold text-slate-900 mt-4">{{ __('Import your shows in a few simple steps.') }}</div>
-        <img src="{{ asset('storage/articles/import_step_1.gif') }}" alt="" class="mx-auto md:max-w-4xl my-12 filter rounded-xl drop-shadow-lg">
+        <img src="{{ asset('images/articles/import_step_1.gif') }}" alt="" class="mx-auto md:max-w-4xl my-12 filter rounded-xl drop-shadow-lg">
     </div>
 
     <div class="h-full max-w-5xl text-slate-900 mx-auto py-12 px-4 sm:px-6 lg:px-8 text-center">
         <div class="text-4xl font-black text-slate-900 rounded-lg">{{ __('Publish your podcasts anywhere') }}</div>
         <div class="text-xl font-semibold text-slate-900 mt-4">{{ __('You can seamesly distribute your podcasts in platforms such as Spotify, Google Podcasts, Apple Podcasts, among others.') }}</div>
-        <img src="{{ asset('storage/distributors.svg') }}" alt="" class="mx-auto max-w-sm w-full my-12 filter drop-shadow-lg">
+        <img src="{{ asset('images/distributors.svg') }}" alt="" class="mx-auto max-w-sm w-full my-12 filter drop-shadow-lg">
     </div>
 </div>
 @endsection

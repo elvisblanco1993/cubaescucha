@@ -28,7 +28,7 @@
             @endif
 
             <div class="md:flex mb-6 items-center">
-                <div class="w-full md:w-1/4 rounded-t-2xl md:rounded-2xl bg-cover bg-center h-56" style="background-image: url('{{ Storage::disk('s3')->url($podcast->thumbnail) }}')"></div>
+                <div class="w-full md:w-1/4 rounded-t-2xl md:rounded-2xl bg-cover bg-center h-56" style="background-image: url('{{ asset('covers/'.$podcast->thumbnail) }}')"></div>
                 <div class="w-full py-8 md:w-3/4 px-4 sm:px-12">
                     <div>
                         <h1 class="text-2xl font-extrabold">

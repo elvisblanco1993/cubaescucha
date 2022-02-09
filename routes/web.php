@@ -1,18 +1,11 @@
 <?php
-
-use App\Http\Controllers\AdController;
-use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\ConnectController;
 use App\Http\Controllers\DocumentationController;
-use App\Http\Controllers\DonationController;
 use App\Http\Controllers\EpisodeController;
 use App\Http\Controllers\PodcastController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebController;
-use App\Http\Livewire\Podcast\Reports;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlanController;
-use App\Http\Controllers\WebhookController;
 use Illuminate\Http\Request;
 
 /**
@@ -39,6 +32,19 @@ Route::get('/shows/{podcast}/rss', [PodcastController::class, 'generateRss'])->n
  * Podcast episode page
  */
 Route::get('/shows/{podcast}/{episode}', [EpisodeController::class, 'display'])->name('episode.display');
+
+/**
+ * TESTING PLAYING EPISODE BY URL
+ *
+ * TODO:
+ *  - MOVE THIS TO A CONTROLLER AND MIGRATE THE PLAYER COUNTER TO IT.
+ */
+Route::get('/shows/{podcast}/episode/{episode}', function($podcast, $episode) {
+
+    $path = storage_path('app/podcasts/episodes/'.$episode);
+    return response()->file($path);
+
+})->name('play_episode');
 
 /**
  * Q&A and Support

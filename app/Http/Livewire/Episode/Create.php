@@ -72,8 +72,8 @@ class Create extends Component
 
         $is_explicit = ($this->explicit == true) ? 'on' : null;
 
-        $path = $this->audio_file->store('podcasts/episodes', 's3');
-        Storage::disk('s3')->setVisibility($path, 'public');
+        $filename = $this->audio_file->getFileName();
+        $this->audio_file->storeAs('podcasts/episodes', $filename);
 
         $episode = new Episode([
             'uuid' => strtotime(Carbon::now()),
@@ -82,8 +82,8 @@ class Create extends Component
             'show_notes' => $this->show_notes,
             'type' => $this->type,
             'downloadable' => true,
-            'file_name' => $path,
-            'audio_duration' => ceil($this->audio_duration),
+            'file_name' => $filename,
+            'audio_duration' => $this->audio_duration,
             'explicit' => $is_explicit,
             'season' => ($this->podcast->style == 'ews') ? $this->season : null , // Only insert season number if the podcast has seasons
             'episode_no' => $this->episode_no,
