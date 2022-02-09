@@ -49,7 +49,7 @@
                     </div>
                 </div>
                 <div class="col-span-2 sm:col-span-1 flex justify-end">
-                    <img src="{{ asset('storage/presenters.svg') }}" alt="Presenters" class="w-full">
+                    <img src="{{ asset('images/presenters.svg') }}" alt="Presenters" class="w-full">
                 </div>
             </div>
         @else
