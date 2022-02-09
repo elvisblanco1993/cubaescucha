@@ -46,6 +46,11 @@
                                 {{ __("Trial ends: ") . date('F d, Y', strtotime(auth()->user()->trialEndsAt()))}}
                             </div>
                         @endif
+                        @if (auth()->user()->subscribed('default')->onGracePeriod())
+                            <div class="inline-block text-sm mt-4 px-2 py-1 bg-red-50 rounded-lg text-red-600">
+                                {{ __("You subscription is valid until: ") . date('F d, Y', strtotime(auth()->user()->subscription()->ends_at))}}
+                            </div>
+                        @endif
                     </div>
                 </div>
                 <div class="col-span-2 sm:col-span-1 flex justify-end">
