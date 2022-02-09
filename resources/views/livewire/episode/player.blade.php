@@ -1,6 +1,4 @@
-@extends('layouts.podcast', ['name' => $podcast->name, 'description' => $podcast->description, 'thumbnail' => $podcast->thumbnail])
-@section('content')
-    {{-- Player --}}
+<div>
     <div class="fixed bottom-0 w-full bg-slate-800">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <audio id="player" type="audio/mpeg"></audio>
@@ -32,28 +30,6 @@
         </div>
     </div>
 
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12">
-        <div class="grid grid-cols-4 gap-8">
-            <div class="col-span-4 sm:col-span-1">
-                <img src="{{asset('covers/'.$podcast->thumbnail)}}" alt="" class="mx-auto sm:mx-0 w-44 h-44 object-cover rounded-md">
-            </div>
-            <div class="col-span-4 sm:col-span-3 text-center sm:text-left">
-                <div class="text-3xl sm:text-5xl font-black text-slate-800">{{$podcast->name}}</div>
-                <div class="mt-4 text-lg font-semibold text-slate-700">{{$podcast->team->name}}</div>
-                <div class="mt-3">
-                    <a href="" class="inline-block px-4 py-2 text-xs border-2 border-slate-800 hover:border-slate-800 hover:bg-slate-800 font-bold text-slate-800 hover:text-white transition-all">{{__("SUBSCRIBE")}}</a>
-                </div>
-            </div>
-            <div class="col-span-4">
-                <div class="text-lg text-justify font-normal">{{$podcast->description}}</div>
-            </div>
-        </div>
-
-        <div class="mt-12 block">
-            @livewire('podcast.player', ['podcast_id' => $podcast->id])
-        </div>
-    </div>
-
-    {{-- voicebits Media Player --}}
+    <script src="{{ asset('js/episode-player.js') }}"></script>
     <script src="{{ asset('js/voicebits-player.js') }}"></script>
-@endsection
+</div>

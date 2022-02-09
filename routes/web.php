@@ -34,16 +34,11 @@ Route::get('/shows/{podcast}/rss', [PodcastController::class, 'generateRss'])->n
 Route::get('/shows/{podcast}/{episode}', [EpisodeController::class, 'display'])->name('episode.display');
 
 /**
- * TESTING PLAYING EPISODE BY URL
- *
- * TODO:
- *  - MOVE THIS TO A CONTROLLER AND MIGRATE THE PLAYER COUNTER TO IT.
+ * Episode get url
  */
 Route::get('/shows/{podcast}/episode/{episode}', function($podcast, $episode) {
-
     $path = storage_path('app/podcasts/episodes/'.$episode);
     return response()->file($path);
-
 })->name('play_episode');
 
 /**

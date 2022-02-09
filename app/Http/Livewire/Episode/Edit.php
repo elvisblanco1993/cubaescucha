@@ -18,6 +18,7 @@ class Edit extends Component
     public $show_notes;
     public $type;
     public $audio_file;
+    public $audio_duration;
     public $published_at;
 
     protected $rules = [
@@ -25,6 +26,19 @@ class Edit extends Component
         'show_notes' => 'required|max:1000',
         'type' => 'required',
     ];
+
+    /**
+     * Listens for Javascript events
+     */
+    protected $listeners = ['getAudioDuration'];
+
+    /**
+     * Grab the audio duration upon temporarily uploading the file.
+     */
+    public function getAudioDuration($duration)
+    {
+        $this->audio_duration = $duration;
+    }
 
     public function save()
     {
@@ -47,7 +61,10 @@ class Edit extends Component
             $filename = $this->audio_file->getFileName();
             $this->audio_file->storeAs('podcasts/episodes', $filename);
             // Update audio file on DB
-            $this->episode->update(['file_name' => $filename]);
+            $this->episode->update([
+                'file_name' => $filename,
+                'audio_duration' => $this->audio_duration,
+            ]);
         }
 
         session()->flash('flash.banner', 'Episode details successfully updated!');

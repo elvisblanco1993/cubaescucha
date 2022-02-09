@@ -6,7 +6,6 @@ use App\Jobs\NewEpisodeUploaded;
 use App\Models\Episode;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 class Create extends Component

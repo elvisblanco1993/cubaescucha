@@ -25,7 +25,7 @@ class EpisodeController extends Controller
     }
 
     public function display($podcast, $episode) {
-        $podcast = Podcast::where('slug', $podcast)->first();
+        $podcast = Podcast::where('url', $podcast)->first();
         $episode = Episode::where('uuid', $episode)->first();
 
         return view('web.episode', [
