@@ -48,7 +48,7 @@
                         @endif
                         @if (auth()->user()->subscribed('default')->onGracePeriod())
                             <div class="inline-block text-sm mt-4 px-2 py-1 bg-red-50 rounded-lg text-red-600">
-                                {{ __("You subscription is valid until: ") . date('F d, Y', strtotime(auth()->user()->subscription()->ends_at))}}
+                                {{ __("You subscription is valid until: ") . date('F d, Y', strtotime(auth()->user()->subscription->ends_at))}}
                             </div>
                         @endif
                     </div>
