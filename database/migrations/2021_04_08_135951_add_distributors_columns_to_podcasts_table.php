@@ -14,7 +14,6 @@ class AddDistributorsColumnsToPodcastsTable extends Migration
     public function up()
     {
         Schema::table('podcasts', function (Blueprint $table) {
-            //
             $table->string('spotifypodcasts_url')->nullable();
             $table->string('googlepodcasts_url')->nullable();
             $table->string('applepodcasts_url')->nullable();

@@ -61,10 +61,9 @@ class Podcast extends Model
      */
     public function toSearchableArray()
     {
-        $array = $this->toArray();
-
-        unset($array['updated_at']);
-
-        return $array;
+        return [
+            'name' => $this->name,
+            'description' => $this->description,
+        ];
     }
 }

@@ -51,16 +51,9 @@ class PodcastController extends Controller
     {
         $podcast = Podcast::where('url', $podcast)->first();
 
-        if ($podcast->website_style == 'modern') {
-            return view('web.podcast-alt', [
-                'podcast' => $podcast
-            ]);
-        } else {
-            return view('web.podcast', [
-                'podcast' => $podcast
-            ]);
-        }
-
+        return view('web.podcast-alt', [
+            'podcast' => $podcast
+        ]);
     }
 
     /**

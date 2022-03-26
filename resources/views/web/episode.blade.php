@@ -19,7 +19,7 @@
                     </button>
                     <a  href="{{route('play_episode', ['podcast'=>$podcast->url, 'episode'=>$episode->file_name])}}"
                         target="_blank"
-                        class="inline-block px-4 py-2 border-2 border-slate-600 hover:border-slate-800 hover:bg-slate-800 font-bold text-slate-600 hover:text-white transition-all">
+                        class="ml-4 inline-block px-4 py-2 border-2 border-slate-600 hover:border-slate-800 hover:bg-slate-800 font-bold text-slate-600 hover:text-white transition-all">
                         {{__("DOWNLOAD EPISODE")}}
                     </a>
                 </div>
