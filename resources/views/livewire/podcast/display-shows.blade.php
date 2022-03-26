@@ -70,7 +70,7 @@
 
                     <a href="{{ route('podcast.display', ['podcast' => $show->url]) }}" class="col-span-2 md:col-span-1">
                         <div class="">
-                            <img src="{{ asset('covers/'.$podcast->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg w-full h-48 object-cover">
+                            <img src="{{ asset('covers/'.$show->thumbnail) }}" alt="{{ $show->name }}" class="rounded-lg w-full h-48 object-cover">
                             <div class="text-xs text-slate-800 font-medium py-4">
                                 {{ $show->name }}
                             </div>
