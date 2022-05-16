@@ -15,15 +15,16 @@ class CreatePodcastsTable extends Migration
     {
         Schema::create('podcasts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->constrained();
+            $table->foreignId('team_id');
             $table->string('name');
             $table->string('slug');
+            $table->string('url');
             $table->longText('description');
-            $table->string('tags');
-            $table->string('lang');
-            $table->string('style')->nullable();
-            $table->string('explicit')->nullable();
-            $table->string('thumbnail');
+            $table->text('tags')->nullable();
+            $table->text('thumbnail');
+            $table->boolean('explicit')->default(0);
+            $table->text('style');
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }

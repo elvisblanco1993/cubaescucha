@@ -36,7 +36,7 @@
                         </h1>
 
                         <div class="text-sm font-semibold text-slate-600">
-                            {{ __("Followers: ") . $podcast->followers->count() }}
+                            {{-- {{ __("Followers: ") . $podcast->followers->count() }} --}}
                         </div>
 
                         <div class="mt-6 flex">

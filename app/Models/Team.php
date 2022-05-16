@@ -3,16 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Laravel\Cashier\Billable;
 use Laravel\Jetstream\Events\TeamCreated;
 use Laravel\Jetstream\Events\TeamDeleted;
 use Laravel\Jetstream\Events\TeamUpdated;
 use Laravel\Jetstream\Team as JetstreamTeam;
 use Laravel\Scout\Searchable;
+use function Illuminate\Events\queueable;
 
 class Team extends JetstreamTeam
 {
     use HasFactory;
     use Searchable;
+    use Billable;
 
     /**
      * The attributes that should be cast to native types.
@@ -21,6 +24,7 @@ class Team extends JetstreamTeam
      */
     protected $casts = [
         'personal_team' => 'boolean',
+        'trial_ends_at' => 'datetime'
     ];
 
     /**
@@ -31,6 +35,7 @@ class Team extends JetstreamTeam
     protected $fillable = [
         'name',
         'personal_team',
+        'trial_ends_at'
     ];
 
     /**
@@ -50,6 +55,20 @@ class Team extends JetstreamTeam
     public function podcasts()
     {
         return $this->hasMany(Podcast::class);
+    }
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::updated(queueable(function ($customer) {
+            if ($customer->hasStripeId()) {
+                $customer->syncStripeCustomerDetails();
+            }
+        }));
     }
 
     /**

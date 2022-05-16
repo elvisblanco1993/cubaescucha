@@ -18,14 +18,9 @@ class Podcast extends Model
         'description',
         'tags',
         'thumbnail',
-        'lang',
-        'style',
-        'spotifypodcasts_url',
-        'googlepodcasts_url',
-        'applepodcasts_url',
-        'is_public',
+        'published_at',
         'explicit',
-        'website_style'
+        'style'
     ];
 
     /**

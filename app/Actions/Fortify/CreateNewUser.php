@@ -36,27 +36,21 @@ class CreateNewUser implements CreatesNewUsers
                 'name' => $input['name'],
                 'email' => $input['email'],
                 'password' => Hash::make($input['password']),
-                'trial_ends_at' => now()->addDays(14)
             ]), function (User $user) {
-                // Assign role
-                $user->role = ($user->id == 1) ? 'Admin' : 'User';
-                $user->save();
-
-                // Create stripe customer
-                $user->createAsStripeCustomer([
-                    'name' => $user->name,
+                $this->createTeam($user);
+                $user->currentTeam->createAsStripeCustomer([
+                    'name' => $user->currentTeam->name,
                     'email' => $user->email,
                 ]);
-
-                $this->createTeam($user);
+                $user->currentTeam->update([
+                    'trial_ends_at' => now()->addDays(14),
+                ]);
 
                 // Notify administrator about new user via Slack
                 if ($user->id > 1) {
                     try {
-
                         $admin = User::findOrFail(1);
                         $admin->notify(new NotifyAdminOfNewUsers("New User Created!"));
-
                     } catch (\Throwable $th) {
                         Log::error($th);
                     }

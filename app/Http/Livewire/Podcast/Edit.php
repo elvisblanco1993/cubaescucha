@@ -12,26 +12,13 @@ class Edit extends Component
 {
     use WithFileUploads;
 
-    public $podcast;
-    public $name;
-    public $description;
-    public $tags;
-    public $lang;
-    public $style;
-    public $explicit;
-    public $thumbnail;
-    public $spotifypodcasts_url;
-    public $googlepodcasts_url;
-    public $applepodcasts_url;
     public $confirmDeleteDialog;
-    public $website_style;
-    public $public;
+    public $podcast, $name, $description, $thumbnail, $tags, $published_at, $style, $explicit, $public;
 
     protected $rules = [
         'name' => 'required',
         'description' => 'required',
         'tags' => ['required'],
-        'website_style' => ['required'],
     ];
 
 
@@ -40,43 +27,35 @@ class Edit extends Component
     {
         $this->validate();
 
-        $isExplicit = ($this->explicit == true) ? 'on' : null ;
-        $isPublic = ($this->public == true) ? 'on' : null ;
-
-        $this->podcast->update([
-            'name' => $this->name,
-            'slug' => Str::slug($this->name),
-            'description' => $this->description,
-            'tags' => $this->tags,
-            'lang' => $this->lang,
-            'style' => $this->style,
-            'explicit' => $isExplicit,
-            'spotifypodcasts_url' => $this->spotifypodcasts_url,
-            'googlepodcasts_url' => $this->googlepodcasts_url,
-            'applepodcasts_url' => $this->applepodcasts_url,
-            'is_public' => $isPublic,
-            'website_style' => $this->website_style,
-        ]);
-
-        if ($this->thumbnail) {
-            // Validate audio file complies with requisites
-            $this->validate([
-                'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:10240']
+        try {
+            $this->podcast->update([
+                'name' => $this->name,
+                'slug' => Str::slug($this->name),
+                'description' => $this->description,
+                'tags' => $this->tags,
+                'style' => $this->style,
+                'explicit' => $this->explicit,
+                'published_at' => ($this->public == true) ? now() : null,
             ]);
-            // Delete old audio file
-            Storage::disk('local')->delete($this->podcast->thumbnail);
-            // Upload new audio file
-            $path = $this->thumbnail->store('podcasts/covers', 's3');
-            // Make file public
-            Storage::disk('local')->setVisibility($path, 'public');
 
-            // Update audio file on DB
-            $this->podcast->update(['thumbnail' => $path]);
+            if ($this->thumbnail) {
+                // Validate audio file complies with requisites
+                $this->validate([
+                    'thumbnail' => ['required', 'image', 'mimes:png,jpg,webp', 'max:10240']
+                ]);
+                Storage::disk('local')->delete($this->podcast->thumbnail);
+                $path = $this->thumbnail->store('podcasts/covers');
+                Storage::disk('local')->setVisibility($path, 'public');
+                $this->podcast->update(['thumbnail' => $path]);
+            }
+
+            session()->flash('flash.banner', 'All changes were successfully saved!');
+            session()->flash('flash.bannerStyle', 'success');
+        } catch (\Throwable $th) {
+            Log::error($th);
+            session()->flash('flash.banner', 'There was an error while saving your changes. Please contact support.');
+            session()->flash('flash.bannerStyle', 'danger');
         }
-
-        session()->flash('flash.banner', 'All changes were successfully saved!');
-        session()->flash('flash.bannerStyle', 'success');
-
         return redirect(route('podcasts.show', ['podcast' => $this->podcast->id]));
     }
 

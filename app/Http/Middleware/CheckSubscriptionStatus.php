@@ -18,13 +18,12 @@ class CheckSubscriptionStatus
     public function handle(Request $request, Closure $next)
     {
         $user = $request->user();
-
         // User out of trial
-        if (!$user->onTrial()) {
+        if (!$user->currentTeam->onTrial()) {
             // User is subscribed?
-            if ($user->subscribed()) {
-                if ($user->subscription()->hasIncompletePayment()) {
-                    return redirect()->route('cashier.payment', $user->subscription()->latestPayment()->id);
+            if ($user->currentTeam->subscribed()) {
+                if ($user->currentTeam->subscription()->hasIncompletePayment()) {
+                    return redirect()->route('cashier.payment', $user->currentTeam->subscription()->latestPayment()->id);
                 } else {
                     return $next($request);
                 }
@@ -33,7 +32,6 @@ class CheckSubscriptionStatus
                 return redirect()->route('plans.upgrade');
             }
         } else {
-            // User on trial
             return $next($request);
         }
     }

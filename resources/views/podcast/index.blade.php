@@ -41,12 +41,12 @@
                             <p>Elvis,</p>
                             <p>{{ __("Founder of Voicebits") }}</p>
                         </div>
-                        @if ( !auth()->user()->subscribed('default') && auth()->user()->onTrial() )
+                        @if ( !auth()->user()->currentTeam->subscribed('default') && auth()->user()->currentTeam->onTrial() )
                             <div class="inline-block text-sm mt-4 px-2 py-1 bg-red-50 rounded-lg text-red-600">
-                                {{ __("Trial ends: ") . date('F d, Y', strtotime(auth()->user()->trialEndsAt()))}}
+                                {{ __("Trial ends: ") . date('F d, Y', strtotime(auth()->user()->currentTeam->trialEndsAt()))}}
                             </div>
                         @endif
-                        @if (auth()->user()->subscribed('default') && auth()->user()->subscription('default')->onGracePeriod())
+                        @if (auth()->user()->currentTeam->subscribed('default') && auth()->user()->currentTeam->subscription('default')->onGracePeriod())
                             <div class="inline-block text-sm mt-4 px-2 py-1 bg-red-50 rounded-lg text-red-600">
                                 {{ __("You subscription is valid until the end of this billing period. For more details, please visit your Billing settings.")}}
                             </div>
@@ -108,7 +108,7 @@
                                         @endif
                                       </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ $podcast->followers->count() }}
+                                        {{-- {{ $podcast->followers->count() }} --}}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                         <a href="{{ route('podcasts.show', ['podcast' => $podcast->id]) }}" class="text-indigo-600 hover:text-indigo-900">Details</a>
